@@ -1,9 +1,13 @@
-//! A module for Histograms
-//!
-//! TODO:
-//!  - frequency or density option
-//!    - Variable bins implies frequency
-//!    - What should be the default?
+/*!
+
+A module for Histograms
+
+TODO:
+
+- frequency or density option
+    - Variable bins implies frequency
+    - What should be the default?
+*/
 
 #[derive(Debug)]
 pub struct Histogram {

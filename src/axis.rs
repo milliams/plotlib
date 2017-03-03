@@ -1,3 +1,9 @@
+/*!
+
+A module for managing axes
+
+*/
+
 #[derive(Debug)]
 pub struct Axis {
     lower: f64,
@@ -6,6 +12,7 @@ pub struct Axis {
 }
 
 impl Axis {
+    /// Constructs a new Axis
     pub fn new(lower: f64, upper: f64) -> Axis {
         assert!(lower < upper);
         let default_max_ticks = 6;
@@ -24,6 +31,7 @@ impl Axis {
         self.lower
     }
 
+    /// Get the positions of the ticks on the axis
     pub fn ticks(&self) -> &Vec<f64> {
         &self.ticks
     }
