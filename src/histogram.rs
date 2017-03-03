@@ -2,6 +2,17 @@
 
 A module for Histograms
 
+# Examples
+
+```
+# use plotlib::histogram::Histogram;
+// Create some dummy data
+let data = vec![0.3, 0.5, 6.4, 5.3, 3.6, 3.6, 3.5, 7.5, 4.0];
+
+// and create a histogram out of it
+let h = Histogram::from_vec(&data);
+```
+
 TODO:
 
 - frequency or density option
