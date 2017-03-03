@@ -20,11 +20,15 @@ TODO:
     - What should be the default?
 */
 
+use axis;
+
 #[derive(Debug)]
 pub struct Histogram {
     pub bin_bounds: Vec<f64>, // will have N_bins + 1 entries
     pub bin_counts: Vec<u32>, // will have N_bins entries
     pub bin_densities: Vec<f64>, // will have N_bins entries
+    pub x_axis: axis::Axis,
+    pub y_axis: axis::Axis,
 }
 
 impl Histogram {
@@ -56,10 +60,19 @@ impl Histogram {
         }
         let density_per_bin = bins.iter().map(|&x| x as f64 / bin_width).collect();
 
+        let x_min = *bounds.first().expect("ERROR: There are no ticks for the x-axis");
+        let x_max = *bounds.last().expect("ERROR: There are no ticks for the x-axis");
+        let x_axis = axis::Axis::new(x_min, x_max);
+
+        let largest_bin_count = *bins.iter().max().expect("ERROR: There are no bins");
+        let y_axis = axis::Axis::new(0.0, largest_bin_count as f64);
+
         Histogram {
             bin_bounds: bounds,
             bin_counts: bins,
             bin_densities: density_per_bin,
+            x_axis: x_axis,
+            y_axis: y_axis,
         }
     }
 
