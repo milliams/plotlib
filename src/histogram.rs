@@ -21,6 +21,7 @@ TODO:
 */
 
 use axis;
+use utils::PairWise;
 
 #[derive(Debug)]
 pub struct Histogram {
@@ -51,11 +52,15 @@ impl Histogram {
         let bounds = bounds;
 
         for &val in v.iter() {
+            /*
             let mut bin = ((val - min) / bin_width) as usize;
             if bin == num_bins && val == max {
                 //We are right on the top-most bound
                 bin = num_bins - 1;
             }
+            */
+
+            let bin = bounds.pairwise().enumerate().skip_while(|&(_, (&l, &u))| !(val >= l && val <= u)).map(|(i, (_,_))| i).next().unwrap();
             bins[bin] += 1;
         }
         let density_per_bin = bins.iter().map(|&x| x as f64 / bin_width).collect();
