@@ -25,6 +25,13 @@ impl Scatter {
             data.push((x, y));
         }
 
+        let x_range = x_max - x_min;
+        let y_range = y_max - y_min;
+        x_min = x_min - (x_range/20.0);
+        x_max = x_max + (x_range/20.0);
+        y_min = y_min - (y_range/20.0);
+        y_max = y_max + (y_range/20.0);
+
         let x_axis = axis::Axis::new(x_min, x_max);
         let y_axis = axis::Axis::new(y_min, y_max);
 
