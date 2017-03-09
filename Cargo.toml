@@ -4,5 +4,5 @@ version = "0.1.0"
 authors = ["Matt Williams <matt@milliams.com>"]
 description = "Plotting data structures and tools"
 license = "MIT"
-repository = "https://github.com/milliams/plot"
+repository = "https://github.com/milliams/plotlib"
 categories = ["visualization"]
