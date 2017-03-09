@@ -524,4 +524,80 @@ mod tests {
         assert!(l.footprint() % 2 != 0);
         assert_eq!(l.start_offset(), -1);
     }
+
+    #[test]
+    fn test_render_y_axis_strings() {
+        let y_axis = axis::Axis::new(0.0, 10.0);
+
+        let (y_label_strings, y_tick_strings, y_axis_line_strings, longest_y_label_width) =
+            render_y_axis_strings(&y_axis, 10);
+
+        assert!(y_label_strings.contains(&"0".to_string()));
+        assert!(y_label_strings.contains(&"6".to_string()));
+        assert!(y_label_strings.contains(&"10".to_string()));
+        assert_eq!(y_label_strings.len(), y_tick_strings.len());
+        assert_eq!(y_label_strings.len(), y_axis_line_strings.len());
+        assert_eq!(longest_y_label_width, 2);
+    }
+
+    #[test]
+    fn test_render_x_axis_strings() {
+        let x_axis = axis::Axis::new(0.0, 10.0);
+
+        let (x_label_string, x_tick_string, x_axis_line_string, start_offset) =
+            render_x_axis_strings(&x_axis, 20);
+
+        assert!(x_label_string.contains("0 "));
+        assert!(x_label_string.contains(" 6 "));
+        assert!(x_label_string.contains(" 10"));
+        assert_eq!(x_tick_string.chars().filter(|&c| c == '|').count(), 6);
+        assert_eq!(x_axis_line_string.len(), 21);
+        assert_eq!(start_offset, 0);
+    }
+
+    #[test]
+    fn test_render_face_bars() {
+        let data = vec![0.3, 0.5, 6.4, 5.3, 3.6, 3.6, 3.5, 7.5, 4.0];
+        let h = histogram::Histogram::from_vec(&data, 10);
+        let strings = render_face_bars(&h, 20, 10);
+        assert_eq!(strings.len(), 10);
+        assert!(strings.iter().all(|s| s.len() == 20));
+
+        let comp = vec!["       ---          ",
+                        "       | |          ",
+                        "       | |          ",
+                        "--     | |          ",
+                        " |     | |          ",
+                        " |     | |          ",
+                        " |     | |          ",
+                        " |     | |---- -----",
+                        " |     | | | | | | |",
+                        " |     | | | | | | |"];
+        for (s, c) in strings.iter().rev().zip(comp.iter()) {
+            assert_eq!(s, c);
+        }
+    }
+
+    #[test]
+    fn test_render_face_points() {
+        let data = vec![(-3.0, 2.3), (-1.6, 5.3), (0.3, 0.7), (4.3, -1.4), (6.4, 4.3), (8.5, 3.7)];
+        let s = scatter::Scatter::from_vec(&data);
+        let strings = render_face_points(&s, 20, 10);
+        assert_eq!(strings.len(), 10);
+        assert!(strings.iter().all(|s| s.len() == 20));
+
+        let comp = vec!["  o                 ",
+                        "                    ",
+                        "               o    ",
+                        "                  o ",
+                        "                    ",
+                        "o                   ",
+                        "                    ",
+                        "     o              ",
+                        "                    ",
+                        "                    "];
+        for (s, c) in strings.iter().rev().zip(comp.iter()) {
+            assert_eq!(s, c);
+        }
+    }
 }
