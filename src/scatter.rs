@@ -16,7 +16,7 @@ impl Scatter {
         let mut x_max = f64::NEG_INFINITY;
         let mut y_min = f64::INFINITY;
         let mut y_max = f64::NEG_INFINITY;
-        let mut data:  Vec<(f64, f64)> = vec![];
+        let mut data: Vec<(f64, f64)> = vec![];
         for &(x, y) in v {
             x_min = x_min.min(x);
             x_max = x_max.max(x);
@@ -27,10 +27,10 @@ impl Scatter {
 
         let x_range = x_max - x_min;
         let y_range = y_max - y_min;
-        x_min = x_min - (x_range/20.0);
-        x_max = x_max + (x_range/20.0);
-        y_min = y_min - (y_range/20.0);
-        y_max = y_max + (y_range/20.0);
+        x_min = x_min - (x_range / 20.0);
+        x_max = x_max + (x_range / 20.0);
+        y_min = y_min - (y_range / 20.0);
+        y_max = y_max + (y_range / 20.0);
 
         let x_axis = axis::Axis::new(x_min, x_max);
         let y_axis = axis::Axis::new(y_min, y_max);
@@ -42,4 +42,3 @@ impl Scatter {
         }
     }
 }
-

@@ -60,7 +60,12 @@ impl Histogram {
             }
             */
 
-            let bin = bounds.pairwise().enumerate().skip_while(|&(_, (&l, &u))| !(val >= l && val <= u)).map(|(i, (_,_))| i).next().unwrap();
+            let bin = bounds.pairwise()
+                .enumerate()
+                .skip_while(|&(_, (&l, &u))| !(val >= l && val <= u))
+                .map(|(i, (_, _))| i)
+                .next()
+                .unwrap();
             bins[bin] += 1;
         }
         let density_per_bin = bins.iter().map(|&x| x as f64 / bin_width).collect();

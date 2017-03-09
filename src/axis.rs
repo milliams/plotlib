@@ -79,7 +79,12 @@ fn generate_ticks(min: f64, max: f64, step_size: f64) -> Vec<f64> {
     if min <= 0.0 {
         if max >= 0.0 {
             // standard spanning axis
-            ticks.extend((1..).map(|n| -1.0 * n as f64 * step_size).take_while(|&v| v >= min).collect::<Vec<f64>>().iter().rev());
+            ticks.extend((1..)
+                .map(|n| -1.0 * n as f64 * step_size)
+                .take_while(|&v| v >= min)
+                .collect::<Vec<f64>>()
+                .iter()
+                .rev());
             ticks.push(0.0);
             ticks.extend((1..).map(|n| n as f64 * step_size).take_while(|&v| v <= max));
         } else {
