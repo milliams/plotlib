@@ -6,3 +6,6 @@ description = "Plotting data structures and tools"
 license = "MIT"
 repository = "https://github.com/milliams/plotlib"
 categories = ["visualization"]
+
+[dependencies]
+svg = "0.5.5"
