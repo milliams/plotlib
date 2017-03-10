@@ -1,3 +1,5 @@
+use std::path::Path;
+
 use svg;
 use svg::Node;
 use svg::Document;
@@ -6,6 +8,7 @@ use svg::node;
 use histogram;
 use scatter;
 use axis;
+use save::Save;
 
 fn value_to_face_offset(value: f64, axis: &axis::Axis, face_size: f64) -> f64 {
     let range = axis.max() - axis.min();
@@ -128,7 +131,17 @@ fn draw_face_points(s: &scatter::Scatter,
     group
 }
 
-pub fn draw_scatter(s: &scatter::Scatter) {
+pub struct SVG {
+    pub data: Document,
+}
+
+impl Save for SVG {
+    fn save<P>(&self, path: P) where P: AsRef<Path> {
+        svg::save(path, &self.data).unwrap();
+    }
+}
+
+pub fn draw_scatter(s: &scatter::Scatter) -> SVG {
     let face_width = 70.0;
     let face_height = 50.0;
 
@@ -169,7 +182,7 @@ pub fn draw_scatter(s: &scatter::Scatter) {
         .add(document_background)
         .add(components);
 
-    svg::save("plot.svg", &document).unwrap();
+    SVG {data: document}
 }
 
 #[cfg(test)]
@@ -178,8 +191,11 @@ mod tests {
 
     #[test]
     fn test_draw_scatter() {
+        use render::Render;
+        use save::Save;
+
         let data = vec![(-3.0, 2.3), (-1.6, 5.3), (0.3, 0.7), (4.3, -1.4), (6.4, 4.3), (8.5, 3.7)];
         let s = scatter::Scatter::from_vec(&data);
-        draw_scatter(&s);
+        s.to_svg().save("scatter.svg");
     }
 }

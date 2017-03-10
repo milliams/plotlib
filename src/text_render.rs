@@ -300,7 +300,17 @@ fn render_face_points(s: &scatter::Scatter, face_width: u32, face_height: u32) -
     face_strings
 }
 
-pub fn draw_histogram(h: &histogram::Histogram) {
+pub struct Text {
+    pub data: String,
+}
+
+impl std::fmt::Display for Text {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", self.data)
+    }
+}
+
+pub fn draw_histogram(h: &histogram::Histogram) -> String {
     // The face is the actual area of the graph with data on it, excluding axes and labels
     let face_width = 90;
     let face_height = 30u32;
@@ -333,6 +343,8 @@ pub fn draw_histogram(h: &histogram::Histogram) {
                                           start_offset.wrapping_neg()) as
                             usize;
 
+    let mut output = vec![];
+
     // Go, line-by-line printing the y-axis and the face
     for line in 0..face_height {
         let cell_position = face_height - line;
@@ -343,38 +355,40 @@ pub fn draw_histogram(h: &histogram::Histogram) {
         axis_label_and_tick.push_str(axis_label);
         axis_label_and_tick.push_str(axis_tick);
         let face_line = &face_strings[(cell_position as usize) - 1];
-        println!("{:>left_gutter_width$}{}{}",
+        output.push(format!("{:>left_gutter_width$}{}{}",
                  axis_label_and_tick,
                  axis_line,
                  face_line,
-                 left_gutter_width = left_gutter_width);
+                 left_gutter_width = left_gutter_width));
     }
 
     // Avoid duplicating the '+'. TODO combine them cleverly
     let reduced_x_axis_line = x_axis_line_string[1..].to_string();
     // Print the x-axis line and the zero-point of the y-axis
-    println!("{:>left_gutter_width$}{}{}",
+    output.push(format!("{:>left_gutter_width$}{}{}",
              y_label_strings[0],
              y_axis_line_strings[0],
              reduced_x_axis_line,
-             left_gutter_width = left_gutter_width);
+             left_gutter_width = left_gutter_width));
 
     // Print the x-axis ticks
-    println!("{:>left_gutter_width$}{:-<plot_width$}",
+    output.push(format!("{:>left_gutter_width$}{:-<plot_width$}",
              "",
              x_axis_tick_string,
              left_gutter_width = left_gutter_width,
-             plot_width = face_width as usize + 1);
+             plot_width = face_width as usize + 1));
 
     // Print the x-axis labels
-    println!("{:>start_offset$}{: <plot_width$}",
+    output.push(format!("{:>start_offset$}{: <plot_width$}",
              "",
              x_axis_label_string,
              start_offset = (left_gutter_width as i32 + start_offset) as usize,
-             plot_width = (face_width as i32 + 1 + start_offset) as usize);
+             plot_width = (face_width as i32 + 1 + start_offset) as usize));
+
+    output.join("\n")
 }
 
-pub fn draw_scatter(s: &scatter::Scatter) {
+pub fn draw_scatter(s: &scatter::Scatter) -> String {
     let face_width = 90;
     let face_height = 30u32;
 
@@ -406,6 +420,8 @@ pub fn draw_scatter(s: &scatter::Scatter) {
                                           start_offset.wrapping_neg()) as
                             usize;
 
+    let mut output = vec![];
+
     // Go, line-by-line printing the y-axis and the face
     for line in 0..face_height {
         let cell_position = face_height - line;
@@ -416,35 +432,37 @@ pub fn draw_scatter(s: &scatter::Scatter) {
         axis_label_and_tick.push_str(axis_label);
         axis_label_and_tick.push_str(axis_tick);
         let face_line = &face_strings[(cell_position as usize) - 1];
-        println!("{:>left_gutter_width$}{}{}",
+        output.push(format!("{:>left_gutter_width$}{}{}",
                  axis_label_and_tick,
                  axis_line,
                  face_line,
-                 left_gutter_width = left_gutter_width);
+                 left_gutter_width = left_gutter_width));
     }
 
     // Avoid duplicating the '+'. TODO combine them cleverly
     let reduced_x_axis_line = x_axis_line_string[1..].to_string();
     // Print the x-axis line and the zero-point of the y-axis
-    println!("{:>left_gutter_width$}{}{}",
+    output.push(format!("{:>left_gutter_width$}{}{}",
              y_label_strings[0],
              y_axis_line_strings[0],
              reduced_x_axis_line,
-             left_gutter_width = left_gutter_width);
+             left_gutter_width = left_gutter_width));
 
     // Print the x-axis ticks
-    println!("{:>left_gutter_width$}{:-<plot_width$}",
+    output.push(format!("{:>left_gutter_width$}{:-<plot_width$}",
              "",
              x_axis_tick_string,
              left_gutter_width = left_gutter_width,
-             plot_width = face_width as usize + 1);
+             plot_width = face_width as usize + 1));
 
     // Print the x-axis labels
-    println!("{:>start_offset$}{: <plot_width$}",
+    output.push(format!("{:>start_offset$}{: <plot_width$}",
              "",
              x_axis_label_string,
              start_offset = (left_gutter_width as i32 + start_offset) as usize,
-             plot_width = (face_width as i32 + 1 + start_offset) as usize);
+             plot_width = (face_width as i32 + 1 + start_offset) as usize));
+
+    output.join("\n")
 }
 
 #[cfg(test)]
