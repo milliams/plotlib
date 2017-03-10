@@ -33,7 +33,7 @@ fn draw_x_axis(a: &axis::Axis, face_width: f64) -> node::element::Group {
             .set("x1", tick_pos)
             .set("y1", 0)
             .set("x2", tick_pos)
-            .set("y2", 3)
+            .set("y2", 10)
             .set("stroke", "black")
             .set("stroke-width", 1);
         ticks.append(tick_mark);
@@ -45,9 +45,9 @@ fn draw_x_axis(a: &axis::Axis, face_width: f64) -> node::element::Group {
         let tick_pos = value_to_face_offset(tick, &a, face_width);
         let tick_label = node::element::Text::new()
             .set("x", tick_pos)
-            .set("y", 8)
+            .set("y", 20)
             .set("text-anchor", "middle")
-            .set("font-size", 5)
+            .set("font-size", 12)
             .add(node::Text::new(tick.to_string()));
         labels.append(tick_label);
     }
@@ -74,7 +74,7 @@ fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
         let tick_mark = node::element::Line::new()
             .set("x1", 0)
             .set("y1", -tick_pos)
-            .set("x2", -3)
+            .set("x2", -10)
             .set("y2", -tick_pos)
             .set("stroke", "black")
             .set("stroke-width", 1);
@@ -86,23 +86,11 @@ fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
     for &tick in a.ticks().iter() {
         let tick_pos = value_to_face_offset(tick, &a, face_height);
         let tick_label = node::element::Text::new()
-            .set("x", -8)
+            .set("x", -20)
             .set("y", -tick_pos)
             .set("text-anchor", "right")
             .set("dominant-baseline", "middle")
-            .set("font-size", 5)
-            .add(node::Text::new(tick.to_string()));
-        labels.append(tick_label);
-    }
-
-    for &tick in a.ticks().iter() {
-        let tick_pos = value_to_face_offset(tick, &a, face_height);
-        let tick_label = node::element::Text::new()
-            .set("x", -8)
-            .set("y", -tick_pos)
-            .set("text-anchor", "right")
-            .set("dominant-baseline", "middle")
-            .set("font-size", 5)
+            .set("font-size", 12)
             .add(node::Text::new(tick.to_string()));
         labels.append(tick_label);
     }
@@ -125,7 +113,7 @@ fn draw_face_points(s: &scatter::Scatter,
         let circ = node::element::Circle::new()
             .set("cx", x_pos)
             .set("cy", y_pos)
-            .set("r", 1.0);
+            .set("r", 5.0);
         group.append(circ);
     }
 
@@ -148,7 +136,7 @@ fn draw_face_bars(h: &histogram::Histogram,
             .set("y", -count_scaled)
             .set("width", width)
             .set("height", count_scaled)
-            .set("fill", "blue")
+            .set("fill", "burlywood")
             .set("stroke", "black");
         group.append(circ);
     }
@@ -167,14 +155,14 @@ impl Save for SVG {
 }
 
 pub fn draw_histogram(h: &histogram::Histogram) -> SVG {
-    let face_width = 70.0;
-    let face_height = 50.0;
+    let face_width = 650.0;
+    let face_height = 450.0;
 
-    let face_x_pos = 20.0;
-    let face_y_pos = 5.0;
+    let face_x_pos = 100.0;
+    let face_y_pos = 50.0;
 
-    let view_box_width = 100; // Overall width of the document
-    let view_box_height = 70; // Overall height of the document
+    let view_box_width = 800; // Overall width of the document
+    let view_box_height = 550; // Overall height of the document
 
     let face_background = node::element::Rectangle::new()
         .set("x", 0)
@@ -211,14 +199,14 @@ pub fn draw_histogram(h: &histogram::Histogram) -> SVG {
 }
 
 pub fn draw_scatter(s: &scatter::Scatter) -> SVG {
-    let face_width = 70.0;
-    let face_height = 50.0;
+    let face_width = 650.0;
+    let face_height = 450.0;
 
-    let face_x_pos = 20.0;
-    let face_y_pos = 5.0;
+    let face_x_pos = 100.0;
+    let face_y_pos = 50.0;
 
-    let view_box_width = 100; // Overall width of the document
-    let view_box_height = 70; // Overall height of the document
+    let view_box_width = 800; // Overall width of the document
+    let view_box_height = 550; // Overall height of the document
 
     let face_background = node::element::Rectangle::new()
         .set("x", 0)
