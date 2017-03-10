@@ -141,6 +141,50 @@ impl Save for SVG {
     }
 }
 
+pub fn draw_histogram(h: &histogram::Histogram) -> SVG {
+    let face_width = 70.0;
+    let face_height = 50.0;
+
+    let face_x_pos = 20.0;
+    let face_y_pos = 5.0;
+
+    let view_box_width = 100; // Overall width of the document
+    let view_box_height = 70; // Overall height of the document
+
+    let face_background = node::element::Rectangle::new()
+        .set("x", 0)
+        .set("y", -face_height)
+        .set("width", face_width)
+        .set("height", face_height)
+        .set("fill", "lightgrey");
+
+    let x_axis = draw_x_axis(&h.x_axis, face_width);
+    let y_axis = draw_y_axis(&h.y_axis, face_height);
+    //let face = draw_face_points(&s, face_width, face_height);
+
+    let components = node::element::Group::new()
+        .add(face_background)
+        .add(x_axis)
+        .add(y_axis)
+        //.add(face)
+        .set("transform",
+             format!("translate({}, {})", face_x_pos, face_y_pos + face_height));
+
+    let document_background = node::element::Rectangle::new()
+        .set("x", 0)
+        .set("y", 0)
+        .set("width", "100%")
+        .set("height", "100%")
+        .set("fill", "#EAEAEA");
+
+    let document = Document::new()
+        .set("viewBox", (0, 0, view_box_width, view_box_height))
+        .add(document_background)
+        .add(components);
+
+    SVG {data: document}
+}
+
 pub fn draw_scatter(s: &scatter::Scatter) -> SVG {
     let face_width = 70.0;
     let face_height = 50.0;

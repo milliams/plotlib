@@ -25,8 +25,6 @@ impl Render for histogram::Histogram {
     }
 
     fn to_svg(&self) -> svg_render::SVG {
-        //svg_render::draw_histogram(self)
-        use svg;
-        svg_render::SVG{data: svg::Document::new()}
+        svg_render::draw_histogram(self)
     }
 }
