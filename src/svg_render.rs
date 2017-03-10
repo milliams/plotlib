@@ -9,6 +9,7 @@ use histogram;
 use scatter;
 use axis;
 use save::Save;
+use utils::PairWise;
 
 fn value_to_face_offset(value: f64, axis: &axis::Axis, face_size: f64) -> f64 {
     let range = axis.max() - axis.min();
@@ -137,6 +138,21 @@ fn draw_face_bars(h: &histogram::Histogram,
                     -> node::element::Group {
     let mut group = node::element::Group::new();
 
+    for ((&l, &u), &count) in h.bin_bounds.pairwise().zip(h.bin_counts.iter()) {
+        let l_pos = value_to_face_offset(l, &h.x_axis, face_width);
+        let u_pos = value_to_face_offset(u, &h.x_axis, face_width);
+        let width = u_pos - l_pos;
+        let count_scaled = value_to_face_offset(count as f64, &h.y_axis, face_height);
+        let circ = node::element::Rectangle::new()
+            .set("x", l_pos)
+            .set("y", -count_scaled)
+            .set("width", width)
+            .set("height", count_scaled)
+            .set("fill", "blue")
+            .set("stroke", "black");
+        group.append(circ);
+    }
+
     group
 }
 
@@ -173,9 +189,9 @@ pub fn draw_histogram(h: &histogram::Histogram) -> SVG {
 
     let components = node::element::Group::new()
         .add(face_background)
+        .add(face)
         .add(x_axis)
         .add(y_axis)
-        .add(face)
         .set("transform",
              format!("translate({}, {})", face_x_pos, face_y_pos + face_height));
 
@@ -217,9 +233,9 @@ pub fn draw_scatter(s: &scatter::Scatter) -> SVG {
 
     let components = node::element::Group::new()
         .add(face_background)
+        .add(face)
         .add(x_axis)
         .add(y_axis)
-        .add(face)
         .set("transform",
              format!("translate({}, {})", face_x_pos, face_y_pos + face_height));
 
