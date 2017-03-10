@@ -131,6 +131,15 @@ fn draw_face_points(s: &scatter::Scatter,
     group
 }
 
+fn draw_face_bars(h: &histogram::Histogram,
+                    face_width: f64,
+                    face_height: f64)
+                    -> node::element::Group {
+    let mut group = node::element::Group::new();
+
+    group
+}
+
 pub struct SVG {
     pub data: Document,
 }
@@ -160,13 +169,13 @@ pub fn draw_histogram(h: &histogram::Histogram) -> SVG {
 
     let x_axis = draw_x_axis(&h.x_axis, face_width);
     let y_axis = draw_y_axis(&h.y_axis, face_height);
-    //let face = draw_face_points(&s, face_width, face_height);
+    let face = draw_face_bars(&h, face_width, face_height);
 
     let components = node::element::Group::new()
         .add(face_background)
         .add(x_axis)
         .add(y_axis)
-        //.add(face)
+        .add(face)
         .set("transform",
              format!("translate({}, {})", face_x_pos, face_y_pos + face_height));
 
@@ -241,5 +250,15 @@ mod tests {
         let data = vec![(-3.0, 2.3), (-1.6, 5.3), (0.3, 0.7), (4.3, -1.4), (6.4, 4.3), (8.5, 3.7)];
         let s = scatter::Scatter::from_vec(&data);
         s.to_svg().save("scatter.svg");
+    }
+
+    #[test]
+    fn test_draw_histogram() {
+        use render::Render;
+        use save::Save;
+
+        let data = vec![0.3, 0.5, 6.4, 5.3, 3.6, 3.6, 3.5, 7.5, 4.0];
+        let h = histogram::Histogram::from_vec(&data, 10);
+        h.to_svg().save("histogram.svg");
     }
 }

@@ -1,4 +1,3 @@
-use save::Save;
 use scatter;
 use histogram;
 use text_render;
