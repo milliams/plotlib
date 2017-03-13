@@ -300,6 +300,75 @@ fn render_face_points(s: &scatter::Scatter, face_width: u32, face_height: u32) -
     face_strings
 }
 
+/// Given two 'rectangular' strings, overlay the second on the first offset by `x` and `y`
+pub fn overlay(under: &str, over: &str, x: i32, y: i32) -> String {
+    let split_under: Vec<_> = under.split('\n').collect();
+    let under_height = split_under.len();
+
+    //let blank_overlay: Vec<String> = (0..height).map(|_| (0..width).map(|_| ' ').collect()).collect();
+
+    let split_over: Vec<String> = over.split('\n').map(|s| s.to_string()).collect();
+    let over_width = split_over.iter().map(|s| s.len()).max().unwrap();
+
+    // Take `over` and pad it so that it matches `under`'s dimensions
+
+    // Trim/add lines at beginning
+    let split_over: Vec<String> = if y.is_negative() {
+        split_over.iter().skip(y.abs() as usize).map(|s| s.clone()).collect()
+    } else if y.is_positive() {
+        (0..y).map(|_| (0..over_width).map(|_| ' ').collect()).chain(split_over.iter().map(|s| s.to_string())).collect()
+    } else {
+        split_over
+    };
+
+    //...
+    // Trim/add chars at beginning
+    let split_over: Vec<String> = if x.is_negative() {
+        split_over.iter().map(|l| l.chars().skip(x.abs() as usize).collect()).collect()
+    } else if x.is_positive() {
+        split_over.iter().map(|s| (0..x).map(|_| ' ').chain(s.chars()).collect()).collect()
+    } else {
+        split_over
+    };
+
+    // pad out end of vector
+    let over_width = split_over.iter().map(|s| s.len()).max().unwrap();
+    let over_height = split_over.len();
+    let lines_deficit = under_height as i32 - over_height as i32;
+    let split_over: Vec<String> = if lines_deficit.is_positive() {
+        let new_lines: Vec<String> = (0..lines_deficit).map(|_| (0..over_width).map(|_| ' ').collect::<String>()).collect();
+        let mut temp = split_over.clone();
+        for new_line in new_lines {
+            temp.push(new_line);
+        }
+        temp
+    } else {
+        split_over
+    };
+
+    // pad out end of each line
+    let line_width_deficit = under_height as i32 - over_height as i32;
+    let split_over: Vec<String> = if line_width_deficit.is_positive() {
+        //let new_line_ending: String = (0..line_width_deficit).map(|_| ' ');
+        split_over.iter().map(|l| l.chars().chain((0..line_width_deficit).map(|_| ' ')).collect()).collect()
+    } else {
+        split_over
+    };
+
+    let mut out: Vec<String> = vec![];
+    for (l, ol) in split_under.iter().zip(split_over.iter()) {
+        //println!("'{}'  '{}'", l, ol);
+        let mut new_line = "".to_string();
+        for (c, oc) in l.chars().zip(ol.chars()) {
+            //println!("'{}'  '{}'", c, oc);
+            new_line.push(if oc == ' ' {c} else {oc});
+        }
+        out.push(new_line);
+    }
+
+    out.join("\n")
+}
+
 pub struct Text {
     pub data: String,
 }
@@ -617,5 +686,33 @@ mod tests {
         for (s, c) in strings.iter().rev().zip(comp.iter()) {
             assert_eq!(s, c);
         }
+    }
+
+    #[test]
+    fn test_overlay() {
+        let a = " ooo ";
+        let b = "  #  ";
+        let r = " o#o ";
+        assert_eq!(overlay(a, b, 0, 0), r);
+
+        let a = "     \n   o \n o  o\nooooo\no o o";
+        let b = "  #  \n   # \n     \n  ## \n   ##";
+        let r = "  #  \n   # \n o  o\noo##o\no o##";
+        assert_eq!(overlay(a, b, 0, 0), r);
+
+        let a = "     \n   o \n o  o\nooooo\no o o";
+        let b = "  #\n## ";
+        let r = "     \n   o \n o #o\no##oo\no o o";
+        assert_eq!(overlay(a, b, 1, 2), r);
+
+        let a = "     \n   o \n o  o\nooooo\no o o";
+        let b = "###\n###\n###";
+        let r = "##   \n## o \n o  o\nooooo\no o o";
+        assert_eq!(overlay(a, b, -1, -1), r);
+
+        let a = "oo\noo";
+        let b = "    \n  # \n #  \n    ";
+        let r = "o#\n#o";
+        assert_eq!(overlay(a, b, -1, -1), r);
     }
 }
