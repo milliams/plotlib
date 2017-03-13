@@ -31,10 +31,10 @@ fn tick_offset_map(axis: &axis::Axis, face_width: u32) -> HashMap<i32, f64> {
 /// the total scale of the axis
 /// and the number of face cells to work with,
 /// create a mapping of cell offset to bin bound
-fn bound_cell_offsets(hist: &histogram::Histogram, face_width: u32) -> Vec<i32> {
+fn bound_cell_offsets(hist: &histogram::Histogram, x_axis: &axis::Axis, face_width: u32) -> Vec<i32> {
     hist.bin_bounds
         .iter()
-        .map(|&bound| value_to_axis_cell_offset(bound, &hist.x_axis, face_width))
+        .map(|&bound| value_to_axis_cell_offset(bound, &x_axis, face_width))
         .collect()
 }
 
@@ -208,8 +208,8 @@ pub fn render_x_axis_strings(x_axis: &axis::Axis, face_width: u32) -> (String, S
 /// the x ands y-axes
 /// and the face height and width,
 /// create the strings to be drawn as the face
-fn render_face_bars(h: &histogram::Histogram, face_width: u32, face_height: u32) -> Vec<String> {
-    let bound_cells = bound_cell_offsets(&h, face_width);
+pub fn render_face_bars(h: &histogram::Histogram, x_axis: &axis::Axis, y_axis: &axis::Axis, face_width: u32, face_height: u32) -> Vec<String> {
+    let bound_cells = bound_cell_offsets(&h, &x_axis, face_width);
 
     let cell_bins = bins_for_cells(&bound_cells, face_width);
 
@@ -218,7 +218,7 @@ fn render_face_bars(h: &histogram::Histogram, face_width: u32, face_height: u32)
         .map(|&bin| match bin {
             None => 0,
             Some(b) => {
-                value_to_axis_cell_offset(h.bin_counts[b as usize] as f64, &h.y_axis, face_height)
+                value_to_axis_cell_offset(h.bin_counts[b as usize] as f64, &y_axis, face_height)
             }
         })
         .collect();
@@ -404,7 +404,7 @@ pub fn draw_histogram(h: &histogram::Histogram) -> String {
     // Face //
     //////////
 
-    let face_strings = render_face_bars(&h, face_width as u32, face_height);
+    let face_strings = render_face_bars(&h, &h.x_axis, &h.y_axis, face_width as u32, face_height);
 
     /////////////
     // Drawing //
@@ -648,7 +648,7 @@ mod tests {
     fn test_render_face_bars() {
         let data = vec![0.3, 0.5, 6.4, 5.3, 3.6, 3.6, 3.5, 7.5, 4.0];
         let h = histogram::Histogram::from_vec(&data, 10);
-        let strings = render_face_bars(&h, 20, 10);
+        let strings = render_face_bars(&h, &h.x_axis, &h.y_axis, 20, 10);
         assert_eq!(strings.len(), 10);
         assert!(strings.iter().all(|s| s.len() == 20));
 

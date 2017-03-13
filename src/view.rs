@@ -110,10 +110,6 @@ impl<'a> View<'a> {
         let x_axis = axis::Axis::new(x_min, x_max);
         let y_axis = axis::Axis::new(y_min, y_max);
 
-        for repr in self.representations.iter() {
-            let face_string = repr.to_text(&x_axis, &y_axis, face_width, face_height);
-        }
-
         let (y_label_strings, y_tick_strings, y_axis_line_strings, longest_y_label_width) =
             text_render::render_y_axis_strings(&y_axis, face_height);
 
@@ -124,11 +120,17 @@ impl<'a> View<'a> {
                                             start_offset.wrapping_neg()) as
                                 u32;
 
-        let view_width = face_width + 1 + left_gutter_width;
+        let view_width = face_width + 1 + left_gutter_width + 1;
         let view_height = face_height + 3;
 
         let blank: Vec<String> = (0..view_height).map(|_| (0..view_width).map(|_| ' ').collect()).collect();
-        let view_string = blank.join("\n");
+        let mut view_string = blank.join("\n");
+
+        for repr in self.representations.iter() {
+            let face_string = repr.to_text(&x_axis, &y_axis, face_width, face_height);
+            let face_string: Vec<String> = face_string.split('\n').rev().map(|s| s.to_string()).collect();
+            view_string = text_render::overlay(&view_string, &face_string.join("\n"), left_gutter_width as i32 + 1, 0);
+        }
 
         let y_label_strings: Vec<String> = y_label_strings.iter().rev().map(|s| s.to_string()).collect();
         let y_tick_strings: Vec<String> = y_tick_strings.iter().rev().map(|s| s.to_string()).collect();

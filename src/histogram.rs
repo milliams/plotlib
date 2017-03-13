@@ -25,6 +25,7 @@ use svg;
 use axis;
 use utils::PairWise;
 use svg_render;
+use text_render;
 use representation::Representation;
 
 #[derive(Debug)]
@@ -110,6 +111,6 @@ impl Representation for Histogram {
     }
 
     fn to_text(&self, x_axis: &axis::Axis, y_axis: &axis::Axis, face_width: u32, face_height: u32) -> String {
-        "".to_string()
+        text_render::render_face_bars(self, &x_axis, &y_axis, face_width, face_height).join("\n")
     }
 }
