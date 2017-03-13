@@ -56,8 +56,6 @@ It also knows how to draw each representation onto that view, in this case, inte
 
 extern crate svg;
 
-pub mod save;
-pub mod render;
 pub mod representation;
 pub mod view;
 pub mod plot;

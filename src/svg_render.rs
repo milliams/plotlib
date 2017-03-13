@@ -1,14 +1,9 @@
-use std::path::Path;
-
-use svg;
 use svg::Node;
-use svg::Document;
 use svg::node;
 
 use histogram;
 use scatter;
 use axis;
-use save::Save;
 use utils::PairWise;
 
 fn value_to_face_offset(value: f64, axis: &axis::Axis, face_size: f64) -> f64 {
@@ -148,113 +143,12 @@ pub fn draw_face_bars(h: &histogram::Histogram,
     group
 }
 
-pub struct SVG {
-    pub data: Document,
-}
-
-impl Save for SVG {
-    fn save<P>(&self, path: P) where P: AsRef<Path> {
-        svg::save(path, &self.data).unwrap();
-    }
-}
-
-pub fn draw_histogram(h: &histogram::Histogram) -> SVG {
-    let face_width = 650.0;
-    let face_height = 450.0;
-
-    let face_x_pos = 100.0;
-    let face_y_pos = 50.0;
-
-    let view_box_width = 800; // Overall width of the document
-    let view_box_height = 550; // Overall height of the document
-
-    let face_background = node::element::Rectangle::new()
-        .set("x", 0)
-        .set("y", -face_height)
-        .set("width", face_width)
-        .set("height", face_height)
-        .set("fill", "lightgrey");
-
-    let x_axis = draw_x_axis(&h.x_axis, face_width);
-    let y_axis = draw_y_axis(&h.y_axis, face_height);
-    let face = draw_face_bars(&h, &h.x_axis, &h.y_axis, face_width, face_height);
-
-    let components = node::element::Group::new()
-        .add(face_background)
-        .add(face)
-        .add(x_axis)
-        .add(y_axis)
-        .set("transform",
-             format!("translate({}, {})", face_x_pos, face_y_pos + face_height));
-
-    let document_background = node::element::Rectangle::new()
-        .set("x", 0)
-        .set("y", 0)
-        .set("width", "100%")
-        .set("height", "100%")
-        .set("fill", "#EAEAEA");
-
-    let document = Document::new()
-        .set("viewBox", (0, 0, view_box_width, view_box_height))
-        .add(document_background)
-        .add(components);
-
-    SVG {data: document}
-}
-
-pub fn draw_scatter(s: &scatter::Scatter) -> SVG {
-    let face_width = 650.0;
-    let face_height = 450.0;
-
-    let face_x_pos = 100.0;
-    let face_y_pos = 50.0;
-
-    let view_box_width = 800; // Overall width of the document
-    let view_box_height = 550; // Overall height of the document
-
-    let face_background = node::element::Rectangle::new()
-        .set("x", 0)
-        .set("y", -face_height)
-        .set("width", face_width)
-        .set("height", face_height)
-        .set("fill", "lightgrey");
-
-    let x_axis = draw_x_axis(&s.x_axis, face_width);
-    let y_axis = draw_y_axis(&s.y_axis, face_height);
-    let face = draw_face_points(&s, &s.x_axis, &s.y_axis, face_width, face_height);
-
-    let components = node::element::Group::new()
-        .add(face_background)
-        .add(face)
-        .add(x_axis)
-        .add(y_axis)
-        .set("transform",
-             format!("translate({}, {})", face_x_pos, face_y_pos + face_height));
-
-    let document_background = node::element::Rectangle::new()
-        .set("x", 0)
-        .set("y", 0)
-        .set("width", "100%")
-        .set("height", "100%")
-        .set("fill", "#EAEAEA");
-
-    let document = Document::new()
-        .set("viewBox", (0, 0, view_box_width, view_box_height))
-        .add(document_background)
-        .add(components);
-
-    SVG {data: document}
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
 
-    #[test]
+    /*#[test]
     fn test_draw_scatter() {
-        use render::Render;
-        use save::Save;
-
         let data = vec![(-3.0, 2.3), (-1.6, 5.3), (0.3, 0.7), (4.3, -1.4), (6.4, 4.3), (8.5, 3.7)];
         let s = scatter::Scatter::from_vec(&data);
         s.to_svg().save("scatter.svg");
@@ -268,5 +162,5 @@ mod tests {
         let data = vec![0.3, 0.5, 6.4, 5.3, 3.6, 3.6, 3.5, 7.5, 4.0];
         let h = histogram::Histogram::from_vec(&data, 10);
         h.to_svg().save("histogram.svg");
-    }
+    }*/
 }
