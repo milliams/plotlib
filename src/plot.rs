@@ -30,6 +30,12 @@ impl<'a> Plot<'a> {
         document
     }
 
+    pub fn to_text(&self) -> String {
+        // TODO compose multiple views into a plot
+        let view = self.views[0];
+        view.to_text()
+    }
+
     pub fn save<P>(&self, path: P) where P: AsRef<Path> {
         match path.as_ref().extension().and_then(OsStr::to_str) {
             Some("svg") => {

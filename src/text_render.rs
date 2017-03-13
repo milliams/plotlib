@@ -2,6 +2,7 @@
 
 use std::collections::HashMap;
 use std;
+use std::str::Chars;
 
 use histogram;
 use scatter;
@@ -119,7 +120,7 @@ fn create_x_axis_labels(x_tick_map: &HashMap<i32, f64>) -> Vec<XAxisLabel> {
     ls
 }
 
-fn render_y_axis_strings(y_axis: &axis::Axis,
+pub fn render_y_axis_strings(y_axis: &axis::Axis,
                          face_height: u32)
                          -> (Vec<String>, Vec<String>, Vec<String>, i32) {
     // Get the strings and offsets we'll use for the y-axis
@@ -157,7 +158,7 @@ fn render_y_axis_strings(y_axis: &axis::Axis,
     (y_label_strings, y_tick_strings, y_axis_line_strings, longest_y_label_width as i32)
 }
 
-fn render_x_axis_strings(x_axis: &axis::Axis, face_width: u32) -> (String, String, String, i32) {
+pub fn render_x_axis_strings(x_axis: &axis::Axis, face_width: u32) -> (String, String, String, i32) {
     // Get the strings and offsets we'll use for the x-axis
     let x_tick_map = tick_offset_map(x_axis, face_width as u32);
 
@@ -275,13 +276,18 @@ fn render_face_bars(h: &histogram::Histogram, face_width: u32, face_height: u32)
 /// the x ands y-axes
 /// and the face height and width,
 /// create the strings to be drawn as the face
-fn render_face_points(s: &scatter::Scatter, face_width: u32, face_height: u32) -> Vec<String> {
+pub fn render_face_points(s: &scatter::Scatter,
+                    x_axis: &axis::Axis,
+                    y_axis: &axis::Axis,
+                    face_width: u32,
+                    face_height: u32)
+                    -> Vec<String> {
 
     let points: Vec<_> = s.data
         .iter()
         .map(|&(x, y)| {
-            (value_to_axis_cell_offset(x, &s.x_axis, face_width),
-             value_to_axis_cell_offset(y, &s.y_axis, face_height))
+            (value_to_axis_cell_offset(x, &x_axis, face_width),
+             value_to_axis_cell_offset(y, &y_axis, face_height))
         })
         .collect();
 
@@ -475,7 +481,7 @@ pub fn draw_scatter(s: &scatter::Scatter) -> String {
     // Face //
     //////////
 
-    let face_strings = render_face_points(&s, face_width as u32, face_height);
+    let face_strings = render_face_points(&s, &s.x_axis, &s.y_axis, face_width as u32, face_height);
 
     /////////////
     // Drawing //
@@ -665,7 +671,7 @@ mod tests {
     fn test_render_face_points() {
         let data = vec![(-3.0, 2.3), (-1.6, 5.3), (0.3, 0.7), (4.3, -1.4), (6.4, 4.3), (8.5, 3.7)];
         let s = scatter::Scatter::from_vec(&data);
-        let strings = render_face_points(&s, 20, 10);
+        let strings = render_face_points(&s, &s.x_axis, &s.y_axis, 20, 10);
         assert_eq!(strings.len(), 10);
         assert!(strings.iter().all(|s| s.len() == 20));
 
@@ -690,6 +696,11 @@ mod tests {
         let b = "  #  ";
         let r = " o#o ";
         assert_eq!(overlay(a, b, 0, 0), r);
+
+        let a = " o o o o o o o o o o ";
+        let b = "# # # # #";
+        let r = " o#o#o#o#o#o o o o o ";
+        assert_eq!(overlay(a, b, 2, 0), r);
 
         let a = "     \n   o \n o  o\nooooo\no o o";
         let b = "  #  \n   # \n     \n  ## \n   ##";
