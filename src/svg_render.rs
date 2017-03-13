@@ -16,7 +16,7 @@ fn value_to_face_offset(value: f64, axis: &axis::Axis, face_size: f64) -> f64 {
     (face_size * (value - axis.min())) / range
 }
 
-fn draw_x_axis(a: &axis::Axis, face_width: f64) -> node::element::Group {
+pub fn draw_x_axis(a: &axis::Axis, face_width: f64) -> node::element::Group {
     let axis_line = node::element::Line::new()
         .set("x1", 0)
         .set("y1", 0)
@@ -58,7 +58,7 @@ fn draw_x_axis(a: &axis::Axis, face_width: f64) -> node::element::Group {
         .add(labels)
 }
 
-fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
+pub fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
     let axis_line = node::element::Line::new()
         .set("x1", 0)
         .set("y1", 0)
@@ -101,15 +101,17 @@ fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
         .add(labels)
 }
 
-fn draw_face_points(s: &scatter::Scatter,
+pub fn draw_face_points(s: &scatter::Scatter,
+                    x_axis: &axis::Axis,
+                    y_axis: &axis::Axis,
                     face_width: f64,
                     face_height: f64)
                     -> node::element::Group {
     let mut group = node::element::Group::new();
 
     for &(x, y) in s.data.iter() {
-        let x_pos = value_to_face_offset(x, &s.x_axis, face_width);
-        let y_pos = -value_to_face_offset(y, &s.y_axis, face_height);
+        let x_pos = value_to_face_offset(x, &x_axis, face_width);
+        let y_pos = -value_to_face_offset(y, &y_axis, face_height);
         let circ = node::element::Circle::new()
             .set("cx", x_pos)
             .set("cy", y_pos)
@@ -120,17 +122,19 @@ fn draw_face_points(s: &scatter::Scatter,
     group
 }
 
-fn draw_face_bars(h: &histogram::Histogram,
+pub fn draw_face_bars(h: &histogram::Histogram,
+                    x_axis: &axis::Axis,
+                    y_axis: &axis::Axis,
                     face_width: f64,
                     face_height: f64)
                     -> node::element::Group {
     let mut group = node::element::Group::new();
 
     for ((&l, &u), &count) in h.bin_bounds.pairwise().zip(h.bin_counts.iter()) {
-        let l_pos = value_to_face_offset(l, &h.x_axis, face_width);
-        let u_pos = value_to_face_offset(u, &h.x_axis, face_width);
+        let l_pos = value_to_face_offset(l, &x_axis, face_width);
+        let u_pos = value_to_face_offset(u, &x_axis, face_width);
         let width = u_pos - l_pos;
-        let count_scaled = value_to_face_offset(count as f64, &h.y_axis, face_height);
+        let count_scaled = value_to_face_offset(count as f64, &y_axis, face_height);
         let circ = node::element::Rectangle::new()
             .set("x", l_pos)
             .set("y", -count_scaled)
@@ -173,7 +177,7 @@ pub fn draw_histogram(h: &histogram::Histogram) -> SVG {
 
     let x_axis = draw_x_axis(&h.x_axis, face_width);
     let y_axis = draw_y_axis(&h.y_axis, face_height);
-    let face = draw_face_bars(&h, face_width, face_height);
+    let face = draw_face_bars(&h, &h.x_axis, &h.y_axis, face_width, face_height);
 
     let components = node::element::Group::new()
         .add(face_background)
@@ -217,7 +221,7 @@ pub fn draw_scatter(s: &scatter::Scatter) -> SVG {
 
     let x_axis = draw_x_axis(&s.x_axis, face_width);
     let y_axis = draw_y_axis(&s.y_axis, face_height);
-    let face = draw_face_points(&s, face_width, face_height);
+    let face = draw_face_points(&s, &s.x_axis, &s.y_axis, face_width, face_height);
 
     let components = node::element::Group::new()
         .add(face_background)

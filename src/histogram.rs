@@ -20,8 +20,12 @@ TODO:
     - What should be the default?
 */
 
+use svg;
+
 use axis;
 use utils::PairWise;
+use svg_render;
+use representation::Representation;
 
 #[derive(Debug)]
 pub struct Histogram {
@@ -88,5 +92,20 @@ impl Histogram {
 
     pub fn num_bins(&self) -> usize {
         self.bin_counts.len()
+    }
+}
+
+impl Representation for Histogram {
+    fn x_range(&self) -> (f64, f64) {
+        (*self.bin_bounds.first().unwrap(), *self.bin_bounds.last().unwrap())
+    }
+
+    fn y_range(&self) -> (f64, f64) {
+        let max = *self.bin_counts.iter().max().unwrap();
+        (0., max as f64)
+    }
+
+    fn to_svg(&self, x_axis: &axis::Axis, y_axis: &axis::Axis, face_width: f64, face_height: f64) -> svg::node::element::Group {
+        svg_render::draw_face_bars(self, &x_axis, &y_axis, face_width, face_height)
     }
 }
