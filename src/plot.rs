@@ -20,16 +20,20 @@ impl<'a> Plot<'a> {
         }
     }
 
+    pub fn to_svg(&self) -> svg::Document {
+        let mut document = Document::new()
+            .set("viewBox", (0, 0, 600, 400));
+        for &view in self.views.iter() {
+            let view_group = view.to_svg().set("transform", format!("translate({}, {})", 50, 370));
+            document.append(view_group);
+        }
+        document
+    }
+
     pub fn save<P>(&self, path: P) where P: AsRef<Path> {
         match path.as_ref().extension().and_then(OsStr::to_str) {
             Some("svg") => {
-                let mut document = Document::new()
-                    .set("viewBox", (0, 0, 600, 400));
-                for &view in self.views.iter() {
-                    let view_group = view.to_svg().set("transform", format!("translate({}, {})", 50, 370));
-                    document.append(view_group);
-                }
-                svg::save(path, &document).unwrap();
+                svg::save(path, &self.to_svg()).unwrap();
             }
             _ => {
                 // some default
