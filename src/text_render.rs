@@ -30,7 +30,10 @@ fn tick_offset_map(axis: &axis::Axis, face_width: u32) -> HashMap<i32, f64> {
 /// the total scale of the axis
 /// and the number of face cells to work with,
 /// create a mapping of cell offset to bin bound
-fn bound_cell_offsets(hist: &histogram::Histogram, x_axis: &axis::Axis, face_width: u32) -> Vec<i32> {
+fn bound_cell_offsets(hist: &histogram::Histogram,
+                      x_axis: &axis::Axis,
+                      face_width: u32)
+                      -> Vec<i32> {
     hist.bin_bounds
         .iter()
         .map(|&bound| value_to_axis_cell_offset(bound, &x_axis, face_width))
@@ -119,9 +122,7 @@ fn create_x_axis_labels(x_tick_map: &HashMap<i32, f64>) -> Vec<XAxisLabel> {
     ls
 }
 
-pub fn render_y_axis_strings(y_axis: &axis::Axis,
-                         face_height: u32)
-                         -> (String, i32) {
+pub fn render_y_axis_strings(y_axis: &axis::Axis, face_height: u32) -> (String, i32) {
     // Get the strings and offsets we'll use for the y-axis
     let y_tick_map = tick_offset_map(&y_axis, face_height);
 
@@ -154,9 +155,20 @@ pub fn render_y_axis_strings(y_axis: &axis::Axis,
         .map(|s| s.to_string())
         .collect();
 
-    let iter = y_label_strings.iter().zip(y_tick_strings.iter()).zip(y_axis_line_strings.iter()).map(|((x,y), z)| (x,y,z));
+    let iter = y_label_strings.iter()
+        .zip(y_tick_strings.iter())
+        .zip(y_axis_line_strings.iter())
+        .map(|((x, y), z)| (x, y, z));
 
-    let axis_string: Vec<String> = iter.rev().map(|(l, t, a)| format!("{:>num_width$}{}{}", l, t, a, num_width=longest_y_label_width)).collect();
+    let axis_string: Vec<String> = iter.rev()
+        .map(|(l, t, a)| {
+            format!("{:>num_width$}{}{}",
+                    l,
+                    t,
+                    a,
+                    num_width = longest_y_label_width)
+        })
+        .collect();
     let axis_string = axis_string.join("\n");
 
     (axis_string, longest_y_label_width as i32)
@@ -207,10 +219,19 @@ pub fn render_x_axis_strings(x_axis: &axis::Axis, face_width: u32) -> (String, i
 
     let x_axis_string = if start_offset.is_positive() {
         let padding = (0..start_offset).map(|_| " ").collect::<String>();
-        format!("{}\n{}\n{}{}", x_axis_line_string, x_axis_tick_string, padding, x_axis_label_string)
+        format!("{}\n{}\n{}{}",
+                x_axis_line_string,
+                x_axis_tick_string,
+                padding,
+                x_axis_label_string)
     } else {
         let padding = (0..start_offset.wrapping_neg()).map(|_| " ").collect::<String>();
-        format!("{}{}\n{}{}\n{}", padding, x_axis_line_string, padding, x_axis_tick_string, x_axis_label_string)
+        format!("{}{}\n{}{}\n{}",
+                padding,
+                x_axis_line_string,
+                padding,
+                x_axis_tick_string,
+                x_axis_label_string)
     };
 
     (x_axis_string, start_offset)
@@ -220,7 +241,12 @@ pub fn render_x_axis_strings(x_axis: &axis::Axis, face_width: u32) -> (String, i
 /// the x ands y-axes
 /// and the face height and width,
 /// create the strings to be drawn as the face
-pub fn render_face_bars(h: &histogram::Histogram, x_axis: &axis::Axis, y_axis: &axis::Axis, face_width: u32, face_height: u32) -> String {
+pub fn render_face_bars(h: &histogram::Histogram,
+                        x_axis: &axis::Axis,
+                        y_axis: &axis::Axis,
+                        face_width: u32,
+                        face_height: u32)
+                        -> String {
     let bound_cells = bound_cell_offsets(&h, &x_axis, face_width);
 
     let cell_bins = bins_for_cells(&bound_cells, face_width);
@@ -290,11 +316,11 @@ pub fn render_face_bars(h: &histogram::Histogram, x_axis: &axis::Axis, y_axis: &
 /// and the face height and width,
 /// create the strings to be drawn as the face
 pub fn render_face_points(s: &scatter::Scatter,
-                    x_axis: &axis::Axis,
-                    y_axis: &axis::Axis,
-                    face_width: u32,
-                    face_height: u32)
-                    -> String {
+                          x_axis: &axis::Axis,
+                          y_axis: &axis::Axis,
+                          face_width: u32,
+                          face_height: u32)
+                          -> String {
 
     let points: Vec<_> = s.data
         .iter()
@@ -335,7 +361,10 @@ pub fn overlay(under: &str, over: &str, x: i32, y: i32) -> String {
     let split_over: Vec<String> = if y.is_negative() {
         split_over.iter().skip(y.abs() as usize).map(|s| s.clone()).collect()
     } else if y.is_positive() {
-        (0..y).map(|_| (0..over_width).map(|_| ' ').collect()).chain(split_over.iter().map(|s| s.to_string())).collect()
+        (0..y)
+            .map(|_| (0..over_width).map(|_| ' ').collect())
+            .chain(split_over.iter().map(|s| s.to_string()))
+            .collect()
     } else {
         split_over
     };
@@ -354,7 +383,8 @@ pub fn overlay(under: &str, over: &str, x: i32, y: i32) -> String {
     let over_height = split_over.len();
     let lines_deficit = under_height as i32 - over_height as i32;
     let split_over: Vec<String> = if lines_deficit.is_positive() {
-        let new_lines: Vec<String> = (0..lines_deficit).map(|_| (0..over_width).map(|_| ' ').collect::<String>()).collect();
+        let new_lines: Vec<String> =
+            (0..lines_deficit).map(|_| (0..over_width).map(|_| ' ').collect::<String>()).collect();
         let mut temp = split_over.clone();
         for new_line in new_lines {
             temp.push(new_line);
@@ -367,7 +397,9 @@ pub fn overlay(under: &str, over: &str, x: i32, y: i32) -> String {
     // pad out end of each line
     let line_width_deficit = under_width as i32 - over_width as i32;
     let split_over: Vec<String> = if line_width_deficit.is_positive() {
-        split_over.iter().map(|l| l.chars().chain((0..line_width_deficit).map(|_| ' ')).collect()).collect()
+        split_over.iter()
+            .map(|l| l.chars().chain((0..line_width_deficit).map(|_| ' ')).collect())
+            .collect()
     } else {
         split_over
     };
@@ -377,7 +409,7 @@ pub fn overlay(under: &str, over: &str, x: i32, y: i32) -> String {
     for (l, ol) in split_under.iter().zip(split_over.iter()) {
         let mut new_line = "".to_string();
         for (c, oc) in l.chars().zip(ol.chars()) {
-            new_line.push(if oc == ' ' {c} else {oc});
+            new_line.push(if oc == ' ' { c } else { oc });
         }
         out.push(new_line);
     }
@@ -507,7 +539,8 @@ mod tests {
                         " |     | |          ",
                         " |     | |---- -----",
                         " |     | | | | | | |",
-                        " |     | | | | | | |"].join("\n");
+                        " |     | | | | | | |"]
+            .join("\n");
 
         assert_eq!(&strings, &comp);
     }
@@ -531,7 +564,8 @@ mod tests {
                         "                    ",
                         "     o              ",
                         "                    ",
-                        "                    "].join("\n");
+                        "                    "]
+            .join("\n");
 
         assert_eq!(&strings, &comp);
     }

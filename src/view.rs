@@ -30,7 +30,7 @@ impl<'a> View<'a> {
         let mut x_max = f64::NEG_INFINITY;
         let mut y_min = f64::INFINITY;
         let mut y_max = f64::NEG_INFINITY;
-        
+
         for &(x, y) in repr.data().iter() {
             x_min = x_min.min(x);
             x_max = x_max.max(x);
@@ -50,7 +50,7 @@ impl<'a> View<'a> {
         self
     }
 
-    //fn 
+    //fn
 
     pub fn to_svg(&self) -> svg::node::element::Group {
         let face_width = 500.;
@@ -59,7 +59,8 @@ impl<'a> View<'a> {
         let mut view_group = svg::node::element::Group::new();
 
         // TODO this axis wrangling will need to be done more cleverly
-        // For each repr, get the x and y range and work out a default view which encopasses them all
+        // For each repr, get the x and y range
+        // and work out a default view which encopasses them all
         let mut x_min = f64::INFINITY;
         let mut x_max = f64::NEG_INFINITY;
         let mut y_min = f64::INFINITY;
@@ -93,7 +94,8 @@ impl<'a> View<'a> {
         let face_height = 30u32;
 
         // TODO this axis wrangling will need to be done more cleverly
-        // For each repr, get the x and y range and work out a default view which encopasses them all
+        // For each repr, get the x and y range
+        // and work out a default view which encopasses them all
         let mut x_min = f64::INFINITY;
         let mut x_max = f64::NEG_INFINITY;
         let mut y_min = f64::INFINITY;
@@ -110,27 +112,37 @@ impl<'a> View<'a> {
         let x_axis = axis::Axis::new(x_min, x_max);
         let y_axis = axis::Axis::new(y_min, y_max);
 
-        let (y_axis_string, longest_y_label_width) = text_render::render_y_axis_strings(&y_axis, face_height);
+        let (y_axis_string, longest_y_label_width) =
+            text_render::render_y_axis_strings(&y_axis, face_height);
 
         let (x_axis_string, start_offset) = text_render::render_x_axis_strings(&x_axis, face_width);
 
         let left_gutter_width = std::cmp::max(longest_y_label_width as i32 + 1,
-                                            start_offset.wrapping_neg()) as
+                                              start_offset.wrapping_neg()) as
                                 u32;
 
         let view_width = face_width + 1 + left_gutter_width + 1;
         let view_height = face_height + 3;
 
-        let blank: Vec<String> = (0..view_height).map(|_| (0..view_width).map(|_| ' ').collect()).collect();
+        let blank: Vec<String> =
+            (0..view_height).map(|_| (0..view_width).map(|_| ' ').collect()).collect();
         let mut view_string = blank.join("\n");
 
         for repr in self.representations.iter() {
             let face_string = repr.to_text(&x_axis, &y_axis, face_width, face_height);
-            view_string = text_render::overlay(&view_string, &face_string, left_gutter_width as i32 + 1, 0);
+            view_string =
+                text_render::overlay(&view_string, &face_string, left_gutter_width as i32 + 1, 0);
         }
 
-        let view_string = text_render::overlay(&view_string, &y_axis_string, left_gutter_width as i32 - 1 - longest_y_label_width, 0);
-        let view_string = text_render::overlay(&view_string, &x_axis_string, left_gutter_width as i32 + 0, face_height as i32 + 0);
+        let view_string = text_render::overlay(&view_string,
+                                               &y_axis_string,
+                                               left_gutter_width as i32 - 1 -
+                                               longest_y_label_width,
+                                               0);
+        let view_string = text_render::overlay(&view_string,
+                                               &x_axis_string,
+                                               left_gutter_width as i32 + 0,
+                                               face_height as i32 + 0);
 
         view_string
     }

@@ -97,11 +97,11 @@ pub fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
 }
 
 pub fn draw_face_points(s: &scatter::Scatter,
-                    x_axis: &axis::Axis,
-                    y_axis: &axis::Axis,
-                    face_width: f64,
-                    face_height: f64)
-                    -> node::element::Group {
+                        x_axis: &axis::Axis,
+                        y_axis: &axis::Axis,
+                        face_width: f64,
+                        face_height: f64)
+                        -> node::element::Group {
     let mut group = node::element::Group::new();
 
     for &(x, y) in s.data.iter() {
@@ -118,11 +118,11 @@ pub fn draw_face_points(s: &scatter::Scatter,
 }
 
 pub fn draw_face_bars(h: &histogram::Histogram,
-                    x_axis: &axis::Axis,
-                    y_axis: &axis::Axis,
-                    face_width: f64,
-                    face_height: f64)
-                    -> node::element::Group {
+                      x_axis: &axis::Axis,
+                      y_axis: &axis::Axis,
+                      face_width: f64,
+                      face_height: f64)
+                      -> node::element::Group {
     let mut group = node::element::Group::new();
 
     for ((&l, &u), &count) in h.bin_bounds.pairwise().zip(h.bin_counts.iter()) {
