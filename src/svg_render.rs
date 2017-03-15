@@ -81,9 +81,9 @@ pub fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
     for &tick in a.ticks().iter() {
         let tick_pos = value_to_face_offset(tick, &a, face_height);
         let tick_label = node::element::Text::new()
-            .set("x", -20)
+            .set("x", -15)
             .set("y", -tick_pos)
-            .set("text-anchor", "right")
+            .set("text-anchor", "end")
             .set("dominant-baseline", "middle")
             .set("font-size", 12)
             .add(node::Text::new(tick.to_string()));
