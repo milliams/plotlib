@@ -4,31 +4,44 @@ A module for managing axes
 
 */
 
+#[derive(Debug,Clone)]
+pub struct Range {
+    pub lower: f64,
+    pub upper: f64,
+}
+
+impl Range {
+    pub fn new(lower: f64, upper: f64) -> Range {
+        assert!(lower < upper);
+        Range {
+            lower: lower,
+            upper: upper,
+        }
+    }
+}
+
 #[derive(Debug)]
 pub struct Axis {
-    lower: f64,
-    upper: f64,
+    range: Range,
     ticks: Vec<f64>,
 }
 
 impl Axis {
     /// Constructs a new Axis
     pub fn new(lower: f64, upper: f64) -> Axis {
-        assert!(lower < upper);
         let default_max_ticks = 6;
         Axis {
-            lower: lower,
-            upper: upper,
+            range: Range::new(lower, upper),
             ticks: calculate_ticks(lower, upper, default_max_ticks),
         }
     }
 
     pub fn max(&self) -> f64 {
-        self.upper
+        self.range.upper
     }
 
     pub fn min(&self) -> f64 {
-        self.lower
+        self.range.lower
     }
 
     /// Get the positions of the ticks on the axis
