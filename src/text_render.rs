@@ -121,7 +121,7 @@ fn create_x_axis_labels(x_tick_map: &HashMap<i32, f64>) -> Vec<XAxisLabel> {
 
 pub fn render_y_axis_strings(y_axis: &axis::Axis,
                          face_height: u32)
-                         -> (Vec<String>, Vec<String>, Vec<String>, i32) {
+                         -> (String, i32) {
     // Get the strings and offsets we'll use for the y-axis
     let y_tick_map = tick_offset_map(&y_axis, face_height);
 
@@ -154,10 +154,15 @@ pub fn render_y_axis_strings(y_axis: &axis::Axis,
         .map(|s| s.to_string())
         .collect();
 
-    (y_label_strings, y_tick_strings, y_axis_line_strings, longest_y_label_width as i32)
+    let iter = y_label_strings.iter().zip(y_tick_strings.iter()).zip(y_axis_line_strings.iter()).map(|((x,y), z)| (x,y,z));
+
+    let axis_string: Vec<String> = iter.rev().map(|(l, t, a)| format!("{:>num_width$}{}{}", l, t, a, num_width=longest_y_label_width)).collect();
+    let axis_string = axis_string.join("\n");
+
+    (axis_string, longest_y_label_width as i32)
 }
 
-pub fn render_x_axis_strings(x_axis: &axis::Axis, face_width: u32) -> (String, String, String, i32) {
+pub fn render_x_axis_strings(x_axis: &axis::Axis, face_width: u32) -> (String, i32) {
     // Get the strings and offsets we'll use for the x-axis
     let x_tick_map = tick_offset_map(x_axis, face_width as u32);
 
@@ -200,14 +205,22 @@ pub fn render_x_axis_strings(x_axis: &axis::Axis, face_width: u32) -> (String, S
         .chain(std::iter::repeat('-').take(face_width as usize))
         .collect();
 
-    (x_axis_label_string, x_axis_tick_string, x_axis_line_string, start_offset)
+    let x_axis_string = if start_offset.is_positive() {
+        let padding = (0..start_offset).map(|_| " ").collect::<String>();
+        format!("{}\n{}\n{}{}", x_axis_line_string, x_axis_tick_string, padding, x_axis_label_string)
+    } else {
+        let padding = (0..start_offset.wrapping_neg()).map(|_| " ").collect::<String>();
+        format!("{}{}\n{}{}\n{}", padding, x_axis_line_string, padding, x_axis_tick_string, x_axis_label_string)
+    };
+
+    (x_axis_string, start_offset)
 }
 
 /// Given a histogram,
 /// the x ands y-axes
 /// and the face height and width,
 /// create the strings to be drawn as the face
-pub fn render_face_bars(h: &histogram::Histogram, x_axis: &axis::Axis, y_axis: &axis::Axis, face_width: u32, face_height: u32) -> Vec<String> {
+pub fn render_face_bars(h: &histogram::Histogram, x_axis: &axis::Axis, y_axis: &axis::Axis, face_width: u32, face_height: u32) -> String {
     let bound_cells = bound_cell_offsets(&h, &x_axis, face_width);
 
     let cell_bins = bins_for_cells(&bound_cells, face_width);
@@ -268,7 +281,8 @@ pub fn render_face_bars(h: &histogram::Histogram, x_axis: &axis::Axis, y_axis: &
         }
         face_strings.push(line_string);
     }
-    face_strings
+    let face_strings: Vec<String> = face_strings.iter().rev().map(|s| s.clone()).collect();
+    face_strings.join("\n")
 }
 
 /// Given a scatter plot,
@@ -280,7 +294,7 @@ pub fn render_face_points(s: &scatter::Scatter,
                     y_axis: &axis::Axis,
                     face_width: u32,
                     face_height: u32)
-                    -> Vec<String> {
+                    -> String {
 
     let points: Vec<_> = s.data
         .iter()
@@ -302,7 +316,8 @@ pub fn render_face_points(s: &scatter::Scatter,
         }
         face_strings.push(line_string);
     }
-    face_strings
+    let face_strings: Vec<String> = face_strings.iter().rev().map(|s| s.clone()).collect();
+    face_strings.join("\n")
 }
 
 /// Given two 'rectangular' strings, overlay the second on the first offset by `x` and `y`
@@ -452,14 +467,11 @@ mod tests {
     fn test_render_y_axis_strings() {
         let y_axis = axis::Axis::new(0.0, 10.0);
 
-        let (y_label_strings, y_tick_strings, y_axis_line_strings, longest_y_label_width) =
-            render_y_axis_strings(&y_axis, 10);
+        let (y_axis_string, longest_y_label_width) = render_y_axis_strings(&y_axis, 10);
 
-        assert!(y_label_strings.contains(&"0".to_string()));
-        assert!(y_label_strings.contains(&"6".to_string()));
-        assert!(y_label_strings.contains(&"10".to_string()));
-        assert_eq!(y_label_strings.len(), y_tick_strings.len());
-        assert_eq!(y_label_strings.len(), y_axis_line_strings.len());
+        assert!(y_axis_string.contains(&"0".to_string()));
+        assert!(y_axis_string.contains(&"6".to_string()));
+        assert!(y_axis_string.contains(&"10".to_string()));
         assert_eq!(longest_y_label_width, 2);
     }
 
@@ -467,14 +479,12 @@ mod tests {
     fn test_render_x_axis_strings() {
         let x_axis = axis::Axis::new(0.0, 10.0);
 
-        let (x_label_string, x_tick_string, x_axis_line_string, start_offset) =
-            render_x_axis_strings(&x_axis, 20);
+        let (x_axis_string, start_offset) = render_x_axis_strings(&x_axis, 20);
 
-        assert!(x_label_string.contains("0 "));
-        assert!(x_label_string.contains(" 6 "));
-        assert!(x_label_string.contains(" 10"));
-        assert_eq!(x_tick_string.chars().filter(|&c| c == '|').count(), 6);
-        assert_eq!(x_axis_line_string.len(), 21);
+        assert!(x_axis_string.contains("0 "));
+        assert!(x_axis_string.contains(" 6 "));
+        assert!(x_axis_string.contains(" 10"));
+        assert_eq!(x_axis_string.chars().filter(|&c| c == '|').count(), 6);
         assert_eq!(start_offset, 0);
     }
 
@@ -482,9 +492,11 @@ mod tests {
     fn test_render_face_bars() {
         let data = vec![0.3, 0.5, 6.4, 5.3, 3.6, 3.6, 3.5, 7.5, 4.0];
         let h = histogram::Histogram::from_vec(&data, 10);
-        let strings = render_face_bars(&h, &h.x_axis, &h.y_axis, 20, 10);
-        assert_eq!(strings.len(), 10);
-        assert!(strings.iter().all(|s| s.len() == 20));
+        let x_axis = axis::Axis::new(0.3, 7.5);
+        let y_axis = axis::Axis::new(0., 3.);
+        let strings = render_face_bars(&h, &x_axis, &y_axis, 20, 10);
+        assert_eq!(strings.lines().count(), 10);
+        assert!(strings.lines().all(|s| s.len() == 20));
 
         let comp = vec!["       ---          ",
                         "       | |          ",
@@ -495,19 +507,20 @@ mod tests {
                         " |     | |          ",
                         " |     | |---- -----",
                         " |     | | | | | | |",
-                        " |     | | | | | | |"];
-        for (s, c) in strings.iter().rev().zip(comp.iter()) {
-            assert_eq!(s, c);
-        }
+                        " |     | | | | | | |"].join("\n");
+
+        assert_eq!(&strings, &comp);
     }
 
     #[test]
     fn test_render_face_points() {
         let data = vec![(-3.0, 2.3), (-1.6, 5.3), (0.3, 0.7), (4.3, -1.4), (6.4, 4.3), (8.5, 3.7)];
         let s = scatter::Scatter::from_vec(&data);
-        let strings = render_face_points(&s, &s.x_axis, &s.y_axis, 20, 10);
-        assert_eq!(strings.len(), 10);
-        assert!(strings.iter().all(|s| s.len() == 20));
+        let x_axis = axis::Axis::new(-3.575, 9.075);
+        let y_axis = axis::Axis::new(-1.735, 5.635);
+        let strings = render_face_points(&s, &x_axis, &y_axis, 20, 10);
+        assert_eq!(strings.lines().count(), 10);
+        assert!(strings.lines().all(|s| s.len() == 20));
 
         let comp = vec!["  o                 ",
                         "                    ",
@@ -518,10 +531,9 @@ mod tests {
                         "                    ",
                         "     o              ",
                         "                    ",
-                        "                    "];
-        for (s, c) in strings.iter().rev().zip(comp.iter()) {
-            assert_eq!(s, c);
-        }
+                        "                    "].join("\n");
+
+        assert_eq!(&strings, &comp);
     }
 
     #[test]

@@ -110,11 +110,9 @@ impl<'a> View<'a> {
         let x_axis = axis::Axis::new(x_min, x_max);
         let y_axis = axis::Axis::new(y_min, y_max);
 
-        let (y_label_strings, y_tick_strings, y_axis_line_strings, longest_y_label_width) =
-            text_render::render_y_axis_strings(&y_axis, face_height);
+        let (y_axis_string, longest_y_label_width) = text_render::render_y_axis_strings(&y_axis, face_height);
 
-        let (x_axis_label_string, x_axis_tick_string, x_axis_line_string, start_offset) =
-            text_render::render_x_axis_strings(&x_axis, face_width);
+        let (x_axis_string, start_offset) = text_render::render_x_axis_strings(&x_axis, face_width);
 
         let left_gutter_width = std::cmp::max(longest_y_label_width as i32 + 1,
                                             start_offset.wrapping_neg()) as
@@ -128,21 +126,11 @@ impl<'a> View<'a> {
 
         for repr in self.representations.iter() {
             let face_string = repr.to_text(&x_axis, &y_axis, face_width, face_height);
-            let face_string: Vec<String> = face_string.split('\n').rev().map(|s| s.to_string()).collect();
-            view_string = text_render::overlay(&view_string, &face_string.join("\n"), left_gutter_width as i32 + 1, 0);
+            view_string = text_render::overlay(&view_string, &face_string, left_gutter_width as i32 + 1, 0);
         }
 
-        let y_label_strings: Vec<String> = y_label_strings.iter().rev().map(|s| s.to_string()).collect();
-        let y_tick_strings: Vec<String> = y_tick_strings.iter().rev().map(|s| s.to_string()).collect();
-        let y_axis_line_strings: Vec<String> = y_axis_line_strings.iter().rev().map(|s| s.to_string()).collect();
-
-        let view_string = text_render::overlay(&view_string, &y_label_strings.join("\n"), left_gutter_width as i32 - 1 - longest_y_label_width, 0);
-        let view_string = text_render::overlay(&view_string, &y_tick_strings.join("\n"), left_gutter_width as i32 - 1, 0);
-        let view_string = text_render::overlay(&view_string, &y_axis_line_strings.join("\n"), left_gutter_width as i32, 0);
-
-        let view_string = text_render::overlay(&view_string, &x_axis_line_string, left_gutter_width as i32, face_height as i32 + 0);
-        let view_string = text_render::overlay(&view_string, &x_axis_tick_string, left_gutter_width as i32, face_height as i32 + 1);
-        let view_string = text_render::overlay(&view_string, &x_axis_label_string, left_gutter_width as i32 + start_offset, face_height as i32 + 2);
+        let view_string = text_render::overlay(&view_string, &y_axis_string, left_gutter_width as i32 - 1 - longest_y_label_width, 0);
+        let view_string = text_render::overlay(&view_string, &x_axis_string, left_gutter_width as i32 + 0, face_height as i32 + 0);
 
         view_string
     }
