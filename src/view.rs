@@ -66,8 +66,8 @@ impl<'a> View<'a> {
         let mut y_min = f64::INFINITY;
         let mut y_max = f64::NEG_INFINITY;
         for repr in self.representations.iter() {
-            let (this_x_min, this_x_max) = repr.x_range();
-            let (this_y_min, this_y_max) = repr.y_range();
+            let (this_x_min, this_x_max) = repr.range(0);
+            let (this_y_min, this_y_max) = repr.range(1);
             x_min = x_min.min(this_x_min);
             x_max = x_max.max(this_x_max);
             y_min = y_min.min(this_y_min);
@@ -101,8 +101,8 @@ impl<'a> View<'a> {
         let mut y_min = f64::INFINITY;
         let mut y_max = f64::NEG_INFINITY;
         for repr in self.representations.iter() {
-            let (this_x_min, this_x_max) = repr.x_range();
-            let (this_y_min, this_y_max) = repr.y_range();
+            let (this_x_min, this_x_max) = repr.range(0);
+            let (this_y_min, this_y_max) = repr.range(1);
             x_min = x_min.min(this_x_min);
             x_max = x_max.max(this_x_max);
             y_min = y_min.min(this_y_min);

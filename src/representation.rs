@@ -3,8 +3,7 @@ use svg;
 use axis;
 
 pub trait Representation {
-    fn x_range(&self) -> (f64, f64); // TODO this must be generalised!
-    fn y_range(&self) -> (f64, f64); // TODO this must be generalised!
+    fn range(&self, dim: u32) -> (f64, f64);
 
     fn to_svg(&self,
               x_axis: &axis::Axis,

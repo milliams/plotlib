@@ -83,9 +83,7 @@ impl Histogram {
     pub fn num_bins(&self) -> usize {
         self.bin_counts.len()
     }
-}
 
-impl Representation for Histogram {
     fn x_range(&self) -> (f64, f64) {
         (*self.bin_bounds.first().unwrap(), *self.bin_bounds.last().unwrap())
     }
@@ -93,6 +91,16 @@ impl Representation for Histogram {
     fn y_range(&self) -> (f64, f64) {
         let max = *self.bin_counts.iter().max().unwrap();
         (0., max as f64)
+    }
+}
+
+impl Representation for Histogram {
+    fn range(&self, dim: u32) -> (f64, f64) {
+        match dim {
+            0 => self.x_range(),
+            1 => self.y_range(),
+            _ => panic!("Axis out of range")
+        }
     }
 
     fn to_svg(&self,

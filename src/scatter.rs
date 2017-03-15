@@ -49,9 +49,7 @@ impl Scatter {
         self.style = style;
         self
     }
-}
 
-impl Representation for Scatter {
     fn x_range(&self) -> (f64, f64) {
         let mut min = f64::INFINITY;
         let mut max = f64::NEG_INFINITY;
@@ -70,6 +68,16 @@ impl Representation for Scatter {
             max = max.max(y);
         }
         (min, max)
+    }
+}
+
+impl Representation for Scatter {
+    fn range(&self, dim: u32) -> (f64, f64) {
+        match dim {
+            0 => self.x_range(),
+            1 => self.y_range(),
+            _ => panic!("Axis out of range")
+        }
     }
 
     fn to_svg(&self,
