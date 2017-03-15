@@ -1,15 +1,12 @@
 extern crate plotlib;
 
 fn main() {
-    //let data = vec![(-3.0, 2.3), (-1.6, 5.3), (0.3, 0.7), (4.3, -1.4), (6.4, 4.3), (8.5, 3.7)];
-    //let s = plotlib::scatter::Scatter::from_vec(&data);
-    //s.to_svg().save("scatter.svg");
-
-    //
-    // Or, simplest example:
     let data = vec![(-3.0, 2.3), (-1.6, 5.3), (0.3, 0.7), (4.3, -1.4), (6.4, 4.3), (8.5, 3.7)];
     let s = plotlib::scatter::Scatter::from_vec(&data);
-    let v = plotlib::view::View::new().add(&s);
+    let v = plotlib::view::View::new()
+        .add(&s)
+        .x_range(-5., 10.)
+        .y_range(-2., 6.);
     plotlib::plot::Plot::single(&v).save("scatter.svg");
 
     /*
@@ -38,13 +35,12 @@ fn main() {
 
     // Create a view containing all the representations
     let v = View::new()
-        .add(&l).
-        .add(&h).
-        .add(&s).
-        .add(&g).
-        x_axis(Axis::new()
-            .range(-10, 90)
-            .label("Age")
+        .add(&l)
+        .add(&h)
+        .add(&s)
+        .add(&g)
+        .x_range(-10, 90)
+        .x_label("Age")
         );
 
     // put that view into a plot and save it to file

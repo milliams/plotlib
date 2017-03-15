@@ -12,45 +12,55 @@ use text_render;
 /// Standard 1-dimensional view with a continuous x-axis
 pub struct View<'a> {
     pub representations: Vec<&'a Representation>,
-    //x_axis: axis::Axis,
-    //y_axis: axis::Axis,
+    x_range: Option<axis::Range>,
+    y_range: Option<axis::Range>,
 }
 
 impl<'a> View<'a> {
     pub fn new() -> View<'a> {
         View {
             representations: vec![],
-            //x_axis: axis::Axis::new(0., 1.),
-            //y_axis: axis::Axis::new(0., 1.),
+            x_range: None,
+            y_range: None,
         }
     }
 
     pub fn add(mut self, repr: &'a Representation) -> Self {
-        /*let mut x_min = f64::INFINITY;
-        let mut x_max = f64::NEG_INFINITY;
-        let mut y_min = f64::INFINITY;
-        let mut y_max = f64::NEG_INFINITY;
-
-        for &(x, y) in repr.data().iter() {
-            x_min = x_min.min(x);
-            x_max = x_max.max(x);
-            y_min = y_min.min(y);
-            y_max = y_max.max(y);
-        }
-
-        let x_range = x_max - x_min;
-        let y_range = y_max - y_min;
-        x_min = x_min - (x_range / 20.0);
-        x_max = x_max + (x_range / 20.0);
-        y_min = y_min - (y_range / 20.0);
-        y_max = y_max + (y_range / 20.0);*/
-
         self.representations.push(repr);
-
         self
     }
 
-    //fn
+    pub fn x_range(mut self, min: f64, max: f64) -> Self {
+        self.x_range = Some(axis::Range::new(min, max));
+        self
+    }
+
+    pub fn y_range(mut self, min: f64, max: f64) -> Self {
+        self.y_range = Some(axis::Range::new(min, max));
+        self
+    }
+
+    fn default_x_range(&self) -> axis::Range {
+        let mut x_min = f64::INFINITY;
+        let mut x_max = f64::NEG_INFINITY;
+        for repr in self.representations.iter() {
+            let (this_x_min, this_x_max) = repr.range(0);
+            x_min = x_min.min(this_x_min);
+            x_max = x_max.max(this_x_max);
+        }
+        axis::Range::new(x_min, x_max)
+    }
+
+    fn default_y_range(&self) -> axis::Range {
+        let mut y_min = f64::INFINITY;
+        let mut y_max = f64::NEG_INFINITY;
+        for repr in self.representations.iter() {
+            let (this_y_min, this_y_max) = repr.range(1);
+            y_min = y_min.min(this_y_min);
+            y_max = y_max.max(this_y_max);
+        }
+        axis::Range::new(y_min, y_max)
+    }
 
     pub fn to_svg(&self) -> svg::node::element::Group {
         let face_width = 500.;
@@ -58,24 +68,14 @@ impl<'a> View<'a> {
 
         let mut view_group = svg::node::element::Group::new();
 
-        // TODO this axis wrangling will need to be done more cleverly
-        // For each repr, get the x and y range
-        // and work out a default view which encopasses them all
-        let mut x_min = f64::INFINITY;
-        let mut x_max = f64::NEG_INFINITY;
-        let mut y_min = f64::INFINITY;
-        let mut y_max = f64::NEG_INFINITY;
-        for repr in self.representations.iter() {
-            let (this_x_min, this_x_max) = repr.range(0);
-            let (this_y_min, this_y_max) = repr.range(1);
-            x_min = x_min.min(this_x_min);
-            x_max = x_max.max(this_x_max);
-            y_min = y_min.min(this_y_min);
-            y_max = y_max.max(this_y_max);
-        }
+        let default_x_range = self.default_x_range();
+        let x_range = self.x_range.as_ref().unwrap_or(&default_x_range);
 
-        let x_axis = axis::Axis::new(x_min, x_max);
-        let y_axis = axis::Axis::new(y_min, y_max);
+        let default_y_range = self.default_y_range();
+        let y_range = self.y_range.as_ref().unwrap_or(&default_y_range);
+
+        let x_axis = axis::Axis::new(x_range.lower, x_range.upper);
+        let y_axis = axis::Axis::new(y_range.lower, y_range.upper);
 
         // Then, based on those ranges, draw each repr as an SVG
         for repr in self.representations.iter() {
@@ -93,24 +93,17 @@ impl<'a> View<'a> {
         let face_width = 90;
         let face_height = 30u32;
 
-        // TODO this axis wrangling will need to be done more cleverly
-        // For each repr, get the x and y range
-        // and work out a default view which encopasses them all
-        let mut x_min = f64::INFINITY;
-        let mut x_max = f64::NEG_INFINITY;
-        let mut y_min = f64::INFINITY;
-        let mut y_max = f64::NEG_INFINITY;
-        for repr in self.representations.iter() {
-            let (this_x_min, this_x_max) = repr.range(0);
-            let (this_y_min, this_y_max) = repr.range(1);
-            x_min = x_min.min(this_x_min);
-            x_max = x_max.max(this_x_max);
-            y_min = y_min.min(this_y_min);
-            y_max = y_max.max(this_y_max);
-        }
+        let default_x_range = self.default_x_range();
+        let x_range = self.x_range.as_ref().unwrap_or(&default_x_range);
 
-        let x_axis = axis::Axis::new(x_min, x_max);
-        let y_axis = axis::Axis::new(y_min, y_max);
+        let default_y_range = self.default_y_range();
+        let y_range = self.y_range.as_ref().unwrap_or(&default_y_range);
+
+        println!("{:?}", default_y_range);
+        println!("{:?}", y_range);
+
+        let x_axis = axis::Axis::new(x_range.lower, x_range.upper);
+        let y_axis = axis::Axis::new(y_range.lower, y_range.upper);
 
         let (y_axis_string, longest_y_label_width) =
             text_render::render_y_axis_strings(&y_axis, face_height);
