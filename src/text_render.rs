@@ -319,7 +319,8 @@ pub fn render_face_points(s: &scatter::Scatter,
                           x_axis: &axis::Axis,
                           y_axis: &axis::Axis,
                           face_width: u32,
-                          face_height: u32)
+                          face_height: u32,
+                          style: &scatter::Style)
                           -> String {
 
     let points: Vec<_> = s.data
@@ -330,12 +331,17 @@ pub fn render_face_points(s: &scatter::Scatter,
         })
         .collect();
 
+    let marker = match style.marker {
+        scatter::Marker::Circle => '●',
+        scatter::Marker::Square => '■',
+    };
+
     let mut face_strings: Vec<String> = vec![];
     for line in 1..face_height + 1 {
         let mut line_string = String::new();
         for column in 1..face_width as usize + 1 {
             line_string.push(if points.contains(&(column as i32, line as i32)) {
-                'o'
+                marker
             } else {
                 ' '
             });
@@ -528,7 +534,7 @@ mod tests {
         let y_axis = axis::Axis::new(0., 3.);
         let strings = render_face_bars(&h, &x_axis, &y_axis, 20, 10);
         assert_eq!(strings.lines().count(), 10);
-        assert!(strings.lines().all(|s| s.len() == 20));
+        assert!(strings.lines().all(|s| s.chars().count() == 20));
 
         let comp = vec!["       ---          ",
                         "       | |          ",
@@ -551,18 +557,21 @@ mod tests {
         let s = scatter::Scatter::from_vec(&data);
         let x_axis = axis::Axis::new(-3.575, 9.075);
         let y_axis = axis::Axis::new(-1.735, 5.635);
-        let strings = render_face_points(&s, &x_axis, &y_axis, 20, 10);
+        let style = scatter::Style {
+            marker: scatter::Marker::Circle,
+        };
+        let strings = render_face_points(&s, &x_axis, &y_axis, 20, 10, &style);
         assert_eq!(strings.lines().count(), 10);
-        assert!(strings.lines().all(|s| s.len() == 20));
+        assert!(strings.lines().all(|s| s.chars().count() == 20));
 
-        let comp = vec!["  o                 ",
+        let comp = vec!["  ●                 ",
                         "                    ",
-                        "               o    ",
-                        "                  o ",
+                        "               ●    ",
+                        "                  ● ",
                         "                    ",
-                        "o                   ",
+                        "●                   ",
                         "                    ",
-                        "     o              ",
+                        "     ●              ",
                         "                    ",
                         "                    "]
             .join("\n");

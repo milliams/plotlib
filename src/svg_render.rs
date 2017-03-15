@@ -100,18 +100,30 @@ pub fn draw_face_points(s: &scatter::Scatter,
                         x_axis: &axis::Axis,
                         y_axis: &axis::Axis,
                         face_width: f64,
-                        face_height: f64)
+                        face_height: f64,
+                        style: &scatter::Style)
                         -> node::element::Group {
     let mut group = node::element::Group::new();
 
     for &(x, y) in s.data.iter() {
         let x_pos = value_to_face_offset(x, &x_axis, face_width);
         let y_pos = -value_to_face_offset(y, &y_axis, face_height);
-        let circ = node::element::Circle::new()
-            .set("cx", x_pos)
-            .set("cy", y_pos)
-            .set("r", 5.0);
-        group.append(circ);
+        let radius = 5.;
+        match style.marker {
+            scatter::Marker::Circle => {
+                group.append(node::element::Circle::new()
+                    .set("cx", x_pos)
+                    .set("cy", y_pos)
+                    .set("r", radius));
+            },
+            scatter::Marker::Square => {
+                group.append(node::element::Rectangle::new()
+                    .set("x", x_pos - radius)
+                    .set("y", y_pos - radius)
+                    .set("width", 2. * radius)
+                    .set("height", 2. * radius));
+            },
+        };
     }
 
     group
