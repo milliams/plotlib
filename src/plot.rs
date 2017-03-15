@@ -23,7 +23,7 @@ impl<'a> Plot<'a> {
     pub fn to_svg(&self) -> svg::Document {
         let mut document = Document::new().set("viewBox", (0, 0, 600, 400));
         for &view in self.views.iter() {
-            let view_group = view.to_svg().set("transform", format!("translate({}, {})", 50, 370));
+            let view_group = view.to_svg(500., 350.).set("transform", format!("translate({}, {})", 50, 370));
             document.append(view_group);
         }
         document
@@ -32,7 +32,7 @@ impl<'a> Plot<'a> {
     pub fn to_text(&self) -> String {
         // TODO compose multiple views into a plot
         let view = self.views[0];
-        view.to_text()
+        view.to_text(90, 30)
     }
 
     pub fn save<P>(&self, path: P)

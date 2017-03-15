@@ -62,10 +62,7 @@ impl<'a> View<'a> {
         axis::Range::new(y_min, y_max)
     }
 
-    pub fn to_svg(&self) -> svg::node::element::Group {
-        let face_width = 500.;
-        let face_height = 350.;
-
+    pub fn to_svg(&self, face_width: f64, face_height: f64) -> svg::node::element::Group {
         let mut view_group = svg::node::element::Group::new();
 
         let default_x_range = self.default_x_range();
@@ -89,18 +86,12 @@ impl<'a> View<'a> {
         view_group
     }
 
-    pub fn to_text(&self) -> String {
-        let face_width = 90;
-        let face_height = 30u32;
-
+    pub fn to_text(&self, face_width: u32, face_height: u32) -> String {
         let default_x_range = self.default_x_range();
         let x_range = self.x_range.as_ref().unwrap_or(&default_x_range);
 
         let default_y_range = self.default_y_range();
         let y_range = self.y_range.as_ref().unwrap_or(&default_y_range);
-
-        println!("{:?}", default_y_range);
-        println!("{:?}", y_range);
 
         let x_axis = axis::Axis::new(x_range.lower, x_range.upper);
         let y_axis = axis::Axis::new(y_range.lower, y_range.upper);
