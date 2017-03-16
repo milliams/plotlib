@@ -1,3 +1,7 @@
+/*!
+The `view` module provides structures for showing data in various ways.
+*/
+
 use std;
 use std::f64;
 
@@ -17,6 +21,9 @@ pub struct View<'a> {
 }
 
 impl<'a> View<'a> {
+    /**
+    Create an empty view
+    */
     pub fn new() -> View<'a> {
         View {
             representations: vec![],
@@ -25,16 +32,25 @@ impl<'a> View<'a> {
         }
     }
 
+    /**
+    Add a representation to the view
+    */
     pub fn add(mut self, repr: &'a Representation) -> Self {
         self.representations.push(repr);
         self
     }
 
+    /**
+    Set the x range for the view
+    */
     pub fn x_range(mut self, min: f64, max: f64) -> Self {
         self.x_range = Some(axis::Range::new(min, max));
         self
     }
 
+    /**
+    Set the y range for the view
+    */
     pub fn y_range(mut self, min: f64, max: f64) -> Self {
         self.y_range = Some(axis::Range::new(min, max));
         self
@@ -62,6 +78,9 @@ impl<'a> View<'a> {
         axis::Range::new(y_min, y_max)
     }
 
+    /**
+    Create an SVG rendering of the view
+    */
     pub fn to_svg(&self, face_width: f64, face_height: f64) -> svg::node::element::Group {
         let mut view_group = svg::node::element::Group::new();
 
@@ -86,6 +105,9 @@ impl<'a> View<'a> {
         view_group
     }
 
+    /**
+    Create a text rendering of the view
+    */
     pub fn to_text(&self, face_width: u32, face_height: u32) -> String {
         let default_x_range = self.default_x_range();
         let x_range = self.x_range.as_ref().unwrap_or(&default_x_range);

@@ -7,6 +7,9 @@ use svg_render;
 use text_render;
 use representation::Representation;
 
+/**
+The marker that should be used for the points of the scatter plot
+*/
 #[derive(Debug,Clone)]
 pub enum Marker {
     Circle,
@@ -43,7 +46,9 @@ impl Style {
         }
     }
 
-    pub fn marker<T>(mut self, value: T) -> Self where T: Into<Marker> {
+    pub fn marker<T>(mut self, value: T) -> Self
+        where T: Into<Marker>
+    {
         self.marker = Some(value.into());
         self
     }
@@ -55,7 +60,9 @@ impl Style {
         }
     }
 
-    pub fn colour<T>(mut self, value: T) -> Self where T: Into<String> {
+    pub fn colour<T>(mut self, value: T) -> Self
+        where T: Into<String>
+    {
         self.colour = Some(value.into());
         self
     }

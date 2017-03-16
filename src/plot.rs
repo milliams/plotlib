@@ -1,3 +1,7 @@
+/*!
+The `plot` module provides structures for laying out and rendering multiple views.
+*/
+
 use std::path::Path;
 use std::ffi::OsStr;
 
@@ -7,12 +11,18 @@ use svg::Document;
 
 use view::View;
 
+/**
+A single page plot laying out the views in a grid
+*/
 pub struct Plot<'a> {
-    pub views: Vec<&'a View<'a>>,
+    views: Vec<&'a View<'a>>,
     num_views: u32,
 }
 
 impl<'a> Plot<'a> {
+    /**
+    Creates a plot containing a single view
+    */
     pub fn single(view: &'a View) -> Self {
         Plot {
             views: vec![view],
@@ -20,6 +30,9 @@ impl<'a> Plot<'a> {
         }
     }
 
+    /**
+    Render the plot to an svg document
+    */
     pub fn to_svg(&self) -> svg::Document {
         let mut document = Document::new().set("viewBox", (0, 0, 600, 400));
         for &view in self.views.iter() {
@@ -30,11 +43,20 @@ impl<'a> Plot<'a> {
         document
     }
 
+    /**
+    Render the plot to an `String`
+    */
     pub fn to_text(&self) -> String {
         // TODO compose multiple views into a plot
         let view = self.views[0];
         view.to_text(90, 30)
     }
+
+    /**
+    Save the plot to a file.
+
+    The type of file will be based on the file extension.
+    */
 
     pub fn save<P>(&self, path: P)
         where P: AsRef<Path>
