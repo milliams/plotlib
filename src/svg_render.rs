@@ -161,20 +161,13 @@ pub fn draw_face_bars(h: &histogram::Histogram,
 mod tests {
     use super::*;
 
-    /*#[test]
-    fn test_draw_scatter() {
-        let data = vec![(-3.0, 2.3), (-1.6, 5.3), (0.3, 0.7), (4.3, -1.4), (6.4, 4.3), (8.5, 3.7)];
-        let s = scatter::Scatter::from_vec(&data);
-        s.to_svg().save("scatter.svg");
-    }
-
     #[test]
-    fn test_draw_histogram() {
-        use render::Render;
-        use save::Save;
-
-        let data = vec![0.3, 0.5, 6.4, 5.3, 3.6, 3.6, 3.5, 7.5, 4.0];
-        let h = histogram::Histogram::from_vec(&data, 10);
-        h.to_svg().save("histogram.svg");
-    }*/
+    fn test_value_to_face_offset() {
+        let axis = axis::Axis::new(-2., 5.);
+        assert_eq!(value_to_face_offset(-2.0, &axis, 14.0), 0.0);
+        assert_eq!(value_to_face_offset(5.0, &axis, 14.0), 14.0);
+        assert_eq!(value_to_face_offset(0.0, &axis, 14.0), 4.0);
+        assert_eq!(value_to_face_offset(-4.0, &axis, 14.0), -4.0);
+        assert_eq!(value_to_face_offset(7.0, &axis, 14.0), 18.0);
+    }
 }
