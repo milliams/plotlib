@@ -1,6 +1,6 @@
 [package]
 name = "plotlib"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Matt Williams <matt@milliams.com>"]
 description = "Plotting data structures and tools"
 license = "MIT"
