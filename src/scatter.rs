@@ -43,8 +43,8 @@ impl Style {
         }
     }
 
-    pub fn marker(mut self, value: Marker) -> Self {
-        self.marker = Some(value);
+    pub fn marker<T>(mut self, value: T) -> Self where T: Into<Marker> {
+        self.marker = Some(value.into());
         self
     }
 
@@ -55,8 +55,8 @@ impl Style {
         }
     }
 
-    pub fn colour(mut self, value: String) -> Self {
-        self.colour = Some(value);
+    pub fn colour<T>(mut self, value: T) -> Self where T: Into<String> {
+        self.colour = Some(value.into());
         self
     }
 
