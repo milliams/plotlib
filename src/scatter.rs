@@ -13,10 +13,15 @@ pub enum Marker {
     Square,
 }
 
-#[derive(Debug,Clone)]
+/// `Style` follows the 'optional builder' pattern
+/// Each field is a `Option` which start as `None`
+/// Each can be set with setter methods and instances
+/// of `Style` can be overlaid to set many at once.
+/// Settings will be cloned in and out of it.
+#[derive(Debug)]
 pub struct Style {
-    pub marker: Option<Marker>,
-    pub colour: Option<String>,
+    marker: Option<Marker>,
+    colour: Option<String>,
 }
 
 impl Style {
@@ -27,16 +32,38 @@ impl Style {
         }
     }
 
-    pub fn fill_defaults(&self) -> Self {
-        Style {
-            marker: match self.marker {
-                Some(ref m) => Some(m.clone()),
-                None => Some(Marker::Circle),
-            },
-            colour: match self.colour {
-                Some(ref c) => Some(c.clone()),
-                None => Some("".into()),
-            }
+    pub fn overlay(&mut self, other: Self) {
+        match other.marker {
+            Some(v) => self.marker = Some(v),
+            None => {}
+        }
+        match other.colour {
+            Some(v) => self.colour = Some(v),
+            None => {}
+        }
+    }
+
+    pub fn marker(mut self, value: Marker) -> Self {
+        self.marker = Some(value);
+        self
+    }
+
+    pub fn get_marker(&self) -> Marker {
+        match self.marker.clone() {
+            Some(v) => v,
+            None => Marker::Circle,
+        }
+    }
+
+    pub fn colour(mut self, value: String) -> Self {
+        self.colour = Some(value);
+        self
+    }
+
+    pub fn get_colour(&self) -> String {
+        match self.colour.clone() {
+            Some(v) => v,
+            None => "".into(),
         }
     }
 }
@@ -63,12 +90,12 @@ impl Scatter {
     }
 
     pub fn style(mut self, style: Style) -> Self {
-        self.style = style;
+        self.style.overlay(style);
         self
     }
 
-    pub fn get_style(&self) -> Style {
-        self.style.clone()
+    pub fn get_style(&self) -> &Style {
+        &self.style
     }
 
     fn x_range(&self) -> (f64, f64) {
@@ -97,7 +124,7 @@ impl Representation for Scatter {
         match dim {
             0 => self.x_range(),
             1 => self.y_range(),
-            _ => panic!("Axis out of range")
+            _ => panic!("Axis out of range"),
         }
     }
 
@@ -107,7 +134,7 @@ impl Representation for Scatter {
               face_width: f64,
               face_height: f64)
               -> svg::node::element::Group {
-        svg_render::draw_face_points(self, &x_axis, &y_axis, face_width, face_height, &self.style.fill_defaults())
+        svg_render::draw_face_points(self, &x_axis, &y_axis, face_width, face_height, &self.style)
     }
 
     fn to_text(&self,
@@ -116,6 +143,11 @@ impl Representation for Scatter {
                face_width: u32,
                face_height: u32)
                -> String {
-        text_render::render_face_points(self, &x_axis, &y_axis, face_width, face_height, &self.style.fill_defaults())
+        text_render::render_face_points(self,
+                                        &x_axis,
+                                        &y_axis,
+                                        face_width,
+                                        face_height,
+                                        &self.style)
     }
 }

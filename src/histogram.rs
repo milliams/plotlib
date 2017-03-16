@@ -99,7 +99,7 @@ impl Representation for Histogram {
         match dim {
             0 => self.x_range(),
             1 => self.y_range(),
-            _ => panic!("Axis out of range")
+            _ => panic!("Axis out of range"),
         }
     }
 
