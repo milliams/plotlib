@@ -73,6 +73,7 @@ pub mod plot;
 
 pub mod histogram;
 pub mod scatter;
+pub mod function;
 mod axis;
 mod utils;
 mod text_render;
