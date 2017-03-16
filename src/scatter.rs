@@ -7,20 +7,37 @@ use svg_render;
 use text_render;
 use representation::Representation;
 
-#[derive(Debug)]
+#[derive(Debug,Clone)]
 pub enum Marker {
     Circle,
     Square,
 }
 
-#[derive(Debug)]
+#[derive(Debug,Clone)]
 pub struct Style {
-    pub marker: Marker,
+    pub marker: Option<Marker>,
+    pub colour: Option<String>,
 }
 
 impl Style {
-    fn defaults() -> Self {
-        Style { marker: Marker::Circle }
+    pub fn new() -> Self {
+        Style {
+            marker: None,
+            colour: None,
+        }
+    }
+
+    pub fn fill_defaults(&self) -> Self {
+        Style {
+            marker: match self.marker {
+                Some(ref m) => Some(m.clone()),
+                None => Some(Marker::Circle),
+            },
+            colour: match self.colour {
+                Some(ref c) => Some(c.clone()),
+                None => Some("".into()),
+            }
+        }
     }
 }
 
@@ -29,7 +46,7 @@ impl Style {
 #[derive(Debug)]
 pub struct Scatter {
     pub data: Vec<(f64, f64)>,
-    pub style: Style,
+    style: Style,
 }
 
 impl Scatter {
@@ -41,13 +58,17 @@ impl Scatter {
 
         Scatter {
             data: data,
-            style: Style::defaults(),
+            style: Style::new(),
         }
     }
 
     pub fn style(mut self, style: Style) -> Self {
         self.style = style;
         self
+    }
+
+    pub fn get_style(&self) -> Style {
+        self.style.clone()
     }
 
     fn x_range(&self) -> (f64, f64) {
@@ -86,7 +107,7 @@ impl Representation for Scatter {
               face_width: f64,
               face_height: f64)
               -> svg::node::element::Group {
-        svg_render::draw_face_points(self, &x_axis, &y_axis, face_width, face_height, &self.style)
+        svg_render::draw_face_points(self, &x_axis, &y_axis, face_width, face_height, &self.style.fill_defaults())
     }
 
     fn to_text(&self,
@@ -95,6 +116,6 @@ impl Representation for Scatter {
                face_width: u32,
                face_height: u32)
                -> String {
-        text_render::render_face_points(self, &x_axis, &y_axis, face_width, face_height, &self.style)
+        text_render::render_face_points(self, &x_axis, &y_axis, face_width, face_height, &self.style.fill_defaults())
     }
 }

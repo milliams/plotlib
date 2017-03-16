@@ -331,9 +331,9 @@ pub fn render_face_points(s: &scatter::Scatter,
         })
         .collect();
 
-    let marker = match style.marker {
-        scatter::Marker::Circle => '●',
-        scatter::Marker::Square => '■',
+    let marker = match style.marker.as_ref().unwrap() {
+        &scatter::Marker::Circle => '●',
+        &scatter::Marker::Square => '■',
     };
 
     let mut face_strings: Vec<String> = vec![];
@@ -557,9 +557,7 @@ mod tests {
         let s = scatter::Scatter::from_vec(&data);
         let x_axis = axis::Axis::new(-3.575, 9.075);
         let y_axis = axis::Axis::new(-1.735, 5.635);
-        let style = scatter::Style {
-            marker: scatter::Marker::Circle,
-        };
+        let style = scatter::Style::new().fill_defaults();
         let strings = render_face_points(&s, &x_axis, &y_axis, 20, 10, &style);
         assert_eq!(strings.lines().count(), 10);
         assert!(strings.lines().all(|s| s.chars().count() == 20));
