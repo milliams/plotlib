@@ -18,6 +18,8 @@ pub struct View<'a> {
     pub representations: Vec<&'a Representation>,
     x_range: Option<axis::Range>,
     y_range: Option<axis::Range>,
+    x_label: Option<String>,
+    y_label: Option<String>,
 }
 
 impl<'a> View<'a> {
@@ -29,6 +31,8 @@ impl<'a> View<'a> {
             representations: vec![],
             x_range: None,
             y_range: None,
+            x_label: None,
+            y_label: None,
         }
     }
 
@@ -53,6 +57,18 @@ impl<'a> View<'a> {
     */
     pub fn y_range(mut self, min: f64, max: f64) -> Self {
         self.y_range = Some(axis::Range::new(min, max));
+        self
+    }
+
+    pub fn x_label<T>(mut self, value: T) -> Self
+        where T: Into<String> {
+        self.x_label = Some(value.into());
+        self
+    }
+
+    pub fn y_label<T>(mut self, value: T) -> Self
+        where T: Into<String> {
+        self.y_label = Some(value.into());
         self
     }
 
@@ -90,8 +106,14 @@ impl<'a> View<'a> {
         let default_y_range = self.default_y_range();
         let y_range = self.y_range.as_ref().unwrap_or(&default_y_range);
 
-        let x_axis = axis::Axis::new(x_range.lower, x_range.upper);
-        let y_axis = axis::Axis::new(y_range.lower, y_range.upper);
+        let default_x_label = "".to_string();
+        let x_label: String = self.x_label.clone().unwrap_or(default_x_label);
+
+        let default_y_label = "".to_string();
+        let y_label: String = self.y_label.clone().unwrap_or(default_y_label);
+
+        let x_axis = axis::Axis::new(x_range.lower, x_range.upper).label(x_label);
+        let y_axis = axis::Axis::new(y_range.lower, y_range.upper).label(y_label);
 
         // Then, based on those ranges, draw each repr as an SVG
         for repr in self.representations.iter() {
@@ -115,20 +137,26 @@ impl<'a> View<'a> {
         let default_y_range = self.default_y_range();
         let y_range = self.y_range.as_ref().unwrap_or(&default_y_range);
 
-        let x_axis = axis::Axis::new(x_range.lower, x_range.upper);
-        let y_axis = axis::Axis::new(y_range.lower, y_range.upper);
+        let default_x_label = "".to_string();
+        let x_label: String = self.x_label.clone().unwrap_or(default_x_label);
+
+        let default_y_label = "".to_string();
+        let y_label: String = self.y_label.clone().unwrap_or(default_y_label);
+
+        let x_axis = axis::Axis::new(x_range.lower, x_range.upper).label(x_label);
+        let y_axis = axis::Axis::new(y_range.lower, y_range.upper).label(y_label);
 
         let (y_axis_string, longest_y_label_width) =
             text_render::render_y_axis_strings(&y_axis, face_height);
 
         let (x_axis_string, start_offset) = text_render::render_x_axis_strings(&x_axis, face_width);
 
-        let left_gutter_width = std::cmp::max(longest_y_label_width as i32 + 1,
+        let left_gutter_width = std::cmp::max(longest_y_label_width as i32 + 3,
                                               start_offset.wrapping_neg()) as
                                 u32;
 
         let view_width = face_width + 1 + left_gutter_width + 1;
-        let view_height = face_height + 3;
+        let view_height = face_height + 4;
 
         let blank: Vec<String> =
             (0..view_height).map(|_| (0..view_width).map(|_| ' ').collect()).collect();
@@ -142,7 +170,7 @@ impl<'a> View<'a> {
 
         let view_string = text_render::overlay(&view_string,
                                                &y_axis_string,
-                                               left_gutter_width as i32 - 1 -
+                                               left_gutter_width as i32 - 2 -
                                                longest_y_label_width,
                                                0);
         let view_string = text_render::overlay(&view_string,

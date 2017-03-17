@@ -43,10 +43,18 @@ pub fn draw_x_axis(a: &axis::Axis, face_width: f64) -> node::element::Group {
         labels.append(tick_label);
     }
 
+    let label = node::element::Text::new()
+            .set("x", face_width/2.)
+            .set("y", 30)
+            .set("text-anchor", "middle")
+            .set("font-size", 12)
+            .add(node::Text::new(a.get_label()));
+
     node::element::Group::new()
         .add(ticks)
         .add(axis_line)
         .add(labels)
+        .add(label)
 }
 
 pub fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
@@ -82,10 +90,19 @@ pub fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
         labels.append(tick_label);
     }
 
+    let label = node::element::Text::new()
+            .set("x", -30)
+            .set("y", -(face_height/2.))
+            .set("text-anchor", "middle")
+            .set("font-size", 12)
+            .set("transform", format!("rotate(-90 {} {})", -30, -(face_height/2.)))
+            .add(node::Text::new(a.get_label()));
+
     node::element::Group::new()
         .add(ticks)
         .add(axis_line)
         .add(labels)
+        .add(label)
 }
 
 pub fn draw_face_points(s: &scatter::Scatter,

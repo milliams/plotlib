@@ -132,6 +132,9 @@ pub fn render_y_axis_strings(y_axis: &axis::Axis, face_height: u32) -> (String, 
         .max()
         .expect("ERROR: There are no y-axis ticks");
 
+    let y_axis_label = format!("{: ^width$}", y_axis.get_label(), width=face_height as usize + 1);
+    let y_axis_label: Vec<_> = y_axis_label.chars().rev().collect();
+
     // Generate a list of strings to label the y-axis
     let y_label_strings: Vec<_> = (0..face_height + 1)
         .map(|line| match y_tick_map.get(&(line as i32)) {
@@ -155,20 +158,23 @@ pub fn render_y_axis_strings(y_axis: &axis::Axis, face_height: u32) -> (String, 
         .map(|s| s.to_string())
         .collect();
 
-    let iter = y_label_strings.iter()
+    let iter = y_axis_label.iter()
+        .zip(y_label_strings.iter())
         .zip(y_tick_strings.iter())
         .zip(y_axis_line_strings.iter())
-        .map(|((x, y), z)| (x, y, z));
+        .map(|(((a, x), y), z)| (a, x, y, z));
 
     let axis_string: Vec<String> = iter.rev()
-        .map(|(l, t, a)| {
-            format!("{:>num_width$}{}{}",
+        .map(|(l, ls, t, a)| {
+            format!("{} {:>num_width$}{}{}",
                     l,
+                    ls,
                     t,
                     a,
                     num_width = longest_y_label_width)
         })
         .collect();
+
     let axis_string = axis_string.join("\n");
 
     (axis_string, longest_y_label_width as i32)
@@ -217,21 +223,26 @@ pub fn render_x_axis_strings(x_axis: &axis::Axis, face_width: u32) -> (String, i
         .chain(std::iter::repeat('-').take(face_width as usize))
         .collect();
 
+    let x_axis_label = format!("{: ^width$}", x_axis.get_label(), width=face_width as usize);
+
     let x_axis_string = if start_offset.is_positive() {
         let padding = (0..start_offset).map(|_| " ").collect::<String>();
-        format!("{}\n{}\n{}{}",
+        format!("{}\n{}\n{}{}\n{}",
                 x_axis_line_string,
                 x_axis_tick_string,
                 padding,
-                x_axis_label_string)
+                x_axis_label_string,
+                x_axis_label)
     } else {
         let padding = (0..start_offset.wrapping_neg()).map(|_| " ").collect::<String>();
-        format!("{}{}\n{}{}\n{}",
+        format!("{}{}\n{}{}\n{}\n{}{}",
                 padding,
                 x_axis_line_string,
                 padding,
                 x_axis_tick_string,
-                x_axis_label_string)
+                x_axis_label_string,
+                padding,
+                x_axis_label)
     };
 
     (x_axis_string, start_offset)

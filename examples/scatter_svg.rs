@@ -11,7 +11,9 @@ fn main() {
         .add(&s1)
         .add(&s2)
         .x_range(-5., 10.)
-        .y_range(-2., 6.);
+        .y_range(-2., 6.)
+        .x_label("Some varying variable")
+        .y_label("The repsonse of something");
     plotlib::plot::Plot::single(&v).save("scatter.svg");
 
     /*

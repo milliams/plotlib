@@ -24,6 +24,7 @@ impl Range {
 pub struct Axis {
     range: Range,
     ticks: Vec<f64>,
+    label: String,
 }
 
 impl Axis {
@@ -33,6 +34,7 @@ impl Axis {
         Axis {
             range: Range::new(lower, upper),
             ticks: calculate_ticks(lower, upper, default_max_ticks),
+            label: "".into()
         }
     }
 
@@ -42,6 +44,16 @@ impl Axis {
 
     pub fn min(&self) -> f64 {
         self.range.lower
+    }
+
+    pub fn label<S>(mut self, l: S) -> Self
+        where S: Into<String> {
+        self.label = l.into();
+        self
+    }
+
+    pub fn get_label(&self) -> &str {
+        self.label.as_ref()
     }
 
     /// Get the positions of the ticks on the axis
