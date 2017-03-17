@@ -132,7 +132,9 @@ pub fn render_y_axis_strings(y_axis: &axis::Axis, face_height: u32) -> (String, 
         .max()
         .expect("ERROR: There are no y-axis ticks");
 
-    let y_axis_label = format!("{: ^width$}", y_axis.get_label(), width=face_height as usize + 1);
+    let y_axis_label = format!("{: ^width$}",
+                               y_axis.get_label(),
+                               width = face_height as usize + 1);
     let y_axis_label: Vec<_> = y_axis_label.chars().rev().collect();
 
     // Generate a list of strings to label the y-axis
@@ -223,7 +225,9 @@ pub fn render_x_axis_strings(x_axis: &axis::Axis, face_width: u32) -> (String, i
         .chain(std::iter::repeat('-').take(face_width as usize))
         .collect();
 
-    let x_axis_label = format!("{: ^width$}", x_axis.get_label(), width=face_width as usize);
+    let x_axis_label = format!("{: ^width$}",
+                               x_axis.get_label(),
+                               width = face_width as usize);
 
     let x_axis_string = if start_offset.is_positive() {
         let padding = (0..start_offset).map(|_| " ").collect::<String>();

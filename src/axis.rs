@@ -34,7 +34,7 @@ impl Axis {
         Axis {
             range: Range::new(lower, upper),
             ticks: calculate_ticks(lower, upper, default_max_ticks),
-            label: "".into()
+            label: "".into(),
         }
     }
 
@@ -47,7 +47,8 @@ impl Axis {
     }
 
     pub fn label<S>(mut self, l: S) -> Self
-        where S: Into<String> {
+        where S: Into<String>
+    {
         self.label = l.into();
         self
     }

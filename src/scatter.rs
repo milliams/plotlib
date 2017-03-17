@@ -151,11 +151,6 @@ impl Representation for Scatter {
                face_width: u32,
                face_height: u32)
                -> String {
-        text_render::render_face_points(self,
-                                        x_axis,
-                                        y_axis,
-                                        face_width,
-                                        face_height,
-                                        &self.style)
+        text_render::render_face_points(self, x_axis, y_axis, face_width, face_height, &self.style)
     }
 }

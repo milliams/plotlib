@@ -61,13 +61,15 @@ impl<'a> View<'a> {
     }
 
     pub fn x_label<T>(mut self, value: T) -> Self
-        where T: Into<String> {
+        where T: Into<String>
+    {
         self.x_label = Some(value.into());
         self
     }
 
     pub fn y_label<T>(mut self, value: T) -> Self
-        where T: Into<String> {
+        where T: Into<String>
+    {
         self.y_label = Some(value.into());
         self
     }

@@ -44,11 +44,11 @@ pub fn draw_x_axis(a: &axis::Axis, face_width: f64) -> node::element::Group {
     }
 
     let label = node::element::Text::new()
-            .set("x", face_width/2.)
-            .set("y", 30)
-            .set("text-anchor", "middle")
-            .set("font-size", 12)
-            .add(node::Text::new(a.get_label()));
+        .set("x", face_width / 2.)
+        .set("y", 30)
+        .set("text-anchor", "middle")
+        .set("font-size", 12)
+        .add(node::Text::new(a.get_label()));
 
     node::element::Group::new()
         .add(ticks)
@@ -91,12 +91,13 @@ pub fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
     }
 
     let label = node::element::Text::new()
-            .set("x", -30)
-            .set("y", -(face_height/2.))
-            .set("text-anchor", "middle")
-            .set("font-size", 12)
-            .set("transform", format!("rotate(-90 {} {})", -30, -(face_height/2.)))
-            .add(node::Text::new(a.get_label()));
+        .set("x", -30)
+        .set("y", -(face_height / 2.))
+        .set("text-anchor", "middle")
+        .set("font-size", 12)
+        .set("transform",
+             format!("rotate(-90 {} {})", -30, -(face_height / 2.)))
+        .add(node::Text::new(a.get_label()));
 
     node::element::Group::new()
         .add(ticks)
@@ -136,10 +137,10 @@ pub fn draw_face_points(s: &scatter::Scatter,
             }
             scatter::Marker::Cross => {
                 let path = node::element::path::Data::new()
-                    .move_to((x_pos-radius, y_pos-radius))
-                    .line_by((radius*2., radius*2.))
-                    .move_by((-radius*2., 0))
-                    .line_by((radius*2., -radius*2.))
+                    .move_to((x_pos - radius, y_pos - radius))
+                    .line_by((radius * 2., radius * 2.))
+                    .move_by((-radius * 2., 0))
+                    .line_by((radius * 2., -radius * 2.))
                     .close();
                 group.append(node::element::Path::new()
                     .set("fill", "none")
