@@ -94,12 +94,7 @@ impl<'a> View<'a> {
         axis::Range::new(y_min, y_max)
     }
 
-    /**
-    Create an SVG rendering of the view
-    */
-    pub fn to_svg(&self, face_width: f64, face_height: f64) -> svg::node::element::Group {
-        let mut view_group = svg::node::element::Group::new();
-
+    fn create_axes(&self) -> (axis::Axis, axis::Axis) {
         let default_x_range = self.default_x_range();
         let x_range = self.x_range.as_ref().unwrap_or(&default_x_range);
 
@@ -114,6 +109,17 @@ impl<'a> View<'a> {
 
         let x_axis = axis::Axis::new(x_range.lower, x_range.upper).label(x_label);
         let y_axis = axis::Axis::new(y_range.lower, y_range.upper).label(y_label);
+
+        (x_axis, y_axis)
+    }
+
+    /**
+    Create an SVG rendering of the view
+    */
+    pub fn to_svg(&self, face_width: f64, face_height: f64) -> svg::node::element::Group {
+        let mut view_group = svg::node::element::Group::new();
+
+        let (x_axis, y_axis) = self.create_axes();
 
         // Then, based on those ranges, draw each repr as an SVG
         for repr in &self.representations {
@@ -131,20 +137,7 @@ impl<'a> View<'a> {
     Create a text rendering of the view
     */
     pub fn to_text(&self, face_width: u32, face_height: u32) -> String {
-        let default_x_range = self.default_x_range();
-        let x_range = self.x_range.as_ref().unwrap_or(&default_x_range);
-
-        let default_y_range = self.default_y_range();
-        let y_range = self.y_range.as_ref().unwrap_or(&default_y_range);
-
-        let default_x_label = "".to_string();
-        let x_label: String = self.x_label.clone().unwrap_or(default_x_label);
-
-        let default_y_label = "".to_string();
-        let y_label: String = self.y_label.clone().unwrap_or(default_y_label);
-
-        let x_axis = axis::Axis::new(x_range.lower, x_range.upper).label(x_label);
-        let y_axis = axis::Axis::new(y_range.lower, y_range.upper).label(y_label);
+        let (x_axis, y_axis) = self.create_axes();
 
         let (y_axis_string, longest_y_label_width) =
             text_render::render_y_axis_strings(&y_axis, face_height);
