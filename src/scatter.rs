@@ -108,7 +108,7 @@ impl Scatter {
     fn x_range(&self) -> (f64, f64) {
         let mut min = f64::INFINITY;
         let mut max = f64::NEG_INFINITY;
-        for &(x, _) in self.data.iter() {
+        for &(x, _) in &self.data {
             min = min.min(x);
             max = max.max(x);
         }
@@ -118,7 +118,7 @@ impl Scatter {
     fn y_range(&self) -> (f64, f64) {
         let mut min = f64::INFINITY;
         let mut max = f64::NEG_INFINITY;
-        for &(_, y) in self.data.iter() {
+        for &(_, y) in &self.data {
             min = min.min(y);
             max = max.max(y);
         }
@@ -141,7 +141,7 @@ impl Representation for Scatter {
               face_width: f64,
               face_height: f64)
               -> svg::node::element::Group {
-        svg_render::draw_face_points(self, &x_axis, &y_axis, face_width, face_height, &self.style)
+        svg_render::draw_face_points(self, x_axis, y_axis, face_width, face_height, &self.style)
     }
 
     fn to_text(&self,
@@ -151,8 +151,8 @@ impl Representation for Scatter {
                face_height: u32)
                -> String {
         text_render::render_face_points(self,
-                                        &x_axis,
-                                        &y_axis,
+                                        x_axis,
+                                        y_axis,
                                         face_width,
                                         face_height,
                                         &self.style)

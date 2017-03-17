@@ -36,7 +36,7 @@ fn bound_cell_offsets(hist: &histogram::Histogram,
                       -> Vec<i32> {
     hist.bin_bounds
         .iter()
-        .map(|&bound| value_to_axis_cell_offset(bound, &x_axis, face_width))
+        .map(|&bound| value_to_axis_cell_offset(bound, x_axis, face_width))
         .collect()
 }
 
@@ -124,7 +124,7 @@ fn create_x_axis_labels(x_tick_map: &HashMap<i32, f64>) -> Vec<XAxisLabel> {
 
 pub fn render_y_axis_strings(y_axis: &axis::Axis, face_height: u32) -> (String, i32) {
     // Get the strings and offsets we'll use for the y-axis
-    let y_tick_map = tick_offset_map(&y_axis, face_height);
+    let y_tick_map = tick_offset_map(y_axis, face_height);
 
     // Find a minimum size for the left gutter
     let longest_y_label_width = y_tick_map.values()
@@ -258,7 +258,7 @@ pub fn render_face_bars(h: &histogram::Histogram,
                         face_width: u32,
                         face_height: u32)
                         -> String {
-    let bound_cells = bound_cell_offsets(&h, &x_axis, face_width);
+    let bound_cells = bound_cell_offsets(h, x_axis, face_width);
 
     let cell_bins = bins_for_cells(&bound_cells, face_width);
 
@@ -267,7 +267,7 @@ pub fn render_face_bars(h: &histogram::Histogram,
         .map(|&bin| match bin {
             None => 0,
             Some(b) => {
-                value_to_axis_cell_offset(h.bin_counts[b as usize] as f64, &y_axis, face_height)
+                value_to_axis_cell_offset(h.bin_counts[b as usize] as f64, y_axis, face_height)
             }
         })
         .collect();
@@ -318,7 +318,7 @@ pub fn render_face_bars(h: &histogram::Histogram,
         }
         face_strings.push(line_string);
     }
-    let face_strings: Vec<String> = face_strings.iter().rev().map(|s| s.clone()).collect();
+    let face_strings: Vec<String> = face_strings.iter().rev().cloned().collect();
     face_strings.join("\n")
 }
 
@@ -337,8 +337,8 @@ pub fn render_face_points(s: &scatter::Scatter,
     let points: Vec<_> = s.data
         .iter()
         .map(|&(x, y)| {
-            (value_to_axis_cell_offset(x, &x_axis, face_width),
-             value_to_axis_cell_offset(y, &y_axis, face_height))
+            (value_to_axis_cell_offset(x, x_axis, face_width),
+             value_to_axis_cell_offset(y, y_axis, face_height))
         })
         .collect();
 
@@ -359,7 +359,7 @@ pub fn render_face_points(s: &scatter::Scatter,
         }
         face_strings.push(line_string);
     }
-    let face_strings: Vec<String> = face_strings.iter().rev().map(|s| s.clone()).collect();
+    let face_strings: Vec<String> = face_strings.iter().rev().cloned().collect();
     face_strings.join("\n")
 }
 
@@ -376,7 +376,7 @@ pub fn overlay(under: &str, over: &str, x: i32, y: i32) -> String {
 
     // Trim/add lines at beginning
     let split_over: Vec<String> = if y.is_negative() {
-        split_over.iter().skip(y.abs() as usize).map(|s| s.clone()).collect()
+        split_over.iter().skip(y.abs() as usize).cloned().collect()
     } else if y.is_positive() {
         (0..y)
             .map(|_| (0..over_width).map(|_| ' ').collect())

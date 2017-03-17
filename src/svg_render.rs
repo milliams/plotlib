@@ -24,7 +24,7 @@ pub fn draw_x_axis(a: &axis::Axis, face_width: f64) -> node::element::Group {
     let mut labels = node::element::Group::new();
 
     for &tick in a.ticks().iter() {
-        let tick_pos = value_to_face_offset(tick, &a, face_width);
+        let tick_pos = value_to_face_offset(tick, a, face_width);
         let tick_mark = node::element::Line::new()
             .set("x1", tick_pos)
             .set("y1", 0)
@@ -70,7 +70,7 @@ pub fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
     let mut labels = node::element::Group::new();
 
     for &tick in a.ticks().iter() {
-        let tick_pos = value_to_face_offset(tick, &a, face_height);
+        let tick_pos = value_to_face_offset(tick, a, face_height);
         let tick_mark = node::element::Line::new()
             .set("x1", 0)
             .set("y1", -tick_pos)
@@ -114,9 +114,9 @@ pub fn draw_face_points(s: &scatter::Scatter,
                         -> node::element::Group {
     let mut group = node::element::Group::new();
 
-    for &(x, y) in s.data.iter() {
-        let x_pos = value_to_face_offset(x, &x_axis, face_width);
-        let y_pos = -value_to_face_offset(y, &y_axis, face_height);
+    for &(x, y) in &s.data {
+        let x_pos = value_to_face_offset(x, x_axis, face_width);
+        let y_pos = -value_to_face_offset(y, y_axis, face_height);
         let radius = 5.;
         match style.get_marker() {
             scatter::Marker::Circle => {
@@ -149,18 +149,18 @@ pub fn draw_face_bars(h: &histogram::Histogram,
     let mut group = node::element::Group::new();
 
     for ((&l, &u), &count) in h.bin_bounds.pairwise().zip(h.bin_counts.iter()) {
-        let l_pos = value_to_face_offset(l, &x_axis, face_width);
-        let u_pos = value_to_face_offset(u, &x_axis, face_width);
+        let l_pos = value_to_face_offset(l, x_axis, face_width);
+        let u_pos = value_to_face_offset(u, x_axis, face_width);
         let width = u_pos - l_pos;
-        let count_scaled = value_to_face_offset(count as f64, &y_axis, face_height);
-        let circ = node::element::Rectangle::new()
+        let count_scaled = value_to_face_offset(count as f64, y_axis, face_height);
+        let rect = node::element::Rectangle::new()
             .set("x", l_pos)
             .set("y", -count_scaled)
             .set("width", width)
             .set("height", count_scaled)
             .set("fill", "burlywood")
             .set("stroke", "black");
-        group.append(circ);
+        group.append(rect);
     }
 
     group

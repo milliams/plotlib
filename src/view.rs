@@ -75,7 +75,7 @@ impl<'a> View<'a> {
     fn default_x_range(&self) -> axis::Range {
         let mut x_min = f64::INFINITY;
         let mut x_max = f64::NEG_INFINITY;
-        for repr in self.representations.iter() {
+        for repr in &self.representations {
             let (this_x_min, this_x_max) = repr.range(0);
             x_min = x_min.min(this_x_min);
             x_max = x_max.max(this_x_max);
@@ -86,7 +86,7 @@ impl<'a> View<'a> {
     fn default_y_range(&self) -> axis::Range {
         let mut y_min = f64::INFINITY;
         let mut y_max = f64::NEG_INFINITY;
-        for repr in self.representations.iter() {
+        for repr in &self.representations {
             let (this_y_min, this_y_max) = repr.range(1);
             y_min = y_min.min(this_y_min);
             y_max = y_max.max(this_y_max);
@@ -116,7 +116,7 @@ impl<'a> View<'a> {
         let y_axis = axis::Axis::new(y_range.lower, y_range.upper).label(y_label);
 
         // Then, based on those ranges, draw each repr as an SVG
-        for repr in self.representations.iter() {
+        for repr in &self.representations {
             let repr_group = repr.to_svg(&x_axis, &y_axis, face_width, face_height);
             view_group.append(repr_group);
         }
@@ -162,7 +162,7 @@ impl<'a> View<'a> {
             (0..view_height).map(|_| (0..view_width).map(|_| ' ').collect()).collect();
         let mut view_string = blank.join("\n");
 
-        for repr in self.representations.iter() {
+        for repr in &self.representations {
             let face_string = repr.to_text(&x_axis, &y_axis, face_width, face_height);
             view_string =
                 text_render::overlay(&view_string, &face_string, left_gutter_width as i32 + 1, 0);
@@ -175,8 +175,8 @@ impl<'a> View<'a> {
                                                0);
         let view_string = text_render::overlay(&view_string,
                                                &x_axis_string,
-                                               left_gutter_width as i32 + 0,
-                                               face_height as i32 + 0);
+                                               left_gutter_width as i32,
+                                               face_height as i32);
 
         view_string
     }

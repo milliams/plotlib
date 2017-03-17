@@ -35,7 +35,7 @@ impl<'a> Plot<'a> {
     */
     pub fn to_svg(&self) -> svg::Document {
         let mut document = Document::new().set("viewBox", (0, 0, 600, 400));
-        for &view in self.views.iter() {
+        for &view in &self.views {
             let view_group = view.to_svg(500., 340.)
                 .set("transform", format!("translate({}, {})", 50, 360));
             document.append(view_group);
