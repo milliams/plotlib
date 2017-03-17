@@ -14,6 +14,7 @@ The marker that should be used for the points of the scatter plot
 pub enum Marker {
     Circle,
     Square,
+    Cross,
 }
 
 /// `Style` follows the 'optional builder' pattern

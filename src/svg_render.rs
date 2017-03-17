@@ -134,6 +134,19 @@ pub fn draw_face_points(s: &scatter::Scatter,
                     .set("height", 2. * radius)
                     .set("fill", style.get_colour()));
             }
+            scatter::Marker::Cross => {
+                let path = node::element::path::Data::new()
+                    .move_to((x_pos-radius, y_pos-radius))
+                    .line_by((radius*2., radius*2.))
+                    .move_by((-radius*2., 0))
+                    .line_by((radius*2., -radius*2.))
+                    .close();
+                group.append(node::element::Path::new()
+                    .set("fill", "none")
+                    .set("stroke", style.get_colour())
+                    .set("stroke-width", 2)
+                    .set("d", path));
+            }
         };
     }
 

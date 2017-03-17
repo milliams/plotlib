@@ -345,6 +345,7 @@ pub fn render_face_points(s: &scatter::Scatter,
     let marker = match style.get_marker() {
         scatter::Marker::Circle => '●',
         scatter::Marker::Square => '■',
+        scatter::Marker::Cross => '×',
     };
 
     let mut face_strings: Vec<String> = vec![];
