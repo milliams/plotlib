@@ -21,6 +21,7 @@ pub fn draw_x_axis(a: &axis::Axis, face_width: f64) -> node::element::Group {
         .set("stroke-width", 1);
 
     let mut ticks = node::element::Group::new();
+    let mut labels = node::element::Group::new();
 
     for &tick in a.ticks().iter() {
         let tick_pos = value_to_face_offset(tick, &a, face_width);
@@ -32,12 +33,7 @@ pub fn draw_x_axis(a: &axis::Axis, face_width: f64) -> node::element::Group {
             .set("stroke", "black")
             .set("stroke-width", 1);
         ticks.append(tick_mark);
-    }
 
-    let mut labels = node::element::Group::new();
-
-    for &tick in a.ticks().iter() {
-        let tick_pos = value_to_face_offset(tick, &a, face_width);
         let tick_label = node::element::Text::new()
             .set("x", tick_pos)
             .set("y", 20)
@@ -63,6 +59,7 @@ pub fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
         .set("stroke-0", 1);
 
     let mut ticks = node::element::Group::new();
+    let mut labels = node::element::Group::new();
 
     for &tick in a.ticks().iter() {
         let tick_pos = value_to_face_offset(tick, &a, face_height);
@@ -74,12 +71,7 @@ pub fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
             .set("stroke", "black")
             .set("stroke-width", 1);
         ticks.append(tick_mark);
-    }
 
-    let mut labels = node::element::Group::new();
-
-    for &tick in a.ticks().iter() {
-        let tick_pos = value_to_face_offset(tick, &a, face_height);
         let tick_label = node::element::Text::new()
             .set("x", -15)
             .set("y", -tick_pos)
