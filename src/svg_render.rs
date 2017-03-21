@@ -3,6 +3,7 @@ use svg::node;
 
 use histogram;
 use scatter;
+use function;
 use axis;
 use utils::PairWise;
 
@@ -176,6 +177,36 @@ pub fn draw_face_bars(h: &histogram::Histogram,
             .set("stroke", "black");
         group.append(rect);
     }
+
+    group
+}
+
+pub fn draw_face_line(s: &function::Function,
+                        x_axis: &axis::Axis,
+                        y_axis: &axis::Axis,
+                        face_width: f64,
+                        face_height: f64)
+                        -> node::element::Group {
+    let mut group = node::element::Group::new();
+
+    let mut d: Vec<node::element::path::Command> = vec![];
+    let &(first_x, first_y) = s.data.first().unwrap();
+    let first_x_pos = value_to_face_offset(first_x, x_axis, face_width);
+    let first_y_pos = -value_to_face_offset(first_y, y_axis, face_height);
+    d.push(node::element::path::Command::Move(node::element::path::Position::Absolute, (first_x_pos, first_y_pos).into()));
+    for &(x, y) in &s.data {
+        let x_pos = value_to_face_offset(x, x_axis, face_width);
+        let y_pos = -value_to_face_offset(y, y_axis, face_height);
+        d.push(node::element::path::Command::Line(node::element::path::Position::Absolute, (x_pos, y_pos).into()));
+    }
+
+    let mut path = node::element::path::Data::from(d);
+
+    group.append(node::element::Path::new()
+        .set("fill", "none")
+        .set("stroke", "black")
+        .set("stroke-width", 2)
+        .set("d", path));
 
     group
 }
