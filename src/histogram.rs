@@ -28,6 +28,9 @@ use svg_render;
 use text_render;
 use representation::Representation;
 
+/**
+A one-dimensional histogram with equal binning.
+*/
 #[derive(Debug)]
 pub struct Histogram {
     pub bin_bounds: Vec<f64>, // will have N_bins + 1 entries

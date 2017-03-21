@@ -1,10 +1,24 @@
+/*!
+
+Plot arbitrary functions
+
+# Examples
+
+```
+# use plotlib::function::Function;
+# use plotlib::view::View;
+// y=x^2 between 0 and 10
+let f = Function::new(|x| x*x, 0., 10.);
+let v = View::new().add(&f);
+```
+*/
+
 use std::f64;
 
 use svg;
 
 use axis;
 use representation::Representation;
-
 use svg_render;
 
 #[derive(Debug)]
@@ -113,15 +127,5 @@ impl Representation for Function {
                face_height: u32)
                -> String {
         "".into()
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_function() {
-        let f = Function::new(|x| x*x, 0., 10.);
     }
 }
