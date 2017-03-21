@@ -7,8 +7,43 @@ use representation::Representation;
 
 use svg_render;
 
+#[derive(Debug)]
+pub struct Style {
+    colour: Option<String>,
+}
+
+impl Style {
+    pub fn new() -> Self {
+        Style {
+            colour: None,
+        }
+    }
+
+    pub fn overlay(&mut self, other: Self) {
+        match other.colour {
+            Some(v) => self.colour = Some(v),
+            None => {}
+        }
+    }
+
+    pub fn colour<T>(mut self, value: T) -> Self
+        where T: Into<String>
+    {
+        self.colour = Some(value.into());
+        self
+    }
+
+    pub fn get_colour(&self) -> String {
+        match self.colour.clone() {
+            Some(v) => v,
+            None => "".into(),
+        }
+    }
+}
+
 pub struct Function {
     pub data: Vec<(f64, f64)>,
+    style: Style,
 }
 
 impl Function {
@@ -19,7 +54,17 @@ impl Function {
         let values = samples.map(|s| (s, f(s))).collect();
         Function {
             data: values,
+            style: Style::new(),
         }
+    }
+
+    pub fn style(mut self, style: Style) -> Self {
+        self.style.overlay(style);
+        self
+    }
+
+    pub fn get_style(&self) -> &Style {
+        &self.style
     }
 
     fn x_range(&self) -> (f64, f64) {
@@ -58,7 +103,7 @@ impl Representation for Function {
               face_width: f64,
               face_height: f64)
               -> svg::node::element::Group {
-        svg_render::draw_face_line(self, x_axis, y_axis, face_width, face_height)
+        svg_render::draw_face_line(self, x_axis, y_axis, face_width, face_height, &self.style)
     }
 
     fn to_text(&self,

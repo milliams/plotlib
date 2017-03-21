@@ -185,7 +185,8 @@ pub fn draw_face_line(s: &function::Function,
                         x_axis: &axis::Axis,
                         y_axis: &axis::Axis,
                         face_width: f64,
-                        face_height: f64)
+                        face_height: f64,
+                        style: &function::Style)
                         -> node::element::Group {
     let mut group = node::element::Group::new();
 
@@ -204,7 +205,7 @@ pub fn draw_face_line(s: &function::Function,
 
     group.append(node::element::Path::new()
         .set("fill", "none")
-        .set("stroke", "black")
+        .set("stroke", style.get_colour())
         .set("stroke-width", 2)
         .set("d", path));
 
