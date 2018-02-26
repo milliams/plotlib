@@ -22,7 +22,7 @@ pub enum Marker {
 /// Each can be set with setter methods and instances
 /// of `Style` can be overlaid to set many at once.
 /// Settings will be cloned in and out of it.
-#[derive(Debug)]
+#[derive(Debug, Default)]
 pub struct Style {
     marker: Option<Marker>,
     colour: Option<String>,

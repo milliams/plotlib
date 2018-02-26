@@ -218,7 +218,7 @@ pub fn draw_face_line(
         ));
     }
 
-    let mut path = node::element::path::Data::from(d);
+    let path = node::element::path::Data::from(d);
 
     group.append(
         node::element::Path::new()

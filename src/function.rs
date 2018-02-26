@@ -21,7 +21,7 @@ use axis;
 use representation::Representation;
 use svg_render;
 
-#[derive(Debug)]
+#[derive(Debug, Default)]
 pub struct Style {
     colour: Option<String>,
 }

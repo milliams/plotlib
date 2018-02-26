@@ -14,6 +14,7 @@ use svg_render;
 use text_render;
 
 /// Standard 1-dimensional view with a continuous x-axis
+#[derive(Default)]
 pub struct View<'a> {
     pub representations: Vec<&'a Representation>,
     x_range: Option<axis::Range>,
