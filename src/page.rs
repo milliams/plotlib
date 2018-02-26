@@ -1,5 +1,5 @@
 /*!
-The `plot` module provides structures for laying out and rendering multiple views.
+The `page` module provides structures for laying out and rendering multiple views.
 */
 
 use std::path::Path;
@@ -12,19 +12,19 @@ use svg::Document;
 use view::View;
 
 /**
-A single page plot laying out the views in a grid
+A single page page laying out the views in a grid
 */
-pub struct Plot<'a> {
+pub struct Page<'a> {
     views: Vec<&'a View<'a>>,
     num_views: u32,
 }
 
-impl<'a> Plot<'a> {
+impl<'a> Page<'a> {
     /**
     Creates a plot containing a single view
     */
     pub fn single(view: &'a View) -> Self {
-        Plot {
+        Page {
             views: vec![view],
             num_views: 1,
         }
