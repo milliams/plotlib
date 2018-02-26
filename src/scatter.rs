@@ -10,7 +10,7 @@ use representation::Representation;
 /**
 The marker that should be used for the points of the scatter plot
 */
-#[derive(Debug,Clone)]
+#[derive(Debug, Clone)]
 pub enum Marker {
     Circle,
     Square,
@@ -48,7 +48,8 @@ impl Style {
     }
 
     pub fn marker<T>(mut self, value: T) -> Self
-        where T: Into<Marker>
+    where
+        T: Into<Marker>,
     {
         self.marker = Some(value.into());
         self
@@ -62,7 +63,8 @@ impl Style {
     }
 
     pub fn colour<T>(mut self, value: T) -> Self
-        where T: Into<String>
+    where
+        T: Into<String>,
     {
         self.colour = Some(value.into());
         self
@@ -136,21 +138,23 @@ impl Representation for Scatter {
         }
     }
 
-    fn to_svg(&self,
-              x_axis: &axis::Axis,
-              y_axis: &axis::Axis,
-              face_width: f64,
-              face_height: f64)
-              -> svg::node::element::Group {
+    fn to_svg(
+        &self,
+        x_axis: &axis::Axis,
+        y_axis: &axis::Axis,
+        face_width: f64,
+        face_height: f64,
+    ) -> svg::node::element::Group {
         svg_render::draw_face_points(self, x_axis, y_axis, face_width, face_height, &self.style)
     }
 
-    fn to_text(&self,
-               x_axis: &axis::Axis,
-               y_axis: &axis::Axis,
-               face_width: u32,
-               face_height: u32)
-               -> String {
+    fn to_text(
+        &self,
+        x_axis: &axis::Axis,
+        y_axis: &axis::Axis,
+        face_width: u32,
+        face_height: u32,
+    ) -> String {
         text_render::render_face_points(self, x_axis, y_axis, face_width, face_height, &self.style)
     }
 }

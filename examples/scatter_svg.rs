@@ -1,10 +1,19 @@
 extern crate plotlib;
 
 fn main() {
-    let data = [(-3.0, 2.3), (-1.6, 5.3), (0.3, 0.7), (4.3, -1.4), (6.4, 4.3), (8.5, 3.7)];
-    let s1 = plotlib::scatter::Scatter::from_vec(&data).style(plotlib::scatter::Style::new()
-        .marker(plotlib::scatter::Marker::Square)
-        .colour("#DD3355"));
+    let data = [
+        (-3.0, 2.3),
+        (-1.6, 5.3),
+        (0.3, 0.7),
+        (4.3, -1.4),
+        (6.4, 4.3),
+        (8.5, 3.7),
+    ];
+    let s1 = plotlib::scatter::Scatter::from_vec(&data).style(
+        plotlib::scatter::Style::new()
+            .marker(plotlib::scatter::Marker::Square)
+            .colour("#DD3355"),
+    );
     let s2 = plotlib::scatter::Scatter::from_vec(&[(-1.4, 2.5), (7.2, -0.3)])
         .style(plotlib::scatter::Style::new().colour("#35C788"));
     let v = plotlib::view::View::new()

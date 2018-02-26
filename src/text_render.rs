@@ -30,10 +30,11 @@ fn tick_offset_map(axis: &axis::Axis, face_width: u32) -> HashMap<i32, f64> {
 /// the total scale of the axis
 /// and the number of face cells to work with,
 /// create a mapping of cell offset to bin bound
-fn bound_cell_offsets(hist: &histogram::Histogram,
-                      x_axis: &axis::Axis,
-                      face_width: u32)
-                      -> Vec<i32> {
+fn bound_cell_offsets(
+    hist: &histogram::Histogram,
+    x_axis: &axis::Axis,
+    face_width: u32,
+) -> Vec<i32> {
     hist.bin_bounds
         .iter()
         .map(|&bound| value_to_axis_cell_offset(bound, x_axis, face_width))
@@ -60,8 +61,11 @@ fn bins_for_cells(bound_cell_offsets: &[i32], face_width: u32) -> Vec<Option<i32
     cell_bins.push(None); // end with an appended positive null
 
     if *bins_cell_offset < 0 {
-        cell_bins =
-            cell_bins.iter().skip(bins_cell_offset.wrapping_abs() as usize).cloned().collect();
+        cell_bins = cell_bins
+            .iter()
+            .skip(bins_cell_offset.wrapping_abs() as usize)
+            .cloned()
+            .collect();
     } else if *bins_cell_offset > 0 {
         let mut new_bins = vec![None; (*bins_cell_offset) as usize];
         new_bins.extend(cell_bins.iter());
@@ -75,7 +79,11 @@ fn bins_for_cells(bound_cell_offsets: &[i32], face_width: u32) -> Vec<Option<i32
         cell_bins = new_bins;
     } else if cell_bins.len() > face_width as usize + 2 {
         let new_bins = cell_bins;
-        cell_bins = new_bins.iter().take(face_width as usize + 2).cloned().collect();
+        cell_bins = new_bins
+            .iter()
+            .take(face_width as usize + 2)
+            .cloned()
+            .collect();
     }
 
     cell_bins
@@ -110,12 +118,11 @@ impl XAxisLabel {
 }
 
 fn create_x_axis_labels(x_tick_map: &HashMap<i32, f64>) -> Vec<XAxisLabel> {
-    let mut ls: Vec<_> = x_tick_map.iter()
-        .map(|(&offset, &tick)| {
-            XAxisLabel {
-                text: tick.to_string(),
-                offset: offset,
-            }
+    let mut ls: Vec<_> = x_tick_map
+        .iter()
+        .map(|(&offset, &tick)| XAxisLabel {
+            text: tick.to_string(),
+            offset: offset,
         })
         .collect();
     ls.sort_by_key(|l| l.offset);
@@ -127,14 +134,17 @@ pub fn render_y_axis_strings(y_axis: &axis::Axis, face_height: u32) -> (String, 
     let y_tick_map = tick_offset_map(y_axis, face_height);
 
     // Find a minimum size for the left gutter
-    let longest_y_label_width = y_tick_map.values()
+    let longest_y_label_width = y_tick_map
+        .values()
         .map(|n| n.to_string().len())
         .max()
         .expect("ERROR: There are no y-axis ticks");
 
-    let y_axis_label = format!("{: ^width$}",
-                               y_axis.get_label(),
-                               width = face_height as usize + 1);
+    let y_axis_label = format!(
+        "{: ^width$}",
+        y_axis.get_label(),
+        width = face_height as usize + 1
+    );
     let y_axis_label: Vec<_> = y_axis_label.chars().rev().collect();
 
     // Generate a list of strings to label the y-axis
@@ -160,7 +170,8 @@ pub fn render_y_axis_strings(y_axis: &axis::Axis, face_height: u32) -> (String, 
         .map(|s| s.to_string())
         .collect();
 
-    let iter = y_axis_label.iter()
+    let iter = y_axis_label
+        .iter()
         .zip(y_label_strings.iter())
         .zip(y_tick_strings.iter())
         .zip(y_axis_line_strings.iter())
@@ -168,12 +179,14 @@ pub fn render_y_axis_strings(y_axis: &axis::Axis, face_height: u32) -> (String, 
 
     let axis_string: Vec<String> = iter.rev()
         .map(|(l, ls, t, a)| {
-            format!("{} {:>num_width$}{}{}",
-                    l,
-                    ls,
-                    t,
-                    a,
-                    num_width = longest_y_label_width)
+            format!(
+                "{} {:>num_width$}{}{}",
+                l,
+                ls,
+                t,
+                a,
+                num_width = longest_y_label_width
+            )
         })
         .collect();
 
@@ -196,7 +209,8 @@ pub fn render_x_axis_strings(x_axis: &axis::Axis, face_width: u32) -> (String, i
 
     // Create a string which will be printed to give the x-axis labels
     let x_labels = create_x_axis_labels(&x_tick_map);
-    let start_offset = x_labels.iter()
+    let start_offset = x_labels
+        .iter()
         .map(|label| label.start_offset())
         .min()
         .expect("ERROR: Could not compute start offset of x-axis");
@@ -204,8 +218,8 @@ pub fn render_x_axis_strings(x_axis: &axis::Axis, face_width: u32) -> (String, i
     // This string will be printed, starting at start_offset relative to the x-axis zero cell
     let mut x_axis_label_string = "".to_string();
     for label in (&x_labels).iter() {
-        let spaces_to_append = label.start_offset() - start_offset -
-                               x_axis_label_string.len() as i32;
+        let spaces_to_append =
+            label.start_offset() - start_offset - x_axis_label_string.len() as i32;
         if spaces_to_append.is_positive() {
             for _ in 0..spaces_to_append {
                 x_axis_label_string.push(' ');
@@ -225,28 +239,32 @@ pub fn render_x_axis_strings(x_axis: &axis::Axis, face_width: u32) -> (String, i
         .chain(std::iter::repeat('-').take(face_width as usize))
         .collect();
 
-    let x_axis_label = format!("{: ^width$}",
-                               x_axis.get_label(),
-                               width = face_width as usize);
+    let x_axis_label = format!(
+        "{: ^width$}",
+        x_axis.get_label(),
+        width = face_width as usize
+    );
 
     let x_axis_string = if start_offset.is_positive() {
         let padding = (0..start_offset).map(|_| " ").collect::<String>();
-        format!("{}\n{}\n{}{}\n{}",
-                x_axis_line_string,
-                x_axis_tick_string,
-                padding,
-                x_axis_label_string,
-                x_axis_label)
+        format!(
+            "{}\n{}\n{}{}\n{}",
+            x_axis_line_string, x_axis_tick_string, padding, x_axis_label_string, x_axis_label
+        )
     } else {
-        let padding = (0..start_offset.wrapping_neg()).map(|_| " ").collect::<String>();
-        format!("{}{}\n{}{}\n{}\n{}{}",
-                padding,
-                x_axis_line_string,
-                padding,
-                x_axis_tick_string,
-                x_axis_label_string,
-                padding,
-                x_axis_label)
+        let padding = (0..start_offset.wrapping_neg())
+            .map(|_| " ")
+            .collect::<String>();
+        format!(
+            "{}{}\n{}{}\n{}\n{}{}",
+            padding,
+            x_axis_line_string,
+            padding,
+            x_axis_tick_string,
+            x_axis_label_string,
+            padding,
+            x_axis_label
+        )
     };
 
     (x_axis_string, start_offset)
@@ -256,18 +274,20 @@ pub fn render_x_axis_strings(x_axis: &axis::Axis, face_width: u32) -> (String, i
 /// the x ands y-axes
 /// and the face height and width,
 /// create the strings to be drawn as the face
-pub fn render_face_bars(h: &histogram::Histogram,
-                        x_axis: &axis::Axis,
-                        y_axis: &axis::Axis,
-                        face_width: u32,
-                        face_height: u32)
-                        -> String {
+pub fn render_face_bars(
+    h: &histogram::Histogram,
+    x_axis: &axis::Axis,
+    y_axis: &axis::Axis,
+    face_width: u32,
+    face_height: u32,
+) -> String {
     let bound_cells = bound_cell_offsets(h, x_axis, face_width);
 
     let cell_bins = bins_for_cells(&bound_cells, face_width);
 
     // counts per bin converted to rows per column
-    let cell_heights: Vec<_> = cell_bins.iter()
+    let cell_heights: Vec<_> = cell_bins
+        .iter()
         .map(|&bin| match bin {
             None => 0,
             Some(b) => {
@@ -297,8 +317,8 @@ pub fn render_face_bars(h: &histogram::Histogram,
                     }
                     std::cmp::Ordering::Equal => {
                         match a {
-                            std::cmp::Ordering::Less => '-', // or backwards 'r'
-                            std::cmp::Ordering::Equal => '-', // or 'T'-shaped
+                            std::cmp::Ordering::Less => '-',    // or backwards 'r'
+                            std::cmp::Ordering::Equal => '-',   // or 'T'-shaped
                             std::cmp::Ordering::Greater => '|', // or '-|'
                         }
                     }
@@ -330,19 +350,21 @@ pub fn render_face_bars(h: &histogram::Histogram,
 /// the x ands y-axes
 /// and the face height and width,
 /// create the strings to be drawn as the face
-pub fn render_face_points(s: &scatter::Scatter,
-                          x_axis: &axis::Axis,
-                          y_axis: &axis::Axis,
-                          face_width: u32,
-                          face_height: u32,
-                          style: &scatter::Style)
-                          -> String {
-
+pub fn render_face_points(
+    s: &scatter::Scatter,
+    x_axis: &axis::Axis,
+    y_axis: &axis::Axis,
+    face_width: u32,
+    face_height: u32,
+    style: &scatter::Style,
+) -> String {
     let points: Vec<_> = s.data
         .iter()
         .map(|&(x, y)| {
-            (value_to_axis_cell_offset(x, x_axis, face_width),
-             value_to_axis_cell_offset(y, y_axis, face_height))
+            (
+                value_to_axis_cell_offset(x, x_axis, face_width),
+                value_to_axis_cell_offset(y, y_axis, face_height),
+            )
         })
         .collect();
 
@@ -393,9 +415,15 @@ pub fn overlay(under: &str, over: &str, x: i32, y: i32) -> String {
 
     // Trim/add chars at beginning
     let split_over: Vec<String> = if x.is_negative() {
-        split_over.iter().map(|l| l.chars().skip(x.abs() as usize).collect()).collect()
+        split_over
+            .iter()
+            .map(|l| l.chars().skip(x.abs() as usize).collect())
+            .collect()
     } else if x.is_positive() {
-        split_over.iter().map(|s| (0..x).map(|_| ' ').chain(s.chars()).collect()).collect()
+        split_over
+            .iter()
+            .map(|s| (0..x).map(|_| ' ').chain(s.chars()).collect())
+            .collect()
     } else {
         split_over
     };
@@ -405,8 +433,9 @@ pub fn overlay(under: &str, over: &str, x: i32, y: i32) -> String {
     let over_height = split_over.len();
     let lines_deficit = under_height as i32 - over_height as i32;
     let split_over: Vec<String> = if lines_deficit.is_positive() {
-        let new_lines: Vec<String> =
-            (0..lines_deficit).map(|_| (0..over_width).map(|_| ' ').collect::<String>()).collect();
+        let new_lines: Vec<String> = (0..lines_deficit)
+            .map(|_| (0..over_width).map(|_| ' ').collect::<String>())
+            .collect();
         let mut temp = split_over.clone();
         for new_line in new_lines {
             temp.push(new_line);
@@ -419,8 +448,13 @@ pub fn overlay(under: &str, over: &str, x: i32, y: i32) -> String {
     // pad out end of each line
     let line_width_deficit = under_width as i32 - over_width as i32;
     let split_over: Vec<String> = if line_width_deficit.is_positive() {
-        split_over.iter()
-            .map(|l| l.chars().chain((0..line_width_deficit).map(|_| ' ')).collect())
+        split_over
+            .iter()
+            .map(|l| {
+                l.chars()
+                    .chain((0..line_width_deficit).map(|_| ' '))
+                    .collect()
+            })
             .collect()
     } else {
         split_over
@@ -454,32 +488,52 @@ mod tests {
                 .collect()
         };
 
-        assert_eq!(run_bins_for_cells(&vec![-4, -1, 4, 7, 10]),
-                   [1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, n]);
-        assert_eq!(run_bins_for_cells(&vec![0, 2, 4, 8, 10]),
-                   [n, 0, 0, 1, 1, 2, 2, 2, 2, 3, 3, n]);
-        assert_eq!(run_bins_for_cells(&vec![3, 5, 7, 9, 10]),
-                   [n, n, n, n, 0, 0, 1, 1, 2, 2, 3, n]);
-        assert_eq!(run_bins_for_cells(&vec![0, 2, 4, 6, 8]),
-                   [n, 0, 0, 1, 1, 2, 2, 3, 3, n, n, n]);
-        assert_eq!(run_bins_for_cells(&vec![0, 3, 6, 9, 12]),
-                   [n, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3]);
+        assert_eq!(
+            run_bins_for_cells(&vec![-4, -1, 4, 7, 10]),
+            [1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, n]
+        );
+        assert_eq!(
+            run_bins_for_cells(&vec![0, 2, 4, 8, 10]),
+            [n, 0, 0, 1, 1, 2, 2, 2, 2, 3, 3, n]
+        );
+        assert_eq!(
+            run_bins_for_cells(&vec![3, 5, 7, 9, 10]),
+            [n, n, n, n, 0, 0, 1, 1, 2, 2, 3, n]
+        );
+        assert_eq!(
+            run_bins_for_cells(&vec![0, 2, 4, 6, 8]),
+            [n, 0, 0, 1, 1, 2, 2, 3, 3, n, n, n]
+        );
+        assert_eq!(
+            run_bins_for_cells(&vec![0, 3, 6, 9, 12]),
+            [n, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3]
+        );
 
-        assert_eq!(run_bins_for_cells(&vec![-5, -4, -3, -1, 0]),
-                   [3, n, n, n, n, n, n, n, n, n, n, n]);
-        assert_eq!(run_bins_for_cells(&vec![10, 12, 14, 16, 18]),
-                   [n, n, n, n, n, n, n, n, n, n, n, 0]);
+        assert_eq!(
+            run_bins_for_cells(&vec![-5, -4, -3, -1, 0]),
+            [3, n, n, n, n, n, n, n, n, n, n, n]
+        );
+        assert_eq!(
+            run_bins_for_cells(&vec![10, 12, 14, 16, 18]),
+            [n, n, n, n, n, n, n, n, n, n, n, 0]
+        );
 
-        assert_eq!(run_bins_for_cells(&vec![15, 16, 17, 18, 19]),
-                   [n, n, n, n, n, n, n, n, n, n, n, n]);
-        assert_eq!(run_bins_for_cells(&vec![-19, -18, -17, -16, -1]),
-                   [n, n, n, n, n, n, n, n, n, n, n, n]);
+        assert_eq!(
+            run_bins_for_cells(&vec![15, 16, 17, 18, 19]),
+            [n, n, n, n, n, n, n, n, n, n, n, n]
+        );
+        assert_eq!(
+            run_bins_for_cells(&vec![-19, -18, -17, -16, -1]),
+            [n, n, n, n, n, n, n, n, n, n, n, n]
+        );
     }
 
     #[test]
     fn test_value_to_axis_cell_offset() {
-        assert_eq!(value_to_axis_cell_offset(3.0, &axis::Axis::new(5.0, 10.0), 10),
-                   -4);
+        assert_eq!(
+            value_to_axis_cell_offset(3.0, &axis::Axis::new(5.0, 10.0), 10),
+            -4
+        );
     }
 
     #[test]
@@ -552,24 +606,32 @@ mod tests {
         assert_eq!(strings.lines().count(), 10);
         assert!(strings.lines().all(|s| s.chars().count() == 20));
 
-        let comp = vec!["       ---          ",
-                        "       | |          ",
-                        "       | |          ",
-                        "--     | |          ",
-                        " |     | |          ",
-                        " |     | |          ",
-                        " |     | |          ",
-                        " |     | |---- -----",
-                        " |     | | | | | | |",
-                        " |     | | | | | | |"]
-            .join("\n");
+        let comp = vec![
+            "       ---          ",
+            "       | |          ",
+            "       | |          ",
+            "--     | |          ",
+            " |     | |          ",
+            " |     | |          ",
+            " |     | |          ",
+            " |     | |---- -----",
+            " |     | | | | | | |",
+            " |     | | | | | | |",
+        ].join("\n");
 
         assert_eq!(&strings, &comp);
     }
 
     #[test]
     fn test_render_face_points() {
-        let data = vec![(-3.0, 2.3), (-1.6, 5.3), (0.3, 0.7), (4.3, -1.4), (6.4, 4.3), (8.5, 3.7)];
+        let data = vec![
+            (-3.0, 2.3),
+            (-1.6, 5.3),
+            (0.3, 0.7),
+            (4.3, -1.4),
+            (6.4, 4.3),
+            (8.5, 3.7),
+        ];
         let s = scatter::Scatter::from_vec(&data);
         let x_axis = axis::Axis::new(-3.575, 9.075);
         let y_axis = axis::Axis::new(-1.735, 5.635);
@@ -578,17 +640,18 @@ mod tests {
         assert_eq!(strings.lines().count(), 10);
         assert!(strings.lines().all(|s| s.chars().count() == 20));
 
-        let comp = vec!["  ●                 ",
-                        "                    ",
-                        "               ●    ",
-                        "                  ● ",
-                        "                    ",
-                        "●                   ",
-                        "                    ",
-                        "     ●              ",
-                        "                    ",
-                        "                    "]
-            .join("\n");
+        let comp = vec![
+            "  ●                 ",
+            "                    ",
+            "               ●    ",
+            "                  ● ",
+            "                    ",
+            "●                   ",
+            "                    ",
+            "     ●              ",
+            "                    ",
+            "                    ",
+        ].join("\n");
 
         assert_eq!(&strings, &comp);
     }

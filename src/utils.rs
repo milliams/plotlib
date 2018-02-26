@@ -1,4 +1,4 @@
-use std::iter::{Zip, Skip};
+use std::iter::{Skip, Zip};
 use std::slice::Iter;
 
 pub trait PairWise<T> {

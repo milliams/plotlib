@@ -61,14 +61,16 @@ impl<'a> View<'a> {
     }
 
     pub fn x_label<T>(mut self, value: T) -> Self
-        where T: Into<String>
+    where
+        T: Into<String>,
     {
         self.x_label = Some(value.into());
         self
     }
 
     pub fn y_label<T>(mut self, value: T) -> Self
-        where T: Into<String>
+    where
+        T: Into<String>,
     {
         self.y_label = Some(value.into());
         self
@@ -146,15 +148,17 @@ impl<'a> View<'a> {
 
         let (x_axis_string, start_offset) = text_render::render_x_axis_strings(&x_axis, face_width);
 
-        let left_gutter_width = std::cmp::max(longest_y_label_width as i32 + 3,
-                                              start_offset.wrapping_neg()) as
-                                u32;
+        let left_gutter_width = std::cmp::max(
+            longest_y_label_width as i32 + 3,
+            start_offset.wrapping_neg(),
+        ) as u32;
 
         let view_width = face_width + 1 + left_gutter_width + 1;
         let view_height = face_height + 4;
 
-        let blank: Vec<String> =
-            (0..view_height).map(|_| (0..view_width).map(|_| ' ').collect()).collect();
+        let blank: Vec<String> = (0..view_height)
+            .map(|_| (0..view_width).map(|_| ' ').collect())
+            .collect();
         let mut view_string = blank.join("\n");
 
         for repr in &self.representations {
@@ -163,15 +167,18 @@ impl<'a> View<'a> {
                 text_render::overlay(&view_string, &face_string, left_gutter_width as i32 + 1, 0);
         }
 
-        let view_string = text_render::overlay(&view_string,
-                                               &y_axis_string,
-                                               left_gutter_width as i32 - 2 -
-                                               longest_y_label_width,
-                                               0);
-        let view_string = text_render::overlay(&view_string,
-                                               &x_axis_string,
-                                               left_gutter_width as i32,
-                                               face_height as i32);
+        let view_string = text_render::overlay(
+            &view_string,
+            &y_axis_string,
+            left_gutter_width as i32 - 2 - longest_y_label_width,
+            0,
+        );
+        let view_string = text_render::overlay(
+            &view_string,
+            &x_axis_string,
+            left_gutter_width as i32,
+            face_height as i32,
+        );
 
         view_string
     }

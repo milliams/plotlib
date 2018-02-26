@@ -28,9 +28,7 @@ pub struct Style {
 
 impl Style {
     pub fn new() -> Self {
-        Style {
-            colour: None,
-        }
+        Style { colour: None }
     }
 
     pub fn overlay(&mut self, other: Self) {
@@ -41,7 +39,8 @@ impl Style {
     }
 
     pub fn colour<T>(mut self, value: T) -> Self
-        where T: Into<String>
+    where
+        T: Into<String>,
     {
         self.colour = Some(value.into());
         self
@@ -62,9 +61,13 @@ pub struct Function {
 
 impl Function {
     pub fn new<F>(f: F, lower: f64, upper: f64) -> Self
-        where F: Fn(f64) -> f64 {
+    where
+        F: Fn(f64) -> f64,
+    {
         let sampling = (upper - lower) / 200.;
-        let samples = (0..).map(|x| lower + (x as f64 * sampling)).take_while(|&x| x <= upper);
+        let samples = (0..)
+            .map(|x| lower + (x as f64 * sampling))
+            .take_while(|&x| x <= upper);
         let values = samples.map(|s| (s, f(s))).collect();
         Function {
             data: values,
@@ -111,21 +114,23 @@ impl Representation for Function {
         }
     }
 
-    fn to_svg(&self,
-              x_axis: &axis::Axis,
-              y_axis: &axis::Axis,
-              face_width: f64,
-              face_height: f64)
-              -> svg::node::element::Group {
+    fn to_svg(
+        &self,
+        x_axis: &axis::Axis,
+        y_axis: &axis::Axis,
+        face_width: f64,
+        face_height: f64,
+    ) -> svg::node::element::Group {
         svg_render::draw_face_line(self, x_axis, y_axis, face_width, face_height, &self.style)
     }
 
-    fn to_text(&self,
-               x_axis: &axis::Axis,
-               y_axis: &axis::Axis,
-               face_width: u32,
-               face_height: u32)
-               -> String {
+    fn to_text(
+        &self,
+        x_axis: &axis::Axis,
+        y_axis: &axis::Axis,
+        face_width: u32,
+        face_height: u32,
+    ) -> String {
         "".into()
     }
 }

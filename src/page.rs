@@ -60,7 +60,8 @@ impl<'a> Page<'a> {
     */
 
     pub fn save<P>(&self, path: P)
-        where P: AsRef<Path>
+    where
+        P: AsRef<Path>,
     {
         match path.as_ref().extension().and_then(OsStr::to_str) {
             Some("svg") => {

@@ -96,8 +96,10 @@ pub fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
         .set("y", -(face_height / 2.))
         .set("text-anchor", "middle")
         .set("font-size", 12)
-        .set("transform",
-             format!("rotate(-90 {} {})", -30, -(face_height / 2.)))
+        .set(
+            "transform",
+            format!("rotate(-90 {} {})", -30, -(face_height / 2.)),
+        )
         .add(node::Text::new(a.get_label()));
 
     node::element::Group::new()
@@ -107,13 +109,14 @@ pub fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
         .add(label)
 }
 
-pub fn draw_face_points(s: &scatter::Scatter,
-                        x_axis: &axis::Axis,
-                        y_axis: &axis::Axis,
-                        face_width: f64,
-                        face_height: f64,
-                        style: &scatter::Style)
-                        -> node::element::Group {
+pub fn draw_face_points(
+    s: &scatter::Scatter,
+    x_axis: &axis::Axis,
+    y_axis: &axis::Axis,
+    face_width: f64,
+    face_height: f64,
+    style: &scatter::Style,
+) -> node::element::Group {
     let mut group = node::element::Group::new();
 
     for &(x, y) in &s.data {
@@ -122,19 +125,23 @@ pub fn draw_face_points(s: &scatter::Scatter,
         let radius = 5.;
         match style.get_marker() {
             scatter::Marker::Circle => {
-                group.append(node::element::Circle::new()
-                    .set("cx", x_pos)
-                    .set("cy", y_pos)
-                    .set("r", radius)
-                    .set("fill", style.get_colour()));
+                group.append(
+                    node::element::Circle::new()
+                        .set("cx", x_pos)
+                        .set("cy", y_pos)
+                        .set("r", radius)
+                        .set("fill", style.get_colour()),
+                );
             }
             scatter::Marker::Square => {
-                group.append(node::element::Rectangle::new()
-                    .set("x", x_pos - radius)
-                    .set("y", y_pos - radius)
-                    .set("width", 2. * radius)
-                    .set("height", 2. * radius)
-                    .set("fill", style.get_colour()));
+                group.append(
+                    node::element::Rectangle::new()
+                        .set("x", x_pos - radius)
+                        .set("y", y_pos - radius)
+                        .set("width", 2. * radius)
+                        .set("height", 2. * radius)
+                        .set("fill", style.get_colour()),
+                );
             }
             scatter::Marker::Cross => {
                 let path = node::element::path::Data::new()
@@ -143,11 +150,13 @@ pub fn draw_face_points(s: &scatter::Scatter,
                     .move_by((-radius * 2., 0))
                     .line_by((radius * 2., -radius * 2.))
                     .close();
-                group.append(node::element::Path::new()
-                    .set("fill", "none")
-                    .set("stroke", style.get_colour())
-                    .set("stroke-width", 2)
-                    .set("d", path));
+                group.append(
+                    node::element::Path::new()
+                        .set("fill", "none")
+                        .set("stroke", style.get_colour())
+                        .set("stroke-width", 2)
+                        .set("d", path),
+                );
             }
         };
     }
@@ -155,12 +164,13 @@ pub fn draw_face_points(s: &scatter::Scatter,
     group
 }
 
-pub fn draw_face_bars(h: &histogram::Histogram,
-                      x_axis: &axis::Axis,
-                      y_axis: &axis::Axis,
-                      face_width: f64,
-                      face_height: f64)
-                      -> node::element::Group {
+pub fn draw_face_bars(
+    h: &histogram::Histogram,
+    x_axis: &axis::Axis,
+    y_axis: &axis::Axis,
+    face_width: f64,
+    face_height: f64,
+) -> node::element::Group {
     let mut group = node::element::Group::new();
 
     for ((&l, &u), &count) in h.bin_bounds.pairwise().zip(h.bin_counts.iter()) {
@@ -181,33 +191,42 @@ pub fn draw_face_bars(h: &histogram::Histogram,
     group
 }
 
-pub fn draw_face_line(s: &function::Function,
-                        x_axis: &axis::Axis,
-                        y_axis: &axis::Axis,
-                        face_width: f64,
-                        face_height: f64,
-                        style: &function::Style)
-                        -> node::element::Group {
+pub fn draw_face_line(
+    s: &function::Function,
+    x_axis: &axis::Axis,
+    y_axis: &axis::Axis,
+    face_width: f64,
+    face_height: f64,
+    style: &function::Style,
+) -> node::element::Group {
     let mut group = node::element::Group::new();
 
     let mut d: Vec<node::element::path::Command> = vec![];
     let &(first_x, first_y) = s.data.first().unwrap();
     let first_x_pos = value_to_face_offset(first_x, x_axis, face_width);
     let first_y_pos = -value_to_face_offset(first_y, y_axis, face_height);
-    d.push(node::element::path::Command::Move(node::element::path::Position::Absolute, (first_x_pos, first_y_pos).into()));
+    d.push(node::element::path::Command::Move(
+        node::element::path::Position::Absolute,
+        (first_x_pos, first_y_pos).into(),
+    ));
     for &(x, y) in &s.data {
         let x_pos = value_to_face_offset(x, x_axis, face_width);
         let y_pos = -value_to_face_offset(y, y_axis, face_height);
-        d.push(node::element::path::Command::Line(node::element::path::Position::Absolute, (x_pos, y_pos).into()));
+        d.push(node::element::path::Command::Line(
+            node::element::path::Position::Absolute,
+            (x_pos, y_pos).into(),
+        ));
     }
 
     let mut path = node::element::path::Data::from(d);
 
-    group.append(node::element::Path::new()
-        .set("fill", "none")
-        .set("stroke", style.get_colour())
-        .set("stroke-width", 2)
-        .set("d", path));
+    group.append(
+        node::element::Path::new()
+            .set("fill", "none")
+            .set("stroke", style.get_colour())
+            .set("stroke-width", 2)
+            .set("d", path),
+    );
 
     group
 }

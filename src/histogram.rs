@@ -33,14 +33,13 @@ A one-dimensional histogram with equal binning.
 */
 #[derive(Debug)]
 pub struct Histogram {
-    pub bin_bounds: Vec<f64>, // will have N_bins + 1 entries
-    pub bin_counts: Vec<u32>, // will have N_bins entries
+    pub bin_bounds: Vec<f64>,    // will have N_bins + 1 entries
+    pub bin_counts: Vec<u32>,    // will have N_bins entries
     pub bin_densities: Vec<f64>, // will have N_bins entries
 }
 
 impl Histogram {
     pub fn from_vec(v: &[f64], num_bins: u32) -> Histogram {
-
         let max = v.iter().fold(-1. / 0., |a, &b| f64::max(a, b));
         let min = v.iter().fold(1. / 0., |a, &b| f64::min(a, b));
 
@@ -52,8 +51,9 @@ impl Histogram {
 
         let bin_width = (max - min) / num_bins as f64; // width of bin in real units
 
-        let mut bounds: Vec<f64> =
-            (0..num_bins).map(|n| (n as f64 / num_bins as f64) * range + min).collect();
+        let mut bounds: Vec<f64> = (0..num_bins)
+            .map(|n| (n as f64 / num_bins as f64) * range + min)
+            .collect();
         bounds.push(max);
         let bounds = bounds;
 
@@ -66,7 +66,8 @@ impl Histogram {
             }
             */
 
-            let bin = bounds.pairwise()
+            let bin = bounds
+                .pairwise()
                 .enumerate()
                 .skip_while(|&(_, (&l, &u))| !(val >= l && val <= u))
                 .map(|(i, (_, _))| i)
@@ -88,7 +89,10 @@ impl Histogram {
     }
 
     fn x_range(&self) -> (f64, f64) {
-        (*self.bin_bounds.first().unwrap(), *self.bin_bounds.last().unwrap())
+        (
+            *self.bin_bounds.first().unwrap(),
+            *self.bin_bounds.last().unwrap(),
+        )
     }
 
     fn y_range(&self) -> (f64, f64) {
@@ -106,21 +110,23 @@ impl Representation for Histogram {
         }
     }
 
-    fn to_svg(&self,
-              x_axis: &axis::Axis,
-              y_axis: &axis::Axis,
-              face_width: f64,
-              face_height: f64)
-              -> svg::node::element::Group {
+    fn to_svg(
+        &self,
+        x_axis: &axis::Axis,
+        y_axis: &axis::Axis,
+        face_width: f64,
+        face_height: f64,
+    ) -> svg::node::element::Group {
         svg_render::draw_face_bars(self, x_axis, y_axis, face_width, face_height)
     }
 
-    fn to_text(&self,
-               x_axis: &axis::Axis,
-               y_axis: &axis::Axis,
-               face_width: u32,
-               face_height: u32)
-               -> String {
+    fn to_text(
+        &self,
+        x_axis: &axis::Axis,
+        y_axis: &axis::Axis,
+        face_width: u32,
+        face_height: u32,
+    ) -> String {
         text_render::render_face_bars(self, x_axis, y_axis, face_width, face_height)
     }
 }

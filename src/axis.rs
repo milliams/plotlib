@@ -4,7 +4,7 @@ A module for managing axes
 
 */
 
-#[derive(Debug,Clone)]
+#[derive(Debug, Clone)]
 pub struct Range {
     pub lower: f64,
     pub upper: f64,
@@ -47,7 +47,8 @@ impl Axis {
     }
 
     pub fn label<S>(mut self, l: S) -> Self
-        where S: Into<String>
+    where
+        S: Into<String>,
     {
         self.label = l.into();
         self
@@ -67,7 +68,7 @@ impl Axis {
 /// They should be within one order of magnitude, e.g. [1,10)
 const BASE_STEPS: [u32; 4] = [1, 2, 4, 5];
 
-#[derive(Debug,Clone)]
+#[derive(Debug, Clone)]
 struct TickSteps {
     next: f64,
 }
@@ -76,15 +77,23 @@ impl TickSteps {
     fn start_at(start: f64) -> TickSteps {
         let start_options = TickSteps::scaled_steps(start);
         let overflow = start_options[0] * 10.0;
-        let curr = start_options.iter().skip_while(|&step| step < &start).next();
+        let curr = start_options
+            .iter()
+            .skip_while(|&step| step < &start)
+            .next();
 
-        TickSteps { next: *curr.unwrap_or(&overflow) }
+        TickSteps {
+            next: *curr.unwrap_or(&overflow),
+        }
     }
 
     fn scaled_steps(curr: f64) -> Vec<f64> {
         let power = curr.log10().floor();
         let base_step_scale = 10f64.powf(power);
-        BASE_STEPS.iter().map(|&s| (s as f64 * base_step_scale)).collect()
+        BASE_STEPS
+            .iter()
+            .map(|&s| (s as f64 * base_step_scale))
+            .collect()
     }
 }
 
@@ -95,7 +104,11 @@ impl Iterator for TickSteps {
         let curr = self.next; // cache the value we're currently on
         let curr_steps = TickSteps::scaled_steps(self.next);
         let overflow = curr_steps[0] * 10.0;
-        self.next = *curr_steps.iter().skip_while(|&s| s <= &curr).next().unwrap_or(&overflow);
+        self.next = *curr_steps
+            .iter()
+            .skip_while(|&s| s <= &curr)
+            .next()
+            .unwrap_or(&overflow);
         Some(curr)
     }
 }
@@ -105,30 +118,40 @@ fn generate_ticks(min: f64, max: f64, step_size: f64) -> Vec<f64> {
     if min <= 0.0 {
         if max >= 0.0 {
             // standard spanning axis
-            ticks.extend((1..)
-                .map(|n| -1.0 * n as f64 * step_size)
-                .take_while(|&v| v >= min)
-                .collect::<Vec<f64>>()
-                .iter()
-                .rev());
+            ticks.extend(
+                (1..)
+                    .map(|n| -1.0 * n as f64 * step_size)
+                    .take_while(|&v| v >= min)
+                    .collect::<Vec<f64>>()
+                    .iter()
+                    .rev(),
+            );
             ticks.push(0.0);
-            ticks.extend((1..).map(|n| n as f64 * step_size).take_while(|&v| v <= max));
+            ticks.extend(
+                (1..)
+                    .map(|n| n as f64 * step_size)
+                    .take_while(|&v| v <= max),
+            );
         } else {
             // entirely negative axis
-            ticks.extend((1..)
-                .map(|n| -1.0 * n as f64 * step_size)
-                .skip_while(|&v| v > max)
-                .take_while(|&v| v >= min)
-                .collect::<Vec<f64>>()
-                .iter()
-                .rev());
+            ticks.extend(
+                (1..)
+                    .map(|n| -1.0 * n as f64 * step_size)
+                    .skip_while(|&v| v > max)
+                    .take_while(|&v| v >= min)
+                    .collect::<Vec<f64>>()
+                    .iter()
+                    .rev(),
+            );
         }
     } else {
         // entirely positive axis
-        ticks.extend((1..)
-            .map(|n| n as f64 * step_size)
-            .skip_while(|&v| v < min)
-            .take_while(|&v| v <= max));
+        ticks.extend(
+            (1..)
+                .map(|n| n as f64 * step_size)
+                .skip_while(|&v| v < min)
+                .take_while(|&v| v <= max),
+        );
     }
     ticks
 }
@@ -213,7 +236,6 @@ mod tests {
 
     #[test]
     fn test_calculate_ticks() {
-
         macro_rules! assert_approx_eq {
             ($a:expr, $b:expr) => ({
                 let (a, b) = (&$a, &$b);
@@ -224,12 +246,14 @@ mod tests {
 
         for (prod, want) in calculate_ticks(0.0, 1.0, 6)
             .iter()
-            .zip([0.0, 0.2, 0.4, 0.6, 0.8, 1.0].iter()) {
+            .zip([0.0, 0.2, 0.4, 0.6, 0.8, 1.0].iter())
+        {
             assert_approx_eq!(prod, want);
         }
         for (prod, want) in calculate_ticks(0.0, 2.0, 6)
             .iter()
-            .zip([0.0, 0.4, 0.8, 1.2, 1.6, 2.0].iter()) {
+            .zip([0.0, 0.4, 0.8, 1.2, 1.6, 2.0].iter())
+        {
             assert_approx_eq!(prod, want);
         }
         assert_eq!(calculate_ticks(0.0, 3.0, 6), [0.0, 1.0, 2.0, 3.0]);
@@ -239,10 +263,14 @@ mod tests {
         assert_eq!(calculate_ticks(0.0, 7.0, 6), [0.0, 2.0, 4.0, 6.0]);
         assert_eq!(calculate_ticks(0.0, 8.0, 6), [0.0, 2.0, 4.0, 6.0, 8.0]);
         assert_eq!(calculate_ticks(0.0, 9.0, 6), [0.0, 2.0, 4.0, 6.0, 8.0]);
-        assert_eq!(calculate_ticks(0.0, 10.0, 6),
-                   [0.0, 2.0, 4.0, 6.0, 8.0, 10.0]);
-        assert_eq!(calculate_ticks(0.0, 11.0, 6),
-                   [0.0, 2.0, 4.0, 6.0, 8.0, 10.0]);
+        assert_eq!(
+            calculate_ticks(0.0, 10.0, 6),
+            [0.0, 2.0, 4.0, 6.0, 8.0, 10.0]
+        );
+        assert_eq!(
+            calculate_ticks(0.0, 11.0, 6),
+            [0.0, 2.0, 4.0, 6.0, 8.0, 10.0]
+        );
         assert_eq!(calculate_ticks(0.0, 12.0, 6), [0.0, 4.0, 8.0, 12.0]);
         assert_eq!(calculate_ticks(0.0, 13.0, 6), [0.0, 4.0, 8.0, 12.0]);
         assert_eq!(calculate_ticks(0.0, 14.0, 6), [0.0, 4.0, 8.0, 12.0]);
@@ -251,46 +279,72 @@ mod tests {
         assert_eq!(calculate_ticks(0.0, 17.0, 6), [0.0, 4.0, 8.0, 12.0, 16.0]);
         assert_eq!(calculate_ticks(0.0, 18.0, 6), [0.0, 4.0, 8.0, 12.0, 16.0]);
         assert_eq!(calculate_ticks(0.0, 19.0, 6), [0.0, 4.0, 8.0, 12.0, 16.0]);
-        assert_eq!(calculate_ticks(0.0, 20.0, 6),
-                   [0.0, 4.0, 8.0, 12.0, 16.0, 20.0]);
-        assert_eq!(calculate_ticks(0.0, 21.0, 6),
-                   [0.0, 4.0, 8.0, 12.0, 16.0, 20.0]);
-        assert_eq!(calculate_ticks(0.0, 22.0, 6),
-                   [0.0, 4.0, 8.0, 12.0, 16.0, 20.0]);
-        assert_eq!(calculate_ticks(0.0, 23.0, 6),
-                   [0.0, 4.0, 8.0, 12.0, 16.0, 20.0]);
+        assert_eq!(
+            calculate_ticks(0.0, 20.0, 6),
+            [0.0, 4.0, 8.0, 12.0, 16.0, 20.0]
+        );
+        assert_eq!(
+            calculate_ticks(0.0, 21.0, 6),
+            [0.0, 4.0, 8.0, 12.0, 16.0, 20.0]
+        );
+        assert_eq!(
+            calculate_ticks(0.0, 22.0, 6),
+            [0.0, 4.0, 8.0, 12.0, 16.0, 20.0]
+        );
+        assert_eq!(
+            calculate_ticks(0.0, 23.0, 6),
+            [0.0, 4.0, 8.0, 12.0, 16.0, 20.0]
+        );
         assert_eq!(calculate_ticks(0.0, 24.0, 6), [0.0, 5.0, 10.0, 15.0, 20.0]);
-        assert_eq!(calculate_ticks(0.0, 25.0, 6),
-                   [0.0, 5.0, 10.0, 15.0, 20.0, 25.0]);
-        assert_eq!(calculate_ticks(0.0, 26.0, 6),
-                   [0.0, 5.0, 10.0, 15.0, 20.0, 25.0]);
-        assert_eq!(calculate_ticks(0.0, 27.0, 6),
-                   [0.0, 5.0, 10.0, 15.0, 20.0, 25.0]);
-        assert_eq!(calculate_ticks(0.0, 28.0, 6),
-                   [0.0, 5.0, 10.0, 15.0, 20.0, 25.0]);
-        assert_eq!(calculate_ticks(0.0, 29.0, 6),
-                   [0.0, 5.0, 10.0, 15.0, 20.0, 25.0]);
+        assert_eq!(
+            calculate_ticks(0.0, 25.0, 6),
+            [0.0, 5.0, 10.0, 15.0, 20.0, 25.0]
+        );
+        assert_eq!(
+            calculate_ticks(0.0, 26.0, 6),
+            [0.0, 5.0, 10.0, 15.0, 20.0, 25.0]
+        );
+        assert_eq!(
+            calculate_ticks(0.0, 27.0, 6),
+            [0.0, 5.0, 10.0, 15.0, 20.0, 25.0]
+        );
+        assert_eq!(
+            calculate_ticks(0.0, 28.0, 6),
+            [0.0, 5.0, 10.0, 15.0, 20.0, 25.0]
+        );
+        assert_eq!(
+            calculate_ticks(0.0, 29.0, 6),
+            [0.0, 5.0, 10.0, 15.0, 20.0, 25.0]
+        );
         assert_eq!(calculate_ticks(0.0, 30.0, 6), [0.0, 10.0, 20.0, 30.0]);
         assert_eq!(calculate_ticks(0.0, 31.0, 6), [0.0, 10.0, 20.0, 30.0]);
         //...
         assert_eq!(calculate_ticks(0.0, 40.0, 6), [0.0, 10.0, 20.0, 30.0, 40.0]);
-        assert_eq!(calculate_ticks(0.0, 50.0, 6),
-                   [0.0, 10.0, 20.0, 30.0, 40.0, 50.0]);
+        assert_eq!(
+            calculate_ticks(0.0, 50.0, 6),
+            [0.0, 10.0, 20.0, 30.0, 40.0, 50.0]
+        );
         assert_eq!(calculate_ticks(0.0, 60.0, 6), [0.0, 20.0, 40.0, 60.0]);
         assert_eq!(calculate_ticks(0.0, 70.0, 6), [0.0, 20.0, 40.0, 60.0]);
         assert_eq!(calculate_ticks(0.0, 80.0, 6), [0.0, 20.0, 40.0, 60.0, 80.0]);
         assert_eq!(calculate_ticks(0.0, 90.0, 6), [0.0, 20.0, 40.0, 60.0, 80.0]);
-        assert_eq!(calculate_ticks(0.0, 100.0, 6),
-                   [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]);
-        assert_eq!(calculate_ticks(0.0, 110.0, 6),
-                   [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]);
+        assert_eq!(
+            calculate_ticks(0.0, 100.0, 6),
+            [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+        );
+        assert_eq!(
+            calculate_ticks(0.0, 110.0, 6),
+            [0.0, 20.0, 40.0, 60.0, 80.0, 100.0]
+        );
         assert_eq!(calculate_ticks(0.0, 120.0, 6), [0.0, 40.0, 80.0, 120.0]);
         assert_eq!(calculate_ticks(0.0, 130.0, 6), [0.0, 40.0, 80.0, 120.0]);
         assert_eq!(calculate_ticks(0.0, 140.0, 6), [0.0, 40.0, 80.0, 120.0]);
         assert_eq!(calculate_ticks(0.0, 150.0, 6), [0.0, 50.0, 100.0, 150.0]);
         //...
-        assert_eq!(calculate_ticks(0.0, 3475.0, 6),
-                   [0.0, 1000.0, 2000.0, 3000.0]);
+        assert_eq!(
+            calculate_ticks(0.0, 3475.0, 6),
+            [0.0, 1000.0, 2000.0, 3000.0]
+        );
 
         assert_eq!(calculate_ticks(-10.0, -3.0, 6), [-10.0, -8.0, -6.0, -4.0]);
     }
