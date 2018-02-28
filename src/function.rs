@@ -44,6 +44,11 @@ impl Style {
         if let Some(ref v) = other.width {
             self.width = Some(v.clone())
         }
+
+        match other.width {
+            Some(v) => self.width = Some(v),
+            None => {}
+        }
     }
 }
 
