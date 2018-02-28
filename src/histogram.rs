@@ -178,3 +178,22 @@ impl Representation for Histogram {
         text_render::render_face_bars(self, x_axis, y_axis, face_width, face_height)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_histogram_from_slice() {
+        assert_eq!(Histogram::from_slice(&[], 3).bin_densities, [0., 0., 0.]);
+        assert_eq!(Histogram::from_slice(&[0.], 3).bin_densities, [0., 3., 0.]);
+        assert_eq!(
+            Histogram::from_slice(&[0., 3.], 3).bin_densities,
+            [1., 0., 1.]
+        );
+        assert_eq!(
+            Histogram::from_slice(&[0., 1., 2., 3.], 3).bin_densities,
+            [2., 1., 1.]
+        );
+    }
+}
