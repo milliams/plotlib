@@ -6,16 +6,7 @@ use axis;
 use svg_render;
 use text_render;
 use representation::Representation;
-
-/**
-The marker that should be used for the points of the scatter plot
-*/
-#[derive(Debug, Clone)]
-pub enum Marker {
-    Circle,
-    Square,
-    Cross,
-}
+use style;
 
 /// `Style` follows the 'optional builder' pattern
 /// Each field is a `Option` which start as `None`
@@ -24,7 +15,7 @@ pub enum Marker {
 /// Settings will be cloned in and out of it.
 #[derive(Debug, Default)]
 pub struct Style {
-    marker: Option<Marker>,
+    marker: Option<style::Marker>,
     colour: Option<String>,
 }
 
@@ -36,33 +27,32 @@ impl Style {
         }
     }
 
-    pub fn overlay(&mut self, other: Self) {
+    pub fn overlay(&mut self, other: &Self) {
         match other.marker {
-            Some(v) => self.marker = Some(v),
+            Some(ref v) => self.marker = Some(v.clone()),
             None => {}
         }
         match other.colour {
-            Some(v) => self.colour = Some(v),
+            Some(ref v) => self.colour = Some(v.clone()),
             None => {}
         }
     }
+}
 
-    pub fn marker<T>(mut self, value: T) -> Self
+impl style::Point for Style {
+    fn marker<T>(&mut self, value: T) -> &mut Self
     where
-        T: Into<Marker>,
+        T: Into<style::Marker>,
     {
         self.marker = Some(value.into());
         self
     }
 
-    pub fn get_marker(&self) -> Marker {
-        match self.marker.clone() {
-            Some(v) => v,
-            None => Marker::Circle,
-        }
+    fn get_marker(&self) -> &Option<style::Marker> {
+        &self.marker
     }
 
-    pub fn colour<T>(mut self, value: T) -> Self
+    fn colour<T>(&mut self, value: T) -> &mut Self
     where
         T: Into<String>,
     {
@@ -70,11 +60,8 @@ impl Style {
         self
     }
 
-    pub fn get_colour(&self) -> String {
-        match self.colour.clone() {
-            Some(v) => v,
-            None => "".into(),
-        }
+    fn get_colour(&self) -> &Option<String> {
+        &self.colour
     }
 }
 
@@ -99,8 +86,8 @@ impl Scatter {
         }
     }
 
-    pub fn style(mut self, style: Style) -> Self {
-        self.style.overlay(style);
+    pub fn style(mut self, style: &Style) -> Self {
+        self.style.overlay(&style);
         self
     }
 

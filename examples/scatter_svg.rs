@@ -1,5 +1,7 @@
 extern crate plotlib;
 
+use plotlib::style::Point;
+
 fn main() {
     let data = [
         (-3.0, 2.3),
@@ -11,7 +13,7 @@ fn main() {
     ];
     let s1 = plotlib::scatter::Scatter::from_vec(&data).style(
         plotlib::scatter::Style::new()
-            .marker(plotlib::scatter::Marker::Square)
+            .marker(plotlib::style::Marker::Square)
             .colour("#DD3355"),
     );
     let s2 = plotlib::scatter::Scatter::from_vec(&[(-1.4, 2.5), (7.2, -0.3)])

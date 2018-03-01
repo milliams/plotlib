@@ -110,41 +110,44 @@ pub fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
         .add(label)
 }
 
-pub fn draw_face_points(
+pub fn draw_face_points<S>(
     s: &scatter::Scatter,
     x_axis: &axis::Axis,
     y_axis: &axis::Axis,
     face_width: f64,
     face_height: f64,
-    style: &scatter::Style,
-) -> node::element::Group {
+    style: &S,
+) -> node::element::Group
+where
+    S: style::Point,
+{
     let mut group = node::element::Group::new();
 
     for &(x, y) in &s.data {
         let x_pos = value_to_face_offset(x, x_axis, face_width);
         let y_pos = -value_to_face_offset(y, y_axis, face_height);
         let radius = 5.;
-        match style.get_marker() {
-            scatter::Marker::Circle => {
+        match style.get_marker().clone().unwrap_or(style::Marker::Circle) {
+            style::Marker::Circle => {
                 group.append(
                     node::element::Circle::new()
                         .set("cx", x_pos)
                         .set("cy", y_pos)
                         .set("r", radius)
-                        .set("fill", style.get_colour()),
+                        .set("fill", style.get_colour().clone().unwrap_or("".into())),
                 );
             }
-            scatter::Marker::Square => {
+            style::Marker::Square => {
                 group.append(
                     node::element::Rectangle::new()
                         .set("x", x_pos - radius)
                         .set("y", y_pos - radius)
                         .set("width", 2. * radius)
                         .set("height", 2. * radius)
-                        .set("fill", style.get_colour()),
+                        .set("fill", style.get_colour().clone().unwrap_or("".into())),
                 );
             }
-            scatter::Marker::Cross => {
+            style::Marker::Cross => {
                 let path = node::element::path::Data::new()
                     .move_to((x_pos - radius, y_pos - radius))
                     .line_by((radius * 2., radius * 2.))
@@ -154,7 +157,7 @@ pub fn draw_face_points(
                 group.append(
                     node::element::Path::new()
                         .set("fill", "none")
-                        .set("stroke", style.get_colour())
+                        .set("stroke", style.get_colour().clone().unwrap_or("".into()))
                         .set("stroke-width", 2)
                         .set("d", path),
                 );

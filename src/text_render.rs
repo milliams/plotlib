@@ -7,6 +7,7 @@ use histogram;
 use scatter;
 use axis;
 use utils::PairWise;
+use style;
 
 // Given a value like a tick label or a bin count,
 // calculate how far from the x-axis it should be plotted
@@ -350,14 +351,17 @@ pub fn render_face_bars(
 /// the x ands y-axes
 /// and the face height and width,
 /// create the strings to be drawn as the face
-pub fn render_face_points(
+pub fn render_face_points<S>(
     s: &scatter::Scatter,
     x_axis: &axis::Axis,
     y_axis: &axis::Axis,
     face_width: u32,
     face_height: u32,
-    style: &scatter::Style,
-) -> String {
+    style: &S,
+) -> String
+where
+    S: style::Point,
+{
     let points: Vec<_> = s.data
         .iter()
         .map(|&(x, y)| {
@@ -368,10 +372,10 @@ pub fn render_face_points(
         })
         .collect();
 
-    let marker = match style.get_marker() {
-        scatter::Marker::Circle => '●',
-        scatter::Marker::Square => '■',
-        scatter::Marker::Cross => '×',
+    let marker = match style.get_marker().clone().unwrap_or(style::Marker::Circle) {
+        style::Marker::Circle => '●',
+        style::Marker::Square => '■',
+        style::Marker::Cross => '×',
     };
 
     let mut face_strings: Vec<String> = vec![];
