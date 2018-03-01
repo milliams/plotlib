@@ -2,8 +2,6 @@ use svg::Node;
 use svg::node;
 
 use histogram;
-use scatter;
-use function;
 use axis;
 use style;
 use utils::PairWise;
@@ -111,7 +109,7 @@ pub fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
 }
 
 pub fn draw_face_points<S>(
-    s: &scatter::Scatter,
+    s: &[(f64, f64)],
     x_axis: &axis::Axis,
     y_axis: &axis::Axis,
     face_width: f64,
@@ -123,7 +121,7 @@ where
 {
     let mut group = node::element::Group::new();
 
-    for &(x, y) in &s.data {
+    for &(x, y) in s {
         let x_pos = value_to_face_offset(x, x_axis, face_width);
         let y_pos = -value_to_face_offset(y, y_axis, face_height);
         let radius = style.get_size().clone().unwrap_or(5.) as f64;
@@ -215,7 +213,7 @@ where
 }
 
 pub fn draw_face_line<S>(
-    s: &function::Function,
+    s: &[(f64, f64)],
     x_axis: &axis::Axis,
     y_axis: &axis::Axis,
     face_width: f64,
@@ -228,14 +226,14 @@ where
     let mut group = node::element::Group::new();
 
     let mut d: Vec<node::element::path::Command> = vec![];
-    let &(first_x, first_y) = s.data.first().unwrap();
+    let &(first_x, first_y) = s.first().unwrap();
     let first_x_pos = value_to_face_offset(first_x, x_axis, face_width);
     let first_y_pos = -value_to_face_offset(first_y, y_axis, face_height);
     d.push(node::element::path::Command::Move(
         node::element::path::Position::Absolute,
         (first_x_pos, first_y_pos).into(),
     ));
-    for &(x, y) in &s.data {
+    for &(x, y) in s {
         let x_pos = value_to_face_offset(x, x_axis, face_width);
         let y_pos = -value_to_face_offset(y, y_axis, face_height);
         d.push(node::element::path::Command::Line(

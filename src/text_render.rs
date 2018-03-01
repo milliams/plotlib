@@ -352,7 +352,7 @@ pub fn render_face_bars(
 /// and the face height and width,
 /// create the strings to be drawn as the face
 pub fn render_face_points<S>(
-    s: &scatter::Scatter,
+    s: &[(f64, f64)],
     x_axis: &axis::Axis,
     y_axis: &axis::Axis,
     face_width: u32,
@@ -362,7 +362,7 @@ pub fn render_face_points<S>(
 where
     S: style::Point,
 {
-    let points: Vec<_> = s.data
+    let points: Vec<_> = s
         .iter()
         .map(|&(x, y)| {
             (
@@ -640,7 +640,7 @@ mod tests {
         let x_axis = axis::Axis::new(-3.575, 9.075);
         let y_axis = axis::Axis::new(-1.735, 5.635);
         let style = scatter::Style::new();
-        let strings = render_face_points(&s, &x_axis, &y_axis, 20, 10, &style);
+        let strings = render_face_points(&s.data, &x_axis, &y_axis, 20, 10, &style);
         assert_eq!(strings.lines().count(), 10);
         assert!(strings.lines().all(|s| s.chars().count() == 20));
 

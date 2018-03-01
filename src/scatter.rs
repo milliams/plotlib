@@ -149,7 +149,7 @@ impl Representation for Scatter {
         face_width: f64,
         face_height: f64,
     ) -> svg::node::element::Group {
-        svg_render::draw_face_points(self, x_axis, y_axis, face_width, face_height, &self.style)
+        svg_render::draw_face_points(&self.data, x_axis, y_axis, face_width, face_height, &self.style)
     }
 
     fn to_text(
@@ -159,6 +159,6 @@ impl Representation for Scatter {
         face_width: u32,
         face_height: u32,
     ) -> String {
-        text_render::render_face_points(self, x_axis, y_axis, face_width, face_height, &self.style)
+        text_render::render_face_points(&self.data, x_axis, y_axis, face_width, face_height, &self.style)
     }
 }
