@@ -67,7 +67,7 @@ in this case, interpreting the bins and colours to create SVG elements.
 
 extern crate svg;
 
-mod representation;
+pub mod representation;
 pub mod view;
 pub mod page;
 
