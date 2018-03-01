@@ -20,6 +20,7 @@ use svg;
 use axis;
 use representation::Representation;
 use svg_render;
+use style;
 
 #[derive(Debug, Default)]
 pub struct Style {
@@ -31,14 +32,16 @@ impl Style {
         Style { colour: None }
     }
 
-    pub fn overlay(&mut self, other: Self) {
+    pub fn overlay(&mut self, other: &Self) {
         match other.colour {
-            Some(v) => self.colour = Some(v),
+            Some(ref v) => self.colour = Some(v.clone()),
             None => {}
         }
     }
+}
 
-    pub fn colour<T>(mut self, value: T) -> Self
+impl style::Line for Style {
+    fn colour<T>(&mut self, value: T) -> &mut Self
     where
         T: Into<String>,
     {
@@ -46,7 +49,7 @@ impl Style {
         self
     }
 
-    pub fn get_colour(&self) -> String {
+    fn get_colour(&self) -> String {
         match self.colour.clone() {
             Some(v) => v,
             None => "".into(),
@@ -75,8 +78,8 @@ impl Function {
         }
     }
 
-    pub fn style(mut self, style: Style) -> Self {
-        self.style.overlay(style);
+    pub fn style(mut self, style: &Style) -> Self {
+        self.style.overlay(&style);
         self
     }
 

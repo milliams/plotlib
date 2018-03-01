@@ -1,5 +1,7 @@
 extern crate plotlib;
 
+use plotlib::style::Line;
+
 fn main() {
     let f1 = plotlib::function::Function::new(|x| x * 5., 0., 10.)
         .style(plotlib::function::Style::new().colour("burlywood"));

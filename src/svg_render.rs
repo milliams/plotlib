@@ -5,6 +5,7 @@ use histogram;
 use scatter;
 use function;
 use axis;
+use style;
 use utils::PairWise;
 
 fn value_to_face_offset(value: f64, axis: &axis::Axis, face_size: f64) -> f64 {
@@ -191,14 +192,17 @@ pub fn draw_face_bars(
     group
 }
 
-pub fn draw_face_line(
+pub fn draw_face_line<S>(
     s: &function::Function,
     x_axis: &axis::Axis,
     y_axis: &axis::Axis,
     face_width: f64,
     face_height: f64,
-    style: &function::Style,
-) -> node::element::Group {
+    style: &S,
+) -> node::element::Group
+where
+    S: style::Line,
+{
     let mut group = node::element::Group::new();
 
     let mut d: Vec<node::element::path::Command> = vec![];
