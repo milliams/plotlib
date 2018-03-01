@@ -9,5 +9,5 @@ pub trait Line {
     where
         T: Into<String>;
 
-    fn get_colour(&self) -> String;
+    fn get_colour(&self) -> &Option<String>;
 }

@@ -227,7 +227,7 @@ where
     group.append(
         node::element::Path::new()
             .set("fill", "none")
-            .set("stroke", style.get_colour())
+            .set("stroke", style.get_colour().clone().unwrap_or("".into()))
             .set("stroke-width", 2)
             .set("d", path),
     );

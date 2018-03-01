@@ -49,11 +49,8 @@ impl style::Line for Style {
         self
     }
 
-    fn get_colour(&self) -> String {
-        match self.colour.clone() {
-            Some(v) => v,
-            None => "".into(),
-        }
+    fn get_colour(&self) -> &Option<String> {
+        &self.colour
     }
 }
 
