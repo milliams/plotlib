@@ -11,8 +11,8 @@ fn main() {
         (6.4, 4.3),
         (8.5, 3.7),
     ];
-    let s1 = plotlib::scatter::Scatter::from_vec(&data);
-    let s2 = plotlib::scatter::Scatter::from_vec(&[(-1.4, 2.5), (7.2, -0.3)])
+    let s1 = plotlib::scatter::Scatter::from_slice(&data);
+    let s2 = plotlib::scatter::Scatter::from_slice(&[(-1.4, 2.5), (7.2, -0.3)])
         .style(plotlib::scatter::Style::new().marker(plotlib::style::Marker::Square));
     let v = plotlib::view::View::new()
         .add(&s1)

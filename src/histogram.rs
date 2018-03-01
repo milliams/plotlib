@@ -10,7 +10,7 @@ A module for Histograms
 let data = vec![0.3, 0.5, 6.4, 5.3, 3.6, 3.6, 3.5, 7.5, 4.0];
 
 // and create a histogram out of it
-let h = Histogram::from_vec(&data, 30);
+let h = Histogram::from_slice(&data, 30);
 ```
 
 TODO:
@@ -72,7 +72,7 @@ pub struct Histogram {
 }
 
 impl Histogram {
-    pub fn from_vec(v: &[f64], num_bins: u32) -> Histogram {
+    pub fn from_slice(v: &[f64], num_bins: u32) -> Histogram {
         let max = v.iter().fold(-1. / 0., |a, &b| f64::max(a, b));
         let min = v.iter().fold(1. / 0., |a, &b| f64::min(a, b));
 

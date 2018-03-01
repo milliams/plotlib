@@ -91,7 +91,7 @@ pub struct Scatter {
 }
 
 impl Scatter {
-    pub fn from_vec(v: &[(f64, f64)]) -> Self {
+    pub fn from_slice(v: &[(f64, f64)]) -> Self {
         let mut data: Vec<(f64, f64)> = vec![];
         for &(x, y) in v {
             data.push((x, y));

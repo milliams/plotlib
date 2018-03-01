@@ -603,7 +603,7 @@ mod tests {
     #[test]
     fn test_render_face_bars() {
         let data = vec![0.3, 0.5, 6.4, 5.3, 3.6, 3.6, 3.5, 7.5, 4.0];
-        let h = histogram::Histogram::from_vec(&data, 10);
+        let h = histogram::Histogram::from_slice(&data, 10);
         let x_axis = axis::Axis::new(0.3, 7.5);
         let y_axis = axis::Axis::new(0., 3.);
         let strings = render_face_bars(&h, &x_axis, &y_axis, 20, 10);
@@ -636,7 +636,7 @@ mod tests {
             (6.4, 4.3),
             (8.5, 3.7),
         ];
-        let s = scatter::Scatter::from_vec(&data);
+        let s = scatter::Scatter::from_slice(&data);
         let x_axis = axis::Axis::new(-3.575, 9.075);
         let y_axis = axis::Axis::new(-1.735, 5.635);
         let style = scatter::Style::new();
