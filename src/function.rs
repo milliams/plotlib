@@ -25,16 +25,25 @@ use style;
 #[derive(Debug, Default)]
 pub struct Style {
     colour: Option<String>,
+    width: Option<u8>,
 }
 
 impl Style {
     pub fn new() -> Self {
-        Style { colour: None }
+        Style {
+            colour: None,
+            width: None,
+        }
     }
 
     pub fn overlay(&mut self, other: &Self) {
         match other.colour {
             Some(ref v) => self.colour = Some(v.clone()),
+            None => {}
+        }
+
+        match other.width {
+            Some(ref v) => self.width = Some(v.clone()),
             None => {}
         }
     }
@@ -51,6 +60,18 @@ impl style::Line for Style {
 
     fn get_colour(&self) -> &Option<String> {
         &self.colour
+    }
+
+    fn width<T>(&mut self, value: T) -> &mut Self
+    where
+        T: Into<u8>,
+    {
+        self.width = Some(value.into());
+        self
+    }
+
+    fn get_width(&self) -> &Option<u8> {
+        &self.width
     }
 }
 

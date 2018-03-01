@@ -10,6 +10,12 @@ pub trait Line {
         T: Into<String>;
 
     fn get_colour(&self) -> &Option<String>;
+
+    fn width<T>(&mut self, value: T) -> &mut Self
+    where
+        T: Into<u8>;
+
+    fn get_width(&self) -> &Option<u8>;
 }
 
 /**
