@@ -231,7 +231,7 @@ where
         node::element::Path::new()
             .set("fill", "none")
             .set("stroke", style.get_colour().clone().unwrap_or("".into()))
-            .set("stroke-width", style.get_width().clone().unwrap_or(2))
+            .set("stroke-width", style.get_width().clone().unwrap_or(2.))
             .set("d", path),
     );
 

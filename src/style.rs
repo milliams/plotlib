@@ -13,9 +13,9 @@ pub trait Line {
 
     fn width<T>(&mut self, value: T) -> &mut Self
     where
-        T: Into<u8>;
+        T: Into<f32>;
 
-    fn get_width(&self) -> &Option<u8>;
+    fn get_width(&self) -> &Option<f32>;
 }
 
 /**

@@ -25,7 +25,7 @@ use style;
 #[derive(Debug, Default)]
 pub struct Style {
     colour: Option<String>,
-    width: Option<u8>,
+    width: Option<f32>,
 }
 
 impl Style {
@@ -64,13 +64,13 @@ impl style::Line for Style {
 
     fn width<T>(&mut self, value: T) -> &mut Self
     where
-        T: Into<u8>,
+        T: Into<f32>,
     {
         self.width = Some(value.into());
         self
     }
 
-    fn get_width(&self) -> &Option<u8> {
+    fn get_width(&self) -> &Option<f32> {
         &self.width
     }
 }
