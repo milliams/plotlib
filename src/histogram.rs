@@ -40,9 +40,8 @@ impl Style {
     }
 
     pub fn overlay(&mut self, other: &Self) {
-        match other.fill {
-            Some(ref v) => self.fill = Some(v.clone()),
-            None => {}
+        if let Some(ref v) = other.fill {
+            self.fill = Some(v.clone())
         }
     }
 }
@@ -136,7 +135,7 @@ impl Histogram {
     }
 
     pub fn style(mut self, style: &Style) -> Self {
-        self.style.overlay(&style);
+        self.style.overlay(style);
         self
     }
 

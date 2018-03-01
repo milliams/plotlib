@@ -37,14 +37,12 @@ impl Style {
     }
 
     pub fn overlay(&mut self, other: &Self) {
-        match other.colour {
-            Some(ref v) => self.colour = Some(v.clone()),
-            None => {}
+        if let Some(ref v) = other.colour {
+            self.colour = Some(v.clone())
         }
 
-        match other.width {
-            Some(ref v) => self.width = Some(v.clone()),
-            None => {}
+        if let Some(ref v) = other.width {
+            self.width = Some(v.clone())
         }
     }
 }
@@ -97,7 +95,7 @@ impl Function {
     }
 
     pub fn style(mut self, style: &Style) -> Self {
-        self.style.overlay(&style);
+        self.style.overlay(style);
         self
     }
 

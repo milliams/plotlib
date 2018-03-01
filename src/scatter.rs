@@ -30,17 +30,16 @@ impl Style {
     }
 
     pub fn overlay(&mut self, other: &Self) {
-        match other.marker {
-            Some(ref v) => self.marker = Some(v.clone()),
-            None => {}
+        if let Some(ref v) = other.marker {
+            self.marker = Some(v.clone())
         }
-        match other.colour {
-            Some(ref v) => self.colour = Some(v.clone()),
-            None => {}
+
+        if let Some(ref v) = other.colour {
+            self.colour = Some(v.clone())
         }
-        match other.size {
-            Some(ref v) => self.size = Some(v.clone()),
-            None => {}
+
+        if let Some(ref v) = other.size {
+            self.size = Some(v.clone())
         }
     }
 }
@@ -105,7 +104,7 @@ impl Scatter {
     }
 
     pub fn style(mut self, style: &Style) -> Self {
-        self.style.overlay(&style);
+        self.style.overlay(style);
         self
     }
 

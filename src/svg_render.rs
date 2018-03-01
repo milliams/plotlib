@@ -134,7 +134,10 @@ where
                         .set("cx", x_pos)
                         .set("cy", y_pos)
                         .set("r", radius)
-                        .set("fill", style.get_colour().clone().unwrap_or("".into())),
+                        .set(
+                            "fill",
+                            style.get_colour().clone().unwrap_or_else(|| "".into()),
+                        ),
                 );
             }
             style::Marker::Square => {
@@ -144,7 +147,10 @@ where
                         .set("y", y_pos - radius)
                         .set("width", 2. * radius)
                         .set("height", 2. * radius)
-                        .set("fill", style.get_colour().clone().unwrap_or("".into())),
+                        .set(
+                            "fill",
+                            style.get_colour().clone().unwrap_or_else(|| "".into()),
+                        ),
                 );
             }
             style::Marker::Cross => {
@@ -157,7 +163,10 @@ where
                 group.append(
                     node::element::Path::new()
                         .set("fill", "none")
-                        .set("stroke", style.get_colour().clone().unwrap_or("".into()))
+                        .set(
+                            "stroke",
+                            style.get_colour().clone().unwrap_or_else(|| "".into()),
+                        )
                         .set("stroke-width", 2)
                         .set("d", path),
                 );
@@ -193,7 +202,10 @@ where
             .set("height", count_scaled)
             .set(
                 "fill",
-                style.get_fill().clone().unwrap_or("burlywood".into()),
+                style
+                    .get_fill()
+                    .clone()
+                    .unwrap_or_else(|| "burlywood".into()),
             )
             .set("stroke", "black");
         group.append(rect);
@@ -237,7 +249,10 @@ where
     group.append(
         node::element::Path::new()
             .set("fill", "none")
-            .set("stroke", style.get_colour().clone().unwrap_or("".into()))
+            .set(
+                "stroke",
+                style.get_colour().clone().unwrap_or_else(|| "".into()),
+            )
             .set("stroke-width", style.get_width().clone().unwrap_or(2.))
             .set("d", path),
     );
