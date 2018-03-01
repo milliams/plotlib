@@ -348,4 +348,14 @@ mod tests {
 
         assert_eq!(calculate_ticks(-10.0, -3.0, 6), [-10.0, -8.0, -6.0, -4.0]);
     }
+
+    #[test]
+    #[should_panic(expected = "assertion failed")]
+    fn test_todo() {
+        // This should work but there is currently a bug in how the rounding is performed.
+        // generate_ticks() does `(3 as f64) * step_size` which when step_size is 0.1 gives
+        // 0.30000000000000004 rather than 1.3
+        // Maybe we just want to fix this at display in which case this test can be removed.
+        assert_eq!(calculate_ticks(1.0, 1.5, 6), [1.0, 1.1, 1.2, 1.3, 1.4, 1.5]);
+    }
 }
