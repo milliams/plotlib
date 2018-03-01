@@ -17,6 +17,7 @@ use style;
 pub struct Style {
     marker: Option<style::Marker>,
     colour: Option<String>,
+    size: Option<f32>,
 }
 
 impl Style {
@@ -24,6 +25,7 @@ impl Style {
         Style {
             marker: None,
             colour: None,
+            size: None,
         }
     }
 
@@ -34,6 +36,10 @@ impl Style {
         }
         match other.colour {
             Some(ref v) => self.colour = Some(v.clone()),
+            None => {}
+        }
+        match other.size {
+            Some(ref v) => self.size = Some(v.clone()),
             None => {}
         }
     }
@@ -62,6 +68,18 @@ impl style::Point for Style {
 
     fn get_colour(&self) -> &Option<String> {
         &self.colour
+    }
+
+    fn size<T>(&mut self, value: T) -> &mut Self
+    where
+        T: Into<f32>,
+    {
+        self.size = Some(value.into());
+        self
+    }
+
+    fn get_size(&self) -> &Option<f32> {
+        &self.size
     }
 }
 

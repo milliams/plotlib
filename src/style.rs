@@ -40,4 +40,10 @@ pub trait Point {
         T: Into<String>;
 
     fn get_colour(&self) -> &Option<String>;
+
+    fn size<T>(&mut self, value: T) -> &mut Self
+    where
+        T: Into<f32>;
+
+    fn get_size(&self) -> &Option<f32>;
 }

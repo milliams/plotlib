@@ -14,7 +14,8 @@ fn main() {
     let s1 = plotlib::scatter::Scatter::from_vec(&data).style(
         plotlib::scatter::Style::new()
             .marker(plotlib::style::Marker::Square)
-            .colour("#DD3355"),
+            .colour("#DD3355")
+            .size(2.),
     );
     let s2 = plotlib::scatter::Scatter::from_vec(&[(-1.4, 2.5), (7.2, -0.3)])
         .style(plotlib::scatter::Style::new().colour("#35C788"));

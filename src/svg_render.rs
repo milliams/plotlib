@@ -126,7 +126,7 @@ where
     for &(x, y) in &s.data {
         let x_pos = value_to_face_offset(x, x_axis, face_width);
         let y_pos = -value_to_face_offset(y, y_axis, face_height);
-        let radius = 5.;
+        let radius = style.get_size().clone().unwrap_or(5.) as f64;
         match style.get_marker().clone().unwrap_or(style::Marker::Circle) {
             style::Marker::Circle => {
                 group.append(
