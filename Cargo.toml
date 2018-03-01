@@ -3,9 +3,14 @@ name = "plotlib"
 version = "0.3.0"
 authors = ["Matt Williams <matt@milliams.com>"]
 description = "Plotting data structures and tools"
+readme = "README.rst"
 license = "MIT"
 repository = "https://github.com/milliams/plotlib"
 categories = ["visualization"]
+keywords = ["plotting", "plot", "graph", "chart", "histogram", "scatter"]
+
+[badges]
+travis-ci = { repository = "milliams/plotlib" }
 
 [dependencies]
 svg = "0.5.10"
