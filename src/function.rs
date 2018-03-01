@@ -140,7 +140,14 @@ impl Representation for Function {
         face_width: f64,
         face_height: f64,
     ) -> svg::node::element::Group {
-        svg_render::draw_face_line(&self.data, x_axis, y_axis, face_width, face_height, &self.style)
+        svg_render::draw_face_line(
+            &self.data,
+            x_axis,
+            y_axis,
+            face_width,
+            face_height,
+            &self.style,
+        )
     }
 
     fn to_text(

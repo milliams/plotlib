@@ -362,8 +362,7 @@ pub fn render_face_points<S>(
 where
     S: style::Point,
 {
-    let points: Vec<_> = s
-        .iter()
+    let points: Vec<_> = s.iter()
         .map(|&(x, y)| {
             (
                 value_to_axis_cell_offset(x, x_axis, face_width),

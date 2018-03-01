@@ -1,62 +1,53 @@
+/*!
+
+Plot line charts
+
+# Examples
+
+```
+# use plotlib::line::Line;
+# use plotlib::view::View;
+// y=x^2 between 0 and 10
+let l = Line::new(&[(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)]);
+let v = View::new().add(&l);
+```
+*/
+
 use std::f64;
 
 use svg;
 
 use axis;
-use svg_render;
-use text_render;
 use representation::Representation;
+use svg_render;
 use style;
 
-/// `Style` follows the 'optional builder' pattern
-/// Each field is a `Option` which start as `None`
-/// Each can be set with setter methods and instances
-/// of `Style` can be overlaid to set many at once.
-/// Settings will be cloned in and out of it.
 #[derive(Debug, Default)]
 pub struct Style {
-    marker: Option<style::Marker>,
     colour: Option<String>,
-    size: Option<f32>,
+    width: Option<f32>,
 }
 
 impl Style {
     pub fn new() -> Self {
         Style {
-            marker: None,
             colour: None,
-            size: None,
+            width: None,
         }
     }
 
     pub fn overlay(&mut self, other: &Self) {
-        if let Some(ref v) = other.marker {
-            self.marker = Some(v.clone())
-        }
-
         if let Some(ref v) = other.colour {
             self.colour = Some(v.clone())
         }
 
-        if let Some(ref v) = other.size {
-            self.size = Some(v.clone())
+        if let Some(ref v) = other.width {
+            self.width = Some(v.clone())
         }
     }
 }
 
-impl style::Point for Style {
-    fn marker<T>(&mut self, value: T) -> &mut Self
-    where
-        T: Into<style::Marker>,
-    {
-        self.marker = Some(value.into());
-        self
-    }
-
-    fn get_marker(&self) -> &Option<style::Marker> {
-        &self.marker
-    }
-
+impl style::Line for Style {
     fn colour<T>(&mut self, value: T) -> &mut Self
     where
         T: Into<String>,
@@ -69,36 +60,28 @@ impl style::Point for Style {
         &self.colour
     }
 
-    fn size<T>(&mut self, value: T) -> &mut Self
+    fn width<T>(&mut self, value: T) -> &mut Self
     where
         T: Into<f32>,
     {
-        self.size = Some(value.into());
+        self.width = Some(value.into());
         self
     }
 
-    fn get_size(&self) -> &Option<f32> {
-        &self.size
+    fn get_width(&self) -> &Option<f32> {
+        &self.width
     }
 }
 
-/// The scatter *representation*.
-/// It knows its data as well how to style itself
-#[derive(Debug)]
-pub struct Scatter {
+pub struct Line {
     pub data: Vec<(f64, f64)>,
     style: Style,
 }
 
-impl Scatter {
-    pub fn from_slice(v: &[(f64, f64)]) -> Self {
-        let mut data: Vec<(f64, f64)> = vec![];
-        for &(x, y) in v {
-            data.push((x, y));
-        }
-
-        Scatter {
-            data: data,
+impl Line {
+    pub fn new(v: &[(f64, f64)]) -> Self {
+        Line {
+            data: v.into(),
             style: Style::new(),
         }
     }
@@ -133,7 +116,7 @@ impl Scatter {
     }
 }
 
-impl Representation for Scatter {
+impl Representation for Line {
     fn range(&self, dim: u32) -> (f64, f64) {
         match dim {
             0 => self.x_range(),
@@ -149,7 +132,7 @@ impl Representation for Scatter {
         face_width: f64,
         face_height: f64,
     ) -> svg::node::element::Group {
-        svg_render::draw_face_points(
+        svg_render::draw_face_line(
             &self.data,
             x_axis,
             y_axis,
@@ -166,13 +149,6 @@ impl Representation for Scatter {
         face_width: u32,
         face_height: u32,
     ) -> String {
-        text_render::render_face_points(
-            &self.data,
-            x_axis,
-            y_axis,
-            face_width,
-            face_height,
-            &self.style,
-        )
+        "".into()
     }
 }

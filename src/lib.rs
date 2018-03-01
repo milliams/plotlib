@@ -74,6 +74,7 @@ pub mod page;
 pub mod histogram;
 pub mod scatter;
 pub mod function;
+pub mod line;
 pub mod style;
 mod axis;
 mod utils;
