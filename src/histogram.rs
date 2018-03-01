@@ -27,6 +27,39 @@ use utils::PairWise;
 use svg_render;
 use text_render;
 use representation::Representation;
+use style;
+
+#[derive(Debug, Default)]
+pub struct Style {
+    fill: Option<String>,
+}
+
+impl Style {
+    pub fn new() -> Self {
+        Style { fill: None }
+    }
+
+    pub fn overlay(&mut self, other: &Self) {
+        match other.fill {
+            Some(ref v) => self.fill = Some(v.clone()),
+            None => {}
+        }
+    }
+}
+
+impl style::Bar for Style {
+    fn fill<T>(&mut self, value: T) -> &mut Self
+    where
+        T: Into<String>,
+    {
+        self.fill = Some(value.into());
+        self
+    }
+
+    fn get_fill(&self) -> &Option<String> {
+        &self.fill
+    }
+}
 
 /**
 A one-dimensional histogram with equal binning.
@@ -36,6 +69,7 @@ pub struct Histogram {
     pub bin_bounds: Vec<f64>,    // will have N_bins + 1 entries
     pub bin_counts: Vec<u32>,    // will have N_bins entries
     pub bin_densities: Vec<f64>, // will have N_bins entries
+    style: Style,
 }
 
 impl Histogram {
@@ -81,6 +115,7 @@ impl Histogram {
             bin_bounds: bounds,
             bin_counts: bins,
             bin_densities: density_per_bin,
+            style: Style::new(),
         }
     }
 
@@ -98,6 +133,15 @@ impl Histogram {
     fn y_range(&self) -> (f64, f64) {
         let max = *self.bin_counts.iter().max().unwrap();
         (0., max as f64)
+    }
+
+    pub fn style(mut self, style: &Style) -> Self {
+        self.style.overlay(&style);
+        self
+    }
+
+    pub fn get_style(&self) -> &Style {
+        &self.style
     }
 }
 
@@ -117,7 +161,7 @@ impl Representation for Histogram {
         face_width: f64,
         face_height: f64,
     ) -> svg::node::element::Group {
-        svg_render::draw_face_bars(self, x_axis, y_axis, face_width, face_height)
+        svg_render::draw_face_bars(self, x_axis, y_axis, face_width, face_height, &self.style)
     }
 
     fn to_text(

@@ -47,3 +47,11 @@ pub trait Point {
 
     fn get_size(&self) -> &Option<f32>;
 }
+
+pub trait Bar {
+    fn fill<T>(&mut self, value: T) -> &mut Self
+    where
+        T: Into<String>;
+
+    fn get_fill(&self) -> &Option<String>;
+}

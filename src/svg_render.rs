@@ -168,13 +168,17 @@ where
     group
 }
 
-pub fn draw_face_bars(
+pub fn draw_face_bars<S>(
     h: &histogram::Histogram,
     x_axis: &axis::Axis,
     y_axis: &axis::Axis,
     face_width: f64,
     face_height: f64,
-) -> node::element::Group {
+    style: &S,
+) -> node::element::Group
+where
+    S: style::Bar,
+{
     let mut group = node::element::Group::new();
 
     for ((&l, &u), &count) in h.bin_bounds.pairwise().zip(h.bin_counts.iter()) {
@@ -187,7 +191,10 @@ pub fn draw_face_bars(
             .set("y", -count_scaled)
             .set("width", width)
             .set("height", count_scaled)
-            .set("fill", "burlywood")
+            .set(
+                "fill",
+                style.get_fill().clone().unwrap_or("burlywood".into()),
+            )
             .set("stroke", "black");
         group.append(rect);
     }
