@@ -118,14 +118,6 @@ impl<'a> Box<'a> {
         }
         (min, max)
     }
-
-    fn mean(&self) -> f64 {
-        mean(self.get_data())
-    }
-
-    fn quartiles(&self) -> (f64, f64, f64) {
-        quartiles(self.get_data())
-    }
 }
 
 impl<'a> DiscreteRepresentation for Box<'a> {
@@ -157,63 +149,5 @@ impl<'a> DiscreteRepresentation for Box<'a> {
         face_height: u32,
     ) -> String {
         "".into()
-    }
-}
-
-fn mean(s: &[f64]) -> f64 {
-    s.iter().map(|v| v / s.len() as f64).sum()
-}
-
-fn median(s: &[f64]) -> f64 {
-    let mut s = s.to_owned();
-    s.sort_by(|a, b| a.partial_cmp(b).unwrap());
-    match s.len() % 2 {
-        0 => (s[(s.len() / 2) - 1] / 2.) + (s[(s.len() / 2)] / 2.),
-        _ => s[s.len() / 2],
-    }
-}
-
-fn quartiles(s: &[f64]) -> (f64, f64, f64) {
-    if s.len() == 1 {
-        return (s[0], s[0], s[0]);
-    }
-    let mut s = s.to_owned();
-    s.sort_by(|a, b| a.partial_cmp(b).unwrap());
-    let (a, b) = if s.len() % 2 == 0 {
-        s.split_at(s.len() / 2)
-    } else {
-        (&s[..(s.len() / 2)], &s[((s.len() / 2) + 1)..])
-    };
-    (median(a), median(&s), median(b))
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_mean() {
-        // TODO should error: mean(&[]);
-        assert_eq!(mean(&[1.]), 1.);
-        assert_eq!(mean(&[1., 2.]), 1.5);
-        assert_eq!(mean(&[1., 2., 3.]), 2.);
-    }
-
-    #[test]
-    fn test_median() {
-        // TODO should error: median(&[]);
-        assert_eq!(median(&[1.]), 1.);
-        assert_eq!(median(&[1., 2.]), 1.5);
-        assert_eq!(median(&[1., 2., 4.]), 2.);
-        assert_eq!(median(&[1., 2., 3., 7.]), 2.5);
-    }
-
-    #[test]
-    fn test_quartiles() {
-        // TODO should error: quartiles(&[]);
-        assert_eq!(quartiles(&[1.]), (1., 1., 1.));
-        assert_eq!(quartiles(&[1., 2.]), (1., 1.5, 2.));
-        assert_eq!(quartiles(&[1., 2., 4.]), (1., 2., 4.));
-        assert_eq!(quartiles(&[1., 2., 3., 4.]), (1.5, 2.5, 3.5));
     }
 }
