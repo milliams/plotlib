@@ -71,6 +71,14 @@ pub struct DiscreteAxis {
 }
 
 impl DiscreteAxis {
+    /// Constructs a new Axis
+    pub fn new(ticks: &[String]) -> DiscreteAxis {
+        DiscreteAxis {
+            ticks: ticks.into(),
+            label: "".into(),
+        }
+    }
+
     pub fn label<S>(mut self, l: S) -> Self
     where
         S: Into<String>,
@@ -81,6 +89,11 @@ impl DiscreteAxis {
 
     pub fn get_label(&self) -> &str {
         self.label.as_ref()
+    }
+
+    /// Get the positions of the ticks on the axis
+    pub fn ticks(&self) -> &Vec<String> {
+        &self.ticks
     }
 }
 

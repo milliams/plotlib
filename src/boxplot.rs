@@ -90,6 +90,18 @@ impl<'a> Box<'a> {
         &self.style
     }
 
+    pub fn label<T>(mut self, label: T) -> Self
+    where
+        T: Into<String>,
+    {
+        self.label = label.into();
+        self
+    }
+
+    pub fn get_label(&self) -> &String {
+        &self.label
+    }
+
     fn get_data(&'a self) -> &'a [f64] {
         match self.data {
             BoxData::Owned(ref v) => v,

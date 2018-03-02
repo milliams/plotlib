@@ -108,6 +108,54 @@ pub fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
         .add(label)
 }
 
+pub fn draw_discrete_x_axis(a: &axis::DiscreteAxis, face_width: f64) -> node::element::Group {
+    let axis_line = node::element::Line::new()
+        .set("x1", 0)
+        .set("y1", 0)
+        .set("x2", face_width)
+        .set("y2", 0)
+        .set("stroke", "black")
+        .set("stroke-width", 1);
+
+    let mut ticks = node::element::Group::new();
+    let mut labels = node::element::Group::new();
+
+    let space_per_tick = face_width / a.ticks().len() as f64;
+
+    for (i, tick) in a.ticks().iter().enumerate() {
+        let tick_pos = (i as f64 * space_per_tick) + (0.5 * space_per_tick);
+        let tick_mark = node::element::Line::new()
+            .set("x1", tick_pos)
+            .set("y1", 0)
+            .set("x2", tick_pos)
+            .set("y2", 10)
+            .set("stroke", "black")
+            .set("stroke-width", 1);
+        ticks.append(tick_mark);
+
+        let tick_label = node::element::Text::new()
+            .set("x", tick_pos)
+            .set("y", 20)
+            .set("text-anchor", "middle")
+            .set("font-size", 12)
+            .add(node::Text::new(tick.to_owned()));
+        labels.append(tick_label);
+    }
+
+    let label = node::element::Text::new()
+        .set("x", face_width / 2.)
+        .set("y", 30)
+        .set("text-anchor", "middle")
+        .set("font-size", 12)
+        .add(node::Text::new(a.get_label()));
+
+    node::element::Group::new()
+        .add(ticks)
+        .add(axis_line)
+        .add(labels)
+        .add(label)
+}
+
 pub fn draw_face_points<S>(
     s: &[(f64, f64)],
     x_axis: &axis::Axis,

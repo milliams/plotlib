@@ -196,7 +196,7 @@ impl<'a> View for ContinuousView<'a> {
 #[derive(Default)]
 pub struct DiscreteView<'a> {
     pub representations: Vec<&'a DiscreteRepresentation>,
-    x_range: Option<axis::Range>,
+    x_range: Option<Vec<String>>,
     y_range: Option<axis::Range>,
     x_label: Option<String>,
     y_label: Option<String>,
@@ -223,11 +223,98 @@ impl<'a> DiscreteView<'a> {
         self.representations.push(repr);
         self
     }
+
+    /**
+    Set the x range for the view
+    */
+    pub fn x_ticks(mut self, ticks: &[String]) -> Self {
+        self.x_range = Some(ticks.into());
+        self
+    }
+
+    /**
+    Set the y range for the view
+    */
+    pub fn y_range(mut self, min: f64, max: f64) -> Self {
+        self.y_range = Some(axis::Range::new(min, max));
+        self
+    }
+
+    pub fn x_label<T>(mut self, value: T) -> Self
+    where
+        T: Into<String>,
+    {
+        self.x_label = Some(value.into());
+        self
+    }
+
+    pub fn y_label<T>(mut self, value: T) -> Self
+    where
+        T: Into<String>,
+    {
+        self.y_label = Some(value.into());
+        self
+    }
+
+    fn default_x_ticks(&self) -> Vec<String> {
+        let mut v = vec![];
+        for repr in &self.representations {
+            for l in repr.ticks().iter() {
+                if !v.contains(l) {
+                    v.push(l.clone());
+                }
+            }
+        }
+        v
+    }
+
+    fn default_y_range(&self) -> axis::Range {
+        let mut y_min = f64::INFINITY;
+        let mut y_max = f64::NEG_INFINITY;
+        for repr in &self.representations {
+            let (this_y_min, this_y_max) = repr.range();
+            y_min = y_min.min(this_y_min);
+            y_max = y_max.max(this_y_max);
+        }
+        axis::Range::new(y_min, y_max)
+    }
+
+    fn create_axes(&self) -> (axis::DiscreteAxis, axis::Axis) {
+        let default_x_ticks = self.default_x_ticks();
+        let x_range = self.x_range.as_ref().unwrap_or(&default_x_ticks);
+
+        let default_y_range = self.default_y_range();
+        let y_range = self.y_range.as_ref().unwrap_or(&default_y_range);
+
+        let default_x_label = "".to_string();
+        let x_label: String = self.x_label.clone().unwrap_or(default_x_label);
+
+        let default_y_label = "".to_string();
+        let y_label: String = self.y_label.clone().unwrap_or(default_y_label);
+
+        let x_axis = axis::DiscreteAxis::new(x_range).label(x_label);
+        let y_axis = axis::Axis::new(y_range.lower, y_range.upper).label(y_label);
+
+        (x_axis, y_axis)
+    }
 }
 
 impl<'a> View for DiscreteView<'a> {
     fn to_svg(&self, face_width: f64, face_height: f64) -> svg::node::element::Group {
-        svg::node::element::Group::new()
+        let mut view_group = svg::node::element::Group::new();
+
+        let (x_axis, y_axis) = self.create_axes();
+
+        // Then, based on those ranges, draw each repr as an SVG
+        for repr in &self.representations {
+            let repr_group = repr.to_svg(&x_axis, &y_axis, face_width, face_height);
+            view_group.append(repr_group);
+        }
+
+        // Add in the axes
+        view_group.append(svg_render::draw_discrete_x_axis(&x_axis, face_width));
+        view_group.append(svg_render::draw_y_axis(&y_axis, face_height));
+        view_group
     }
 
     fn to_text(&self, face_width: u32, face_height: u32) -> String {
