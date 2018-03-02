@@ -25,32 +25,32 @@ use utils;
 
 #[derive(Debug, Default)]
 pub struct Style {
-    colour: Option<String>,
+    fill: Option<String>,
 }
 
 impl Style {
     pub fn new() -> Self {
-        Style { colour: None }
+        Style { fill: None }
     }
 
     pub fn overlay(&mut self, other: &Self) {
-        if let Some(ref v) = other.colour {
-            self.colour = Some(v.clone())
+        if let Some(ref v) = other.fill {
+            self.fill = Some(v.clone())
         }
     }
 }
 
 impl style::BoxPlot for Style {
-    fn colour<T>(&mut self, value: T) -> &mut Self
+    fn fill<T>(&mut self, value: T) -> &mut Self
     where
         T: Into<String>,
     {
-        self.colour = Some(value.into());
+        self.fill = Some(value.into());
         self
     }
 
-    fn get_colour(&self) -> &Option<String> {
-        &self.colour
+    fn get_fill(&self) -> &Option<String> {
+        &self.fill
     }
 }
 

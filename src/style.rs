@@ -57,9 +57,9 @@ pub trait Bar {
 }
 
 pub trait BoxPlot {
-    fn colour<T>(&mut self, value: T) -> &mut Self
+    fn fill<T>(&mut self, value: T) -> &mut Self
     where
         T: Into<String>;
 
-    fn get_colour(&self) -> &Option<String>;
+    fn get_fill(&self) -> &Option<String>;
 }

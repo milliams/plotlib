@@ -342,7 +342,13 @@ where
             .set("y", box_start)
             .set("width", box_width)
             .set("height", box_end - box_start)
-            .set("fill", "burlywood")
+            .set(
+                "fill",
+                style
+                    .get_fill()
+                    .clone()
+                    .unwrap_or_else(|| "burlywood".into()),
+            )
             .set("stroke", "black"),
     );
 
