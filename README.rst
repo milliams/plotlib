@@ -4,7 +4,13 @@ plotlib
 ``plotlib`` is a generic data visualisation and plotting library for Rust.
 It is currently in the very early stages of development.
 
-It can currently produce scatter plot and histograms,
+It can currently produce:
+
+* histograms
+* scatter plots
+* line graphs from data or from function definitions
+* box plots
+
 rendering them as either SVG or plain text.
 
 The API is still very much in flux and is subject to change.
