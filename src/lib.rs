@@ -76,6 +76,7 @@ pub mod scatter;
 pub mod function;
 pub mod line;
 pub mod style;
+pub mod boxplot;
 mod axis;
 mod utils;
 mod text_render;
