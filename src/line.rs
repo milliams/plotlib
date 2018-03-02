@@ -6,10 +6,10 @@ Plot line charts
 
 ```
 # use plotlib::line::Line;
-# use plotlib::view::View;
+# use plotlib::view::ContinuousView;
 // y=x^2 between 0 and 10
 let l = Line::new(&[(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)]);
-let v = View::new().add(&l);
+let v = ContinuousView::new().add(&l);
 ```
 */
 

@@ -15,7 +15,7 @@ use text_render;
 
 /// Standard 1-dimensional view with a continuous x-axis
 #[derive(Default)]
-pub struct View<'a> {
+pub struct ContinuousView<'a> {
     pub representations: Vec<&'a Representation>,
     x_range: Option<axis::Range>,
     y_range: Option<axis::Range>,
@@ -23,12 +23,12 @@ pub struct View<'a> {
     y_label: Option<String>,
 }
 
-impl<'a> View<'a> {
+impl<'a> ContinuousView<'a> {
     /**
     Create an empty view
     */
-    pub fn new() -> View<'a> {
-        View {
+    pub fn new() -> ContinuousView<'a> {
+        ContinuousView {
             representations: vec![],
             x_range: None,
             y_range: None,

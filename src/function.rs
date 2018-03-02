@@ -6,10 +6,10 @@ Plot arbitrary functions
 
 ```
 # use plotlib::function::Function;
-# use plotlib::view::View;
+# use plotlib::view::ContinuousView;
 // y=x^2 between 0 and 10
 let f = Function::new(|x| x*x, 0., 10.);
-let v = View::new().add(&f);
+let v = ContinuousView::new().add(&f);
 ```
 */
 

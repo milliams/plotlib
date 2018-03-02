@@ -19,7 +19,7 @@ fn main() {
     );
     let s2 = plotlib::scatter::Scatter::from_slice(&[(-1.4, 2.5), (7.2, -0.3)])
         .style(plotlib::scatter::Style::new().colour("#35C788"));
-    let v = plotlib::view::View::new()
+    let v = plotlib::view::ContinuousView::new()
         .add(&s1)
         .add(&s2)
         .x_range(-5., 10.)
@@ -53,7 +53,7 @@ fn main() {
     let g = Grid::new();
 
     // Create a view containing all the representations
-    let v = View::new()
+    let v = ContinuousView::new()
         .add(&l)
         .add(&h)
         .add(&s)
@@ -82,7 +82,7 @@ fn main() {
         .alpha(0.3)
         .fill(true;
 
-    let v = View::new()
+    let v = ContinuousView::new()
         .add(y1)
         .add(y2);
 
