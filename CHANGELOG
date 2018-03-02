@@ -1,0 +1,35 @@
+# Changelog
+
+## Unreleased
+### Added
+- Line charts.
+- Box plots.
+- Introduce discrete representation, views and axes.
+
+### Changed
+- Make `representation` module public.
+- Rename `Scatter::from_vec` to `Scatter::from_slice`.
+- Rename `Histogram::from_vec` to `Histogram::from_slice`.
+- Rename `view::View` to `view::ContinuousView` and introduce `view::View` as a trait.
+- Change `svg_render` functions to take data slices rather than Representations.
+
+## 0.3.0 - 2018-03-01
+### Added
+- Axis labels
+- Function plotting
+- Histogram styling
+
+### Changed
+- Rename `plot::Plot` to `page::Page`
+- Move `scatter::Marker` to `style::Marker`
+
+## 0.2.0 - 2017-03-16
+### Added
+- SVG rendering
+
+### Changed
+- Reorganise things to use traits for plot types
+
+## 0.1.0 - 2017-03-09
+### Added
+- Initial release with histograms and scatter plots
