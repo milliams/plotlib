@@ -13,6 +13,11 @@ use axis;
 use svg_render;
 use text_render;
 
+pub trait View {
+    fn to_svg(&self, face_width: f64, face_height: f64) -> svg::node::element::Group;
+    fn to_text(&self, face_width: u32, face_height: u32) -> String;
+}
+
 /// Standard 1-dimensional view with a continuous x-axis
 #[derive(Default)]
 pub struct ContinuousView<'a> {
@@ -117,11 +122,13 @@ impl<'a> ContinuousView<'a> {
 
         (x_axis, y_axis)
     }
+}
 
+impl<'a> View for ContinuousView<'a> {
     /**
     Create an SVG rendering of the view
     */
-    pub fn to_svg(&self, face_width: f64, face_height: f64) -> svg::node::element::Group {
+    fn to_svg(&self, face_width: f64, face_height: f64) -> svg::node::element::Group {
         let mut view_group = svg::node::element::Group::new();
 
         let (x_axis, y_axis) = self.create_axes();
@@ -141,7 +148,7 @@ impl<'a> ContinuousView<'a> {
     /**
     Create a text rendering of the view
     */
-    pub fn to_text(&self, face_width: u32, face_height: u32) -> String {
+    fn to_text(&self, face_width: u32, face_height: u32) -> String {
         let (x_axis, y_axis) = self.create_axes();
 
         let (y_axis_string, longest_y_label_width) =

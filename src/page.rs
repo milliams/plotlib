@@ -9,13 +9,13 @@ use svg;
 use svg::Node;
 use svg::Document;
 
-use view::ContinuousView;
+use view::View;
 
 /**
 A single page page laying out the views in a grid
 */
 pub struct Page<'a> {
-    views: Vec<&'a ContinuousView<'a>>,
+    views: Vec<&'a View>,
     num_views: u32,
 }
 
@@ -23,7 +23,7 @@ impl<'a> Page<'a> {
     /**
     Creates a plot containing a single view
     */
-    pub fn single(view: &'a ContinuousView) -> Self {
+    pub fn single(view: &'a View) -> Self {
         Page {
             views: vec![view],
             num_views: 1,
