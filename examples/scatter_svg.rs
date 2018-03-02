@@ -14,11 +14,11 @@ fn main() {
     let s1 = plotlib::scatter::Scatter::from_slice(&data).style(
         plotlib::scatter::Style::new()
             .marker(plotlib::style::Marker::Square)
-            .colour("#DD3355")
+            .colour("burlywood")
             .size(2.),
     );
     let s2 = plotlib::scatter::Scatter::from_slice(&[(-1.4, 2.5), (7.2, -0.3)])
-        .style(plotlib::scatter::Style::new().colour("#35C788"));
+        .style(plotlib::scatter::Style::new().colour("darkseagreen"));
     let v = plotlib::view::ContinuousView::new()
         .add(&s1)
         .add(&s2)
