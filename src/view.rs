@@ -276,7 +276,8 @@ impl<'a> DiscreteView<'a> {
             y_min = y_min.min(this_y_min);
             y_max = y_max.max(this_y_max);
         }
-        axis::Range::new(y_min, y_max)
+        let range = y_max - y_min;
+        axis::Range::new(y_min - range / 10., y_max + range / 10.)
     }
 
     fn create_axes(&self) -> (axis::DiscreteAxis, axis::Axis) {
