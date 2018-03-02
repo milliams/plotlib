@@ -21,6 +21,7 @@ use axis;
 use representation::DiscreteRepresentation;
 use svg_render;
 use style;
+use utils;
 
 #[derive(Debug, Default)]
 pub struct Style {
@@ -110,13 +111,10 @@ impl<'a> Box<'a> {
     }
 
     fn range(&self) -> (f64, f64) {
-        let mut min = f64::INFINITY;
-        let mut max = f64::NEG_INFINITY;
-        for &v in self.get_data() {
-            min = min.min(v);
-            max = max.max(v);
+        match self.data {
+            BoxData::Owned(ref v) => utils::range(v),
+            BoxData::Ref(v) => utils::range(v),
         }
-        (min, max)
     }
 }
 

@@ -1,5 +1,6 @@
 use std::iter::{Skip, Zip};
 use std::slice::Iter;
+use std::f64;
 
 pub trait PairWise<T> {
     fn pairwise(&self) -> Zip<Iter<T>, Skip<Iter<T>>>;
@@ -36,6 +37,16 @@ pub fn quartiles(s: &[f64]) -> (f64, f64, f64) {
         (&s[..(s.len() / 2)], &s[((s.len() / 2) + 1)..])
     };
     (median(a), median(&s), median(b))
+}
+
+pub fn range(s: &[f64]) -> (f64, f64) {
+    let mut min = f64::INFINITY;
+    let mut max = f64::NEG_INFINITY;
+    for &v in s {
+        min = min.min(v);
+        max = max.max(v);
+    }
+    (min, max)
 }
 
 #[cfg(test)]
