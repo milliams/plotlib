@@ -2,7 +2,7 @@
 
 # plotlib
 
-plotlib is a data plotting and rendering library/
+plotlib is a data plotting and rendering library.
 
 ## Technical
 
@@ -16,7 +16,7 @@ Five main components of the plotlib pipeline:
 
 **Data** is the plain Rust data structure that the user brings along.
 This might be something like a `Vec`, an `ndarray` or a slice.
-This will likely be copied or moved from to contruct the *representation*.
+This will likely be copied or moved from to construct the *representation*.
 
 The **representation** is the transformed version of that data which is the base plot object.
 Each representation has N dimensions of input and one dimension of output.
@@ -40,7 +40,7 @@ A **page** is the whole page. It can contain multiple views and specifies how th
 
 Finally the **rendering** is the actual output.
 This could be an SVG, a PNG, an ASCII plot or an interactive web page.
-A rendering will not necessarilly be able to show all types of views or representations
+A rendering will not necessarily be able to show all types of views or representations
 and may choose to ignore some.
 
 This structure allows some data set to be represented multiple ways in one view
