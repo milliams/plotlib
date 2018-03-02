@@ -39,7 +39,7 @@ impl Style {
     }
 }
 
-impl style::Box for Style {
+impl style::BoxPlot for Style {
     fn colour<T>(&mut self, value: T) -> &mut Self
     where
         T: Into<String>,
