@@ -6,20 +6,19 @@ Box plot
 
 ```
 # use plotlib::boxplot::Box;
-# use plotlib::view::View;
+# use plotlib::view::DiscreteView;
 let b1 = Box::from_slice(&[0., 2., 3., 4.]);
 let b2 = Box::from_vec(vec![0., 2., 3., 4.]);
-//let v = View::new().add(&b);
+let v = DiscreteView::new().add(&b1);
 ```
 */
 
 use std::f64;
-use std;
 
 use svg;
 
 use axis;
-use representation::Representation;
+use representation::DiscreteRepresentation;
 use svg_render;
 use style;
 
@@ -61,6 +60,7 @@ enum BoxData<'a> {
 
 pub struct Box<'a> {
     data: BoxData<'a>,
+    label: String,
     style: Style,
 }
 
@@ -69,6 +69,7 @@ impl<'a> Box<'a> {
         Box {
             data: BoxData::Ref(v),
             style: Style::new(),
+            label: String::new(),
         }
     }
 
@@ -76,6 +77,7 @@ impl<'a> Box<'a> {
         Box {
             data: BoxData::Owned(v),
             style: Style::new(),
+            label: String::new(),
         }
     }
 
@@ -114,6 +116,38 @@ impl<'a> Box<'a> {
     }
 }
 
+impl<'a> DiscreteRepresentation for Box<'a> {
+    /// The maximum range. Used for auto-scaling axis
+    fn range(&self) -> (f64, f64) {
+        self.range()
+    }
+
+    /// The ticks that this representation covers. Used to collect all ticks for display
+    fn ticks(&self) -> Vec<String> {
+        vec![self.label.clone()]
+    }
+
+    fn to_svg(
+        &self,
+        x_axis: &axis::DiscreteAxis,
+        y_axis: &axis::Axis,
+        face_width: f64,
+        face_height: f64,
+    ) -> svg::node::element::Group {
+        svg::node::element::Group::new()
+    }
+
+    fn to_text(
+        &self,
+        x_axis: &axis::DiscreteAxis,
+        y_axis: &axis::Axis,
+        face_width: u32,
+        face_height: u32,
+    ) -> String {
+        "".into()
+    }
+}
+
 fn mean(s: &[f64]) -> f64 {
     s.iter().map(|v| v / s.len() as f64).sum()
 }
@@ -129,7 +163,7 @@ fn median(s: &[f64]) -> f64 {
 
 fn quartiles(s: &[f64]) -> (f64, f64, f64) {
     if s.len() == 1 {
-        return (s[0], s[0], s[0])
+        return (s[0], s[0], s[0]);
     }
     let mut s = s.to_owned();
     s.sort_by(|a, b| a.partial_cmp(b).unwrap());

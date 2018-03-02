@@ -64,6 +64,26 @@ impl Axis {
     }
 }
 
+#[derive(Debug)]
+pub struct DiscreteAxis {
+    ticks: Vec<String>,
+    label: String,
+}
+
+impl DiscreteAxis {
+    pub fn label<S>(mut self, l: S) -> Self
+    where
+        S: Into<String>,
+    {
+        self.label = l.into();
+        self
+    }
+
+    pub fn get_label(&self) -> &str {
+        self.label.as_ref()
+    }
+}
+
 /// The base units for the step sizes
 /// They should be within one order of magnitude, e.g. [1,10)
 const BASE_STEPS: [u32; 4] = [1, 2, 4, 5];

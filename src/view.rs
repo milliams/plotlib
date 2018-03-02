@@ -8,7 +8,7 @@ use std::f64;
 use svg;
 use svg::Node;
 
-use representation::Representation;
+use representation::{DiscreteRepresentation, Representation};
 use axis;
 use svg_render;
 use text_render;
@@ -189,5 +189,48 @@ impl<'a> View for ContinuousView<'a> {
         );
 
         view_string
+    }
+}
+
+/// A view with discrete entries along the x-axis and continuous values along the y-axis
+#[derive(Default)]
+pub struct DiscreteView<'a> {
+    pub representations: Vec<&'a DiscreteRepresentation>,
+    x_range: Option<axis::Range>,
+    y_range: Option<axis::Range>,
+    x_label: Option<String>,
+    y_label: Option<String>,
+}
+
+impl<'a> DiscreteView<'a> {
+    /**
+    Create an empty view
+    */
+    pub fn new() -> DiscreteView<'a> {
+        DiscreteView {
+            representations: vec![],
+            x_range: None,
+            y_range: None,
+            x_label: None,
+            y_label: None,
+        }
+    }
+
+    /**
+    Add a representation to the view
+    */
+    pub fn add(mut self, repr: &'a DiscreteRepresentation) -> Self {
+        self.representations.push(repr);
+        self
+    }
+}
+
+impl<'a> View for DiscreteView<'a> {
+    fn to_svg(&self, face_width: f64, face_height: f64) -> svg::node::element::Group {
+        svg::node::element::Group::new()
+    }
+
+    fn to_text(&self, face_width: u32, face_height: u32) -> String {
+        "".into()
     }
 }
