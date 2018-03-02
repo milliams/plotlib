@@ -259,8 +259,8 @@ impl<'a> DiscreteView<'a> {
     fn default_x_ticks(&self) -> Vec<String> {
         let mut v = vec![];
         for repr in &self.representations {
-            for l in repr.ticks().iter() {
-                if !v.contains(l) {
+            for l in repr.ticks() {
+                if !v.contains(&l) {
                     v.push(l.clone());
                 }
             }

@@ -1,9 +1,12 @@
+use std;
+
 use svg::Node;
 use svg::node;
 
 use histogram;
 use axis;
 use style;
+use utils;
 use utils::PairWise;
 
 fn value_to_face_offset(value: f64, axis: &axis::Axis, face_size: f64) -> f64 {
@@ -301,6 +304,80 @@ where
             )
             .set("stroke-width", style.get_width().clone().unwrap_or(2.))
             .set("d", path),
+    );
+
+    group
+}
+
+pub fn draw_face_boxplot<L, S>(
+    d: &[f64],
+    label: &L,
+    x_axis: &axis::DiscreteAxis,
+    y_axis: &axis::Axis,
+    face_width: f64,
+    face_height: f64,
+    style: &S,
+) -> node::element::Group
+where
+    S: style::BoxPlot,
+    L: Into<String>,
+    String: std::cmp::PartialEq<L>,
+{
+    let mut group = node::element::Group::new();
+
+    let tick_index = x_axis.ticks().iter().position(|t| t == label).unwrap(); // TODO this should raise an error
+    let space_per_tick = face_width / x_axis.ticks().len() as f64;
+    let tick_pos = (tick_index as f64 * space_per_tick) + (0.5 * space_per_tick);
+
+    let box_width = space_per_tick / 2.;
+
+    let (q1, median, q3) = utils::quartiles(d);
+
+    let box_start = -value_to_face_offset(q3, y_axis, face_height);
+    let box_end = -value_to_face_offset(q1, y_axis, face_height);
+
+    group.append(
+        node::element::Rectangle::new()
+            .set("x", tick_pos - (box_width / 2.))
+            .set("y", box_start)
+            .set("width", box_width)
+            .set("height", box_end - box_start)
+            .set("fill", "burlywood")
+            .set("stroke", "black"),
+    );
+
+    let mid_line = -value_to_face_offset(median, y_axis, face_height);
+
+    group.append(
+        node::element::Line::new()
+            .set("x1", tick_pos - (box_width / 2.))
+            .set("y1", mid_line)
+            .set("x2", tick_pos + (box_width / 2.))
+            .set("y2", mid_line)
+            .set("stroke", "black"),
+    );
+
+    let (min, max) = utils::range(d);
+
+    let whisker_bottom = -value_to_face_offset(min, y_axis, face_height);
+    let whisker_top = -value_to_face_offset(max, y_axis, face_height);
+
+    group.append(
+        node::element::Line::new()
+            .set("x1", tick_pos)
+            .set("y1", whisker_bottom)
+            .set("x2", tick_pos)
+            .set("y2", box_end)
+            .set("stroke", "black"),
+    );
+
+    group.append(
+        node::element::Line::new()
+            .set("x1", tick_pos)
+            .set("y1", whisker_top)
+            .set("x2", tick_pos)
+            .set("y2", box_start)
+            .set("stroke", "black"),
     );
 
     group

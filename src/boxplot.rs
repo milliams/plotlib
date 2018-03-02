@@ -136,7 +136,15 @@ impl<'a> DiscreteRepresentation for Box<'a> {
         face_width: f64,
         face_height: f64,
     ) -> svg::node::element::Group {
-        svg::node::element::Group::new()
+        svg_render::draw_face_boxplot(
+            self.get_data(),
+            &self.label,
+            x_axis,
+            y_axis,
+            face_width,
+            face_height,
+            &self.style,
+        )
     }
 
     fn to_text(
