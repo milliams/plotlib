@@ -1,5 +1,9 @@
 /*!
-The `view` module provides structures for showing data in various ways.
+*Views* are plotlib's way of combining multiple representations into a single plot.
+It is analogous to a *subplot* in other plotting libraries.
+
+In essence, a view is a collection of representations along with some metadata describing the
+extent to plot and information about the axes. It knows how to render itself.
 */
 
 use std;
@@ -21,7 +25,7 @@ pub trait View {
 /// Standard 1-dimensional view with a continuous x-axis
 #[derive(Default)]
 pub struct ContinuousView<'a> {
-    pub representations: Vec<&'a Representation>,
+    representations: Vec<&'a Representation>,
     x_range: Option<axis::Range>,
     y_range: Option<axis::Range>,
     x_label: Option<String>,
@@ -66,6 +70,9 @@ impl<'a> ContinuousView<'a> {
         self
     }
 
+    /**
+    Set the label for the x-axis
+    */
     pub fn x_label<T>(mut self, value: T) -> Self
     where
         T: Into<String>,
@@ -74,6 +81,9 @@ impl<'a> ContinuousView<'a> {
         self
     }
 
+    /**
+    Set the label for the y-axis
+    */
     pub fn y_label<T>(mut self, value: T) -> Self
     where
         T: Into<String>,
@@ -195,7 +205,7 @@ impl<'a> View for ContinuousView<'a> {
 /// A view with discrete entries along the x-axis and continuous values along the y-axis
 #[derive(Default)]
 pub struct DiscreteView<'a> {
-    pub representations: Vec<&'a DiscreteRepresentation>,
+    representations: Vec<&'a DiscreteRepresentation>,
     x_range: Option<Vec<String>>,
     y_range: Option<axis::Range>,
     x_label: Option<String>,
@@ -240,6 +250,10 @@ impl<'a> DiscreteView<'a> {
         self
     }
 
+
+    /**
+    Set the label for the x-axis
+    */
     pub fn x_label<T>(mut self, value: T) -> Self
     where
         T: Into<String>,
@@ -248,6 +262,10 @@ impl<'a> DiscreteView<'a> {
         self
     }
 
+
+    /**
+    Set the label for the y-axis
+    */
     pub fn y_label<T>(mut self, value: T) -> Self
     where
         T: Into<String>,
