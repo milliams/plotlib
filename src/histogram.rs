@@ -72,7 +72,7 @@ pub struct Histogram {
 }
 
 impl Histogram {
-    pub fn from_slice(v: &[f64], num_bins: u32) -> Histogram {
+    pub fn from_slice(v: &[f64], num_bins: usize) -> Histogram {
         let mut max = v.iter().fold(-1. / 0., |a, &b| f64::max(a, b));
         let mut min = v.iter().fold(1. / 0., |a, &b| f64::min(a, b));
 
@@ -80,8 +80,6 @@ impl Histogram {
             min = min - 0.5;
             max = max + 0.5;
         }
-
-        let num_bins = num_bins as usize;
 
         let mut bins = vec![0; num_bins];
 
