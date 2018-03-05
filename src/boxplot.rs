@@ -5,10 +5,10 @@ Box plot
 # Examples
 
 ```
-# use plotlib::boxplot::Box;
+# use plotlib::boxplot::BoxPlot;
 # use plotlib::view::DiscreteView;
-let b1 = Box::from_slice(&[0., 2., 3., 4.]);
-let b2 = Box::from_vec(vec![0., 2., 3., 4.]);
+let b1 = BoxPlot::from_slice(&[0., 2., 3., 4.]);
+let b2 = BoxPlot::from_vec(vec![0., 2., 3., 4.]);
 let v = DiscreteView::new().add(&b1);
 ```
 */
@@ -59,15 +59,15 @@ enum BoxData<'a> {
     Ref(&'a [f64]),
 }
 
-pub struct Box<'a> {
+pub struct BoxPlot<'a> {
     data: BoxData<'a>,
     label: String,
     style: Style,
 }
 
-impl<'a> Box<'a> {
+impl<'a> BoxPlot<'a> {
     pub fn from_slice(v: &'a [(f64)]) -> Self {
-        Box {
+        BoxPlot {
             data: BoxData::Ref(v),
             style: Style::new(),
             label: String::new(),
@@ -75,7 +75,7 @@ impl<'a> Box<'a> {
     }
 
     pub fn from_vec(v: Vec<f64>) -> Self {
-        Box {
+        BoxPlot {
             data: BoxData::Owned(v),
             style: Style::new(),
             label: String::new(),
@@ -118,7 +118,7 @@ impl<'a> Box<'a> {
     }
 }
 
-impl<'a> DiscreteRepresentation for Box<'a> {
+impl<'a> DiscreteRepresentation for BoxPlot<'a> {
     /// The maximum range. Used for auto-scaling axis
     fn range(&self) -> (f64, f64) {
         self.range()
