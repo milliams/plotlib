@@ -114,7 +114,7 @@ impl<'a> ContinuousView<'a> {
         axis::Range::new(y_min, y_max)
     }
 
-    fn create_axes(&self) -> (axis::Axis, axis::Axis) {
+    fn create_axes(&self) -> (axis::ContinuousAxis, axis::ContinuousAxis) {
         let default_x_range = self.default_x_range();
         let x_range = self.x_range.as_ref().unwrap_or(&default_x_range);
 
@@ -127,8 +127,8 @@ impl<'a> ContinuousView<'a> {
         let default_y_label = "".to_string();
         let y_label: String = self.y_label.clone().unwrap_or(default_y_label);
 
-        let x_axis = axis::Axis::new(x_range.lower, x_range.upper).label(x_label);
-        let y_axis = axis::Axis::new(y_range.lower, y_range.upper).label(y_label);
+        let x_axis = axis::ContinuousAxis::new(x_range.lower, x_range.upper).label(x_label);
+        let y_axis = axis::ContinuousAxis::new(y_range.lower, y_range.upper).label(y_label);
 
         (x_axis, y_axis)
     }
@@ -298,7 +298,7 @@ impl<'a> DiscreteView<'a> {
         axis::Range::new(y_min - range / 10., y_max + range / 10.)
     }
 
-    fn create_axes(&self) -> (axis::DiscreteAxis, axis::Axis) {
+    fn create_axes(&self) -> (axis::DiscreteAxis, axis::ContinuousAxis) {
         let default_x_ticks = self.default_x_ticks();
         let x_range = self.x_range.as_ref().unwrap_or(&default_x_ticks);
 
@@ -312,7 +312,7 @@ impl<'a> DiscreteView<'a> {
         let y_label: String = self.y_label.clone().unwrap_or(default_y_label);
 
         let x_axis = axis::DiscreteAxis::new(x_range).label(x_label);
-        let y_axis = axis::Axis::new(y_range.lower, y_range.upper).label(y_label);
+        let y_axis = axis::ContinuousAxis::new(y_range.lower, y_range.upper).label(y_label);
 
         (x_axis, y_axis)
     }
@@ -340,3 +340,12 @@ impl<'a> View for DiscreteView<'a> {
         "".into()
     }
 }
+
+/*pub struct AnyView<'a> {
+    representations: Vec<&'a Representation>,
+    axes: Vec<>,
+    x_range: Option<axis::Range>,
+    y_range: Option<axis::Range>,
+    x_label: Option<String>,
+    y_label: Option<String>,
+}*/

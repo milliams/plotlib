@@ -21,17 +21,17 @@ impl Range {
 }
 
 #[derive(Debug)]
-pub struct Axis {
+pub struct ContinuousAxis {
     range: Range,
     ticks: Vec<f64>,
     label: String,
 }
 
-impl Axis {
-    /// Constructs a new Axis
-    pub fn new(lower: f64, upper: f64) -> Axis {
+impl ContinuousAxis {
+    /// Constructs a new ContinuousAxis
+    pub fn new(lower: f64, upper: f64) -> ContinuousAxis {
         let default_max_ticks = 6;
-        Axis {
+        ContinuousAxis {
             range: Range::new(lower, upper),
             ticks: calculate_ticks(lower, upper, default_max_ticks),
             label: "".into(),
@@ -71,7 +71,7 @@ pub struct DiscreteAxis {
 }
 
 impl DiscreteAxis {
-    /// Constructs a new Axis
+    /// Constructs a new ContinuousAxis
     pub fn new(ticks: &[String]) -> DiscreteAxis {
         DiscreteAxis {
             ticks: ticks.into(),

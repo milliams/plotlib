@@ -11,7 +11,7 @@ use style;
 
 // Given a value like a tick label or a bin count,
 // calculate how far from the x-axis it should be plotted
-fn value_to_axis_cell_offset(value: f64, axis: &axis::Axis, face_cells: u32) -> i32 {
+fn value_to_axis_cell_offset(value: f64, axis: &axis::ContinuousAxis, face_cells: u32) -> i32 {
     let data_per_cell = (axis.max() - axis.min()) / face_cells as f64;
     ((value - axis.min()) / data_per_cell).round() as i32
 }
@@ -20,7 +20,7 @@ fn value_to_axis_cell_offset(value: f64, axis: &axis::Axis, face_cells: u32) -> 
 /// the total scale of the axis
 /// and the number of face cells to work with,
 /// create a mapping of cell offset to tick value
-fn tick_offset_map(axis: &axis::Axis, face_width: u32) -> HashMap<i32, f64> {
+fn tick_offset_map(axis: &axis::ContinuousAxis, face_width: u32) -> HashMap<i32, f64> {
     axis.ticks()
         .iter()
         .map(|&tick| (value_to_axis_cell_offset(tick, axis, face_width), tick))
@@ -33,7 +33,7 @@ fn tick_offset_map(axis: &axis::Axis, face_width: u32) -> HashMap<i32, f64> {
 /// create a mapping of cell offset to bin bound
 fn bound_cell_offsets(
     hist: &histogram::Histogram,
-    x_axis: &axis::Axis,
+    x_axis: &axis::ContinuousAxis,
     face_width: u32,
 ) -> Vec<i32> {
     hist.bin_bounds
@@ -130,7 +130,7 @@ fn create_x_axis_labels(x_tick_map: &HashMap<i32, f64>) -> Vec<XAxisLabel> {
     ls
 }
 
-pub fn render_y_axis_strings(y_axis: &axis::Axis, face_height: u32) -> (String, i32) {
+pub fn render_y_axis_strings(y_axis: &axis::ContinuousAxis, face_height: u32) -> (String, i32) {
     // Get the strings and offsets we'll use for the y-axis
     let y_tick_map = tick_offset_map(y_axis, face_height);
 
@@ -196,7 +196,7 @@ pub fn render_y_axis_strings(y_axis: &axis::Axis, face_height: u32) -> (String, 
     (axis_string, longest_y_label_width as i32)
 }
 
-pub fn render_x_axis_strings(x_axis: &axis::Axis, face_width: u32) -> (String, i32) {
+pub fn render_x_axis_strings(x_axis: &axis::ContinuousAxis, face_width: u32) -> (String, i32) {
     // Get the strings and offsets we'll use for the x-axis
     let x_tick_map = tick_offset_map(x_axis, face_width as u32);
 
@@ -277,8 +277,8 @@ pub fn render_x_axis_strings(x_axis: &axis::Axis, face_width: u32) -> (String, i
 /// create the strings to be drawn as the face
 pub fn render_face_bars(
     h: &histogram::Histogram,
-    x_axis: &axis::Axis,
-    y_axis: &axis::Axis,
+    x_axis: &axis::ContinuousAxis,
+    y_axis: &axis::ContinuousAxis,
     face_width: u32,
     face_height: u32,
 ) -> String {
@@ -353,8 +353,8 @@ pub fn render_face_bars(
 /// create the strings to be drawn as the face
 pub fn render_face_points<S>(
     s: &[(f64, f64)],
-    x_axis: &axis::Axis,
-    y_axis: &axis::Axis,
+    x_axis: &axis::ContinuousAxis,
+    y_axis: &axis::ContinuousAxis,
     face_width: u32,
     face_height: u32,
     style: &S,
@@ -534,7 +534,7 @@ mod tests {
     #[test]
     fn test_value_to_axis_cell_offset() {
         assert_eq!(
-            value_to_axis_cell_offset(3.0, &axis::Axis::new(5.0, 10.0), 10),
+            value_to_axis_cell_offset(3.0, &axis::ContinuousAxis::new(5.0, 10.0), 10),
             -4
         );
     }
@@ -576,7 +576,7 @@ mod tests {
 
     #[test]
     fn test_render_y_axis_strings() {
-        let y_axis = axis::Axis::new(0.0, 10.0);
+        let y_axis = axis::ContinuousAxis::new(0.0, 10.0);
 
         let (y_axis_string, longest_y_label_width) = render_y_axis_strings(&y_axis, 10);
 
@@ -588,7 +588,7 @@ mod tests {
 
     #[test]
     fn test_render_x_axis_strings() {
-        let x_axis = axis::Axis::new(0.0, 10.0);
+        let x_axis = axis::ContinuousAxis::new(0.0, 10.0);
 
         let (x_axis_string, start_offset) = render_x_axis_strings(&x_axis, 20);
 
@@ -603,8 +603,8 @@ mod tests {
     fn test_render_face_bars() {
         let data = vec![0.3, 0.5, 6.4, 5.3, 3.6, 3.6, 3.5, 7.5, 4.0];
         let h = histogram::Histogram::from_slice(&data, 10);
-        let x_axis = axis::Axis::new(0.3, 7.5);
-        let y_axis = axis::Axis::new(0., 3.);
+        let x_axis = axis::ContinuousAxis::new(0.3, 7.5);
+        let y_axis = axis::ContinuousAxis::new(0., 3.);
         let strings = render_face_bars(&h, &x_axis, &y_axis, 20, 10);
         assert_eq!(strings.lines().count(), 10);
         assert!(strings.lines().all(|s| s.chars().count() == 20));
@@ -636,8 +636,8 @@ mod tests {
             (8.5, 3.7),
         ];
         let s = scatter::Scatter::from_slice(&data);
-        let x_axis = axis::Axis::new(-3.575, 9.075);
-        let y_axis = axis::Axis::new(-1.735, 5.635);
+        let x_axis = axis::ContinuousAxis::new(-3.575, 9.075);
+        let y_axis = axis::ContinuousAxis::new(-1.735, 5.635);
         let style = scatter::Style::new();
         let strings = render_face_points(&s.data, &x_axis, &y_axis, 20, 10, &style);
         assert_eq!(strings.lines().count(), 10);

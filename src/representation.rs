@@ -24,16 +24,16 @@ pub trait Representation {
 
     fn to_svg(
         &self,
-        x_axis: &axis::Axis,
-        y_axis: &axis::Axis,
+        x_axis: &axis::ContinuousAxis,
+        y_axis: &axis::ContinuousAxis,
         face_width: f64,
         face_height: f64,
     ) -> svg::node::element::Group;
 
     fn to_text(
         &self,
-        x_axis: &axis::Axis,
-        y_axis: &axis::Axis,
+        x_axis: &axis::ContinuousAxis,
+        y_axis: &axis::ContinuousAxis,
         face_width: u32,
         face_height: u32,
     ) -> String;
@@ -52,7 +52,7 @@ pub trait DiscreteRepresentation {
     fn to_svg(
         &self,
         x_axis: &axis::DiscreteAxis,
-        y_axis: &axis::Axis,
+        y_axis: &axis::ContinuousAxis,
         face_width: f64,
         face_height: f64,
     ) -> svg::node::element::Group;
@@ -60,7 +60,7 @@ pub trait DiscreteRepresentation {
     fn to_text(
         &self,
         x_axis: &axis::DiscreteAxis,
-        y_axis: &axis::Axis,
+        y_axis: &axis::ContinuousAxis,
         face_width: u32,
         face_height: u32,
     ) -> String;

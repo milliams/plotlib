@@ -9,12 +9,12 @@ use style;
 use utils;
 use utils::PairWise;
 
-fn value_to_face_offset(value: f64, axis: &axis::Axis, face_size: f64) -> f64 {
+fn value_to_face_offset(value: f64, axis: &axis::ContinuousAxis, face_size: f64) -> f64 {
     let range = axis.max() - axis.min();
     (face_size * (value - axis.min())) / range
 }
 
-pub fn draw_x_axis(a: &axis::Axis, face_width: f64) -> node::element::Group {
+pub fn draw_x_axis(a: &axis::ContinuousAxis, face_width: f64) -> node::element::Group {
     let axis_line = node::element::Line::new()
         .set("x1", 0)
         .set("y1", 0)
@@ -60,7 +60,7 @@ pub fn draw_x_axis(a: &axis::Axis, face_width: f64) -> node::element::Group {
         .add(label)
 }
 
-pub fn draw_y_axis(a: &axis::Axis, face_height: f64) -> node::element::Group {
+pub fn draw_y_axis(a: &axis::ContinuousAxis, face_height: f64) -> node::element::Group {
     let axis_line = node::element::Line::new()
         .set("x1", 0)
         .set("y1", 0)
@@ -161,8 +161,8 @@ pub fn draw_discrete_x_axis(a: &axis::DiscreteAxis, face_width: f64) -> node::el
 
 pub fn draw_face_points<S>(
     s: &[(f64, f64)],
-    x_axis: &axis::Axis,
-    y_axis: &axis::Axis,
+    x_axis: &axis::ContinuousAxis,
+    y_axis: &axis::ContinuousAxis,
     face_width: f64,
     face_height: f64,
     style: &S,
@@ -228,8 +228,8 @@ where
 
 pub fn draw_face_bars<S>(
     h: &histogram::Histogram,
-    x_axis: &axis::Axis,
-    y_axis: &axis::Axis,
+    x_axis: &axis::ContinuousAxis,
+    y_axis: &axis::ContinuousAxis,
     face_width: f64,
     face_height: f64,
     style: &S,
@@ -265,8 +265,8 @@ where
 
 pub fn draw_face_line<S>(
     s: &[(f64, f64)],
-    x_axis: &axis::Axis,
-    y_axis: &axis::Axis,
+    x_axis: &axis::ContinuousAxis,
+    y_axis: &axis::ContinuousAxis,
     face_width: f64,
     face_height: f64,
     style: &S,
@@ -313,7 +313,7 @@ pub fn draw_face_boxplot<L, S>(
     d: &[f64],
     label: &L,
     x_axis: &axis::DiscreteAxis,
-    y_axis: &axis::Axis,
+    y_axis: &axis::ContinuousAxis,
     face_width: f64,
     face_height: f64,
     style: &S,
@@ -395,7 +395,7 @@ mod tests {
 
     #[test]
     fn test_value_to_face_offset() {
-        let axis = axis::Axis::new(-2., 5.);
+        let axis = axis::ContinuousAxis::new(-2., 5.);
         assert_eq!(value_to_face_offset(-2.0, &axis, 14.0), 0.0);
         assert_eq!(value_to_face_offset(5.0, &axis, 14.0), 14.0);
         assert_eq!(value_to_face_offset(0.0, &axis, 14.0), 4.0);
