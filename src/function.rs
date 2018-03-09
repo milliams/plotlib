@@ -18,7 +18,7 @@ use std::f64;
 use svg;
 
 use axis;
-use representation::Representation;
+use representation::ContinuousRepresentation;
 use svg_render;
 use style;
 
@@ -129,7 +129,7 @@ impl Function {
     }
 }
 
-impl Representation for Function {
+impl ContinuousRepresentation for Function {
     fn range(&self, dim: u32) -> (f64, f64) {
         match dim {
             0 => self.x_range(),

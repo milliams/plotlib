@@ -18,7 +18,7 @@ use axis;
 /**
 A representation of data that is continuous in two dimensions.
 */
-pub trait Representation {
+pub trait ContinuousRepresentation {
     /// The maximum range in each dimension. Used for auto-scaling axes.
     fn range(&self, dim: u32) -> (f64, f64);
 

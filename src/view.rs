@@ -12,7 +12,7 @@ use std::f64;
 use svg;
 use svg::Node;
 
-use representation::{DiscreteRepresentation, Representation};
+use representation::{DiscreteRepresentation, ContinuousRepresentation};
 use axis;
 use svg_render;
 use text_render;
@@ -25,7 +25,7 @@ pub trait View {
 /// Standard 1-dimensional view with a continuous x-axis
 #[derive(Default)]
 pub struct ContinuousView<'a> {
-    representations: Vec<&'a Representation>,
+    representations: Vec<&'a ContinuousRepresentation>,
     x_range: Option<axis::Range>,
     y_range: Option<axis::Range>,
     x_label: Option<String>,
@@ -49,7 +49,7 @@ impl<'a> ContinuousView<'a> {
     /**
     Add a representation to the view
     */
-    pub fn add(mut self, repr: &'a Representation) -> Self {
+    pub fn add(mut self, repr: &'a ContinuousRepresentation) -> Self {
         self.representations.push(repr);
         self
     }

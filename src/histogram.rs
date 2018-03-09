@@ -26,7 +26,7 @@ use axis;
 use utils::PairWise;
 use svg_render;
 use text_render;
-use representation::Representation;
+use representation::ContinuousRepresentation;
 use style;
 
 #[derive(Debug, Default)]
@@ -147,7 +147,7 @@ impl Histogram {
     }
 }
 
-impl Representation for Histogram {
+impl ContinuousRepresentation for Histogram {
     fn range(&self, dim: u32) -> (f64, f64) {
         match dim {
             0 => self.x_range(),

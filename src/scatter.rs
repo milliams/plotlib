@@ -5,7 +5,7 @@ use svg;
 use axis;
 use svg_render;
 use text_render;
-use representation::Representation;
+use representation::ContinuousRepresentation;
 use style;
 
 /// `Style` follows the 'optional builder' pattern
@@ -133,7 +133,7 @@ impl Scatter {
     }
 }
 
-impl Representation for Scatter {
+impl ContinuousRepresentation for Scatter {
     fn range(&self, dim: u32) -> (f64, f64) {
         match dim {
             0 => self.x_range(),
