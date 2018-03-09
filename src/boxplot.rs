@@ -18,7 +18,7 @@ use std::f64;
 use svg;
 
 use axis;
-use representation::DiscreteRepresentation;
+use representation::{Representation, DiscreteRepresentation};
 use svg_render;
 use style;
 use utils;
@@ -115,6 +115,12 @@ impl<'a> BoxPlot<'a> {
             BoxData::Owned(ref v) => utils::range(v),
             BoxData::Ref(v) => utils::range(v),
         }
+    }
+}
+
+impl<'a> Representation for BoxPlot<'a> {
+    fn axis_types(&self) -> Vec<axis::AxisType> {
+        vec![axis::AxisType::Discrete, axis::AxisType::Continuous]
     }
 }
 

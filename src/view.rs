@@ -12,7 +12,7 @@ use std::f64;
 use svg;
 use svg::Node;
 
-use representation::{DiscreteRepresentation, ContinuousRepresentation};
+use representation::{Representation, DiscreteRepresentation, ContinuousRepresentation};
 use axis;
 use svg_render;
 use text_render;
@@ -341,11 +341,28 @@ impl<'a> View for DiscreteView<'a> {
     }
 }
 
-/*pub struct AnyView<'a> {
+use std::collections::HashMap;
+
+/**
+A ReprMap is an N-dimensional plot object which can contain many data representations.
+
+Its building blocks are:
+- a list of reprs
+- a list of axes, one for each dimension
+- a mapping of repr dimensions onto view dimensions
+*/
+pub struct ReprMap<'a> {
     representations: Vec<&'a Representation>,
-    axes: Vec<>,
-    x_range: Option<axis::Range>,
-    y_range: Option<axis::Range>,
-    x_label: Option<String>,
-    y_label: Option<String>,
-}*/
+    axes: Vec<axis::AxisType>,
+    mapping: HashMap<(usize, usize), usize>,
+}
+
+impl<'a> ReprMap<'a> {
+    fn add(&mut self, repr: &'a Representation) {
+        self.representations.push(repr);
+        let repr_pos = self.representations.len();
+        for (i, axis_type) in repr.axis_types().iter().enumerate() {
+            self.mapping.insert((repr_pos, i), i);
+        }
+    }
+}

@@ -18,7 +18,7 @@ use std::f64;
 use svg;
 
 use axis;
-use representation::ContinuousRepresentation;
+use representation::{Representation, ContinuousRepresentation};
 use svg_render;
 use style;
 
@@ -113,6 +113,12 @@ impl Line {
             max = max.max(y);
         }
         (min, max)
+    }
+}
+
+impl Representation for Line {
+    fn axis_types(&self) -> Vec<axis::AxisType> {
+        vec![axis::AxisType::Continuous, axis::AxisType::Continuous]
     }
 }
 

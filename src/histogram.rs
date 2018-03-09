@@ -26,7 +26,7 @@ use axis;
 use utils::PairWise;
 use svg_render;
 use text_render;
-use representation::ContinuousRepresentation;
+use representation::{Representation, ContinuousRepresentation};
 use style;
 
 #[derive(Debug, Default)]
@@ -144,6 +144,12 @@ impl Histogram {
 
     pub fn get_style(&self) -> &Style {
         &self.style
+    }
+}
+
+impl Representation for Histogram {
+    fn axis_types(&self) -> Vec<axis::AxisType> {
+        vec![axis::AxisType::Continuous, axis::AxisType::Continuous]
     }
 }
 

@@ -15,10 +15,14 @@ These points may then be layered with other SVG elements from other representati
 use svg;
 use axis;
 
+pub trait Representation {
+    fn axis_types(&self) -> Vec<axis::AxisType>;
+}
+
 /**
 A representation of data that is continuous in two dimensions.
 */
-pub trait ContinuousRepresentation {
+pub trait ContinuousRepresentation: Representation {
     /// The maximum range in each dimension. Used for auto-scaling axes.
     fn range(&self, dim: u32) -> (f64, f64);
 
@@ -42,7 +46,7 @@ pub trait ContinuousRepresentation {
 /**
 A representation of data that is discrete in the x-axis but continuous in the y-axis.
 */
-pub trait DiscreteRepresentation {
+pub trait DiscreteRepresentation: Representation {
     /// The maximum range in the y-axis. Used for auto-scaling the axis.
     fn range(&self) -> (f64, f64);
 

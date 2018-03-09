@@ -5,7 +5,7 @@ use svg;
 use axis;
 use svg_render;
 use text_render;
-use representation::ContinuousRepresentation;
+use representation::{Representation, ContinuousRepresentation};
 use style;
 
 /// `Style` follows the 'optional builder' pattern
@@ -130,6 +130,12 @@ impl Scatter {
             max = max.max(y);
         }
         (min, max)
+    }
+}
+
+impl Representation for Scatter {
+    fn axis_types(&self) -> Vec<axis::AxisType> {
+        vec![axis::AxisType::Continuous, axis::AxisType::Continuous]
     }
 }
 

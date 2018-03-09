@@ -20,6 +20,11 @@ impl Range {
     }
 }
 
+pub enum AxisType {
+    Continuous,
+    Discrete,
+}
+
 #[derive(Debug)]
 pub struct ContinuousAxis {
     range: Range,
