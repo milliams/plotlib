@@ -33,17 +33,10 @@ This might be best handled as a feature of the 3D surface plot rather than a sep
 This comes back to a strong distinction between 2D and 3D plots.
 */
 
-use std::collections::HashMap;
-
 use nalgebra::{Affine2};
 
 use svg;
 use axis;
-
-pub enum AxisTransform {
-    Continuous(Affine2<f64>),
-    Discrete(HashMap<String, Affine2<f64>>),
-}
 
 /**
 
@@ -53,7 +46,9 @@ pub trait PlanarRepresentation {
 
     fn to_svg(
         &self,
-        transforms: &[AxisTransform],
+        x_axis: &axis::ContinuousAxis,
+        y_axis: &axis::ContinuousAxis,
+        transform: Affine2<f64>,
     ) -> svg::node::element::Group;
 }
 

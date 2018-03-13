@@ -9,7 +9,7 @@ use style;
 use utils;
 use utils::PairWise;
 
-fn value_to_face_offset(value: f64, axis: &axis::ContinuousAxis, face_size: f64) -> f64 {
+pub fn value_to_face_offset(value: f64, axis: &axis::ContinuousAxis, face_size: f64) -> f64 {
     let range = axis.max() - axis.min();
     (face_size * (value - axis.min())) / range
 }
@@ -226,12 +226,13 @@ where
     group
 }
 
-use representation::AxisTransform;
 use nalgebra::{Affine2, Point2};
 
 pub fn draw_face_points2<S>(
     s: &[(f64, f64)],
-    transforms: &[AxisTransform],
+    x_axis: &axis::ContinuousAxis,
+    y_axis: &axis::ContinuousAxis,
+    transform: Affine2<f64>,
     style: &S,
 ) -> node::element::Group
 where
@@ -240,21 +241,58 @@ where
     let mut group = node::element::Group::new();
 
     for &(x, y) in s {
-        let p = Point2::new(x, y);
+        if x < x_axis.min() || x > x_axis.max() || y < y_axis.min() || y > y_axis.max() {
+            continue;
+        }
+        let p = transform * Point2::new(x, y);
         let x_pos = p.x;
         let y_pos = p.y;
         let radius = style.get_size().clone().unwrap_or(5.) as f64;
-
-        group.append(
-            node::element::Circle::new()
-                .set("cx", x_pos)
-                .set("cy", y_pos)
-                .set("r", radius)
-                .set(
-                    "fill",
-                    style.get_colour().clone().unwrap_or_else(|| "".into()),
-                ),
-        )
+        match style.get_marker().clone().unwrap_or(style::Marker::Circle) {
+            style::Marker::Circle => {
+                group.append(
+                    node::element::Circle::new()
+                        .set("cx", x_pos)
+                        .set("cy", y_pos)
+                        .set("r", radius)
+                        .set(
+                            "fill",
+                            style.get_colour().clone().unwrap_or_else(|| "".into()),
+                        ),
+                );
+            }
+            style::Marker::Square => {
+                group.append(
+                    node::element::Rectangle::new()
+                        .set("x", x_pos - radius)
+                        .set("y", y_pos - radius)
+                        .set("width", 2. * radius)
+                        .set("height", 2. * radius)
+                        .set(
+                            "fill",
+                            style.get_colour().clone().unwrap_or_else(|| "".into()),
+                        ),
+                );
+            }
+            style::Marker::Cross => {
+                let path = node::element::path::Data::new()
+                    .move_to((x_pos - radius, y_pos - radius))
+                    .line_by((radius * 2., radius * 2.))
+                    .move_by((-radius * 2., 0))
+                    .line_by((radius * 2., -radius * 2.))
+                    .close();
+                group.append(
+                    node::element::Path::new()
+                        .set("fill", "none")
+                        .set(
+                            "stroke",
+                            style.get_colour().clone().unwrap_or_else(|| "".into()),
+                        )
+                        .set("stroke-width", 2)
+                        .set("d", path),
+                );
+            }
+        };
     }
 
     group

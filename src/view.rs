@@ -136,9 +136,7 @@ impl<'a> ContinuousView<'a> {
     }
 }
 
-use nalgebra::{Affine2};
-
-use representation::AxisTransform;
+use nalgebra::{Affine2, Translation2, Vector3, Matrix3};
 
 impl<'a> View for ContinuousView<'a> {
     /**
@@ -151,7 +149,12 @@ impl<'a> View for ContinuousView<'a> {
 
         // Then, based on those ranges, draw each repr as an SVG
         for repr in &self.representations {
-            let repr_group = repr.to_svg(&[AxisTransform::Continuous(Affine2::identity()), AxisTransform::Continuous(Affine2::identity())]);
+            let x_scale = face_width / (x_axis.max() - x_axis.min());
+            let y_scale = face_height / (y_axis.max() - y_axis.min());
+            let face_scale = Affine2::from_matrix_unchecked(Matrix3::from_diagonal(&Vector3::new(x_scale, -y_scale, 1.)));
+            let face_translate = Translation2::new(svg_render::value_to_face_offset(0., &x_axis, face_width), -svg_render::value_to_face_offset(0., &y_axis, face_height));
+            let transform = face_translate * face_scale;
+            let repr_group = repr.to_svg(&x_axis, &y_axis, transform);
             view_group.append(repr_group);
         }
 

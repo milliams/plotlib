@@ -177,7 +177,8 @@ impl ContinuousRepresentation for Scatter {
     }
 }
 
-use representation::{AxisTransform, PlanarRepresentation};
+use representation::PlanarRepresentation;
+use nalgebra::Affine2;
 
 impl PlanarRepresentation for Scatter {
     fn range(&self, dim: u32) -> (f64, f64) {
@@ -190,11 +191,15 @@ impl PlanarRepresentation for Scatter {
 
     fn to_svg(
         &self,
-        transforms: &[AxisTransform],
+        x_axis: &axis::ContinuousAxis,
+        y_axis: &axis::ContinuousAxis,
+        transform: Affine2<f64>,
     ) -> svg::node::element::Group {
         svg_render::draw_face_points2(
             &self.data,
-            transforms,
+            x_axis,
+            y_axis,
+            transform,
             &self.style,
         )
     }
