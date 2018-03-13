@@ -14,3 +14,4 @@ travis-ci = { repository = "milliams/plotlib" }
 
 [dependencies]
 svg = "0.5.10"
+nalgebra = "0.14.1"

@@ -4,6 +4,8 @@ It is analogous to a *subplot* in other plotting libraries.
 
 In essence, a view is a collection of representations along with some metadata describing the
 extent to plot and information about the axes. It knows how to render itself.
+
+Currently a view refers only to planar plots (i.e. not map projections and polar plots).
 */
 
 use std;
@@ -12,7 +14,7 @@ use std::f64;
 use svg;
 use svg::Node;
 
-use representation::{DiscreteRepresentation, ContinuousRepresentation};
+use representation::{DiscreteRepresentation, ContinuousRepresentation, PlanarRepresentation};
 use axis;
 use svg_render;
 use text_render;
@@ -25,7 +27,7 @@ pub trait View {
 /// Standard 1-dimensional view with a continuous x-axis
 #[derive(Default)]
 pub struct ContinuousView<'a> {
-    representations: Vec<&'a ContinuousRepresentation>,
+    representations: Vec<&'a PlanarRepresentation>,
     x_range: Option<axis::Range>,
     y_range: Option<axis::Range>,
     x_label: Option<String>,
@@ -49,7 +51,7 @@ impl<'a> ContinuousView<'a> {
     /**
     Add a representation to the view
     */
-    pub fn add(mut self, repr: &'a ContinuousRepresentation) -> Self {
+    pub fn add(mut self, repr: &'a PlanarRepresentation) -> Self {
         self.representations.push(repr);
         self
     }
@@ -134,6 +136,10 @@ impl<'a> ContinuousView<'a> {
     }
 }
 
+use nalgebra::{Affine2};
+
+use representation::AxisTransform;
+
 impl<'a> View for ContinuousView<'a> {
     /**
     Create an SVG rendering of the view
@@ -145,7 +151,7 @@ impl<'a> View for ContinuousView<'a> {
 
         // Then, based on those ranges, draw each repr as an SVG
         for repr in &self.representations {
-            let repr_group = repr.to_svg(&x_axis, &y_axis, face_width, face_height);
+            let repr_group = repr.to_svg(&[AxisTransform::Continuous(Affine2::identity()), AxisTransform::Continuous(Affine2::identity())]);
             view_group.append(repr_group);
         }
 
@@ -180,9 +186,10 @@ impl<'a> View for ContinuousView<'a> {
         let mut view_string = blank.join("\n");
 
         for repr in &self.representations {
-            let face_string = repr.to_text(&x_axis, &y_axis, face_width, face_height);
+            // TODO
+            /*let face_string = repr.to_text(&x_axis, &y_axis, face_width, face_height);
             view_string =
-                text_render::overlay(&view_string, &face_string, left_gutter_width as i32 + 1, 0);
+                text_render::overlay(&view_string, &face_string, left_gutter_width as i32 + 1, 0);*/
         }
 
         let view_string = text_render::overlay(
@@ -340,12 +347,3 @@ impl<'a> View for DiscreteView<'a> {
         "".into()
     }
 }
-
-/*pub struct AnyView<'a> {
-    representations: Vec<&'a Representation>,
-    axes: Vec<>,
-    x_range: Option<axis::Range>,
-    y_range: Option<axis::Range>,
-    x_label: Option<String>,
-    y_label: Option<String>,
-}*/

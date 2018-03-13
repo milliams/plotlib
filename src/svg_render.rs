@@ -226,6 +226,40 @@ where
     group
 }
 
+use representation::AxisTransform;
+use nalgebra::{Affine2, Point2};
+
+pub fn draw_face_points2<S>(
+    s: &[(f64, f64)],
+    transforms: &[AxisTransform],
+    style: &S,
+) -> node::element::Group
+where
+    S: style::Point,
+{
+    let mut group = node::element::Group::new();
+
+    for &(x, y) in s {
+        let p = Point2::new(x, y);
+        let x_pos = p.x;
+        let y_pos = p.y;
+        let radius = style.get_size().clone().unwrap_or(5.) as f64;
+
+        group.append(
+            node::element::Circle::new()
+                .set("cx", x_pos)
+                .set("cy", y_pos)
+                .set("r", radius)
+                .set(
+                    "fill",
+                    style.get_colour().clone().unwrap_or_else(|| "".into()),
+                ),
+        )
+    }
+
+    group
+}
+
 pub fn draw_face_bars<S>(
     h: &histogram::Histogram,
     x_axis: &axis::ContinuousAxis,

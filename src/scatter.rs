@@ -176,3 +176,26 @@ impl ContinuousRepresentation for Scatter {
         )
     }
 }
+
+use representation::{AxisTransform, PlanarRepresentation};
+
+impl PlanarRepresentation for Scatter {
+    fn range(&self, dim: u32) -> (f64, f64) {
+        match dim {
+            0 => self.x_range(),
+            1 => self.y_range(),
+            _ => panic!("Axis out of range"),
+        }
+    }
+
+    fn to_svg(
+        &self,
+        transforms: &[AxisTransform],
+    ) -> svg::node::element::Group {
+        svg_render::draw_face_points2(
+            &self.data,
+            transforms,
+            &self.style,
+        )
+    }
+}
