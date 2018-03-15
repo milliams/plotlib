@@ -2,6 +2,7 @@ use std;
 
 use svg::Node;
 use svg::node;
+use nalgebra::{Affine2, Point2};
 
 use histogram;
 use axis;
@@ -159,76 +160,7 @@ pub fn draw_discrete_x_axis(a: &axis::DiscreteAxis, face_width: f64) -> node::el
         .add(label)
 }
 
-pub fn draw_face_points<S>(
-    s: &[(f64, f64)],
-    x_axis: &axis::ContinuousAxis,
-    y_axis: &axis::ContinuousAxis,
-    face_width: f64,
-    face_height: f64,
-    style: &S,
-) -> node::element::Group
-where
-    S: style::Point,
-{
-    let mut group = node::element::Group::new();
-
-    for &(x, y) in s {
-        let x_pos = value_to_face_offset(x, x_axis, face_width);
-        let y_pos = -value_to_face_offset(y, y_axis, face_height);
-        let radius = style.get_size().clone().unwrap_or(5.) as f64;
-        match style.get_marker().clone().unwrap_or(style::Marker::Circle) {
-            style::Marker::Circle => {
-                group.append(
-                    node::element::Circle::new()
-                        .set("cx", x_pos)
-                        .set("cy", y_pos)
-                        .set("r", radius)
-                        .set(
-                            "fill",
-                            style.get_colour().clone().unwrap_or_else(|| "".into()),
-                        ),
-                );
-            }
-            style::Marker::Square => {
-                group.append(
-                    node::element::Rectangle::new()
-                        .set("x", x_pos - radius)
-                        .set("y", y_pos - radius)
-                        .set("width", 2. * radius)
-                        .set("height", 2. * radius)
-                        .set(
-                            "fill",
-                            style.get_colour().clone().unwrap_or_else(|| "".into()),
-                        ),
-                );
-            }
-            style::Marker::Cross => {
-                let path = node::element::path::Data::new()
-                    .move_to((x_pos - radius, y_pos - radius))
-                    .line_by((radius * 2., radius * 2.))
-                    .move_by((-radius * 2., 0))
-                    .line_by((radius * 2., -radius * 2.))
-                    .close();
-                group.append(
-                    node::element::Path::new()
-                        .set("fill", "none")
-                        .set(
-                            "stroke",
-                            style.get_colour().clone().unwrap_or_else(|| "".into()),
-                        )
-                        .set("stroke-width", 2)
-                        .set("d", path),
-                );
-            }
-        };
-    }
-
-    group
-}
-
-use nalgebra::{Affine2, Point2};
-
-pub fn draw_face_points2<'a, S, I: IntoIterator<Item = &'a (f64, f64)>>(
+pub fn draw_face_points<'a, S, I: IntoIterator<Item = &'a (f64, f64)>>(
     s: I,
     transform: Affine2<f64>,
     style: &S,

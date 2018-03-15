@@ -50,6 +50,15 @@ pub trait PlanarRepresentation {
         y_axis: &axis::ContinuousAxis,
         transform: Affine2<f64>,
     ) -> svg::node::element::Group;
+
+    fn to_text(
+        &self,
+        x_axis: &axis::ContinuousAxis,
+        y_axis: &axis::ContinuousAxis,
+        transform: Affine2<f64>,
+        face_width: u32,
+        face_height: u32,
+    ) -> String;
 }
 
 /**

@@ -3,6 +3,8 @@
 use std::collections::HashMap;
 use std;
 
+use nalgebra::{Affine2, Point2};
+
 use histogram;
 use scatter;
 use axis;
@@ -351,10 +353,9 @@ pub fn render_face_bars(
 /// the x ands y-axes
 /// and the face height and width,
 /// create the strings to be drawn as the face
-pub fn render_face_points<S>(
-    s: &[(f64, f64)],
-    x_axis: &axis::ContinuousAxis,
-    y_axis: &axis::ContinuousAxis,
+pub fn render_face_points<'a, S, I: IntoIterator<Item = &'a (f64, f64)>>(
+    s: I,
+    transform: Affine2<f64>,
     face_width: u32,
     face_height: u32,
     style: &S,
@@ -362,11 +363,12 @@ pub fn render_face_points<S>(
 where
     S: style::Point,
 {
-    let points: Vec<_> = s.iter()
+    let points: Vec<_> = s.into_iter()
         .map(|&(x, y)| {
+            let p = transform * Point2::new(x, y);
             (
-                value_to_axis_cell_offset(x, x_axis, face_width),
-                value_to_axis_cell_offset(y, y_axis, face_height),
+                p.x.round() as i32,
+                p.y.round() as i32,
             )
         })
         .collect();
@@ -479,6 +481,8 @@ pub fn overlay(under: &str, over: &str, x: i32, y: i32) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use nalgebra::{Affine2, Translation2, Vector3, Matrix3};
+    use svg_render;
 
     #[test]
     fn test_bins_for_cells() {
@@ -638,10 +642,20 @@ mod tests {
         let s = scatter::Scatter::from_slice(&data);
         let x_axis = axis::ContinuousAxis::new(-3.575, 9.075);
         let y_axis = axis::ContinuousAxis::new(-1.735, 5.635);
+
+        let face_width = 20;
+        let face_height = 10;
+
+        let x_scale = face_width as f64 / (x_axis.max() - x_axis.min());
+        let y_scale = face_height as f64 / (y_axis.max() - y_axis.min());
+        let face_scale = Affine2::from_matrix_unchecked(Matrix3::from_diagonal(&Vector3::new(x_scale, y_scale, 1.)));
+        let face_translate = Translation2::new(svg_render::value_to_face_offset(0., &x_axis, face_width as f64), svg_render::value_to_face_offset(0., &y_axis, face_height as f64));
+        let transform = face_translate * face_scale;
+
         let style = scatter::Style::new();
-        let strings = render_face_points(&s.data, &x_axis, &y_axis, 20, 10, &style);
-        assert_eq!(strings.lines().count(), 10);
-        assert!(strings.lines().all(|s| s.chars().count() == 20));
+        let strings = render_face_points(&s.data, transform,face_width, face_height, &style);
+        assert_eq!(strings.lines().count(), face_height as usize);
+        assert!(strings.lines().all(|s| s.chars().count() == face_width as usize));
 
         let comp = vec![
             "  ●                 ",

@@ -1,11 +1,12 @@
 use std::f64;
 
 use svg;
+use nalgebra;
 
 use axis;
 use svg_render;
 use text_render;
-use representation::ContinuousRepresentation;
+use representation::PlanarRepresentation;
 use style;
 
 /// `Style` follows the 'optional builder' pattern
@@ -133,53 +134,6 @@ impl Scatter {
     }
 }
 
-impl ContinuousRepresentation for Scatter {
-    fn range(&self, dim: u32) -> (f64, f64) {
-        match dim {
-            0 => self.x_range(),
-            1 => self.y_range(),
-            _ => panic!("Axis out of range"),
-        }
-    }
-
-    fn to_svg(
-        &self,
-        x_axis: &axis::ContinuousAxis,
-        y_axis: &axis::ContinuousAxis,
-        face_width: f64,
-        face_height: f64,
-    ) -> svg::node::element::Group {
-        svg_render::draw_face_points(
-            &self.data,
-            x_axis,
-            y_axis,
-            face_width,
-            face_height,
-            &self.style,
-        )
-    }
-
-    fn to_text(
-        &self,
-        x_axis: &axis::ContinuousAxis,
-        y_axis: &axis::ContinuousAxis,
-        face_width: u32,
-        face_height: u32,
-    ) -> String {
-        text_render::render_face_points(
-            &self.data,
-            x_axis,
-            y_axis,
-            face_width,
-            face_height,
-            &self.style,
-        )
-    }
-}
-
-use representation::PlanarRepresentation;
-use nalgebra::Affine2;
-
 impl PlanarRepresentation for Scatter {
     fn range(&self, dim: u32) -> (f64, f64) {
         match dim {
@@ -193,11 +147,28 @@ impl PlanarRepresentation for Scatter {
         &self,
         x_axis: &axis::ContinuousAxis,
         y_axis: &axis::ContinuousAxis,
-        transform: Affine2<f64>,
+        transform: nalgebra::Affine2<f64>,
     ) -> svg::node::element::Group {
-        svg_render::draw_face_points2(
+        svg_render::draw_face_points(
             self.data.iter().filter(|&&(x, y)| x >= x_axis.min() && x <= x_axis.max() && y >= y_axis.min() && y <= y_axis.max()),
             transform,
+            &self.style,
+        )
+    }
+
+    fn to_text(
+        &self,
+        x_axis: &axis::ContinuousAxis,
+        y_axis: &axis::ContinuousAxis,
+        transform: nalgebra::Affine2<f64>,
+        face_width: u32,
+        face_height: u32,
+    ) -> String {
+        text_render::render_face_points(
+            self.data.iter().filter(|&&(x, y)| x >= x_axis.min() && x <= x_axis.max() && y >= y_axis.min() && y <= y_axis.max()),
+            transform,
+            face_width,
+            face_height,
             &self.style,
         )
     }

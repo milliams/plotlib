@@ -189,10 +189,14 @@ impl<'a> View for ContinuousView<'a> {
         let mut view_string = blank.join("\n");
 
         for repr in &self.representations {
-            // TODO
-            /*let face_string = repr.to_text(&x_axis, &y_axis, face_width, face_height);
+            let x_scale = face_width as f64 / (x_axis.max() - x_axis.min());
+            let y_scale = face_height as f64 / (y_axis.max() - y_axis.min());
+            let face_scale = Affine2::from_matrix_unchecked(Matrix3::from_diagonal(&Vector3::new(x_scale, y_scale, 1.)));
+            let face_translate = Translation2::new(svg_render::value_to_face_offset(0., &x_axis, face_width as f64), svg_render::value_to_face_offset(0., &y_axis, face_height as f64));
+            let transform = face_translate * face_scale;
+            let face_string = repr.to_text(&x_axis, &y_axis, transform, face_width, face_height);
             view_string =
-                text_render::overlay(&view_string, &face_string, left_gutter_width as i32 + 1, 0);*/
+                text_render::overlay(&view_string, &face_string, left_gutter_width as i32 + 1, 0);
         }
 
         let view_string = text_render::overlay(
