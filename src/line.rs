@@ -9,16 +9,17 @@ Plot line charts
 # use plotlib::view::ContinuousView;
 // y=x^2 between 0 and 10
 let l = Line::new(&[(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)]);
-let v = ContinuousView::new().add(&l);
+let v = ContinuousView::new().add(&l); TODO
 ```
 */
 
 use std::f64;
 
 use svg;
+use nalgebra;
 
 use axis;
-use representation::ContinuousRepresentation;
+use representation::PlanarRepresentation;
 use svg_render;
 use style;
 
@@ -116,7 +117,7 @@ impl Line {
     }
 }
 
-impl ContinuousRepresentation for Line {
+impl PlanarRepresentation for Line {
     fn range(&self, dim: u32) -> (f64, f64) {
         match dim {
             0 => self.x_range(),
@@ -129,15 +130,11 @@ impl ContinuousRepresentation for Line {
         &self,
         x_axis: &axis::ContinuousAxis,
         y_axis: &axis::ContinuousAxis,
-        face_width: f64,
-        face_height: f64,
+        transform: nalgebra::Affine2<f64>,
     ) -> svg::node::element::Group {
         svg_render::draw_face_line(
             &self.data,
-            x_axis,
-            y_axis,
-            face_width,
-            face_height,
+            transform,
             &self.style,
         )
     }
@@ -146,6 +143,7 @@ impl ContinuousRepresentation for Line {
         &self,
         x_axis: &axis::ContinuousAxis,
         y_axis: &axis::ContinuousAxis,
+        transform: nalgebra::Affine2<f64>,
         face_width: u32,
         face_height: u32,
     ) -> String {

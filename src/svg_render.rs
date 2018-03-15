@@ -262,12 +262,9 @@ where
     group
 }
 
-pub fn draw_face_line<S>(
-    s: &[(f64, f64)],
-    x_axis: &axis::ContinuousAxis,
-    y_axis: &axis::ContinuousAxis,
-    face_width: f64,
-    face_height: f64,
+pub fn draw_face_line<'a, S, I: IntoIterator<Item = &'a (f64, f64)>>(
+    s: I,
+    transform: Affine2<f64>,
     style: &S,
 ) -> node::element::Group
 where
@@ -276,20 +273,22 @@ where
     let mut group = node::element::Group::new();
 
     let mut d: Vec<node::element::path::Command> = vec![];
-    let &(first_x, first_y) = s.first().unwrap();
-    let first_x_pos = value_to_face_offset(first_x, x_axis, face_width);
-    let first_y_pos = -value_to_face_offset(first_y, y_axis, face_height);
-    d.push(node::element::path::Command::Move(
-        node::element::path::Position::Absolute,
-        (first_x_pos, first_y_pos).into(),
-    ));
-    for &(x, y) in s {
-        let x_pos = value_to_face_offset(x, x_axis, face_width);
-        let y_pos = -value_to_face_offset(y, y_axis, face_height);
-        d.push(node::element::path::Command::Line(
-            node::element::path::Position::Absolute,
-            (x_pos, y_pos).into(),
-        ));
+
+    for (i, &(x, y)) in s.into_iter().enumerate() {
+        let p = transform * Point2::new(x, y);
+        let x_pos = p.x;
+        let y_pos = p.y;
+        if i == 0 {
+            d.push(node::element::path::Command::Move(
+                node::element::path::Position::Absolute,
+                (x_pos, y_pos).into(),
+            ));
+        } else {
+            d.push(node::element::path::Command::Line(
+                node::element::path::Position::Absolute,
+                (x_pos, y_pos).into(),
+            ));
+        }
     }
 
     let path = node::element::path::Data::from(d);
