@@ -196,9 +196,7 @@ impl PlanarRepresentation for Scatter {
         transform: Affine2<f64>,
     ) -> svg::node::element::Group {
         svg_render::draw_face_points2(
-            &self.data,
-            x_axis,
-            y_axis,
+            self.data.iter().filter(|&&(x, y)| x >= x_axis.min() && x <= x_axis.max() && y >= y_axis.min() && y <= y_axis.max()),
             transform,
             &self.style,
         )

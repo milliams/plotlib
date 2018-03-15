@@ -228,10 +228,8 @@ where
 
 use nalgebra::{Affine2, Point2};
 
-pub fn draw_face_points2<S>(
-    s: &[(f64, f64)],
-    x_axis: &axis::ContinuousAxis,
-    y_axis: &axis::ContinuousAxis,
+pub fn draw_face_points2<'a, S, I: IntoIterator<Item = &'a (f64, f64)>>(
+    s: I,
     transform: Affine2<f64>,
     style: &S,
 ) -> node::element::Group
@@ -241,9 +239,6 @@ where
     let mut group = node::element::Group::new();
 
     for &(x, y) in s {
-        if x < x_axis.min() || x > x_axis.max() || y < y_axis.min() || y > y_axis.max() {
-            continue;
-        }
         let p = transform * Point2::new(x, y);
         let x_pos = p.x;
         let y_pos = p.y;
