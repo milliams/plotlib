@@ -227,10 +227,7 @@ where
 
 pub fn draw_face_bars<S>(
     h: &histogram::Histogram,
-    x_axis: &axis::ContinuousAxis,
-    y_axis: &axis::ContinuousAxis,
-    face_width: f64,
-    face_height: f64,
+    transform: Affine2<f64>,
     style: &S,
 ) -> node::element::Group
 where
@@ -239,15 +236,12 @@ where
     let mut group = node::element::Group::new();
 
     for ((&l, &u), &count) in h.bin_bounds.pairwise().zip(h.bin_counts.iter()) {
-        let l_pos = value_to_face_offset(l, x_axis, face_width);
-        let u_pos = value_to_face_offset(u, x_axis, face_width);
-        let width = u_pos - l_pos;
-        let count_scaled = value_to_face_offset(count as f64, y_axis, face_height);
-        let rect = node::element::Rectangle::new()
-            .set("x", l_pos)
-            .set("y", -count_scaled)
-            .set("width", width)
-            .set("height", count_scaled)
+        let lb = transform * Point2::new(l, 0.);
+        let ub = transform * Point2::new(u, 0.);
+        let lt = transform * Point2::new(l, count as f64);
+        let ut = transform * Point2::new(u, count as f64);
+        let rect = node::element::Polygon::new()
+            .set("points", format!("{},{} {},{} {},{} {},{}", lb.x, lb.y, ub.x, ub.y, ut.x, ut.y, lt.x, lt.y))
             .set(
                 "fill",
                 style
