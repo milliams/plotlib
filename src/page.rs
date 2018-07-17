@@ -17,6 +17,7 @@ A single page page laying out the views in a grid
 pub struct Page<'a> {
     views: Vec<&'a View>,
     num_views: u32,
+    dimensions: (u32, u32)
 }
 
 impl<'a> Page<'a> {
@@ -27,18 +28,39 @@ impl<'a> Page<'a> {
         Page {
             views: vec![view],
             num_views: 1,
+            dimensions: (600, 400)
         }
+    }
+
+    /// Set the dimensions of the plot.
+    pub fn dimensions(mut self, x: u32, y: u32) -> Self {
+        self.dimensions = (x,y);
+        self
+    }
+
+    /// Add a view to the plot
+    pub fn add_plot(mut self, view: &'a View) -> Self {
+        self.views.push(view);
+        self.num_views += 1;
+        self
     }
 
     /**
     Render the plot to an svg document
     */
     pub fn to_svg(&self) -> svg::Document {
-        let mut document = Document::new().set("viewBox", (0, 0, 600, 400));
+        let (width, height) = self.dimensions;
+        let mut document = Document::new().set("viewBox", (0, 0, width, height));
+
+        let x_margin = 80;
+        let y_margin = 60;
+        let x_offset = 0.6*x_margin as f64;
+        let y_offset = 0.6*y_margin as f64;
+
         // TODO put multiple views in correct places
         for &view in &self.views {
-            let view_group = view.to_svg(500., 340.)
-                .set("transform", format!("translate({}, {})", 50, 360));
+            let view_group = view.to_svg((width-x_margin) as f64, (height-y_margin) as f64)
+                .set("transform", format!("translate({}, {})", x_offset, height as f64-y_offset));
             document.append(view_group);
         }
         document
