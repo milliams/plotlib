@@ -1,8 +1,9 @@
 extern crate plotlib;
 
 use plotlib::style::Point;
+use plotlib::Result;
 
-fn main() {
+fn main() -> Result<()> {
     let data = [
         (-3.0, 2.3),
         (-1.6, 5.3),
@@ -28,7 +29,7 @@ fn main() {
         .unwrap()
         .x_label("Some varying variable")
         .y_label("The response of something");
-    plotlib::page::Page::single(&v).save("scatter.svg");
+    plotlib::page::Page::single(&v).save("scatter.svg")
 
     /*
     //

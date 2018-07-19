@@ -8,6 +8,5 @@ fn main() -> Result<()> {
     let h = plotlib::histogram::Histogram::from_slice(&data, 10)?
         .style(plotlib::histogram::Style::new().fill("burlywood"));
     let v = plotlib::view::ContinuousView::new().add(&h);
-    plotlib::page::Page::single(&v).save("histogram.svg");
-    Ok(())
+    plotlib::page::Page::single(&v).save("histogram.svg")
 }
