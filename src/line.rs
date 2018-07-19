@@ -19,8 +19,8 @@ use svg;
 
 use axis;
 use representation::ContinuousRepresentation;
-use svg_render;
 use style;
+use svg_render;
 
 #[derive(Debug, Default)]
 pub struct Style {
@@ -144,10 +144,10 @@ impl ContinuousRepresentation for Line {
 
     fn to_text(
         &self,
-        x_axis: &axis::ContinuousAxis,
-        y_axis: &axis::ContinuousAxis,
-        face_width: u32,
-        face_height: u32,
+        _x_axis: &axis::ContinuousAxis,
+        _y_axis: &axis::ContinuousAxis,
+        _face_width: u32,
+        _face_height: u32,
     ) -> String {
         "".into()
     }

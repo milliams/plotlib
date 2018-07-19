@@ -2,12 +2,12 @@
 The `page` module provides structures for laying out and rendering multiple views.
 */
 
-use std::path::Path;
 use std::ffi::OsStr;
+use std::path::Path;
 
 use svg;
-use svg::Node;
 use svg::Document;
+use svg::Node;
 
 use view::View;
 
@@ -16,7 +16,6 @@ A single page page laying out the views in a grid
 */
 pub struct Page<'a> {
     views: Vec<&'a View>,
-    num_views: u32,
 }
 
 impl<'a> Page<'a> {
@@ -24,10 +23,7 @@ impl<'a> Page<'a> {
     Creates a plot containing a single view
     */
     pub fn single(view: &'a View) -> Self {
-        Page {
-            views: vec![view],
-            num_views: 1,
-        }
+        Page { views: vec![view] }
     }
 
     /**

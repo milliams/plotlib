@@ -1,13 +1,12 @@
 //! A module for plotting graphs
 
-use std::collections::HashMap;
 use std;
+use std::collections::HashMap;
 
-use histogram;
-use scatter;
 use axis;
-use utils::PairWise;
+use histogram;
 use style;
+use utils::PairWise;
 
 // Given a value like a tick label or a bin count,
 // calculate how far from the x-axis it should be plotted
@@ -478,6 +477,7 @@ pub fn overlay(under: &str, over: &str, x: i32, y: i32) -> String {
 
 #[cfg(test)]
 mod tests {
+    use super::super::scatter;
     use super::*;
 
     #[test]

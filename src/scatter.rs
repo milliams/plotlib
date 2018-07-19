@@ -3,10 +3,10 @@ use std::f64;
 use svg;
 
 use axis;
-use svg_render;
-use text_render;
 use representation::ContinuousRepresentation;
 use style;
+use svg_render;
+use text_render;
 
 /// `Style` follows the 'optional builder' pattern
 /// Each field is a `Option` which start as `None`

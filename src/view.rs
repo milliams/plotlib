@@ -12,8 +12,8 @@ use std::f64;
 use svg;
 use svg::Node;
 
-use representation::{DiscreteRepresentation, ContinuousRepresentation};
 use axis;
+use representation::{ContinuousRepresentation, DiscreteRepresentation};
 use svg_render;
 use text_render;
 

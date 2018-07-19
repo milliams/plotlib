@@ -1,10 +1,10 @@
 use std;
 
-use svg::Node;
 use svg::node;
+use svg::Node;
 
-use histogram;
 use axis;
+use histogram;
 use style;
 use utils;
 use utils::PairWise;

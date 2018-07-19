@@ -77,17 +77,17 @@ in this case, interpreting the bins and colours to create SVG elements.
 
 extern crate svg;
 
+pub mod page;
 pub mod representation;
 pub mod view;
-pub mod page;
 
-pub mod histogram;
-pub mod scatter;
-pub mod function;
-pub mod line;
-pub mod style;
-pub mod boxplot;
 mod axis;
-mod utils;
-mod text_render;
+pub mod boxplot;
+pub mod function;
+pub mod histogram;
+pub mod line;
+pub mod scatter;
+pub mod style;
 mod svg_render;
+mod text_render;
+mod utils;
