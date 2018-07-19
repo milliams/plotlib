@@ -18,6 +18,7 @@ use std::f64;
 use svg;
 
 use axis;
+use errors::Result;
 use representation::ContinuousRepresentation;
 use style;
 use svg_render;
@@ -95,29 +96,29 @@ impl Line {
         &self.style
     }
 
-    fn x_range(&self) -> (f64, f64) {
+    fn x_range(&self) -> Result<(f64, f64)> {
         let mut min = f64::INFINITY;
         let mut max = f64::NEG_INFINITY;
         for &(x, _) in &self.data {
             min = min.min(x);
             max = max.max(x);
         }
-        (min, max)
+        Ok((min, max))
     }
 
-    fn y_range(&self) -> (f64, f64) {
+    fn y_range(&self) -> Result<(f64, f64)> {
         let mut min = f64::INFINITY;
         let mut max = f64::NEG_INFINITY;
         for &(_, y) in &self.data {
             min = min.min(y);
             max = max.max(y);
         }
-        (min, max)
+        Ok((min, max))
     }
 }
 
 impl ContinuousRepresentation for Line {
-    fn range(&self, dim: u32) -> (f64, f64) {
+    fn range(&self, dim: u32) -> Result<(f64, f64)> {
         match dim {
             0 => self.x_range(),
             1 => self.y_range(),

@@ -23,6 +23,8 @@ TODO:
 use svg;
 
 use axis;
+use errors::Result;
+use failure::ResultExt;
 use representation::ContinuousRepresentation;
 use style;
 use svg_render;
@@ -72,7 +74,7 @@ pub struct Histogram {
 }
 
 impl Histogram {
-    pub fn from_slice(v: &[f64], num_bins: usize) -> Histogram {
+    pub fn from_slice(v: &[f64], num_bins: usize) -> Result<Histogram> {
         let mut max = v.iter().fold(-1. / 0., |a, &b| f64::max(a, b));
         let mut min = v.iter().fold(1. / 0., |a, &b| f64::min(a, b));
 
@@ -108,33 +110,41 @@ impl Histogram {
                 .skip_while(|&(_, (&l, &u))| !(val >= l && val <= u))
                 .map(|(i, (_, _))| i)
                 .next()
-                .unwrap();
+                .ok_or_else(|| format_err!("no bin to fetch"))
+                .compat()?;
             bins[bin] += 1;
         }
         let density_per_bin = bins.iter().map(|&x| x as f64 / bin_width).collect();
 
-        Histogram {
+        Ok(Histogram {
             bin_bounds: bounds,
             bin_counts: bins,
             bin_densities: density_per_bin,
             style: Style::new(),
-        }
+        })
     }
 
     pub fn num_bins(&self) -> usize {
         self.bin_counts.len()
     }
 
-    fn x_range(&self) -> (f64, f64) {
-        (
-            *self.bin_bounds.first().unwrap(),
-            *self.bin_bounds.last().unwrap(),
-        )
+    fn x_range(&self) -> Result<(f64, f64)> {
+        Ok((
+            *self.bin_bounds
+                .first()
+                .ok_or_else(|| format_err!("no first bin bounds"))?,
+            *self.bin_bounds
+                .last()
+                .ok_or_else(|| format_err!("no last bin bounds"))?,
+        ))
     }
 
-    fn y_range(&self) -> (f64, f64) {
-        let max = *self.bin_counts.iter().max().unwrap();
-        (0., max as f64)
+    fn y_range(&self) -> Result<(f64, f64)> {
+        let max = *self.bin_counts
+            .iter()
+            .max()
+            .ok_or_else(|| format_err!("no bin counts"))?;
+        Ok((0., max as f64))
     }
 
     pub fn style(mut self, style: &Style) -> Self {
@@ -148,7 +158,7 @@ impl Histogram {
 }
 
 impl ContinuousRepresentation for Histogram {
-    fn range(&self, dim: u32) -> (f64, f64) {
+    fn range(&self, dim: u32) -> Result<(f64, f64)> {
         match dim {
             0 => self.x_range(),
             1 => self.y_range(),
@@ -183,14 +193,22 @@ mod tests {
 
     #[test]
     fn test_histogram_from_slice() {
-        assert_eq!(Histogram::from_slice(&[], 3).bin_densities, [0., 0., 0.]);
-        assert_eq!(Histogram::from_slice(&[0.], 3).bin_densities, [0., 3., 0.]);
         assert_eq!(
-            Histogram::from_slice(&[0., 3.], 3).bin_densities,
+            Histogram::from_slice(&[], 3).unwrap().bin_densities,
+            [0., 0., 0.]
+        );
+        assert_eq!(
+            Histogram::from_slice(&[0.], 3).unwrap().bin_densities,
+            [0., 3., 0.]
+        );
+        assert_eq!(
+            Histogram::from_slice(&[0., 3.], 3).unwrap().bin_densities,
             [1., 0., 1.]
         );
         assert_eq!(
-            Histogram::from_slice(&[0., 1., 2., 3.], 3).bin_densities,
+            Histogram::from_slice(&[0., 1., 2., 3.], 3)
+                .unwrap()
+                .bin_densities,
             [2., 1., 1.]
         );
     }

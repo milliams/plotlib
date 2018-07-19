@@ -13,6 +13,7 @@ These points may then be layered with other SVG elements from other representati
 */
 
 use axis;
+use errors::Result;
 use svg;
 
 /**
@@ -20,7 +21,7 @@ A representation of data that is continuous in two dimensions.
 */
 pub trait ContinuousRepresentation {
     /// The maximum range in each dimension. Used for auto-scaling axes.
-    fn range(&self, dim: u32) -> (f64, f64);
+    fn range(&self, dim: u32) -> Result<(f64, f64)>;
 
     fn to_svg(
         &self,

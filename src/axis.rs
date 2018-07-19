@@ -4,6 +4,9 @@ A module for managing axes
 
 */
 
+use errors::Result;
+use failure::ResultExt;
+
 #[derive(Debug, Clone)]
 pub struct Range {
     pub lower: f64,
@@ -11,12 +14,15 @@ pub struct Range {
 }
 
 impl Range {
-    pub fn new(lower: f64, upper: f64) -> Range {
-        assert!(lower < upper);
-        Range {
+    pub fn new(lower: f64, upper: f64) -> Result<Range> {
+        if lower >= upper {
+            bail!("data ranges give inverted values, {} < {}", lower, upper);
+        }
+
+        Ok(Range {
             lower: lower,
             upper: upper,
-        }
+        })
     }
 }
 
@@ -29,13 +35,13 @@ pub struct ContinuousAxis {
 
 impl ContinuousAxis {
     /// Constructs a new ContinuousAxis
-    pub fn new(lower: f64, upper: f64) -> ContinuousAxis {
+    pub fn new(lower: f64, upper: f64) -> Result<ContinuousAxis> {
         let default_max_ticks = 6;
-        ContinuousAxis {
-            range: Range::new(lower, upper),
+        Ok(ContinuousAxis {
+            range: Range::new(lower, upper).context("creating a new ContinuousAxis")?,
             ticks: calculate_ticks(lower, upper, default_max_ticks),
             label: "".into(),
-        }
+        })
     }
 
     pub fn max(&self) -> f64 {

@@ -534,7 +534,7 @@ mod tests {
     #[test]
     fn test_value_to_axis_cell_offset() {
         assert_eq!(
-            value_to_axis_cell_offset(3.0, &axis::ContinuousAxis::new(5.0, 10.0), 10),
+            value_to_axis_cell_offset(3.0, &axis::ContinuousAxis::new(5.0, 10.0).unwrap(), 10),
             -4
         );
     }
@@ -576,7 +576,7 @@ mod tests {
 
     #[test]
     fn test_render_y_axis_strings() {
-        let y_axis = axis::ContinuousAxis::new(0.0, 10.0);
+        let y_axis = axis::ContinuousAxis::new(0.0, 10.0).unwrap();
 
         let (y_axis_string, longest_y_label_width) = render_y_axis_strings(&y_axis, 10);
 
@@ -588,7 +588,7 @@ mod tests {
 
     #[test]
     fn test_render_x_axis_strings() {
-        let x_axis = axis::ContinuousAxis::new(0.0, 10.0);
+        let x_axis = axis::ContinuousAxis::new(0.0, 10.0).unwrap();
 
         let (x_axis_string, start_offset) = render_x_axis_strings(&x_axis, 20);
 
@@ -602,9 +602,9 @@ mod tests {
     #[test]
     fn test_render_face_bars() {
         let data = vec![0.3, 0.5, 6.4, 5.3, 3.6, 3.6, 3.5, 7.5, 4.0];
-        let h = histogram::Histogram::from_slice(&data, 10);
-        let x_axis = axis::ContinuousAxis::new(0.3, 7.5);
-        let y_axis = axis::ContinuousAxis::new(0., 3.);
+        let h = histogram::Histogram::from_slice(&data, 10).unwrap();
+        let x_axis = axis::ContinuousAxis::new(0.3, 7.5).unwrap();
+        let y_axis = axis::ContinuousAxis::new(0., 3.).unwrap();
         let strings = render_face_bars(&h, &x_axis, &y_axis, 20, 10);
         assert_eq!(strings.lines().count(), 10);
         assert!(strings.lines().all(|s| s.chars().count() == 20));
@@ -636,8 +636,8 @@ mod tests {
             (8.5, 3.7),
         ];
         let s = scatter::Scatter::from_slice(&data);
-        let x_axis = axis::ContinuousAxis::new(-3.575, 9.075);
-        let y_axis = axis::ContinuousAxis::new(-1.735, 5.635);
+        let x_axis = axis::ContinuousAxis::new(-3.575, 9.075).unwrap();
+        let y_axis = axis::ContinuousAxis::new(-1.735, 5.635).unwrap();
         let style = scatter::Style::new();
         let strings = render_face_points(&s.data, &x_axis, &y_axis, 20, 10, &style);
         assert_eq!(strings.lines().count(), 10);

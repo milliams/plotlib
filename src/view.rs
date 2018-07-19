@@ -9,6 +9,8 @@ extent to plot and information about the axes. It knows how to render itself.
 use std;
 use std::f64;
 
+use errors::Result;
+use failure::ResultExt;
 use svg;
 use svg::Node;
 
@@ -18,8 +20,8 @@ use svg_render;
 use text_render;
 
 pub trait View {
-    fn to_svg(&self, face_width: f64, face_height: f64) -> svg::node::element::Group;
-    fn to_text(&self, face_width: u32, face_height: u32) -> String;
+    fn to_svg(&self, face_width: f64, face_height: f64) -> Result<svg::node::element::Group>;
+    fn to_text(&self, face_width: u32, face_height: u32) -> Result<String>;
 }
 
 /// Standard 1-dimensional view with a continuous x-axis
@@ -57,17 +59,17 @@ impl<'a> ContinuousView<'a> {
     /**
     Set the x range for the view
     */
-    pub fn x_range(mut self, min: f64, max: f64) -> Self {
-        self.x_range = Some(axis::Range::new(min, max));
-        self
+    pub fn x_range(mut self, min: f64, max: f64) -> Result<Self> {
+        self.x_range = Some(axis::Range::new(min, max).context("setting x_range")?);
+        Ok(self)
     }
 
     /**
     Set the y range for the view
     */
-    pub fn y_range(mut self, min: f64, max: f64) -> Self {
-        self.y_range = Some(axis::Range::new(min, max));
-        self
+    pub fn y_range(mut self, min: f64, max: f64) -> Result<Self> {
+        self.y_range = Some(axis::Range::new(min, max).context("setting y_range")?);
+        Ok(self)
     }
 
     /**
@@ -92,33 +94,33 @@ impl<'a> ContinuousView<'a> {
         self
     }
 
-    fn default_x_range(&self) -> axis::Range {
+    fn default_x_range(&self) -> Result<axis::Range> {
         let mut x_min = f64::INFINITY;
         let mut x_max = f64::NEG_INFINITY;
         for repr in &self.representations {
-            let (this_x_min, this_x_max) = repr.range(0);
+            let (this_x_min, this_x_max) = repr.range(0)?;
             x_min = x_min.min(this_x_min);
             x_max = x_max.max(this_x_max);
         }
         axis::Range::new(x_min, x_max)
     }
 
-    fn default_y_range(&self) -> axis::Range {
+    fn default_y_range(&self) -> Result<axis::Range> {
         let mut y_min = f64::INFINITY;
         let mut y_max = f64::NEG_INFINITY;
         for repr in &self.representations {
-            let (this_y_min, this_y_max) = repr.range(1);
+            let (this_y_min, this_y_max) = repr.range(1)?;
             y_min = y_min.min(this_y_min);
             y_max = y_max.max(this_y_max);
         }
         axis::Range::new(y_min, y_max)
     }
 
-    fn create_axes(&self) -> (axis::ContinuousAxis, axis::ContinuousAxis) {
-        let default_x_range = self.default_x_range();
+    fn create_axes(&self) -> Result<(axis::ContinuousAxis, axis::ContinuousAxis)> {
+        let default_x_range = self.default_x_range().context("choosing default x_range")?;
         let x_range = self.x_range.as_ref().unwrap_or(&default_x_range);
 
-        let default_y_range = self.default_y_range();
+        let default_y_range = self.default_y_range().context("choosing default y_range")?;
         let y_range = self.y_range.as_ref().unwrap_or(&default_y_range);
 
         let default_x_label = "".to_string();
@@ -127,10 +129,14 @@ impl<'a> ContinuousView<'a> {
         let default_y_label = "".to_string();
         let y_label: String = self.y_label.clone().unwrap_or(default_y_label);
 
-        let x_axis = axis::ContinuousAxis::new(x_range.lower, x_range.upper).label(x_label);
-        let y_axis = axis::ContinuousAxis::new(y_range.lower, y_range.upper).label(y_label);
+        let x_axis = axis::ContinuousAxis::new(x_range.lower, x_range.upper)
+            .context("creating x_axis for new ContinuousAxis")?
+            .label(x_label);
+        let y_axis = axis::ContinuousAxis::new(y_range.lower, y_range.upper)
+            .context("creating y_axis for new ContinuousAxis")?
+            .label(y_label);
 
-        (x_axis, y_axis)
+        Ok((x_axis, y_axis))
     }
 }
 
@@ -138,10 +144,10 @@ impl<'a> View for ContinuousView<'a> {
     /**
     Create an SVG rendering of the view
     */
-    fn to_svg(&self, face_width: f64, face_height: f64) -> svg::node::element::Group {
+    fn to_svg(&self, face_width: f64, face_height: f64) -> Result<svg::node::element::Group> {
         let mut view_group = svg::node::element::Group::new();
 
-        let (x_axis, y_axis) = self.create_axes();
+        let (x_axis, y_axis) = self.create_axes().context("creating axes")?;
 
         // Then, based on those ranges, draw each repr as an SVG
         for repr in &self.representations {
@@ -152,14 +158,14 @@ impl<'a> View for ContinuousView<'a> {
         // Add in the axes
         view_group.append(svg_render::draw_x_axis(&x_axis, face_width));
         view_group.append(svg_render::draw_y_axis(&y_axis, face_height));
-        view_group
+        Ok(view_group)
     }
 
     /**
     Create a text rendering of the view
     */
-    fn to_text(&self, face_width: u32, face_height: u32) -> String {
-        let (x_axis, y_axis) = self.create_axes();
+    fn to_text(&self, face_width: u32, face_height: u32) -> Result<String> {
+        let (x_axis, y_axis) = self.create_axes().context("creating axes")?;
 
         let (y_axis_string, longest_y_label_width) =
             text_render::render_y_axis_strings(&y_axis, face_height);
@@ -198,7 +204,7 @@ impl<'a> View for ContinuousView<'a> {
             face_height as i32,
         );
 
-        view_string
+        Ok(view_string)
     }
 }
 
@@ -245,11 +251,10 @@ impl<'a> DiscreteView<'a> {
     /**
     Set the y range for the view
     */
-    pub fn y_range(mut self, min: f64, max: f64) -> Self {
-        self.y_range = Some(axis::Range::new(min, max));
-        self
+    pub fn y_range(mut self, min: f64, max: f64) -> Result<Self> {
+        self.y_range = Some(axis::Range::new(min, max).context("creating new range")?);
+        Ok(self)
     }
-
 
     /**
     Set the label for the x-axis
@@ -261,7 +266,6 @@ impl<'a> DiscreteView<'a> {
         self.x_label = Some(value.into());
         self
     }
-
 
     /**
     Set the label for the y-axis
@@ -286,7 +290,7 @@ impl<'a> DiscreteView<'a> {
         v
     }
 
-    fn default_y_range(&self) -> axis::Range {
+    fn default_y_range(&self) -> Result<axis::Range> {
         let mut y_min = f64::INFINITY;
         let mut y_max = f64::NEG_INFINITY;
         for repr in &self.representations {
@@ -298,11 +302,11 @@ impl<'a> DiscreteView<'a> {
         axis::Range::new(y_min - range / 10., y_max + range / 10.)
     }
 
-    fn create_axes(&self) -> (axis::DiscreteAxis, axis::ContinuousAxis) {
+    fn create_axes(&self) -> Result<(axis::DiscreteAxis, axis::ContinuousAxis)> {
         let default_x_ticks = self.default_x_ticks();
         let x_range = self.x_range.as_ref().unwrap_or(&default_x_ticks);
 
-        let default_y_range = self.default_y_range();
+        let default_y_range = self.default_y_range().context("creating default y_range")?;
         let y_range = self.y_range.as_ref().unwrap_or(&default_y_range);
 
         let default_x_label = "".to_string();
@@ -312,17 +316,19 @@ impl<'a> DiscreteView<'a> {
         let y_label: String = self.y_label.clone().unwrap_or(default_y_label);
 
         let x_axis = axis::DiscreteAxis::new(x_range).label(x_label);
-        let y_axis = axis::ContinuousAxis::new(y_range.lower, y_range.upper).label(y_label);
+        let y_axis = axis::ContinuousAxis::new(y_range.lower, y_range.upper)
+            .context("creating new ContinuousAxis")?
+            .label(y_label);
 
-        (x_axis, y_axis)
+        Ok((x_axis, y_axis))
     }
 }
 
 impl<'a> View for DiscreteView<'a> {
-    fn to_svg(&self, face_width: f64, face_height: f64) -> svg::node::element::Group {
+    fn to_svg(&self, face_width: f64, face_height: f64) -> Result<svg::node::element::Group> {
         let mut view_group = svg::node::element::Group::new();
 
-        let (x_axis, y_axis) = self.create_axes();
+        let (x_axis, y_axis) = self.create_axes().context("creating new axes")?;
 
         // Then, based on those ranges, draw each repr as an SVG
         for repr in &self.representations {
@@ -333,11 +339,11 @@ impl<'a> View for DiscreteView<'a> {
         // Add in the axes
         view_group.append(svg_render::draw_discrete_x_axis(&x_axis, face_width));
         view_group.append(svg_render::draw_y_axis(&y_axis, face_height));
-        view_group
+        Ok(view_group)
     }
 
-    fn to_text(&self, face_width: u32, face_height: u32) -> String {
-        "".into()
+    fn to_text(&self, _face_width: u32, _face_height: u32) -> Result<String> {
+        Ok("".into())
     }
 }
 
