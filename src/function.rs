@@ -145,15 +145,15 @@ impl ContinuousRepresentation for Function {
         y_axis: &axis::ContinuousAxis,
         face_width: f64,
         face_height: f64,
-    ) -> svg::node::element::Group {
-        svg_render::draw_face_line(
+    ) -> Result<svg::node::element::Group> {
+        Ok(svg_render::draw_face_line(
             &self.data,
             x_axis,
             y_axis,
             face_width,
             face_height,
             &self.style,
-        )
+        ))
     }
 
     fn to_text(
@@ -162,7 +162,7 @@ impl ContinuousRepresentation for Function {
         _y_axis: &axis::ContinuousAxis,
         _face_width: u32,
         _face_height: u32,
-    ) -> String {
-        "".into()
+    ) -> Result<String> {
+        Ok("".into())
     }
 }

@@ -151,7 +151,7 @@ impl<'a> View for ContinuousView<'a> {
 
         // Then, based on those ranges, draw each repr as an SVG
         for repr in &self.representations {
-            let repr_group = repr.to_svg(&x_axis, &y_axis, face_width, face_height);
+            let repr_group = repr.to_svg(&x_axis, &y_axis, face_width, face_height)?;
             view_group.append(repr_group);
         }
 
@@ -186,7 +186,7 @@ impl<'a> View for ContinuousView<'a> {
         let mut view_string = blank.join("\n");
 
         for repr in &self.representations {
-            let face_string = repr.to_text(&x_axis, &y_axis, face_width, face_height);
+            let face_string = repr.to_text(&x_axis, &y_axis, face_width, face_height)?;
             view_string =
                 text_render::overlay(&view_string, &face_string, left_gutter_width as i32 + 1, 0);
         }

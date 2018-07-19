@@ -29,7 +29,7 @@ pub trait ContinuousRepresentation {
         y_axis: &axis::ContinuousAxis,
         face_width: f64,
         face_height: f64,
-    ) -> svg::node::element::Group;
+    ) -> Result<svg::node::element::Group>;
 
     fn to_text(
         &self,
@@ -37,7 +37,7 @@ pub trait ContinuousRepresentation {
         y_axis: &axis::ContinuousAxis,
         face_width: u32,
         face_height: u32,
-    ) -> String;
+    ) -> Result<String>;
 }
 
 /**

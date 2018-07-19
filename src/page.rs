@@ -65,7 +65,7 @@ impl<'a> Page<'a> {
     {
         match path.as_ref().extension().and_then(OsStr::to_str) {
             Some("svg") => {
-                svg::save(path, &self.to_svg().context("saving plot")?).unwrap();
+                svg::save(path, &self.to_svg().context("saving plot")?)?;
             }
             _ => {
                 // some default
