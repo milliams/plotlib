@@ -1,13 +1,15 @@
 //! A module for plotting graphs
 
-use std::collections::HashMap;
-use std;
+use failure::ResultExt;
 
-use histogram;
-use scatter;
+use std;
+use std::collections::HashMap;
+
 use axis;
-use utils::PairWise;
+use histogram;
 use style;
+use utils::PairWise;
+use errors::Result;
 
 // Given a value like a tick label or a bin count,
 // calculate how far from the x-axis it should be plotted
@@ -46,11 +48,12 @@ fn bound_cell_offsets(
 /// Cells which straddle bins will return the bin just on the lower side of the centre of the cell
 /// Will return a vector with (`face_width + 2`) entries to represent underflow and overflow cells
 /// cells which do not map to a bin will return `None`.
-fn bins_for_cells(bound_cell_offsets: &[i32], face_width: u32) -> Vec<Option<i32>> {
+fn bins_for_cells(bound_cell_offsets: &[i32], face_width: u32) -> Result<Vec<Option<i32>>> {
     let bound_cells = bound_cell_offsets;
 
     let bin_width_in_cells = bound_cells.pairwise().map(|(&a, &b)| b - a);
-    let bins_cell_offset = bound_cells.first().unwrap();
+    let bins_cell_offset = bound_cells.first()
+        .ok_or_else(|| format_err!("no bound cells found"))?;
 
     let mut cell_bins: Vec<Option<i32>> = vec![None]; // start with a prepended negative null
     for (bin, width) in bin_width_in_cells.enumerate() {
@@ -87,7 +90,7 @@ fn bins_for_cells(bound_cell_offsets: &[i32], face_width: u32) -> Vec<Option<i32
             .collect();
     }
 
-    cell_bins
+    Ok(cell_bins)
 }
 
 /// An x-axis label for the text output renderer
@@ -281,10 +284,11 @@ pub fn render_face_bars(
     y_axis: &axis::ContinuousAxis,
     face_width: u32,
     face_height: u32,
-) -> String {
+) -> Result<String> {
     let bound_cells = bound_cell_offsets(h, x_axis, face_width);
 
-    let cell_bins = bins_for_cells(&bound_cells, face_width);
+    let cell_bins = bins_for_cells(&bound_cells, face_width)
+        .context("calculating bins for cells")?;
 
     // counts per bin converted to rows per column
     let cell_heights: Vec<_> = cell_bins
@@ -344,7 +348,7 @@ pub fn render_face_bars(
         face_strings.push(line_string);
     }
     let face_strings: Vec<String> = face_strings.iter().rev().cloned().collect();
-    face_strings.join("\n")
+    Ok(face_strings.join("\n"))
 }
 
 /// Given a scatter plot,
@@ -478,6 +482,7 @@ pub fn overlay(under: &str, over: &str, x: i32, y: i32) -> String {
 
 #[cfg(test)]
 mod tests {
+    use super::super::scatter;
     use super::*;
 
     #[test]
@@ -485,7 +490,7 @@ mod tests {
         let face_width = 10;
         let n = i32::max_value();
         let run_bins_for_cells = |bound_cell_offsets: &[i32]| -> Vec<_> {
-            bins_for_cells(&bound_cell_offsets, face_width)
+            bins_for_cells(&bound_cell_offsets, face_width).unwrap()
                 .iter()
                 .map(|&a| a.unwrap_or(n))
                 .collect()
@@ -534,7 +539,7 @@ mod tests {
     #[test]
     fn test_value_to_axis_cell_offset() {
         assert_eq!(
-            value_to_axis_cell_offset(3.0, &axis::ContinuousAxis::new(5.0, 10.0), 10),
+            value_to_axis_cell_offset(3.0, &axis::ContinuousAxis::new(5.0, 10.0).unwrap(), 10),
             -4
         );
     }
@@ -576,7 +581,7 @@ mod tests {
 
     #[test]
     fn test_render_y_axis_strings() {
-        let y_axis = axis::ContinuousAxis::new(0.0, 10.0);
+        let y_axis = axis::ContinuousAxis::new(0.0, 10.0).unwrap();
 
         let (y_axis_string, longest_y_label_width) = render_y_axis_strings(&y_axis, 10);
 
@@ -588,7 +593,7 @@ mod tests {
 
     #[test]
     fn test_render_x_axis_strings() {
-        let x_axis = axis::ContinuousAxis::new(0.0, 10.0);
+        let x_axis = axis::ContinuousAxis::new(0.0, 10.0).unwrap();
 
         let (x_axis_string, start_offset) = render_x_axis_strings(&x_axis, 20);
 
@@ -602,10 +607,10 @@ mod tests {
     #[test]
     fn test_render_face_bars() {
         let data = vec![0.3, 0.5, 6.4, 5.3, 3.6, 3.6, 3.5, 7.5, 4.0];
-        let h = histogram::Histogram::from_slice(&data, 10);
-        let x_axis = axis::ContinuousAxis::new(0.3, 7.5);
-        let y_axis = axis::ContinuousAxis::new(0., 3.);
-        let strings = render_face_bars(&h, &x_axis, &y_axis, 20, 10);
+        let h = histogram::Histogram::from_slice(&data, 10).unwrap();
+        let x_axis = axis::ContinuousAxis::new(0.3, 7.5).unwrap();
+        let y_axis = axis::ContinuousAxis::new(0., 3.).unwrap();
+        let strings = render_face_bars(&h, &x_axis, &y_axis, 20, 10).unwrap();
         assert_eq!(strings.lines().count(), 10);
         assert!(strings.lines().all(|s| s.chars().count() == 20));
 
@@ -636,8 +641,8 @@ mod tests {
             (8.5, 3.7),
         ];
         let s = scatter::Scatter::from_slice(&data);
-        let x_axis = axis::ContinuousAxis::new(-3.575, 9.075);
-        let y_axis = axis::ContinuousAxis::new(-1.735, 5.635);
+        let x_axis = axis::ContinuousAxis::new(-3.575, 9.075).unwrap();
+        let y_axis = axis::ContinuousAxis::new(-1.735, 5.635).unwrap();
         let style = scatter::Style::new();
         let strings = render_face_points(&s.data, &x_axis, &y_axis, 20, 10, &style);
         assert_eq!(strings.lines().count(), 10);

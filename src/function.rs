@@ -18,9 +18,10 @@ use std::f64;
 use svg;
 
 use axis;
+use errors::Result;
 use representation::ContinuousRepresentation;
-use svg_render;
 use style;
+use svg_render;
 
 #[derive(Debug, Default)]
 pub struct Style {
@@ -108,29 +109,29 @@ impl Function {
         &self.style
     }
 
-    fn x_range(&self) -> (f64, f64) {
+    fn x_range(&self) -> Result<(f64, f64)> {
         let mut min = f64::INFINITY;
         let mut max = f64::NEG_INFINITY;
         for &(x, _) in &self.data {
             min = min.min(x);
             max = max.max(x);
         }
-        (min, max)
+        Ok((min, max))
     }
 
-    fn y_range(&self) -> (f64, f64) {
+    fn y_range(&self) -> Result<(f64, f64)> {
         let mut min = f64::INFINITY;
         let mut max = f64::NEG_INFINITY;
         for &(_, y) in &self.data {
             min = min.min(y);
             max = max.max(y);
         }
-        (min, max)
+        Ok((min, max))
     }
 }
 
 impl ContinuousRepresentation for Function {
-    fn range(&self, dim: u32) -> (f64, f64) {
+    fn range(&self, dim: u32) -> Result<(f64, f64)> {
         match dim {
             0 => self.x_range(),
             1 => self.y_range(),
@@ -144,24 +145,24 @@ impl ContinuousRepresentation for Function {
         y_axis: &axis::ContinuousAxis,
         face_width: f64,
         face_height: f64,
-    ) -> svg::node::element::Group {
-        svg_render::draw_face_line(
+    ) -> Result<svg::node::element::Group> {
+        Ok(svg_render::draw_face_line(
             &self.data,
             x_axis,
             y_axis,
             face_width,
             face_height,
             &self.style,
-        )
+        ))
     }
 
     fn to_text(
         &self,
-        x_axis: &axis::ContinuousAxis,
-        y_axis: &axis::ContinuousAxis,
-        face_width: u32,
-        face_height: u32,
-    ) -> String {
-        "".into()
+        _x_axis: &axis::ContinuousAxis,
+        _y_axis: &axis::ContinuousAxis,
+        _face_width: u32,
+        _face_height: u32,
+    ) -> Result<String> {
+        Ok("".into())
     }
 }

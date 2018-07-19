@@ -1,10 +1,10 @@
 use std;
 
-use svg::Node;
 use svg::node;
+use svg::Node;
 
-use histogram;
 use axis;
+use histogram;
 use style;
 use utils;
 use utils::PairWise;
@@ -395,7 +395,7 @@ mod tests {
 
     #[test]
     fn test_value_to_face_offset() {
-        let axis = axis::ContinuousAxis::new(-2., 5.);
+        let axis = axis::ContinuousAxis::new(-2., 5.).unwrap();
         assert_eq!(value_to_face_offset(-2.0, &axis, 14.0), 0.0);
         assert_eq!(value_to_face_offset(5.0, &axis, 14.0), 14.0);
         assert_eq!(value_to_face_offset(0.0, &axis, 14.0), 4.0);

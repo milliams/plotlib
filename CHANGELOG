@@ -12,6 +12,7 @@
 - Rename `Histogram::from_vec` to `Histogram::from_slice`.
 - Rename `view::View` to `view::ContinuousView` and introduce `view::View` as a trait.
 - Change `svg_render` functions to take data slices rather than Representations.
+- Add `Result` return types to lots of functions
 
 ## 0.3.0 - 2018-03-01
 ### Added

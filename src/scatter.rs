@@ -3,10 +3,11 @@ use std::f64;
 use svg;
 
 use axis;
-use svg_render;
-use text_render;
+use errors::Result;
 use representation::ContinuousRepresentation;
 use style;
+use svg_render;
+use text_render;
 
 /// `Style` follows the 'optional builder' pattern
 /// Each field is a `Option` which start as `None`
@@ -92,10 +93,8 @@ pub struct Scatter {
 
 impl Scatter {
     pub fn from_slice(v: &[(f64, f64)]) -> Self {
-        let mut data: Vec<(f64, f64)> = vec![];
-        for &(x, y) in v {
-            data.push((x, y));
-        }
+        let mut data = Vec::new();
+        data.extend_from_slice(v);
 
         Scatter {
             data: data,
@@ -112,29 +111,29 @@ impl Scatter {
         &self.style
     }
 
-    fn x_range(&self) -> (f64, f64) {
+    fn x_range(&self) -> Result<(f64, f64)> {
         let mut min = f64::INFINITY;
         let mut max = f64::NEG_INFINITY;
         for &(x, _) in &self.data {
             min = min.min(x);
             max = max.max(x);
         }
-        (min, max)
+        Ok((min, max))
     }
 
-    fn y_range(&self) -> (f64, f64) {
+    fn y_range(&self) -> Result<(f64, f64)> {
         let mut min = f64::INFINITY;
         let mut max = f64::NEG_INFINITY;
         for &(_, y) in &self.data {
             min = min.min(y);
             max = max.max(y);
         }
-        (min, max)
+        Ok((min, max))
     }
 }
 
 impl ContinuousRepresentation for Scatter {
-    fn range(&self, dim: u32) -> (f64, f64) {
+    fn range(&self, dim: u32) -> Result<(f64, f64)> {
         match dim {
             0 => self.x_range(),
             1 => self.y_range(),
@@ -148,15 +147,15 @@ impl ContinuousRepresentation for Scatter {
         y_axis: &axis::ContinuousAxis,
         face_width: f64,
         face_height: f64,
-    ) -> svg::node::element::Group {
-        svg_render::draw_face_points(
+    ) -> Result<svg::node::element::Group> {
+        Ok(svg_render::draw_face_points(
             &self.data,
             x_axis,
             y_axis,
             face_width,
             face_height,
             &self.style,
-        )
+        ))
     }
 
     fn to_text(
@@ -165,14 +164,14 @@ impl ContinuousRepresentation for Scatter {
         y_axis: &axis::ContinuousAxis,
         face_width: u32,
         face_height: u32,
-    ) -> String {
-        text_render::render_face_points(
+    ) -> Result<String> {
+        Ok(text_render::render_face_points(
             &self.data,
             x_axis,
             y_axis,
             face_width,
             face_height,
             &self.style,
-        )
+        ))
     }
 }

@@ -19,8 +19,8 @@ use svg;
 
 use axis;
 use representation::DiscreteRepresentation;
-use svg_render;
 use style;
+use svg_render;
 use utils;
 
 #[derive(Debug, Default)]
@@ -149,10 +149,10 @@ impl<'a> DiscreteRepresentation for BoxPlot<'a> {
 
     fn to_text(
         &self,
-        x_axis: &axis::DiscreteAxis,
-        y_axis: &axis::ContinuousAxis,
-        face_width: u32,
-        face_height: u32,
+        _x_axis: &axis::DiscreteAxis,
+        _y_axis: &axis::ContinuousAxis,
+        _face_width: u32,
+        _face_height: u32,
     ) -> String {
         "".into()
     }

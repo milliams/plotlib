@@ -1,8 +1,9 @@
 extern crate plotlib;
 
 use plotlib::style::Line;
+use plotlib::Result;
 
-fn main() {
+fn main() -> Result<()> {
     let f1 = plotlib::function::Function::new(|x| x * 5., 0., 10.)
         .style(plotlib::function::Style::new().colour("burlywood"));
     let f2 = plotlib::function::Function::new(|x| x.powi(2), 0., 10.).style(
@@ -16,5 +17,5 @@ fn main() {
         .add(&f1)
         .add(&f2)
         .add(&f3);
-    plotlib::page::Page::single(&v).save("function.svg");
+    plotlib::page::Page::single(&v).save("function.svg")
 }
