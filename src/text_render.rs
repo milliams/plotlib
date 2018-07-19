@@ -1,5 +1,7 @@
 //! A module for plotting graphs
 
+use failure::ResultExt;
+
 use std;
 use std::collections::HashMap;
 
@@ -285,7 +287,8 @@ pub fn render_face_bars(
 ) -> Result<String> {
     let bound_cells = bound_cell_offsets(h, x_axis, face_width);
 
-    let cell_bins = bins_for_cells(&bound_cells, face_width)?;
+    let cell_bins = bins_for_cells(&bound_cells, face_width)
+        .context("calculating bins for cells")?;
 
     // counts per bin converted to rows per column
     let cell_heights: Vec<_> = cell_bins
