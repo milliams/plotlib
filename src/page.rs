@@ -51,7 +51,7 @@ impl<'a> Page<'a> {
     /**
     Render the plot to an svg document
     */
-    pub fn to_svg(&self) -> svg::Document {
+    pub fn to_svg(&self) -> Result<svg::Document> {
         let (width, height) = self.dimensions;
         let mut document = Document::new().set("viewBox", (0, 0, width, height));
 
@@ -62,17 +62,17 @@ impl<'a> Page<'a> {
 
         // TODO put multiple views in correct places
         for &view in &self.views {
-            let view_group = view.to_svg((width-x_margin) as f64, (height-y_margin) as f64)
+            let view_group = view.to_svg((width-x_margin) as f64, (height-y_margin) as f64)?
                 .set("transform", format!("translate({}, {})", x_offset, height as f64-y_offset));
             document.append(view_group);
         }
-        document
+        Ok(document)
     }
 
     /**
     Render the plot to an `String`
     */
-    pub fn to_text(&self) -> String {
+    pub fn to_text(&self) -> Result<String> {
         // TODO compose multiple views into a plot
         let view = self.views[0];
         view.to_text(90, 30)
@@ -90,7 +90,7 @@ impl<'a> Page<'a> {
     {
         match path.as_ref().extension().and_then(OsStr::to_str) {
             Some("svg") => {
-                svg::save(path, &self.to_svg())
+                svg::save(path, &self.to_svg()?)
                     .context("saving svg")
                     .map_err(From::from)
             }

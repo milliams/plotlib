@@ -21,5 +21,5 @@ fn main() {
         .y_range(-2., 6.)
         .x_label("Some varying variable")
         .y_label("The response of something");
-    println!("{}", plotlib::page::Page::single(&v).to_text());
+    println!("{}", plotlib::page::Page::single(&v).to_text().unwrap());
 }
