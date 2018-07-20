@@ -12,7 +12,6 @@ pub struct Range {
 
 impl Range {
     pub fn new(lower: f64, upper: f64) -> Range {
-        assert!(lower < upper);
         Range {
             lower: lower,
             upper: upper,
