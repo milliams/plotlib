@@ -13,5 +13,5 @@ fn main() {
         .add(&b2)
         .x_label("Experiment")
         .y_label("y");
-    plotlib::page::Page::single(&v).dimensions(400, 300).save("boxplot.svg");
+    plotlib::page::Page::single(&v).dimensions(400, 300).save("boxplot.svg").expect("saving svg");
 }

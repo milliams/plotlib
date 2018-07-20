@@ -17,6 +17,10 @@ impl Range {
             upper: upper,
         }
     }
+
+    pub(crate) fn is_valid(&self) -> bool {
+        self.lower < self.upper
+    }
 }
 
 #[derive(Debug)]

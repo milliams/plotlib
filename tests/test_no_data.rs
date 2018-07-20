@@ -28,7 +28,7 @@ fn test_data_with_one_length() {
 
     // A page with a single view is then saved to an SVG file
     Page::single(&v)
-        .save("/tmp/scatter_one_length.svg");
+        .save("/tmp/scatter_one_length.svg").unwrap();
 }
 
 #[test]
@@ -53,5 +53,5 @@ fn test_data_with_no_length() {
 
     // A page with a single view is then saved to an SVG file
     Page::single(&v)
-        .save("/tmp/scatter_zero_length.svg");
+        .save("/tmp/scatter_zero_length.svg").unwrap();
 }

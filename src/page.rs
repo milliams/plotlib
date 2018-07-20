@@ -9,7 +9,10 @@ use svg;
 use svg::Node;
 use svg::Document;
 
+use errors::Result;
 use view::View;
+
+use failure::ResultExt;
 
 /**
 A single page page laying out the views in a grid
@@ -81,16 +84,18 @@ impl<'a> Page<'a> {
     The type of file will be based on the file extension.
     */
 
-    pub fn save<P>(&self, path: P)
+    pub fn save<P>(&self, path: P) -> Result<()>
     where
         P: AsRef<Path>,
     {
         match path.as_ref().extension().and_then(OsStr::to_str) {
             Some("svg") => {
-                svg::save(path, &self.to_svg()).unwrap();
+                svg::save(path, &self.to_svg())
+                    .context("saving svg")
+                    .map_err(From::from)
             }
             _ => {
-                // some default
+                Ok(())
             }
         }
     }

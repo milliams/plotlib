@@ -16,6 +16,7 @@ use representation::{DiscreteRepresentation, ContinuousRepresentation};
 use axis;
 use svg_render;
 use text_render;
+use errors::Result;
 
 pub trait View {
     fn to_svg(&self, face_width: f64, face_height: f64) -> svg::node::element::Group;
@@ -114,12 +115,18 @@ impl<'a> ContinuousView<'a> {
         axis::Range::new(y_min, y_max)
     }
 
-    fn create_axes(&self) -> (axis::ContinuousAxis, axis::ContinuousAxis) {
+    fn create_axes(&self) -> Result<(axis::ContinuousAxis, axis::ContinuousAxis)> {
         let default_x_range = self.default_x_range();
         let x_range = self.x_range.as_ref().unwrap_or(&default_x_range);
+        if !x_range.is_valid() {
+            return Err(format_err!("invalid x_range: {:?}", x_range));
+        }
 
         let default_y_range = self.default_y_range();
         let y_range = self.y_range.as_ref().unwrap_or(&default_y_range);
+        if !y_range.is_valid() {
+            return Err(format_err!("invalid y_range: {:?}", y_range));
+        }
 
         let default_x_label = "".to_string();
         let x_label: String = self.x_label.clone().unwrap_or(default_x_label);
@@ -130,7 +137,7 @@ impl<'a> ContinuousView<'a> {
         let x_axis = axis::ContinuousAxis::new(x_range.lower, x_range.upper).label(x_label);
         let y_axis = axis::ContinuousAxis::new(y_range.lower, y_range.upper).label(y_label);
 
-        (x_axis, y_axis)
+        Ok((x_axis, y_axis))
     }
 }
 
@@ -141,7 +148,7 @@ impl<'a> View for ContinuousView<'a> {
     fn to_svg(&self, face_width: f64, face_height: f64) -> svg::node::element::Group {
         let mut view_group = svg::node::element::Group::new();
 
-        let (x_axis, y_axis) = self.create_axes();
+        let (x_axis, y_axis) = self.create_axes().expect("invalid axes");
 
         // Then, based on those ranges, draw each repr as an SVG
         for repr in &self.representations {
@@ -159,7 +166,7 @@ impl<'a> View for ContinuousView<'a> {
     Create a text rendering of the view
     */
     fn to_text(&self, face_width: u32, face_height: u32) -> String {
-        let (x_axis, y_axis) = self.create_axes();
+        let (x_axis, y_axis) = self.create_axes().expect("invalid axes");
 
         let (y_axis_string, longest_y_label_width) =
             text_render::render_y_axis_strings(&y_axis, face_height);
