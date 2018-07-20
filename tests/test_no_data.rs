@@ -55,3 +55,27 @@ fn test_data_with_no_length() {
     Page::single(&v)
         .save("/tmp/scatter_zero_length.svg").unwrap();
 }
+
+#[test]
+#[should_panic(expected = "invalid axes")]
+fn test_data_with_one_length_and_autoscaling_axes_limits() {
+    // Scatter plots expect a list of pairs
+    let data1 = [(-3.0, 2.3)];
+
+    // We create our scatter plot from the data
+    let s1 = Scatter::from_slice(&data1).style(
+        scatter::Style::new()
+            .marker(Marker::Square) // setting the marker to be a square
+            .colour("#DD3355"),
+    ); // and a custom colour
+
+    // The 'view' describes what set of data is drawn
+    let v = ContinuousView::new()
+        .add(&s1)
+        .x_label("Some varying variable")
+        .y_label("The response of something");
+
+    // // A page with a single view is then saved to an SVG file
+    Page::single(&v)
+        .save("/tmp/scatter_one_length.svg").unwrap();
+}
