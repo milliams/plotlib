@@ -5,6 +5,7 @@
 - Line charts.
 - Box plots.
 - Introduce discrete representation, views and axes.
+- Add ability to set dimensions of plot (PR #8)
 
 ### Changed
 - Make `representation` module public.
