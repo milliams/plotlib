@@ -11,6 +11,7 @@ fn main() {
     let v = plotlib::view::DiscreteView::new()
         .add(&b1)
         .add(&b2)
-        .x_label("Experiment");
-    plotlib::page::Page::single(&v).save("boxplot.svg");
+        .x_label("Experiment")
+        .y_label("y");
+    plotlib::page::Page::single(&v).dimensions(400, 300).save("boxplot.svg");
 }
