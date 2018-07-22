@@ -52,6 +52,7 @@ fn main() {
     // A page with a single view is then saved to an SVG file
     Page::single(&v).save("scatter.svg");
 }
+```
 
 will produce output like:
 
