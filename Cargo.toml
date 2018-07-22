@@ -2,11 +2,11 @@
 name = "plotlib"
 version = "0.3.0"
 authors = ["Matt Williams <matt@milliams.com>"]
-description = "Plotting data structures and tools"
+description = "Pure Rust plotting library"
 readme = "README.md"
 license = "MIT"
 repository = "https://github.com/milliams/plotlib"
-categories = ["visualization"]
+categories = ["visualization", "science"]
 keywords = ["plotting", "plot", "graph", "chart", "histogram", "scatter"]
 
 [badges]
