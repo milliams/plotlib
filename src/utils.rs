@@ -1,6 +1,6 @@
+use std::f64;
 use std::iter::{Skip, Zip};
 use std::slice::Iter;
-use std::f64;
 
 pub trait PairWise<T> {
     fn pairwise(&self) -> Zip<Iter<T>, Skip<Iter<T>>>;

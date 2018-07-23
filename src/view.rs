@@ -12,11 +12,11 @@ use std::f64;
 use svg;
 use svg::Node;
 
-use representation::{DiscreteRepresentation, ContinuousRepresentation};
 use axis;
+use errors::Result;
+use representation::{ContinuousRepresentation, DiscreteRepresentation};
 use svg_render;
 use text_render;
-use errors::Result;
 
 pub trait View {
     fn to_svg(&self, face_width: f64, face_height: f64) -> Result<svg::node::element::Group>;
@@ -119,13 +119,21 @@ impl<'a> ContinuousView<'a> {
         let default_x_range = self.default_x_range();
         let x_range = self.x_range.as_ref().unwrap_or(&default_x_range);
         if !x_range.is_valid() {
-            return Err(format_err!("Invalid x_range: {} >= {}. Please specify the x_range manually.", x_range.lower, x_range.upper));
+            return Err(format_err!(
+                "Invalid x_range: {} >= {}. Please specify the x_range manually.",
+                x_range.lower,
+                x_range.upper
+            ));
         }
 
         let default_y_range = self.default_y_range();
         let y_range = self.y_range.as_ref().unwrap_or(&default_y_range);
         if !y_range.is_valid() {
-            return Err(format_err!("Invalid y_range: {} >= {}. Please specify the y_range manually.", y_range.lower, y_range.upper));
+            return Err(format_err!(
+                "Invalid y_range: {} >= {}. Please specify the y_range manually.",
+                y_range.lower,
+                y_range.upper
+            ));
         }
 
         let x_label: String = self.x_label.clone().unwrap_or_else(|| "".to_string());
@@ -254,7 +262,6 @@ impl<'a> DiscreteView<'a> {
         self
     }
 
-
     /**
     Set the label for the x-axis
     */
@@ -265,7 +272,6 @@ impl<'a> DiscreteView<'a> {
         self.x_label = Some(value.into());
         self
     }
-
 
     /**
     Set the label for the y-axis

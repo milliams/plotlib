@@ -16,5 +16,7 @@ fn main() {
         .add(&f1)
         .add(&f2)
         .add(&f3);
-    plotlib::page::Page::single(&v).save("function.svg").expect("saving svg");
+    plotlib::page::Page::single(&v)
+        .save("function.svg")
+        .expect("saving svg");
 }

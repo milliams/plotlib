@@ -273,11 +273,15 @@ mod tests {
     #[test]
     fn test_calculate_ticks() {
         macro_rules! assert_approx_eq {
-            ($a:expr, $b:expr) => ({
+            ($a:expr, $b:expr) => {{
                 let (a, b) = (&$a, &$b);
-                assert!((*a - *b).abs() < 1.0e-6,
-                        "{} is not approximately equal to {}", *a, *b);
-            })
+                assert!(
+                    (*a - *b).abs() < 1.0e-6,
+                    "{} is not approximately equal to {}",
+                    *a,
+                    *b
+                );
+            }};
         }
 
         for (prod, want) in calculate_ticks(0.0, 1.0, 6)

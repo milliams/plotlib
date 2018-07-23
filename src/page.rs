@@ -2,12 +2,12 @@
 The `page` module provides structures for laying out and rendering multiple views.
 */
 
-use std::path::Path;
 use std::ffi::OsStr;
+use std::path::Path;
 
 use svg;
-use svg::Node;
 use svg::Document;
+use svg::Node;
 
 use errors::Result;
 use view::View;
@@ -20,7 +20,7 @@ A single page page laying out the views in a grid
 pub struct Page<'a> {
     views: Vec<&'a View>,
     num_views: u32,
-    dimensions: (u32, u32)
+    dimensions: (u32, u32),
 }
 
 impl<'a> Page<'a> {
@@ -31,13 +31,13 @@ impl<'a> Page<'a> {
         Page {
             views: vec![view],
             num_views: 1,
-            dimensions: (600, 400)
+            dimensions: (600, 400),
         }
     }
 
     /// Set the dimensions of the plot.
     pub fn dimensions(mut self, x: u32, y: u32) -> Self {
-        self.dimensions = (x,y);
+        self.dimensions = (x, y);
         self
     }
 
@@ -57,13 +57,16 @@ impl<'a> Page<'a> {
 
         let x_margin = 80;
         let y_margin = 60;
-        let x_offset = 0.6*x_margin as f64;
-        let y_offset = 0.6*y_margin as f64;
+        let x_offset = 0.6 * x_margin as f64;
+        let y_offset = 0.6 * y_margin as f64;
 
         // TODO put multiple views in correct places
         for &view in &self.views {
-            let view_group = view.to_svg((width-x_margin) as f64, (height-y_margin) as f64)?
-                .set("transform", format!("translate({}, {})", x_offset, height as f64-y_offset));
+            let view_group = view.to_svg((width - x_margin) as f64, (height - y_margin) as f64)?
+                .set(
+                    "transform",
+                    format!("translate({}, {})", x_offset, height as f64 - y_offset),
+                );
             document.append(view_group);
         }
         Ok(document)
@@ -89,14 +92,10 @@ impl<'a> Page<'a> {
         P: AsRef<Path>,
     {
         match path.as_ref().extension().and_then(OsStr::to_str) {
-            Some("svg") => {
-                svg::save(path, &self.to_svg()?)
-                    .context("saving svg")
-                    .map_err(From::from)
-            }
-            _ => {
-                Ok(())
-            }
+            Some("svg") => svg::save(path, &self.to_svg()?)
+                .context("saving svg")
+                .map_err(From::from),
+            _ => Ok(()),
         }
     }
 }

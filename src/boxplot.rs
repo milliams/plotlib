@@ -19,8 +19,8 @@ use svg;
 
 use axis;
 use representation::DiscreteRepresentation;
-use svg_render;
 use style;
+use svg_render;
 use utils;
 
 #[derive(Debug, Default)]
