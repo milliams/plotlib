@@ -119,13 +119,13 @@ impl<'a> ContinuousView<'a> {
         let default_x_range = self.default_x_range();
         let x_range = self.x_range.as_ref().unwrap_or(&default_x_range);
         if !x_range.is_valid() {
-            return Err(format_err!("invalid x_range: {:?}", x_range));
+            return Err(format_err!("Invalid x_range: {} >= {}. Please specify the x_range manually.", x_range.lower, x_range.upper));
         }
 
         let default_y_range = self.default_y_range();
         let y_range = self.y_range.as_ref().unwrap_or(&default_y_range);
         if !y_range.is_valid() {
-            return Err(format_err!("invalid y_range: {:?}", y_range));
+            return Err(format_err!("Invalid y_range: {} >= {}. Please specify the y_range manually.", y_range.lower, y_range.upper));
         }
 
         let default_x_label = "".to_string();
