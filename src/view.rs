@@ -128,11 +128,8 @@ impl<'a> ContinuousView<'a> {
             return Err(format_err!("Invalid y_range: {} >= {}. Please specify the y_range manually.", y_range.lower, y_range.upper));
         }
 
-        let default_x_label = "".to_string();
-        let x_label: String = self.x_label.clone().unwrap_or(default_x_label);
-
-        let default_y_label = "".to_string();
-        let y_label: String = self.y_label.clone().unwrap_or(default_y_label);
+        let x_label: String = self.x_label.clone().unwrap_or_else(|| "".to_string());
+        let y_label: String = self.y_label.clone().unwrap_or_else(|| "".to_string());
 
         let x_axis = axis::ContinuousAxis::new(x_range.lower, x_range.upper).label(x_label);
         let y_axis = axis::ContinuousAxis::new(y_range.lower, y_range.upper).label(y_label);
