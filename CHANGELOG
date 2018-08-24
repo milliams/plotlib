@@ -8,6 +8,7 @@
 - Add ability to set dimensions of plot (PR #8)
 
 ### Changed
+- Change `create_axes`, `save`, `to_svg` and `to_text` to return `Result` indicating an error.
 - Make `representation` module public.
 - Rename `Scatter::from_vec` to `Scatter::from_slice`.
 - Rename `Histogram::from_vec` to `Histogram::from_slice`.

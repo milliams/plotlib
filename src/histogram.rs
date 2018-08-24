@@ -23,11 +23,11 @@ TODO:
 use svg;
 
 use axis;
-use utils::PairWise;
-use svg_render;
-use text_render;
 use representation::ContinuousRepresentation;
 use style;
+use svg_render;
+use text_render;
+use utils::PairWise;
 
 #[derive(Debug, Default)]
 pub struct Style {

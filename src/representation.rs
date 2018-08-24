@@ -12,8 +12,8 @@ These points may then be layered with other SVG elements from other representati
 `view::View`.
 */
 
-use svg;
 use axis;
+use svg;
 
 /**
 A representation of data that is continuous in two dimensions.

@@ -19,8 +19,8 @@ use svg;
 
 use axis;
 use representation::ContinuousRepresentation;
-use svg_render;
 use style;
+use svg_render;
 
 #[derive(Debug, Default)]
 pub struct Style {

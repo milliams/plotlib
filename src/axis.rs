@@ -12,11 +12,14 @@ pub struct Range {
 
 impl Range {
     pub fn new(lower: f64, upper: f64) -> Range {
-        assert!(lower < upper);
         Range {
             lower: lower,
             upper: upper,
         }
+    }
+
+    pub(crate) fn is_valid(&self) -> bool {
+        self.lower < self.upper
     }
 }
 
@@ -270,11 +273,15 @@ mod tests {
     #[test]
     fn test_calculate_ticks() {
         macro_rules! assert_approx_eq {
-            ($a:expr, $b:expr) => ({
+            ($a:expr, $b:expr) => {{
                 let (a, b) = (&$a, &$b);
-                assert!((*a - *b).abs() < 1.0e-6,
-                        "{} is not approximately equal to {}", *a, *b);
-            })
+                assert!(
+                    (*a - *b).abs() < 1.0e-6,
+                    "{} is not approximately equal to {}",
+                    *a,
+                    *b
+                );
+            }};
         }
 
         for (prod, want) in calculate_ticks(0.0, 1.0, 6)
