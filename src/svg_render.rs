@@ -111,7 +111,7 @@ pub fn draw_y_axis(a: &axis::ContinuousAxis, face_height: f64) -> node::element:
         .add(label)
 }
 
-pub fn draw_discrete_x_axis(a: &axis::DiscreteAxis, face_width: f64) -> node::element::Group {
+pub fn draw_categorical_x_axis(a: &axis::CategoricalAxis, face_width: f64) -> node::element::Group {
     let axis_line = node::element::Line::new()
         .set("x1", 0)
         .set("y1", 0)
@@ -312,7 +312,7 @@ where
 pub fn draw_face_boxplot<L, S>(
     d: &[f64],
     label: &L,
-    x_axis: &axis::DiscreteAxis,
+    x_axis: &axis::CategoricalAxis,
     y_axis: &axis::ContinuousAxis,
     face_width: f64,
     face_height: f64,

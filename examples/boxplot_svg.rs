@@ -8,7 +8,7 @@ fn main() {
     let b2 = plotlib::boxplot::BoxPlot::from_slice(&[3.0, 4.3, 2.0, 3.5, 6.9, 4.5, 7.5, 1.8, 10.6])
         .label("2")
         .style(plotlib::boxplot::Style::new().fill("darkolivegreen"));
-    let v = plotlib::view::DiscreteView::new()
+    let v = plotlib::view::CategoricalView::new()
         .add(&b1)
         .add(&b2)
         .x_label("Experiment")

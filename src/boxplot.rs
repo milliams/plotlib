@@ -6,10 +6,10 @@ Box plot
 
 ```
 # use plotlib::boxplot::BoxPlot;
-# use plotlib::view::DiscreteView;
+# use plotlib::view::CategoricalView;
 let b1 = BoxPlot::from_slice(&[0., 2., 3., 4.]);
 let b2 = BoxPlot::from_vec(vec![0., 2., 3., 4.]);
-let v = DiscreteView::new().add(&b1);
+let v = CategoricalView::new().add(&b1);
 ```
 */
 
@@ -18,7 +18,7 @@ use std::f64;
 use svg;
 
 use axis;
-use representation::DiscreteRepresentation;
+use representation::CategoricalRepresentation;
 use style;
 use svg_render;
 use utils;
@@ -118,7 +118,7 @@ impl<'a> BoxPlot<'a> {
     }
 }
 
-impl<'a> DiscreteRepresentation for BoxPlot<'a> {
+impl<'a> CategoricalRepresentation for BoxPlot<'a> {
     /// The maximum range. Used for auto-scaling axis
     fn range(&self) -> (f64, f64) {
         self.range()
@@ -131,7 +131,7 @@ impl<'a> DiscreteRepresentation for BoxPlot<'a> {
 
     fn to_svg(
         &self,
-        x_axis: &axis::DiscreteAxis,
+        x_axis: &axis::CategoricalAxis,
         y_axis: &axis::ContinuousAxis,
         face_width: f64,
         face_height: f64,
@@ -149,7 +149,7 @@ impl<'a> DiscreteRepresentation for BoxPlot<'a> {
 
     fn to_text(
         &self,
-        x_axis: &axis::DiscreteAxis,
+        x_axis: &axis::CategoricalAxis,
         y_axis: &axis::ContinuousAxis,
         face_width: u32,
         face_height: u32,

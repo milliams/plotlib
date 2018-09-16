@@ -68,15 +68,15 @@ impl ContinuousAxis {
 }
 
 #[derive(Debug)]
-pub struct DiscreteAxis {
+pub struct CategoricalAxis {
     ticks: Vec<String>,
     label: String,
 }
 
-impl DiscreteAxis {
+impl CategoricalAxis {
     /// Constructs a new ContinuousAxis
-    pub fn new(ticks: &[String]) -> DiscreteAxis {
-        DiscreteAxis {
+    pub fn new(ticks: &[String]) -> CategoricalAxis {
+        CategoricalAxis {
             ticks: ticks.into(),
             label: "".into(),
         }

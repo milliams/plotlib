@@ -14,7 +14,7 @@ use svg::Node;
 
 use axis;
 use errors::Result;
-use representation::{ContinuousRepresentation, DiscreteRepresentation};
+use representation::{ContinuousRepresentation, CategoricalRepresentation};
 use svg_render;
 use text_render;
 
@@ -214,22 +214,22 @@ impl<'a> View for ContinuousView<'a> {
     }
 }
 
-/// A view with discrete entries along the x-axis and continuous values along the y-axis
+/// A view with categorical entries along the x-axis and continuous values along the y-axis
 #[derive(Default)]
-pub struct DiscreteView<'a> {
-    representations: Vec<&'a DiscreteRepresentation>,
+pub struct CategoricalView<'a> {
+    representations: Vec<&'a CategoricalRepresentation>,
     x_range: Option<Vec<String>>,
     y_range: Option<axis::Range>,
     x_label: Option<String>,
     y_label: Option<String>,
 }
 
-impl<'a> DiscreteView<'a> {
+impl<'a> CategoricalView<'a> {
     /**
     Create an empty view
     */
-    pub fn new() -> DiscreteView<'a> {
-        DiscreteView {
+    pub fn new() -> CategoricalView<'a> {
+        CategoricalView {
             representations: vec![],
             x_range: None,
             y_range: None,
@@ -241,7 +241,7 @@ impl<'a> DiscreteView<'a> {
     /**
     Add a representation to the view
     */
-    pub fn add(mut self, repr: &'a DiscreteRepresentation) -> Self {
+    pub fn add(mut self, repr: &'a CategoricalRepresentation) -> Self {
         self.representations.push(repr);
         self
     }
@@ -308,7 +308,7 @@ impl<'a> DiscreteView<'a> {
         axis::Range::new(y_min - range / 10., y_max + range / 10.)
     }
 
-    fn create_axes(&self) -> Result<(axis::DiscreteAxis, axis::ContinuousAxis)> {
+    fn create_axes(&self) -> Result<(axis::CategoricalAxis, axis::ContinuousAxis)> {
         let default_x_ticks = self.default_x_ticks();
         let x_range = self.x_range.as_ref().unwrap_or(&default_x_ticks);
 
@@ -325,14 +325,14 @@ impl<'a> DiscreteView<'a> {
         let default_y_label = "".to_string();
         let y_label: String = self.y_label.clone().unwrap_or(default_y_label);
 
-        let x_axis = axis::DiscreteAxis::new(x_range).label(x_label);
+        let x_axis = axis::CategoricalAxis::new(x_range).label(x_label);
         let y_axis = axis::ContinuousAxis::new(y_range.lower, y_range.upper).label(y_label);
 
         Ok((x_axis, y_axis))
     }
 }
 
-impl<'a> View for DiscreteView<'a> {
+impl<'a> View for CategoricalView<'a> {
     fn to_svg(&self, face_width: f64, face_height: f64) -> Result<svg::node::element::Group> {
         let mut view_group = svg::node::element::Group::new();
 
@@ -345,7 +345,7 @@ impl<'a> View for DiscreteView<'a> {
         }
 
         // Add in the axes
-        view_group.append(svg_render::draw_discrete_x_axis(&x_axis, face_width));
+        view_group.append(svg_render::draw_categorical_x_axis(&x_axis, face_width));
         view_group.append(svg_render::draw_y_axis(&y_axis, face_height));
         Ok(view_group)
     }

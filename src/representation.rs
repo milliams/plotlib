@@ -1,7 +1,7 @@
 /*!
 *Representations* are the interface between the data coming from the user and the rendered output.
 
-Each type that implements `Representation` or `DiscreteRepresentation` knows how to read in data
+Each type that implements `Representation` or `CategoricalRepresentation` knows how to read in data
 and convert that into a concrete element to be incorporated into a larger plot.
 
 For example the `scatter::Scatter` representation can be created from a list of coordinates.
@@ -40,9 +40,9 @@ pub trait ContinuousRepresentation {
 }
 
 /**
-A representation of data that is discrete in the x-axis but continuous in the y-axis.
+A representation of data that is categorical in the x-axis but continuous in the y-axis.
 */
-pub trait DiscreteRepresentation {
+pub trait CategoricalRepresentation {
     /// The maximum range in the y-axis. Used for auto-scaling the axis.
     fn range(&self) -> (f64, f64);
 
@@ -51,7 +51,7 @@ pub trait DiscreteRepresentation {
 
     fn to_svg(
         &self,
-        x_axis: &axis::DiscreteAxis,
+        x_axis: &axis::CategoricalAxis,
         y_axis: &axis::ContinuousAxis,
         face_width: f64,
         face_height: f64,
@@ -59,7 +59,7 @@ pub trait DiscreteRepresentation {
 
     fn to_text(
         &self,
-        x_axis: &axis::DiscreteAxis,
+        x_axis: &axis::CategoricalAxis,
         y_axis: &axis::ContinuousAxis,
         face_width: u32,
         face_height: u32,
