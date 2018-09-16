@@ -11,6 +11,7 @@ It can currently produce:
 * scatter plots
 * line graphs from data or from function definitions
 * box plots
+* bar charts
 
 rendering them as either SVG or plain text.
 
