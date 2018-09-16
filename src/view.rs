@@ -352,7 +352,7 @@ impl<'a> View for CategoricalView<'a> {
         Ok(view_group)
     }
 
-    fn to_text(&self, face_width: u32, face_height: u32) -> Result<String> {
+    fn to_text(&self, _face_width: u32, _face_height: u32) -> Result<String> {
         Ok("".into())
     }
 }

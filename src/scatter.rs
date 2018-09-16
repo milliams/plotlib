@@ -38,8 +38,8 @@ impl Style {
             self.colour = Some(v.clone())
         }
 
-        if let Some(ref v) = other.size {
-            self.size = Some(v.clone())
+        if let Some(v) = other.size {
+            self.size = Some(v)
         }
     }
 }
@@ -98,7 +98,7 @@ impl Scatter {
         }
 
         Scatter {
-            data: data,
+            data,
             style: Style::new(),
         }
     }

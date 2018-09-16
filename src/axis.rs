@@ -125,7 +125,7 @@ impl TickSteps {
         let base_step_scale = 10f64.powf(power);
         BASE_STEPS
             .iter()
-            .map(|&s| (s as f64 * base_step_scale))
+            .map(|&s| (f64::from(s) * base_step_scale))
             .collect()
     }
 }
@@ -153,7 +153,7 @@ fn generate_ticks(min: f64, max: f64, step_size: f64) -> Vec<f64> {
             // standard spanning axis
             ticks.extend(
                 (1..)
-                    .map(|n| -1.0 * n as f64 * step_size)
+                    .map(|n| -1.0 * f64::from(n) * step_size)
                     .take_while(|&v| v >= min)
                     .collect::<Vec<f64>>()
                     .iter()
@@ -162,14 +162,14 @@ fn generate_ticks(min: f64, max: f64, step_size: f64) -> Vec<f64> {
             ticks.push(0.0);
             ticks.extend(
                 (1..)
-                    .map(|n| n as f64 * step_size)
+                    .map(|n| f64::from(n) * step_size)
                     .take_while(|&v| v <= max),
             );
         } else {
             // entirely negative axis
             ticks.extend(
                 (1..)
-                    .map(|n| -1.0 * n as f64 * step_size)
+                    .map(|n| -1.0 * f64::from(n) * step_size)
                     .skip_while(|&v| v > max)
                     .take_while(|&v| v >= min)
                     .collect::<Vec<f64>>()
@@ -181,7 +181,7 @@ fn generate_ticks(min: f64, max: f64, step_size: f64) -> Vec<f64> {
         // entirely positive axis
         ticks.extend(
             (1..)
-                .map(|n| n as f64 * step_size)
+                .map(|n| f64::from(n) * step_size)
                 .skip_while(|&v| v < min)
                 .take_while(|&v| v <= max),
         );

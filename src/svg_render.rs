@@ -174,7 +174,7 @@ where
     for &(x, y) in s {
         let x_pos = value_to_face_offset(x, x_axis, face_width);
         let y_pos = -value_to_face_offset(y, y_axis, face_height);
-        let radius = style.get_size().clone().unwrap_or(5.) as f64;
+        let radius = f64::from(style.get_size().clone().unwrap_or(5.));
         match style.get_marker().clone().unwrap_or(style::Marker::Circle) {
             style::Marker::Circle => {
                 group.append(
@@ -241,7 +241,7 @@ where
         let l_pos = value_to_face_offset(l, x_axis, face_width);
         let u_pos = value_to_face_offset(u, x_axis, face_width);
         let width = u_pos - l_pos;
-        let count_scaled = value_to_face_offset(count as f64, y_axis, face_height);
+        let count_scaled = value_to_face_offset(f64::from(count), y_axis, face_height);
         let rect = node::element::Rectangle::new()
             .set("x", l_pos)
             .set("y", -count_scaled)
@@ -385,7 +385,7 @@ where
 }
 
 pub fn draw_face_barchart<L, S>(
-    d: &f64,
+    d: f64,
     label: &L,
     x_axis: &axis::CategoricalAxis,
     y_axis: &axis::ContinuousAxis,
@@ -406,7 +406,7 @@ where
 
     let box_width = space_per_tick / 2.;
 
-    let box_start = -value_to_face_offset(*d, y_axis, face_height);
+    let box_start = -value_to_face_offset(d, y_axis, face_height);
     let box_end = -value_to_face_offset(0.0, y_axis, face_height);
 
     group.append(

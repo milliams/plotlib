@@ -20,6 +20,8 @@ TODO:
     - What should be the default?
 */
 
+use std;
+
 use svg;
 
 use axis;
@@ -76,9 +78,9 @@ impl Histogram {
         let mut max = v.iter().fold(-1. / 0., |a, &b| f64::max(a, b));
         let mut min = v.iter().fold(1. / 0., |a, &b| f64::min(a, b));
 
-        if min == max {
-            min = min - 0.5;
-            max = max + 0.5;
+        if (min - max).abs() < std::f64::EPSILON {
+            min -= 0.5;
+            max += 0.5;
         }
 
         let mut bins = vec![0; num_bins];
@@ -111,7 +113,7 @@ impl Histogram {
                 .unwrap();
             bins[bin] += 1;
         }
-        let density_per_bin = bins.iter().map(|&x| x as f64 / bin_width).collect();
+        let density_per_bin = bins.iter().map(|&x| f64::from(x) / bin_width).collect();
 
         Histogram {
             bin_bounds: bounds,
@@ -134,7 +136,7 @@ impl Histogram {
 
     fn y_range(&self) -> (f64, f64) {
         let max = *self.bin_counts.iter().max().unwrap();
-        (0., max as f64)
+        (0., f64::from(max))
     }
 
     pub fn style(mut self, style: &Style) -> Self {

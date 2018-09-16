@@ -149,10 +149,10 @@ impl<'a> CategoricalRepresentation for BoxPlot<'a> {
 
     fn to_text(
         &self,
-        x_axis: &axis::CategoricalAxis,
-        y_axis: &axis::ContinuousAxis,
-        face_width: u32,
-        face_height: u32,
+        _x_axis: &axis::CategoricalAxis,
+        _y_axis: &axis::ContinuousAxis,
+        _face_width: u32,
+        _face_height: u32,
     ) -> String {
         "".into()
     }

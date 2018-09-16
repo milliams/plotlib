@@ -5,14 +5,13 @@ use std::collections::HashMap;
 
 use axis;
 use histogram;
-use scatter;
 use style;
 use utils::PairWise;
 
 // Given a value like a tick label or a bin count,
 // calculate how far from the x-axis it should be plotted
 fn value_to_axis_cell_offset(value: f64, axis: &axis::ContinuousAxis, face_cells: u32) -> i32 {
-    let data_per_cell = (axis.max() - axis.min()) / face_cells as f64;
+    let data_per_cell = (axis.max() - axis.min()) / f64::from(face_cells);
     ((value - axis.min()) / data_per_cell).round() as i32
 }
 
@@ -123,7 +122,7 @@ fn create_x_axis_labels(x_tick_map: &HashMap<i32, f64>) -> Vec<XAxisLabel> {
         .iter()
         .map(|(&offset, &tick)| XAxisLabel {
             text: tick.to_string(),
-            offset: offset,
+            offset,
         }).collect();
     ls.sort_by_key(|l| l.offset);
     ls
@@ -288,7 +287,7 @@ pub fn render_face_bars(
         .map(|&bin| match bin {
             None => 0,
             Some(b) => {
-                value_to_axis_cell_offset(h.bin_counts[b as usize] as f64, y_axis, face_height)
+                value_to_axis_cell_offset(f64::from(h.bin_counts[b as usize]), y_axis, face_height)
             }
         }).collect();
 
@@ -621,6 +620,7 @@ mod tests {
 
     #[test]
     fn test_render_face_points() {
+        use scatter;
         let data = vec![
             (-3.0, 2.3),
             (-1.6, 5.3),

@@ -12,7 +12,7 @@ impl<T> PairWise<T> for [T] {
     }
 }
 
-pub fn mean(s: &[f64]) -> f64 {
+fn _mean(s: &[f64]) -> f64 {
     s.iter().map(|v| v / s.len() as f64).sum()
 }
 
@@ -75,9 +75,9 @@ mod tests {
     #[test]
     fn test_mean() {
         // TODO should error: mean(&[]);
-        assert_eq!(mean(&[1.]), 1.);
-        assert_eq!(mean(&[1., 2.]), 1.5);
-        assert_eq!(mean(&[1., 2., 3.]), 2.);
+        assert_eq!(_mean(&[1.]), 1.);
+        assert_eq!(_mean(&[1., 2.]), 1.5);
+        assert_eq!(_mean(&[1., 2., 3.]), 2.);
     }
 
     #[test]

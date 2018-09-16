@@ -41,13 +41,8 @@ impl Style {
             self.colour = Some(v.clone())
         }
 
-        if let Some(ref v) = other.width {
-            self.width = Some(v.clone())
-        }
-
-        match other.width {
-            Some(v) => self.width = Some(v),
-            None => {}
+        if let Some(v) = other.width {
+            self.width = Some(v)
         }
     }
 }
@@ -90,7 +85,7 @@ impl Function {
     {
         let sampling = (upper - lower) / 200.;
         let samples = (0..)
-            .map(|x| lower + (x as f64 * sampling))
+            .map(|x| lower + (f64::from(x) * sampling))
             .take_while(|&x| x <= upper);
         let values = samples.map(|s| (s, f(s))).collect();
         Function {
@@ -157,10 +152,10 @@ impl ContinuousRepresentation for Function {
 
     fn to_text(
         &self,
-        x_axis: &axis::ContinuousAxis,
-        y_axis: &axis::ContinuousAxis,
-        face_width: u32,
-        face_height: u32,
+        _x_axis: &axis::ContinuousAxis,
+        _y_axis: &axis::ContinuousAxis,
+        _face_width: u32,
+        _face_height: u32,
     ) -> String {
         "".into()
     }
