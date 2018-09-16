@@ -13,8 +13,8 @@ pub struct Range {
 impl Range {
     pub fn new(lower: f64, upper: f64) -> Range {
         Range {
-            lower: lower,
-            upper: upper,
+            lower,
+            upper,
         }
     }
 
