@@ -304,8 +304,10 @@ impl<'a> CategoricalView<'a> {
             y_min = y_min.min(this_y_min);
             y_max = y_max.max(this_y_max);
         }
-        let range = y_max - y_min;
-        axis::Range::new(y_min - range / 10., y_max + range / 10.)
+        let buffer = (y_max - y_min) / 10.;
+        let y_min = if y_min == 0.0 { y_min } else { y_min - buffer };
+        let y_max = y_max + buffer;
+        axis::Range::new(y_min, y_max)
     }
 
     fn create_axes(&self) -> Result<(axis::CategoricalAxis, axis::ContinuousAxis)> {
