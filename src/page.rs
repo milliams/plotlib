@@ -62,7 +62,8 @@ impl<'a> Page<'a> {
 
         // TODO put multiple views in correct places
         for &view in &self.views {
-            let view_group = view.to_svg((width - x_margin) as f64, (height - y_margin) as f64)?
+            let view_group = view
+                .to_svg((width - x_margin) as f64, (height - y_margin) as f64)?
                 .set(
                     "transform",
                     format!("translate({}, {})", x_offset, height as f64 - y_offset),

@@ -101,8 +101,7 @@ pub fn draw_y_axis(a: &axis::ContinuousAxis, face_height: f64) -> node::element:
         .set(
             "transform",
             format!("rotate(-90 {} {})", -30, -(face_height / 2.)),
-        )
-        .add(node::Text::new(a.get_label()));
+        ).add(node::Text::new(a.get_label()));
 
     node::element::Group::new()
         .add(ticks)
@@ -215,8 +214,7 @@ where
                         .set(
                             "stroke",
                             style.get_colour().clone().unwrap_or_else(|| "".into()),
-                        )
-                        .set("stroke-width", 2)
+                        ).set("stroke-width", 2)
                         .set("d", path),
                 );
             }
@@ -255,8 +253,7 @@ where
                     .get_fill()
                     .clone()
                     .unwrap_or_else(|| "burlywood".into()),
-            )
-            .set("stroke", "black");
+            ).set("stroke", "black");
         group.append(rect);
     }
 
@@ -301,8 +298,7 @@ where
             .set(
                 "stroke",
                 style.get_colour().clone().unwrap_or_else(|| "".into()),
-            )
-            .set("stroke-width", style.get_width().clone().unwrap_or(2.))
+            ).set("stroke-width", style.get_width().clone().unwrap_or(2.))
             .set("d", path),
     );
 
@@ -348,8 +344,7 @@ where
                     .get_fill()
                     .clone()
                     .unwrap_or_else(|| "burlywood".into()),
-            )
-            .set("stroke", "black"),
+            ).set("stroke", "black"),
     );
 
     let mid_line = -value_to_face_offset(median, y_axis, face_height);

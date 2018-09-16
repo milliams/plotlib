@@ -14,7 +14,7 @@ use svg::Node;
 
 use axis;
 use errors::Result;
-use representation::{ContinuousRepresentation, CategoricalRepresentation};
+use representation::{CategoricalRepresentation, ContinuousRepresentation};
 use svg_render;
 use text_render;
 

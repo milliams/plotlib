@@ -124,8 +124,7 @@ fn create_x_axis_labels(x_tick_map: &HashMap<i32, f64>) -> Vec<XAxisLabel> {
         .map(|(&offset, &tick)| XAxisLabel {
             text: tick.to_string(),
             offset: offset,
-        })
-        .collect();
+        }).collect();
     ls.sort_by_key(|l| l.offset);
     ls
 }
@@ -153,16 +152,14 @@ pub fn render_y_axis_strings(y_axis: &axis::ContinuousAxis, face_height: u32) ->
         .map(|line| match y_tick_map.get(&(line as i32)) {
             Some(v) => v.to_string(),
             None => "".to_string(),
-        })
-        .collect();
+        }).collect();
 
     // Generate a list of strings to tick the y-axis
     let y_tick_strings: Vec<_> = (0..face_height + 1)
         .map(|line| match y_tick_map.get(&(line as i32)) {
             Some(_) => "-".to_string(),
             None => " ".to_string(),
-        })
-        .collect();
+        }).collect();
 
     // Generate a list of strings to be the y-axis line itself
     let y_axis_line_strings: Vec<String> = std::iter::repeat('+')
@@ -178,7 +175,8 @@ pub fn render_y_axis_strings(y_axis: &axis::ContinuousAxis, face_height: u32) ->
         .zip(y_axis_line_strings.iter())
         .map(|(((a, x), y), z)| (a, x, y, z));
 
-    let axis_string: Vec<String> = iter.rev()
+    let axis_string: Vec<String> = iter
+        .rev()
         .map(|(l, ls, t, a)| {
             format!(
                 "{} {:>num_width$}{}{}",
@@ -188,8 +186,7 @@ pub fn render_y_axis_strings(y_axis: &axis::ContinuousAxis, face_height: u32) ->
                 a,
                 num_width = longest_y_label_width
             )
-        })
-        .collect();
+        }).collect();
 
     let axis_string = axis_string.join("\n");
 
@@ -205,8 +202,7 @@ pub fn render_x_axis_strings(x_axis: &axis::ContinuousAxis, face_width: u32) -> 
         .map(|cell| match x_tick_map.get(&(cell as i32)) {
             Some(_) => '|',
             None => ' ',
-        })
-        .collect();
+        }).collect();
 
     // Create a string which will be printed to give the x-axis labels
     let x_labels = create_x_axis_labels(&x_tick_map);
@@ -294,8 +290,7 @@ pub fn render_face_bars(
             Some(b) => {
                 value_to_axis_cell_offset(h.bin_counts[b as usize] as f64, y_axis, face_height)
             }
-        })
-        .collect();
+        }).collect();
 
     let mut face_strings: Vec<String> = vec![];
 
@@ -362,14 +357,14 @@ pub fn render_face_points<S>(
 where
     S: style::Point,
 {
-    let points: Vec<_> = s.iter()
+    let points: Vec<_> = s
+        .iter()
         .map(|&(x, y)| {
             (
                 value_to_axis_cell_offset(x, x_axis, face_width),
                 value_to_axis_cell_offset(y, y_axis, face_height),
             )
-        })
-        .collect();
+        }).collect();
 
     let marker = match style.get_marker().clone().unwrap_or(style::Marker::Circle) {
         style::Marker::Circle => '●',
@@ -457,8 +452,7 @@ pub fn overlay(under: &str, over: &str, x: i32, y: i32) -> String {
                 l.chars()
                     .chain((0..line_width_deficit).map(|_| ' '))
                     .collect()
-            })
-            .collect()
+            }).collect()
     } else {
         split_over
     };
