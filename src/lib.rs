@@ -84,6 +84,7 @@ pub mod representation;
 pub mod view;
 
 mod axis;
+pub mod barchart;
 pub mod boxplot;
 mod errors;
 pub mod function;

@@ -63,3 +63,11 @@ pub trait BoxPlot {
 
     fn get_fill(&self) -> &Option<String>;
 }
+
+pub trait BarChart {
+    fn fill<T>(&mut self, value: T) -> &mut Self
+    where
+        T: Into<String>;
+
+    fn get_fill(&self) -> &Option<String>;
+}

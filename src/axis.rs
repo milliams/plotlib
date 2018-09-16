@@ -12,10 +12,7 @@ pub struct Range {
 
 impl Range {
     pub fn new(lower: f64, upper: f64) -> Range {
-        Range {
-            lower,
-            upper,
-        }
+        Range { lower, upper }
     }
 
     pub(crate) fn is_valid(&self) -> bool {

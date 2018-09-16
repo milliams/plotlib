@@ -384,6 +384,49 @@ where
     group
 }
 
+pub fn draw_face_barchart<L, S>(
+    d: &f64,
+    label: &L,
+    x_axis: &axis::CategoricalAxis,
+    y_axis: &axis::ContinuousAxis,
+    face_width: f64,
+    face_height: f64,
+    style: &S,
+) -> node::element::Group
+where
+    S: style::BarChart,
+    L: Into<String>,
+    String: std::cmp::PartialEq<L>,
+{
+    let mut group = node::element::Group::new();
+
+    let tick_index = x_axis.ticks().iter().position(|t| t == label).unwrap(); // TODO this should raise an error
+    let space_per_tick = face_width / x_axis.ticks().len() as f64;
+    let tick_pos = (tick_index as f64 * space_per_tick) + (0.5 * space_per_tick);
+
+    let box_width = space_per_tick / 2.;
+
+    let box_start = -value_to_face_offset(*d, y_axis, face_height);
+    let box_end = -value_to_face_offset(0.0, y_axis, face_height);
+
+    group.append(
+        node::element::Rectangle::new()
+            .set("x", tick_pos - (box_width / 2.))
+            .set("y", box_start)
+            .set("width", box_width)
+            .set("height", box_end - box_start)
+            .set(
+                "fill",
+                style
+                    .get_fill()
+                    .clone()
+                    .unwrap_or_else(|| "burlywood".into()),
+            ).set("stroke", "black"),
+    );
+
+    group
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

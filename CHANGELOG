@@ -4,6 +4,7 @@
 ### Added
 - Line charts.
 - Box plots.
+- Bar charts.
 - Introduce categorical representation, views and axes.
 - Add ability to set dimensions of plot (PR #8)
 
