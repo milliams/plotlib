@@ -237,7 +237,7 @@ where
 {
     let mut group = node::element::Group::new();
 
-    for ((&l, &u), &count) in h.bin_bounds.pairwise().zip(h.bin_counts.iter()) {
+    for ((&l, &u), &count) in h.bin_bounds.pairwise().zip(h.get_values()) {
         let l_pos = value_to_face_offset(l, x_axis, face_width);
         let u_pos = value_to_face_offset(u, x_axis, face_width);
         let width = u_pos - l_pos;

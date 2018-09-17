@@ -7,6 +7,7 @@
 - Bar charts.
 - Introduce categorical representation, views and axes.
 - Add ability to set dimensions of plot (PR #8)
+- Added ability to display a histogram as densities
 
 ### Changed
 - Change `create_axes`, `save`, `to_svg` and `to_text` to return `Result` indicating an error.

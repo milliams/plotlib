@@ -62,15 +62,22 @@ impl style::Bar for Style {
     }
 }
 
+#[derive(Debug)]
+enum HistogramType {
+    Count,
+    Density,
+}
+
 /**
 A one-dimensional histogram with equal binning.
 */
 #[derive(Debug)]
 pub struct Histogram {
     pub bin_bounds: Vec<f64>,    // will have N_bins + 1 entries
-    pub bin_counts: Vec<u32>,    // will have N_bins entries
+    pub bin_counts: Vec<f64>,    // will have N_bins entries
     pub bin_densities: Vec<f64>, // will have N_bins entries
     style: Style,
+    h_type: HistogramType,
 }
 
 impl Histogram {
@@ -117,9 +124,10 @@ impl Histogram {
 
         Histogram {
             bin_bounds: bounds,
-            bin_counts: bins,
+            bin_counts: bins.iter().map(|&x| f64::from(x)).collect(),
             bin_densities: density_per_bin,
             style: Style::new(),
+            h_type: HistogramType::Count,
         }
     }
 
@@ -135,8 +143,11 @@ impl Histogram {
     }
 
     fn y_range(&self) -> (f64, f64) {
-        let max = *self.bin_counts.iter().max().unwrap();
-        (0., f64::from(max))
+        let max = self
+            .get_values()
+            .iter()
+            .fold(-1. / 0., |a, &b| f64::max(a, b));
+        (0., max)
     }
 
     pub fn style(mut self, style: &Style) -> Self {
@@ -144,8 +155,23 @@ impl Histogram {
         self
     }
 
+    /**
+    Set the histogram to display as normalised densities
+    */
+    pub fn density(mut self) -> Self {
+        self.h_type = HistogramType::Density;
+        self
+    }
+
     pub fn get_style(&self) -> &Style {
         &self.style
+    }
+
+    pub fn get_values(&self) -> &[f64] {
+        match self.h_type {
+            HistogramType::Count => &self.bin_counts,
+            HistogramType::Density => &self.bin_densities,
+        }
     }
 }
 
@@ -185,14 +211,14 @@ mod tests {
 
     #[test]
     fn test_histogram_from_slice() {
-        assert_eq!(Histogram::from_slice(&[], 3).bin_densities, [0., 0., 0.]);
-        assert_eq!(Histogram::from_slice(&[0.], 3).bin_densities, [0., 3., 0.]);
+        assert_eq!(Histogram::from_slice(&[], 3).get_values(), [0., 0., 0.]);
+        assert_eq!(Histogram::from_slice(&[0.], 3).get_values(), [0., 1., 0.]);
         assert_eq!(
-            Histogram::from_slice(&[0., 3.], 3).bin_densities,
+            Histogram::from_slice(&[0., 3.], 3).get_values(),
             [1., 0., 1.]
         );
         assert_eq!(
-            Histogram::from_slice(&[0., 1., 2., 3.], 3).bin_densities,
+            Histogram::from_slice(&[0., 1., 2., 3.], 3).get_values(),
             [2., 1., 1.]
         );
     }

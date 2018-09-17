@@ -286,9 +286,7 @@ pub fn render_face_bars(
         .iter()
         .map(|&bin| match bin {
             None => 0,
-            Some(b) => {
-                value_to_axis_cell_offset(f64::from(h.bin_counts[b as usize]), y_axis, face_height)
-            }
+            Some(b) => value_to_axis_cell_offset(h.get_values()[b as usize], y_axis, face_height),
         }).collect();
 
     let mut face_strings: Vec<String> = vec![];
