@@ -113,14 +113,6 @@ impl Histogram {
         let bin_width = (max - min) / num_bins as f64; // width of bin in real units
 
         for &val in v.iter() {
-            /*
-            let mut bin = ((val - min) / bin_width) as usize;
-            if bin == num_bins && val == max {
-                //We are right on the top-most bound
-                bin = num_bins - 1;
-            }
-            */
-
             let bin = bounds
                 .pairwise()
                 .enumerate()
