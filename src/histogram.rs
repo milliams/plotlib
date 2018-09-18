@@ -10,7 +10,7 @@ A module for Histograms
 let data = vec![0.3, 0.5, 6.4, 5.3, 3.6, 3.6, 3.5, 7.5, 4.0];
 
 // and create a histogram out of it
-let h = Histogram::from_slice(&data, 30);
+let h = Histogram::from_slice(&data, plotlib::histogram::Bins::Count(30));
 ```
 
 TODO:
@@ -68,6 +68,12 @@ enum HistogramType {
     Density,
 }
 
+#[derive(Debug)]
+pub enum Bins {
+    Count(usize),
+    Bounds(Vec<f64>),
+}
+
 /**
 A one-dimensional histogram with equal binning.
 */
@@ -81,7 +87,7 @@ pub struct Histogram {
 }
 
 impl Histogram {
-    pub fn from_slice(v: &[f64], num_bins: usize) -> Histogram {
+    pub fn from_slice(v: &[f64], bins: Bins) -> Histogram {
         let mut max = v.iter().fold(-1. / 0., |a, &b| f64::max(a, b));
         let mut min = v.iter().fold(1. / 0., |a, &b| f64::min(a, b));
 
@@ -90,17 +96,21 @@ impl Histogram {
             max += 0.5;
         }
 
+        let (num_bins, bounds) = match bins {
+            Bins::Count(num_bins) => {
+                let range = max - min;
+                let mut bounds: Vec<f64> = (0..num_bins)
+                    .map(|n| (n as f64 / num_bins as f64) * range + min)
+                    .collect();
+                bounds.push(max);
+                (num_bins, bounds)
+            }
+            Bins::Bounds(bounds) => (bounds.len(), bounds),
+        };
+
         let mut bins = vec![0; num_bins];
 
-        let range = max - min;
-
         let bin_width = (max - min) / num_bins as f64; // width of bin in real units
-
-        let mut bounds: Vec<f64> = (0..num_bins)
-            .map(|n| (n as f64 / num_bins as f64) * range + min)
-            .collect();
-        bounds.push(max);
-        let bounds = bounds;
 
         for &val in v.iter() {
             /*
@@ -211,15 +221,33 @@ mod tests {
 
     #[test]
     fn test_histogram_from_slice() {
-        assert_eq!(Histogram::from_slice(&[], 3).get_values(), [0., 0., 0.]);
-        assert_eq!(Histogram::from_slice(&[0.], 3).get_values(), [0., 1., 0.]);
         assert_eq!(
-            Histogram::from_slice(&[0., 3.], 3).get_values(),
+            Histogram::from_slice(&[], Bins::Count(3)).get_values(),
+            [0., 0., 0.]
+        );
+        assert_eq!(
+            Histogram::from_slice(&[0.], Bins::Count(3)).get_values(),
+            [0., 1., 0.]
+        );
+        assert_eq!(
+            Histogram::from_slice(&[0., 3.], Bins::Count(3)).get_values(),
             [1., 0., 1.]
         );
         assert_eq!(
-            Histogram::from_slice(&[0., 1., 2., 3.], 3).get_values(),
+            Histogram::from_slice(&[0., 1., 2., 3.], Bins::Count(3)).get_values(),
             [2., 1., 1.]
+        );
+    }
+
+    #[test]
+    fn test_histogram_define_bin_bounds() {
+        assert_eq!(
+            Histogram::from_slice(&[0., 1.], Bins::Count(3)).bin_bounds,
+            [0., 1. / 3., 2. / 3., 1.]
+        );
+        assert_eq!(
+            Histogram::from_slice(&[], Bins::Bounds([0., 1., 1.5, 2., 5.6].to_vec())).bin_bounds,
+            [0., 1., 1.5, 2., 5.6]
         );
     }
 }

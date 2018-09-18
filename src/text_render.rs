@@ -593,7 +593,7 @@ mod tests {
     #[test]
     fn test_render_face_bars() {
         let data = vec![0.3, 0.5, 6.4, 5.3, 3.6, 3.6, 3.5, 7.5, 4.0];
-        let h = histogram::Histogram::from_slice(&data, 10);
+        let h = histogram::Histogram::from_slice(&data, histogram::Bins::Count(10));
         let x_axis = axis::ContinuousAxis::new(0.3, 7.5);
         let y_axis = axis::ContinuousAxis::new(0., 3.);
         let strings = render_face_bars(&h, &x_axis, &y_axis, 20, 10);
