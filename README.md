@@ -1,6 +1,8 @@
 # plotlib
 
 [![Build Status](https://travis-ci.org/milliams/plotlib.svg?branch=master)](https://travis-ci.org/milliams/plotlib)
+[![Crates.io](https://img.shields.io/crates/v/plotlib.svg)](https://crates.io/crates/plotlib)
+![MIT](https://img.shields.io/crates/l/plotlib.svg)
 
 `plotlib` is a generic data visualisation and plotting library for Rust.
 It is currently in the very early stages of development.
