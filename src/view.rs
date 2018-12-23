@@ -12,11 +12,11 @@ use std::f64;
 use svg;
 use svg::Node;
 
-use axis;
-use errors::Result;
-use representation::{CategoricalRepresentation, ContinuousRepresentation};
-use svg_render;
-use text_render;
+use crate::axis;
+use crate::errors::Result;
+use crate::representation::{CategoricalRepresentation, ContinuousRepresentation};
+use crate::svg_render;
+use crate::text_render;
 
 pub trait View {
     fn to_svg(&self, face_width: f64, face_height: f64) -> Result<svg::node::element::Group>;

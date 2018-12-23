@@ -24,12 +24,12 @@ use std;
 
 use svg;
 
-use axis;
-use representation::ContinuousRepresentation;
-use style;
-use svg_render;
-use text_render;
-use utils::PairWise;
+use crate::axis;
+use crate::representation::ContinuousRepresentation;
+use crate::style;
+use crate::svg_render;
+use crate::text_render;
+use crate::utils::PairWise;
 
 #[derive(Debug, Default)]
 pub struct Style {

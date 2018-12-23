@@ -1,7 +1,7 @@
-use scatter;
-use histogram;
-use text_render;
-use svg_render;
+use crate::scatter;
+use crate::histogram;
+use crate::text_render;
+use crate::svg_render;
 
 pub trait Render {
     fn to_svg(&self) -> svg_render::SVG;

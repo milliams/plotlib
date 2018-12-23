@@ -3,11 +3,11 @@ use std;
 use svg::node;
 use svg::Node;
 
-use axis;
-use histogram;
-use style;
-use utils;
-use utils::PairWise;
+use crate::axis;
+use crate::histogram;
+use crate::style;
+use crate::utils;
+use crate::utils::PairWise;
 
 fn value_to_face_offset(value: f64, axis: &axis::ContinuousAxis, face_size: f64) -> f64 {
     let range = axis.max() - axis.min();

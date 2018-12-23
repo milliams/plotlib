@@ -3,10 +3,10 @@
 use std;
 use std::collections::HashMap;
 
-use axis;
-use histogram;
-use style;
-use utils::PairWise;
+use crate::axis;
+use crate::histogram;
+use crate::style;
+use crate::utils::PairWise;
 
 // Given a value like a tick label or a bin count,
 // calculate how far from the x-axis it should be plotted
@@ -618,7 +618,7 @@ mod tests {
 
     #[test]
     fn test_render_face_points() {
-        use scatter;
+        use crate::scatter;
         let data = vec![
             (-3.0, 2.3),
             (-1.6, 5.3),

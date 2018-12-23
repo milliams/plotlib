@@ -9,8 +9,8 @@ use svg;
 use svg::Document;
 use svg::Node;
 
-use errors::Result;
-use view::View;
+use crate::errors::Result;
+use crate::view::View;
 
 use failure::ResultExt;
 
