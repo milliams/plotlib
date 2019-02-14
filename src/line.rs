@@ -79,9 +79,9 @@ pub struct Line {
 }
 
 impl Line {
-    pub fn new(v: &[(f64, f64)]) -> Self {
+    pub fn new(data: Vec<(f64, f64)>) -> Self {
         Line {
-            data: v.into(),
+            data,
             style: Style::new(),
         }
     }
