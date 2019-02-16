@@ -29,6 +29,8 @@ pub struct ContinuousView {
     representations: Vec<Box<ContinuousRepresentation>>,
     x_range: Option<axis::Range>,
     y_range: Option<axis::Range>,
+    x_max_ticks: usize,
+    y_max_ticks: usize,
     x_label: Option<String>,
     y_label: Option<String>,
 }
@@ -42,11 +44,27 @@ impl ContinuousView {
             representations: vec![],
             x_range: None,
             y_range: None,
+            x_max_ticks: 6,
+            y_max_ticks: 6,
             x_label: None,
             y_label: None,
         }
     }
 
+    /**
+     Set the maximum number of ticks along the x axis.
+     */
+    pub fn x_max_ticks(mut self, val: usize) -> Self {
+        self.x_max_ticks = val;
+        self
+    }
+    /**
+     Set the maximum number of ticks along the y axis.
+     */
+    pub fn y_max_ticks(mut self, val: usize) -> Self {
+        self.y_max_ticks = val;
+        self
+    }
     /**
     Add a representation to the view
     */
@@ -139,8 +157,8 @@ impl ContinuousView {
         let x_label: String = self.x_label.clone().unwrap_or_else(|| "".to_string());
         let y_label: String = self.y_label.clone().unwrap_or_else(|| "".to_string());
 
-        let x_axis = axis::ContinuousAxis::new(x_range.lower, x_range.upper).label(x_label);
-        let y_axis = axis::ContinuousAxis::new(y_range.lower, y_range.upper).label(y_label);
+        let x_axis = axis::ContinuousAxis::new(x_range.lower, x_range.upper, self.x_max_ticks).label(x_label);
+        let y_axis = axis::ContinuousAxis::new(y_range.lower, y_range.upper, self.y_max_ticks).label(y_label);
 
         Ok((x_axis, y_axis))
     }
@@ -328,7 +346,7 @@ impl<'a> CategoricalView<'a> {
         let y_label: String = self.y_label.clone().unwrap_or(default_y_label);
 
         let x_axis = axis::CategoricalAxis::new(x_range).label(x_label);
-        let y_axis = axis::ContinuousAxis::new(y_range.lower, y_range.upper).label(y_label);
+        let y_axis = axis::ContinuousAxis::new(y_range.lower, y_range.upper, 6).label(y_label);
 
         Ok((x_axis, y_axis))
     }

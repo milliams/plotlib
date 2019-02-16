@@ -29,11 +29,10 @@ pub struct ContinuousAxis {
 
 impl ContinuousAxis {
     /// Constructs a new ContinuousAxis
-    pub fn new(lower: f64, upper: f64) -> ContinuousAxis {
-        let default_max_ticks = 6;
+    pub fn new(lower: f64, upper: f64, max_ticks: usize) -> ContinuousAxis {
         ContinuousAxis {
             range: Range::new(lower, upper),
-            ticks: calculate_ticks(lower, upper, default_max_ticks),
+            ticks: calculate_ticks(lower, upper, max_ticks),
             label: "".into(),
         }
     }
