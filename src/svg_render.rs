@@ -8,7 +8,7 @@ use crate::repr::{Histogram, LineStyle, BoxStyle, PointStyle, PointMarker};
 use crate::utils;
 use crate::utils::PairWise;
 
-fn value_to_face_offset(value: f64, axis: &axis::ContinuousAxis, face_size: f64) -> f64 {
+pub fn value_to_face_offset(value: f64, axis: &axis::ContinuousAxis, face_size: f64) -> f64 {
     let range = axis.max() - axis.min();
     (face_size * (value - axis.min())) / range
 }

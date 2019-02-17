@@ -46,7 +46,8 @@ pub trait ContinuousRepr {
         face_height: f64,
     ) -> svg::node::element::Group;
 
-    fn legend_svg(&self) -> svg::node::element::Group;
+    /// Returns None if no legend has been specified for this representation
+    fn legend_svg(&self) -> Option<svg::node::element::Group>;
 
     fn to_text(
         &self,

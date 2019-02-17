@@ -85,7 +85,7 @@ impl ContinuousRepr for Scatter {
         )
     }
 
-    fn legend_svg(&self) -> svg::node::element::Group {
+    fn legend_svg(&self) -> Option<svg::node::element::Group> {
         unimplemented!()
     }
 

@@ -25,6 +25,7 @@ use crate::svg_render;
 pub struct Line {
     pub data: Vec<(f64, f64)>,
     style: LineStyle,
+    legend: Option<String>,
 }
 
 impl Line {
@@ -32,11 +33,16 @@ impl Line {
         Line {
             data,
             style: LineStyle::new(),
+            legend: None,
         }
     }
 
     pub fn style(mut self, style: &LineStyle) -> Self {
         self.style.overlay(style);
+        self
+    }
+    pub fn legend(mut self, legend: String) -> Self {
+        self.legend = Some(legend);
         self
     }
 
@@ -90,8 +96,35 @@ impl ContinuousRepr for Line {
             &self.style,
         )
     }
-    fn legend_svg(&self) -> svg::node::element::Group {
-        unimplemented!()
+    fn legend_svg(&self) -> Option<svg::node::element::Group> {
+        self.legend.as_ref().map(|legend| {
+            let legend = legend.clone();
+            use svg::{node, Node};
+
+            let mut group = node::element::Group::new();
+            const FONT_SIZE: f32 = 12.0;
+
+            // Draw legend text
+            let legend_text = node::element::Text::new()
+                .set("x", 0)
+                .set("y", 0)
+                .set("text-anchor", "start")
+                .set("font-size", FONT_SIZE)
+                .add(node::Text::new(legend));
+            group.append(legend_text);
+
+            // Draw sample line
+            let mut line = node::element::Line::new()
+                .set("x1", -10)
+                .set("y1", -FONT_SIZE/2. +2.)
+                .set("x2", -3)
+                .set("y2", -FONT_SIZE/2. +2.)
+                .set("stroke-width", self.style.get_width().unwrap_or(2.))
+                .set("stroke", self.style.get_colour().clone().unwrap_or_else(|| "".into()));
+            group.append(line);
+
+            group
+        })
     }
 
     fn to_text(

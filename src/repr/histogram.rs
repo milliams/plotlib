@@ -165,7 +165,7 @@ impl ContinuousRepr for Histogram {
         svg_render::draw_face_bars(self, x_axis, y_axis, face_width, face_height, &self.style)
     }
 
-    fn legend_svg(&self) -> svg::node::element::Group {
+    fn legend_svg(&self) -> Option<svg::node::element::Group> {
         unimplemented!()
     }
 

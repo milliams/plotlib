@@ -173,10 +173,20 @@ impl View for ContinuousView {
 
         let (x_axis, y_axis) = self.create_axes()?;
 
+        let (legend_x, mut legend_y) = (face_width - 100., -face_height);
         // Then, based on those ranges, draw each repr as an SVG
         for repr in &self.representations {
             let repr_group = repr.to_svg(&x_axis, &y_axis, face_width, face_height);
             view_group.append(repr_group);
+
+            if let Some(legend_group) = repr.legend_svg() {
+                view_group.append(
+                    legend_group.set(
+                        "transform",
+                        format!("translate({}, {})", legend_x, legend_y),
+                    ));
+                legend_y += 18.;
+            }
         }
 
         // Add in the axes

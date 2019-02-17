@@ -51,9 +51,7 @@ impl LineStyle {
             self.width = Some(*v)
         }
     }
-}
 
-impl LineStyle {
     pub fn colour<T: Into<String>>(&mut self, value: T) -> &mut Self {
         self.colour = Some(value.into());
         self
