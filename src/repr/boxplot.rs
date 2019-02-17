@@ -18,41 +18,10 @@ use std::f64;
 use svg;
 
 use crate::axis;
-use crate::representation::CategoricalRepresentation;
-use crate::style;
+use crate::repr::{CategoricalRepr, BoxStyle};
 use crate::svg_render;
 use crate::utils;
 
-#[derive(Debug, Default)]
-pub struct Style {
-    fill: Option<String>,
-}
-
-impl Style {
-    pub fn new() -> Self {
-        Style { fill: None }
-    }
-
-    pub fn overlay(&mut self, other: &Self) {
-        if let Some(ref v) = other.fill {
-            self.fill = Some(v.clone())
-        }
-    }
-}
-
-impl style::BoxPlot for Style {
-    fn fill<T>(&mut self, value: T) -> &mut Self
-    where
-        T: Into<String>,
-    {
-        self.fill = Some(value.into());
-        self
-    }
-
-    fn get_fill(&self) -> &Option<String> {
-        &self.fill
-    }
-}
 
 enum BoxData<'a> {
     Owned(Vec<f64>),
@@ -62,14 +31,14 @@ enum BoxData<'a> {
 pub struct BoxPlot<'a> {
     data: BoxData<'a>,
     label: String,
-    style: Style,
+    style: BoxStyle,
 }
 
 impl<'a> BoxPlot<'a> {
     pub fn from_slice(v: &'a [(f64)]) -> Self {
         BoxPlot {
             data: BoxData::Ref(v),
-            style: Style::new(),
+            style: BoxStyle::new(),
             label: String::new(),
         }
     }
@@ -77,17 +46,17 @@ impl<'a> BoxPlot<'a> {
     pub fn from_vec(v: Vec<f64>) -> Self {
         BoxPlot {
             data: BoxData::Owned(v),
-            style: Style::new(),
+            style: BoxStyle::new(),
             label: String::new(),
         }
     }
 
-    pub fn style(mut self, style: &Style) -> Self {
+    pub fn style(mut self, style: &BoxStyle) -> Self {
         self.style.overlay(style);
         self
     }
 
-    pub fn get_style(&self) -> &Style {
+    pub fn get_style(&self) -> &BoxStyle {
         &self.style
     }
 
@@ -118,7 +87,7 @@ impl<'a> BoxPlot<'a> {
     }
 }
 
-impl<'a> CategoricalRepresentation for BoxPlot<'a> {
+impl<'a> CategoricalRepr for BoxPlot<'a> {
     /// The maximum range. Used for auto-scaling axis
     fn range(&self) -> (f64, f64) {
         self.range()

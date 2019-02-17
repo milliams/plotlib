@@ -4,8 +4,7 @@ use svg::node;
 use svg::Node;
 
 use crate::axis;
-use crate::histogram;
-use crate::style;
+use crate::repr::{Histogram, LineStyle, BoxStyle, PointStyle, PointMarker};
 use crate::utils;
 use crate::utils::PairWise;
 
@@ -159,25 +158,22 @@ pub fn draw_categorical_x_axis(a: &axis::CategoricalAxis, face_width: f64) -> no
         .add(label)
 }
 
-pub fn draw_face_points<S>(
+pub fn draw_face_points(
     s: &[(f64, f64)],
     x_axis: &axis::ContinuousAxis,
     y_axis: &axis::ContinuousAxis,
     face_width: f64,
     face_height: f64,
-    style: &S,
-) -> node::element::Group
-where
-    S: style::Point,
-{
+    style: &PointStyle,
+) -> node::element::Group {
     let mut group = node::element::Group::new();
 
     for &(x, y) in s {
         let x_pos = value_to_face_offset(x, x_axis, face_width);
         let y_pos = -value_to_face_offset(y, y_axis, face_height);
         let radius = f64::from(style.get_size().clone().unwrap_or(5.));
-        match style.get_marker().clone().unwrap_or(style::Marker::Circle) {
-            style::Marker::Circle => {
+        match style.get_marker().clone().unwrap_or(PointMarker::Circle) {
+            PointMarker::Circle => {
                 group.append(
                     node::element::Circle::new()
                         .set("cx", x_pos)
@@ -189,7 +185,7 @@ where
                         ),
                 );
             }
-            style::Marker::Square => {
+            PointMarker::Square => {
                 group.append(
                     node::element::Rectangle::new()
                         .set("x", x_pos - radius)
@@ -202,7 +198,7 @@ where
                         ),
                 );
             }
-            style::Marker::Cross => {
+            PointMarker::Cross => {
                 let path = node::element::path::Data::new()
                     .move_to((x_pos - radius, y_pos - radius))
                     .line_by((radius * 2., radius * 2.))
@@ -225,17 +221,14 @@ where
     group
 }
 
-pub fn draw_face_bars<S>(
-    h: &histogram::Histogram,
+pub fn draw_face_bars(
+    h: &Histogram,
     x_axis: &axis::ContinuousAxis,
     y_axis: &axis::ContinuousAxis,
     face_width: f64,
     face_height: f64,
-    style: &S,
-) -> node::element::Group
-where
-    S: style::Bar,
-{
+    style: &BoxStyle,
+) -> node::element::Group {
     let mut group = node::element::Group::new();
 
     for ((&l, &u), &count) in h.bin_bounds.pairwise().zip(h.get_values()) {
@@ -261,17 +254,14 @@ where
     group
 }
 
-pub fn draw_face_line<S>(
+pub fn draw_face_line(
     s: &[(f64, f64)],
     x_axis: &axis::ContinuousAxis,
     y_axis: &axis::ContinuousAxis,
     face_width: f64,
     face_height: f64,
-    style: &S,
-) -> node::element::Group
-where
-    S: style::Line,
-{
+    style: &LineStyle,
+) -> node::element::Group {
     let mut group = node::element::Group::new();
 
     let mut d: Vec<node::element::path::Command> = vec![];
@@ -306,17 +296,16 @@ where
     group
 }
 
-pub fn draw_face_boxplot<L, S>(
+pub fn draw_face_boxplot<L>(
     d: &[f64],
     label: &L,
     x_axis: &axis::CategoricalAxis,
     y_axis: &axis::ContinuousAxis,
     face_width: f64,
     face_height: f64,
-    style: &S,
+    style: &BoxStyle,
 ) -> node::element::Group
 where
-    S: style::BoxPlot,
     L: Into<String>,
     String: std::cmp::PartialEq<L>,
 {
@@ -385,17 +374,16 @@ where
     group
 }
 
-pub fn draw_face_barchart<L, S>(
+pub fn draw_face_barchart<L>(
     d: f64,
     label: &L,
     x_axis: &axis::CategoricalAxis,
     y_axis: &axis::ContinuousAxis,
     face_width: f64,
     face_height: f64,
-    style: &S,
+    style: &BoxStyle,
 ) -> node::element::Group
 where
-    S: style::BarChart,
     L: Into<String>,
     String: std::cmp::PartialEq<L>,
 {

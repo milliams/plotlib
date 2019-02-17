@@ -4,8 +4,7 @@ use std;
 use std::collections::HashMap;
 
 use crate::axis;
-use crate::histogram;
-use crate::style;
+use crate::repr::{Histogram, PointMarker, PointStyle};
 use crate::utils::PairWise;
 
 // Given a value like a tick label or a bin count,
@@ -31,7 +30,7 @@ fn tick_offset_map(axis: &axis::ContinuousAxis, face_width: u32) -> HashMap<i32,
 /// and the number of face cells to work with,
 /// create a mapping of cell offset to bin bound
 fn bound_cell_offsets(
-    hist: &histogram::Histogram,
+    hist: &Histogram,
     x_axis: &axis::ContinuousAxis,
     face_width: u32,
 ) -> Vec<i32> {
@@ -271,7 +270,7 @@ pub fn render_x_axis_strings(x_axis: &axis::ContinuousAxis, face_width: u32) -> 
 /// and the face height and width,
 /// create the strings to be drawn as the face
 pub fn render_face_bars(
-    h: &histogram::Histogram,
+    h: &Histogram,
     x_axis: &axis::ContinuousAxis,
     y_axis: &axis::ContinuousAxis,
     face_width: u32,
@@ -343,17 +342,14 @@ pub fn render_face_bars(
 /// the x ands y-axes
 /// and the face height and width,
 /// create the strings to be drawn as the face
-pub fn render_face_points<S>(
+pub fn render_face_points(
     s: &[(f64, f64)],
     x_axis: &axis::ContinuousAxis,
     y_axis: &axis::ContinuousAxis,
     face_width: u32,
     face_height: u32,
-    style: &S,
-) -> String
-where
-    S: style::Point,
-{
+    style: &PointStyle,
+) -> String {
     let points: Vec<_> = s
         .iter()
         .map(|&(x, y)| {
@@ -363,10 +359,10 @@ where
             )
         }).collect();
 
-    let marker = match style.get_marker().clone().unwrap_or(style::Marker::Circle) {
-        style::Marker::Circle => '●',
-        style::Marker::Square => '■',
-        style::Marker::Cross => '×',
+    let marker = match style.get_marker().clone().unwrap_or(PointMarker::Circle) {
+        PointMarker::Circle => '●',
+        PointMarker::Square => '■',
+        PointMarker::Cross => '×',
     };
 
     let mut face_strings: Vec<String> = vec![];
@@ -593,7 +589,7 @@ mod tests {
     #[test]
     fn test_render_face_bars() {
         let data = vec![0.3, 0.5, 6.4, 5.3, 3.6, 3.6, 3.5, 7.5, 4.0];
-        let h = histogram::Histogram::from_slice(&data, histogram::Bins::Count(10));
+        let h = Histogram::from_slice(&data, histogram::Bins::Count(10));
         let x_axis = axis::ContinuousAxis::new(0.3, 7.5);
         let y_axis = axis::ContinuousAxis::new(0., 3.);
         let strings = render_face_bars(&h, &x_axis, &y_axis, 20, 10);

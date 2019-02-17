@@ -18,62 +18,30 @@ use std::f64;
 use svg;
 
 use crate::axis;
-use crate::representation::CategoricalRepresentation;
-use crate::style;
+use crate::repr::{CategoricalRepr, BoxStyle};
 use crate::svg_render;
-
-#[derive(Debug, Default)]
-pub struct Style {
-    fill: Option<String>,
-}
-
-impl Style {
-    pub fn new() -> Self {
-        Style { fill: None }
-    }
-
-    pub fn overlay(&mut self, other: &Self) {
-        if let Some(ref v) = other.fill {
-            self.fill = Some(v.clone())
-        }
-    }
-}
-
-impl style::BarChart for Style {
-    fn fill<T>(&mut self, value: T) -> &mut Self
-    where
-        T: Into<String>,
-    {
-        self.fill = Some(value.into());
-        self
-    }
-
-    fn get_fill(&self) -> &Option<String> {
-        &self.fill
-    }
-}
 
 pub struct BarChart {
     value: f64,
     label: String,
-    style: Style,
+    style: BoxStyle,
 }
 
 impl BarChart {
     pub fn new(v: f64) -> Self {
         BarChart {
             value: v,
-            style: Style::new(),
+            style: BoxStyle::new(),
             label: String::new(),
         }
     }
 
-    pub fn style(mut self, style: &Style) -> Self {
+    pub fn style(mut self, style: &BoxStyle) -> Self {
         self.style.overlay(style);
         self
     }
 
-    pub fn get_style(&self) -> &Style {
+    pub fn get_style(&self) -> &BoxStyle {
         &self.style
     }
 
@@ -94,7 +62,7 @@ impl BarChart {
     }
 }
 
-impl CategoricalRepresentation for BarChart {
+impl CategoricalRepr for BarChart {
     /// The maximum range. Used for auto-scaling axis
     fn range(&self) -> (f64, f64) {
         (0.0, self.value)

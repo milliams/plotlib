@@ -8,20 +8,20 @@ plotlib is a data plotting and rendering library.
 
 There are five different types of plot currently supported:
 
-1. Box plot (`plotlib::boxplot::Box`)
-1. Function (`plotlib::function::Function`)
-1. Histogram (`plotlib::histogram::Histogram`)
-1. Line chart (`plotlib::line::Line`)
-1. Scatter plot (`plotlib::scatter::Scatter`)
+1. Box plot (`plotlib::repr::BoxPlot`)
+1. Function (`plotlib::repr::Function`)
+1. Histogram (`plotlib::repr::Histogram`)
+1. Line chart (`plotlib::repr::Line`)
+1. Scatter plot (`plotlib::repr::Scatter`)
 
 ## Technical
 
 Five main components of the plotlib pipeline:
 
 1. Data
-2. Representation
-3. View
-4. Page
+2. Representation (`plotlib::repr`)
+3. View (`plotlib::view`)
+4. Page (`plotlib::page`)
 5. Rendering
 
 **Data** is the plain Rust data structure that the user brings along.
@@ -80,18 +80,11 @@ extern crate svg;
 extern crate failure;
 
 pub mod page;
-pub mod representation;
+pub mod repr;
 pub mod view;
 
 mod axis;
-pub mod barchart;
-pub mod boxplot;
 mod errors;
-pub mod function;
-pub mod histogram;
-pub mod line;
-pub mod scatter;
-pub mod style;
 mod svg_render;
 mod text_render;
 mod utils;

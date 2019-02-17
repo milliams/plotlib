@@ -18,64 +18,13 @@ use std::f64;
 use svg;
 
 use crate::axis;
-use crate::representation::ContinuousRepresentation;
-use crate::style;
+use crate::repr::{ContinuousRepr, LineStyle};
 use crate::svg_render;
 
-#[derive(Debug, Default)]
-pub struct Style {
-    colour: Option<String>,
-    width: Option<f32>,
-}
-
-impl Style {
-    pub fn new() -> Self {
-        Style {
-            colour: None,
-            width: None,
-        }
-    }
-
-    pub fn overlay(&mut self, other: &Self) {
-        if let Some(ref v) = other.colour {
-            self.colour = Some(v.clone())
-        }
-
-        if let Some(v) = other.width {
-            self.width = Some(v)
-        }
-    }
-}
-
-impl style::Line for Style {
-    fn colour<T>(&mut self, value: T) -> &mut Self
-    where
-        T: Into<String>,
-    {
-        self.colour = Some(value.into());
-        self
-    }
-
-    fn get_colour(&self) -> &Option<String> {
-        &self.colour
-    }
-
-    fn width<T>(&mut self, value: T) -> &mut Self
-    where
-        T: Into<f32>,
-    {
-        self.width = Some(value.into());
-        self
-    }
-
-    fn get_width(&self) -> &Option<f32> {
-        &self.width
-    }
-}
 
 pub struct Function {
     pub data: Vec<(f64, f64)>,
-    style: Style,
+    style: LineStyle,
 }
 
 impl Function {
@@ -90,16 +39,16 @@ impl Function {
         let values = samples.map(|s| (s, f(s))).collect();
         Function {
             data: values,
-            style: Style::new(),
+            style: LineStyle::new(),
         }
     }
 
-    pub fn style(mut self, style: &Style) -> Self {
+    pub fn style(mut self, style: &LineStyle) -> Self {
         self.style.overlay(style);
         self
     }
 
-    pub fn get_style(&self) -> &Style {
+    pub fn get_style(&self) -> &LineStyle {
         &self.style
     }
 
@@ -124,7 +73,7 @@ impl Function {
     }
 }
 
-impl ContinuousRepresentation for Function {
+impl ContinuousRepr for Function {
     fn range(&self, dim: u32) -> (f64, f64) {
         match dim {
             0 => self.x_range(),
@@ -148,6 +97,10 @@ impl ContinuousRepresentation for Function {
             face_height,
             &self.style,
         )
+    }
+
+    fn legend_svg(&self) -> svg::node::element::Group {
+        unimplemented!()
     }
 
     fn to_text(

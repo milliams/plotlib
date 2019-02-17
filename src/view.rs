@@ -14,7 +14,7 @@ use svg::Node;
 
 use crate::axis;
 use crate::errors::Result;
-use crate::representation::{CategoricalRepresentation, ContinuousRepresentation};
+use crate::repr::{CategoricalRepr, ContinuousRepr};
 use crate::svg_render;
 use crate::text_render;
 
@@ -26,7 +26,7 @@ pub trait View {
 /// Standard 1-dimensional view with a continuous x-axis
 #[derive(Default)]
 pub struct ContinuousView {
-    representations: Vec<Box<ContinuousRepresentation>>,
+    representations: Vec<Box<ContinuousRepr>>,
     x_range: Option<axis::Range>,
     y_range: Option<axis::Range>,
     x_max_ticks: usize,
@@ -68,7 +68,7 @@ impl ContinuousView {
     /**
     Add a representation to the view
     */
-    pub fn add(mut self, repr: Box<ContinuousRepresentation>) -> Self {
+    pub fn add(mut self, repr: Box<ContinuousRepr>) -> Self {
         self.representations.push(repr);
         self
     }
@@ -235,7 +235,7 @@ impl View for ContinuousView {
 /// A view with categorical entries along the x-axis and continuous values along the y-axis
 #[derive(Default)]
 pub struct CategoricalView<'a> {
-    representations: Vec<&'a CategoricalRepresentation>,
+    representations: Vec<&'a CategoricalRepr>,
     x_range: Option<Vec<String>>,
     y_range: Option<axis::Range>,
     x_label: Option<String>,
@@ -259,7 +259,7 @@ impl<'a> CategoricalView<'a> {
     /**
     Add a representation to the view
     */
-    pub fn add(mut self, repr: &'a CategoricalRepresentation) -> Self {
+    pub fn add(mut self, repr: &'a CategoricalRepr) -> Self {
         self.representations.push(repr);
         self
     }

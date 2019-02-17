@@ -1,7 +1,7 @@
 /*!
 *Representations* are the interface between the data coming from the user and the rendered output.
 
-Each type that implements `Representation` or `CategoricalRepresentation` knows how to read in data
+Each type that implements `Representation` or `CategoricalRepr` knows how to read in data
 and convert that into a concrete element to be incorporated into a larger plot.
 
 For example the `scatter::Scatter` representation can be created from a list of coordinates.
@@ -15,10 +15,26 @@ These points may then be layered with other SVG elements from other representati
 use crate::axis;
 use crate::svg;
 
+mod line;
+mod function;
+mod scatter;
+mod boxplot;
+mod histogram;
+mod barchart;
+mod style;
+
+pub use line::*;
+pub use function::*;
+pub use scatter::*;
+pub use boxplot::*;
+pub use histogram::*;
+pub use barchart::*;
+pub use style::*;
+
 /**
 A representation of data that is continuous in two dimensions.
 */
-pub trait ContinuousRepresentation {
+pub trait ContinuousRepr {
     /// The maximum range in each dimension. Used for auto-scaling axes.
     fn range(&self, dim: u32) -> (f64, f64);
 
@@ -29,6 +45,8 @@ pub trait ContinuousRepresentation {
         face_width: f64,
         face_height: f64,
     ) -> svg::node::element::Group;
+
+    fn legend_svg(&self) -> svg::node::element::Group;
 
     fn to_text(
         &self,
@@ -42,7 +60,7 @@ pub trait ContinuousRepresentation {
 /**
 A representation of data that is categorical in the x-axis but continuous in the y-axis.
 */
-pub trait CategoricalRepresentation {
+pub trait CategoricalRepr {
     /// The maximum range in the y-axis. Used for auto-scaling the axis.
     fn range(&self) -> (f64, f64);
 
