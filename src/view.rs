@@ -14,6 +14,7 @@ use svg::Node;
 
 use crate::axis;
 use crate::errors::Result;
+use crate::grid::Grid;
 use crate::representation::{CategoricalRepresentation, ContinuousRepresentation};
 use crate::svg_render;
 use crate::text_render;
@@ -21,6 +22,8 @@ use crate::text_render;
 pub trait View {
     fn to_svg(&self, face_width: f64, face_height: f64) -> Result<svg::node::element::Group>;
     fn to_text(&self, face_width: u32, face_height: u32) -> Result<String>;
+    fn add_grid(&mut self, grid: Grid);
+    fn grid<'a>(&'a self) -> &'a Option<Grid>;
 }
 
 /// Standard 1-dimensional view with a continuous x-axis
@@ -31,6 +34,7 @@ pub struct ContinuousView<'a> {
     y_range: Option<axis::Range>,
     x_label: Option<String>,
     y_label: Option<String>,
+    grid: Option<Grid>,
 }
 
 impl<'a> ContinuousView<'a> {
@@ -44,6 +48,7 @@ impl<'a> ContinuousView<'a> {
             y_range: None,
             x_label: None,
             y_label: None,
+            grid: None,
         }
     }
 
@@ -164,6 +169,11 @@ impl<'a> View for ContinuousView<'a> {
         // Add in the axes
         view_group.append(svg_render::draw_x_axis(&x_axis, face_width));
         view_group.append(svg_render::draw_y_axis(&y_axis, face_height));
+
+        if let Some(grid) = &self.grid {
+            view_group.append(svg_render::draw_grid(grid, face_width, face_height));
+        }
+
         Ok(view_group)
     }
 
@@ -212,6 +222,14 @@ impl<'a> View for ContinuousView<'a> {
 
         Ok(view_string)
     }
+
+    fn add_grid(&mut self, grid: Grid) {
+        self.grid = Some(grid)
+    }
+
+    fn grid(&self) -> &Option<Grid> {
+        &self.grid
+    }
 }
 
 /// A view with categorical entries along the x-axis and continuous values along the y-axis
@@ -222,6 +240,7 @@ pub struct CategoricalView<'a> {
     y_range: Option<axis::Range>,
     x_label: Option<String>,
     y_label: Option<String>,
+    grid: Option<Grid>,
 }
 
 impl<'a> CategoricalView<'a> {
@@ -235,6 +254,7 @@ impl<'a> CategoricalView<'a> {
             y_range: None,
             x_label: None,
             y_label: None,
+            grid: None,
         }
     }
 
@@ -354,6 +374,14 @@ impl<'a> View for CategoricalView<'a> {
 
     fn to_text(&self, _face_width: u32, _face_height: u32) -> Result<String> {
         Ok("".into())
+    }
+
+    fn add_grid(&mut self, grid: Grid) {
+        self.grid = Some(grid);
+    }
+
+    fn grid(&self) -> &Option<Grid> {
+        &self.grid
     }
 }
 

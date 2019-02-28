@@ -88,6 +88,7 @@ pub mod barchart;
 pub mod boxplot;
 mod errors;
 pub mod function;
+pub mod grid;
 pub mod histogram;
 pub mod line;
 pub mod scatter;
