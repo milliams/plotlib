@@ -2,11 +2,11 @@ use std::f64;
 
 use svg;
 
-use axis;
-use representation::ContinuousRepresentation;
-use style;
-use svg_render;
-use text_render;
+use crate::axis;
+use crate::representation::ContinuousRepresentation;
+use crate::style;
+use crate::svg_render;
+use crate::text_render;
 
 /// `Style` follows the 'optional builder' pattern
 /// Each field is a `Option` which start as `None`

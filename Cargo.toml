@@ -5,6 +5,7 @@ authors = ["Matt Williams <matt@milliams.com>"]
 description = "Pure Rust plotting library"
 readme = "README.md"
 license = "MIT"
+edition = "2018"
 repository = "https://github.com/milliams/plotlib"
 categories = ["visualization", "science"]
 keywords = ["plotting", "plot", "graph", "chart", "histogram", "scatter"]

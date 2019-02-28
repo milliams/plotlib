@@ -17,10 +17,10 @@ use std::f64;
 
 use svg;
 
-use axis;
-use representation::ContinuousRepresentation;
-use style;
-use svg_render;
+use crate::axis;
+use crate::representation::ContinuousRepresentation;
+use crate::style;
+use crate::svg_render;
 
 #[derive(Debug, Default)]
 pub struct Style {
