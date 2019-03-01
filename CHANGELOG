@@ -8,7 +8,7 @@
 - Introduce categorical representation, views and axes.
 - Add ability to set dimensions of plot (PR #8)
 - Added ability to display a histogram as densities
-- Add ability to display grids ([PR #23](https://github.com/milliams/plotlib/pull/23))
+- Add ability to display grids (PR #23)
 
 ### Changed
 - Change `create_axes`, `save`, `to_svg` and `to_text` to return `Result` indicating an error.
