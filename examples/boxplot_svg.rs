@@ -1,5 +1,3 @@
-extern crate plotlib;
-
 use plotlib::style::BoxPlot;
 
 fn main() {

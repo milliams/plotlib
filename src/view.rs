@@ -9,7 +9,7 @@ extent to plot and information about the axes. It knows how to render itself.
 use std;
 use std::f64;
 
-use svg;
+use failure::format_err;
 use svg::Node;
 
 use crate::axis;

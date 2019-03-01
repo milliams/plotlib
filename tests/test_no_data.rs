@@ -1,5 +1,3 @@
-extern crate plotlib;
-
 use plotlib::page::Page;
 use plotlib::scatter;
 use plotlib::scatter::Scatter;

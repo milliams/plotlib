@@ -1,5 +1,3 @@
-extern crate plotlib;
-
 use plotlib::style::Bar;
 
 fn main() {

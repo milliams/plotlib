@@ -22,7 +22,6 @@ The API is still very much in flux and is subject to change.
 For example, code like:
 
 ```rust
-extern crate plotlib;
 use plotlib::scatter::Scatter;
 use plotlib::scatter;
 use plotlib::style::{Marker, Point};
