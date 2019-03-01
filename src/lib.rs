@@ -75,10 +75,6 @@ in this case, interpreting the bins and colours to create SVG elements.
 
 */
 
-extern crate svg;
-#[macro_use]
-extern crate failure;
-
 pub mod page;
 pub mod representation;
 pub mod view;
