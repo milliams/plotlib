@@ -1,0 +1,1326 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+Absolute	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/mod.rs	/^    Absolute,$/;"	e	enum:Position
+Animate	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Animate$/;"	s
+AnimateColor	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct AnimateColor$/;"	s
+AnimateMotion	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct AnimateMotion$/;"	s
+AnimateTransform	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct AnimateTransform$/;"	s
+AsFail	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/as_fail.rs	/^pub trait AsFail {$/;"	i
+AsFail	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/as_fail.rs	/^pub trait AsFail {$/;"	t
+Attributes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^pub type Attributes = HashMap<String, Value>;$/;"	T
+Attributes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^pub type Attributes = HashMap<String, Value>;$/;"	t
+BASE_STEPS	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^const BASE_STEPS: [u32; 4] = [1, 2, 4, 5];$/;"	c
+Backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/mod.rs	/^    pub struct Backtrace {$/;"	s
+Bar	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^pub trait Bar {$/;"	i
+Bar	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^pub trait Bar {$/;"	t
+BarChart	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^impl BarChart {$/;"	c
+BarChart	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^impl CategoricalRepresentation for BarChart {$/;"	c
+BarChart	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^pub struct BarChart {$/;"	s
+BarChart	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^pub trait BarChart {$/;"	i
+BarChart	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^pub trait BarChart {$/;"	t
+Bins	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^pub enum Bins {$/;"	g
+Bounds	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    Bounds(Vec<f64>),$/;"	e	enum:Bins
+Box	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^impl Fail for Box<Fail> {$/;"	c
+Box	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^impl Clone for Box<Node> {$/;"	c
+BoxData	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^enum BoxData<'a> {$/;"	g
+BoxPlot	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^impl<'a> BoxPlot<'a> {$/;"	c
+BoxPlot	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^impl<'a> CategoricalRepresentation for BoxPlot<'a> {$/;"	c
+BoxPlot	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^pub struct BoxPlot<'a> {$/;"	s
+BoxPlot	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^pub trait BoxPlot {$/;"	i
+BoxPlot	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^pub trait BoxPlot {$/;"	t
+BoxStd	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/box_std.rs	/^impl Fail for BoxStd {}$/;"	c
+BoxStd	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/box_std.rs	/^impl fmt::Debug for BoxStd {$/;"	c
+BoxStd	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/box_std.rs	/^impl fmt::Display for BoxStd {$/;"	c
+BoxStd	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/box_std.rs	/^pub struct BoxStd(pub Box<Error + Send + Sync + 'static>);$/;"	s
+CategoricalAxis	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^impl CategoricalAxis {$/;"	c
+CategoricalAxis	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^pub struct CategoricalAxis {$/;"	s
+CategoricalRepresentation	/home/ploppz/ugent/master/code/crates/plotlib/src/representation.rs	/^pub trait CategoricalRepresentation {$/;"	i
+CategoricalRepresentation	/home/ploppz/ugent/master/code/crates/plotlib/src/representation.rs	/^pub trait CategoricalRepresentation {$/;"	t
+CategoricalView	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^impl<'a> CategoricalView<'a> {$/;"	c
+CategoricalView	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^impl<'a> View for CategoricalView<'a> {$/;"	c
+CategoricalView	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^pub struct CategoricalView<'a> {$/;"	s
+Causes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^impl<'f> Iterator for Causes<'f> {$/;"	c
+Causes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^pub struct Causes<'f> {$/;"	s
+Children	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^pub type Children = Vec<Box<Node>>;$/;"	T
+Children	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^pub type Children = Vec<Box<Node>>;$/;"	t
+Circle	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Circle$/;"	s
+Circle	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    Circle,$/;"	e	enum:Marker
+ClipPath	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct ClipPath$/;"	s
+Close	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/command.rs	/^    Close,$/;"	e	enum:Command
+Command	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/command.rs	/^pub enum Command {$/;"	g
+Comment	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    Comment,$/;"	e	enum:Event
+Compat	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/compat.rs	/^impl<E: Display> Display for Compat<E> {$/;"	c
+Compat	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/compat.rs	/^impl<E> Compat<E> {$/;"	c
+Compat	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/compat.rs	/^pub struct Compat<E> {$/;"	s
+Context	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/context.rs	/^    pub struct Context<D: Display + Send + Sync + 'static> {$/;"	s
+Context	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/context.rs	/^impl<D> From<D> for Context<D>$/;"	c
+ContinuousAxis	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^impl ContinuousAxis {$/;"	c
+ContinuousAxis	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^pub struct ContinuousAxis {$/;"	s
+ContinuousRepresentation	/home/ploppz/ugent/master/code/crates/plotlib/src/representation.rs	/^pub trait ContinuousRepresentation {$/;"	i
+ContinuousRepresentation	/home/ploppz/ugent/master/code/crates/plotlib/src/representation.rs	/^pub trait ContinuousRepresentation {$/;"	t
+ContinuousView	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^impl ContinuousView {$/;"	c
+ContinuousView	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^impl View for ContinuousView {$/;"	c
+ContinuousView	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^pub struct ContinuousView {$/;"	s
+Count	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    Count(usize),$/;"	e	enum:Bins
+Count	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    Count,$/;"	e	enum:HistogramType
+Cross	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    Cross,$/;"	e	enum:Marker
+CubicCurve	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/command.rs	/^    CubicCurve(Position, Parameters),$/;"	e	enum:Command
+Data	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^impl Data {$/;"	c
+Data	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^impl Deref for Data {$/;"	c
+Data	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^impl From<Vec<Command>> for Data {$/;"	c
+Data	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^pub struct Data(Vec<Command>);$/;"	s
+Declaration	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    Declaration,$/;"	e	enum:Event
+Definitions	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Definitions$/;"	s
+Density	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    Density,$/;"	e	enum:HistogramType
+Description	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Description$/;"	s
+Document	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^pub type Document = node::element::SVG;$/;"	T
+Document	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^pub type Document = node::element::SVG;$/;"	t
+E	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^impl<E: StdError + Send + Sync + 'static> Fail for E {}$/;"	c
+ENABLED	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^        static ENABLED: AtomicUsize = ATOMIC_USIZE_INIT;$/;"	c
+ENABLED	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^        static ENABLED: AtomicUsize = ATOMIC_USIZE_INIT;$/;"	v	method:InternalBacktrace::new
+Either	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/context.rs	/^    enum Either<A, B> {$/;"	g
+Element	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^impl Element {$/;"	c
+Element	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^impl Node for Element {$/;"	c
+Element	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^impl fmt::Display for Element {$/;"	c
+Element	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^pub struct Element {$/;"	s
+Ellipse	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Ellipse$/;"	s
+EllipticalArc	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/command.rs	/^    EllipticalArc(Position, Parameters),$/;"	e	enum:Command
+Empty	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    Empty,$/;"	e	enum:Type
+End	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    End,$/;"	e	enum:Type
+Error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^impl AsRef<Fail> for Error {$/;"	c
+Error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^impl Debug for Error {$/;"	c
+Error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^impl Display for Error {$/;"	c
+Error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^impl Error {$/;"	c
+Error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^impl<F: Fail> From<F> for Error {$/;"	c
+Error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^pub struct Error {$/;"	s
+Error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^impl Debug for Error {$/;"	c
+Error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^impl Display for Error {$/;"	c
+Error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^impl Drop for Error {$/;"	c
+Error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^impl Error {$/;"	c
+Error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^impl<F: Fail> From<F> for Error {$/;"	c
+Error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^pub struct Error {$/;"	s
+Error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/error.rs	/^impl Error {$/;"	c
+Error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/error.rs	/^impl error::Error for Error {$/;"	c
+Error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/error.rs	/^impl fmt::Display for Error {$/;"	c
+Error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/error.rs	/^pub struct Error {$/;"	s
+Error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    Error(Error),$/;"	e	enum:Event
+ErrorImpl	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl.rs	/^impl ErrorImpl {$/;"	c
+ErrorImpl	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl.rs	/^impl<F: Fail> From<F> for ErrorImpl {$/;"	c
+ErrorImpl	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl.rs	/^pub(crate) struct ErrorImpl {$/;"	s
+ErrorImpl	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^impl ErrorImpl {$/;"	c
+ErrorImpl	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^impl<F: Fail> From<F> for ErrorImpl {$/;"	c
+ErrorImpl	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^pub(crate) struct ErrorImpl {$/;"	s
+ErrorMessage	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error_message.rs	/^impl<D: Display + Debug + Sync + Send + 'static> Display for ErrorMessage<D> {$/;"	c
+ErrorMessage	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error_message.rs	/^impl<D: Display + Debug + Sync + Send + 'static> Fail for ErrorMessage<D> {$/;"	c
+ErrorMessage	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error_message.rs	/^struct ErrorMessage<D: Display + Debug + Sync + Send + 'static> {$/;"	s
+Event	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^pub enum Event<'l> {$/;"	g
+FAILURE_BACKTRACE	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^const FAILURE_BACKTRACE: &str = "RUST_FAILURE_BACKTRACE";$/;"	c
+Fail	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/as_fail.rs	/^impl AsFail for Fail {$/;"	c
+Fail	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^impl Fail {$/;"	c
+Fail	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^pub trait Fail: Display + Debug + Send + Sync + 'static {$/;"	i
+Fail	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^pub trait Fail: Display + Debug + Send + Sync + 'static {$/;"	t
+FailData	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    type FailData;$/;"	T
+FailData	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    type FailData;$/;"	t
+FailData	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    type FailData;$/;"	T
+FailData	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    type FailData;$/;"	t
+Fallible	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    pub type Fallible<T> = Result<T, Error>;$/;"	T
+Filter	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Filter$/;"	s
+Function	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^impl ContinuousRepresentation for Function {$/;"	c
+Function	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^impl Function {$/;"	c
+Function	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^pub struct Function {$/;"	s
+GENERAL_BACKTRACE	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^const GENERAL_BACKTRACE: &str = "RUST_BACKTRACE";$/;"	c
+Group	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Group$/;"	s
+Histogram	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^impl ContinuousRepresentation for Histogram {$/;"	c
+Histogram	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^impl Histogram {$/;"	c
+Histogram	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^pub struct Histogram {$/;"	s
+Histogram	/home/ploppz/ugent/master/code/crates/plotlib/src/render.rs	/^impl Render for histogram::Histogram {$/;"	c
+HistogramType	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^enum HistogramType {$/;"	g
+HorizontalLine	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/command.rs	/^    HorizontalLine(Position, Parameters),$/;"	e	enum:Command
+Image	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Image$/;"	s
+Inner	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl.rs	/^struct Inner<F: ?Sized + Fail> {$/;"	s
+Inner	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^            let inner: &'static mut Inner = mem::transmute(ptr);$/;"	v	method:ErrorImpl::from
+Inner	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^struct Inner {$/;"	s
+Inner	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^unsafe impl Send for Inner { }$/;"	c
+Inner	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^unsafe impl Sync for Inner { }$/;"	c
+Inner	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^            let inner: &'static mut Inner = mem::transmute(ptr);$/;"	v	method:Error::from
+Inner	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^impl Inner {$/;"	c
+Inner	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^struct Inner {$/;"	s
+Inner	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^unsafe impl Send for Inner { }$/;"	c
+Inner	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^unsafe impl Sync for Inner { }$/;"	c
+InnerHeader	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^struct InnerHeader {$/;"	s
+InnerHeader	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^struct InnerHeader {$/;"	s
+InnerRaw	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^struct InnerRaw<F> {$/;"	s
+InnerRaw	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^struct InnerRaw<F> {$/;"	s
+Instruction	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    Instruction,$/;"	e	enum:Event
+InternalBacktrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^impl InternalBacktrace {$/;"	c
+InternalBacktrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^impl fmt::Debug for InternalBacktrace {$/;"	c
+InternalBacktrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^pub(super) struct InternalBacktrace {$/;"	s
+Item	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    type Item = &'f Fail;$/;"	T
+Item	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    type Item = &'f Fail;$/;"	t	implementation:Causes
+Item	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    type Item = Event<'l>;$/;"	T
+Item	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    type Item = Event<'l>;$/;"	t	implementation:Parser
+Item	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    type Item = char;$/;"	T
+Item	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    type Item = char;$/;"	t	implementation:Reader
+Item	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    type Item = f64;$/;"	T
+Item	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    type Item = f64;$/;"	t	implementation:TickSteps
+Line	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Line$/;"	s
+Line	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/command.rs	/^    Line(Position, Parameters),$/;"	e	enum:Command
+Line	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^impl ContinuousRepresentation for Line {$/;"	c
+Line	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^impl Line {$/;"	c
+Line	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^pub struct Line {$/;"	s
+Line	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^pub trait Line {$/;"	i
+Line	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^pub trait Line {$/;"	t
+LinearGradient	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct LinearGradient$/;"	s
+Link	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Link$/;"	s
+Marker	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Marker$/;"	s
+Marker	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^pub enum Marker {$/;"	g
+Mask	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Mask$/;"	s
+MaybeResolved	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^struct MaybeResolved {$/;"	s
+MaybeResolved	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^unsafe impl Send for MaybeResolved {}$/;"	c
+MaybeResolved	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^unsafe impl Sync for MaybeResolved {}$/;"	c
+MotionPath	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct MotionPath$/;"	s
+Move	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/command.rs	/^    Move(Position, Parameters),$/;"	e	enum:Command
+NAY	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    const NAY: Option<&str> = Some("0");$/;"	c
+NOT_SET	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    const NOT_SET: Option<&str> = None;$/;"	c
+Node	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^pub trait Node: 'static + fmt::Debug + fmt::Display + NodeClone {$/;"	i
+Node	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^pub trait Node: 'static + fmt::Debug + fmt::Display + NodeClone {$/;"	t
+NodeClone	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^pub trait NodeClone {$/;"	i
+NodeClone	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^pub trait NodeClone {$/;"	t
+Number	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/mod.rs	/^pub type Number = f32;$/;"	T
+Number	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/mod.rs	/^pub type Number = f32;$/;"	t
+Owned	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    Owned(Vec<f64>),$/;"	e	enum:BoxData
+Page	/home/ploppz/ugent/master/code/crates/plotlib/src/page.rs	/^impl<'a> Page<'a> {$/;"	c
+Page	/home/ploppz/ugent/master/code/crates/plotlib/src/page.rs	/^pub struct Page<'a> {$/;"	s
+PairWise	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^pub trait PairWise<T> {$/;"	i
+PairWise	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^pub trait PairWise<T> {$/;"	t
+Parameters	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^impl Deref for Parameters {$/;"	c
+Parameters	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^impl From<Vec<Number>> for Parameters {$/;"	c
+Parameters	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^pub struct Parameters(Vec<Number>);$/;"	s
+Parser	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^impl<'l> Parser<'l> {$/;"	c
+Parser	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^struct Parser<'l> {$/;"	s
+Parser	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^impl<'l> Parser<'l> {$/;"	c
+Parser	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^struct Parser<'l> {$/;"	s
+Parser	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^impl<'l> Iterator for Parser<'l> {$/;"	c
+Parser	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^impl<'l> Parser<'l> {$/;"	c
+Parser	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^pub struct Parser<'l> {$/;"	s
+Path	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Path$/;"	s
+Pattern	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Pattern$/;"	s
+Point	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^pub trait Point {$/;"	i
+Point	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^pub trait Point {$/;"	t
+Polygon	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Polygon$/;"	s
+Polyline	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Polyline$/;"	s
+Position	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/mod.rs	/^pub enum Position {$/;"	g
+QuadraticCurve	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/command.rs	/^    QuadraticCurve(Position, Parameters),$/;"	e	enum:Command
+RadialGradient	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct RadialGradient$/;"	s
+Range	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^impl Range {$/;"	c
+Range	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^pub struct Range {$/;"	s
+Reader	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^impl<'l> Iterator for Reader<'l> {$/;"	c
+Reader	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^impl<'l> Reader<'l> {$/;"	c
+Reader	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^pub struct Reader<'l> {$/;"	s
+Rectangle	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Rectangle$/;"	s
+Ref	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    Ref(&'a [f64]),$/;"	e	enum:BoxData
+Relative	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/mod.rs	/^    Relative,$/;"	e	enum:Position
+Render	/home/ploppz/ugent/master/code/crates/plotlib/src/render.rs	/^pub trait Render {$/;"	i
+Render	/home/ploppz/ugent/master/code/crates/plotlib/src/render.rs	/^pub trait Render {$/;"	t
+Result	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/result_ext.rs	/^impl<T, E> ResultExt<T, E> for Result<T, E>$/;"	c
+Result	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^pub type Result<T> = ::std::result::Result<T, Error>;$/;"	T
+Result	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^pub type Result<T> = ::std::result::Result<T, Error>;$/;"	t
+Result	/home/ploppz/ugent/master/code/crates/plotlib/src/errors.rs	/^pub type Result<T> = ::std::result::Result<T, failure::Error>;$/;"	T
+Result	/home/ploppz/ugent/master/code/crates/plotlib/src/errors.rs	/^pub type Result<T> = ::std::result::Result<T, failure::Error>;$/;"	t
+ResultExt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/result_ext.rs	/^pub trait ResultExt<T, E> {$/;"	i
+ResultExt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/result_ext.rs	/^pub trait ResultExt<T, E> {$/;"	t
+SVG	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct SVG [] [inner] {$/;"	s
+Save	/home/ploppz/ugent/master/code/crates/plotlib/src/save.rs	/^pub trait Save {$/;"	i
+Save	/home/ploppz/ugent/master/code/crates/plotlib/src/save.rs	/^pub trait Save {$/;"	t
+Scatter	/home/ploppz/ugent/master/code/crates/plotlib/src/render.rs	/^impl Render for scatter::Scatter {$/;"	c
+Scatter	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^impl ContinuousRepresentation for Scatter {$/;"	c
+Scatter	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^impl Scatter {$/;"	c
+Scatter	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^pub struct Scatter {$/;"	s
+Script	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Script [T: Into<String>] [inner, content: T] {$/;"	s
+SmoothCubicCurve	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/command.rs	/^    SmoothCubicCurve(Position, Parameters),$/;"	e	enum:Command
+SmoothQuadraticCurve	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/command.rs	/^    SmoothQuadraticCurve(Position, Parameters),$/;"	e	enum:Command
+Square	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    Square,$/;"	e	enum:Marker
+Start	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    Start,$/;"	e	enum:Type
+Stop	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Stop$/;"	s
+String	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^impl From<Parameters> for String {$/;"	c
+String	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^impl From<Value> for String {$/;"	c
+Style	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Style [T: Into<String>] [inner, content: T] {$/;"	s
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^impl Style {$/;"	c
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^impl style::BarChart for Style {$/;"	c
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^pub struct Style {$/;"	s
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^impl Style {$/;"	c
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^impl style::BoxPlot for Style {$/;"	c
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^pub struct Style {$/;"	s
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^impl Style {$/;"	c
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^impl style::Line for Style {$/;"	c
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^pub struct Style {$/;"	s
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^impl Style {$/;"	c
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^impl style::Bar for Style {$/;"	c
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^pub struct Style {$/;"	s
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^impl Style {$/;"	c
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^impl style::Line for Style {$/;"	c
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^pub struct Style {$/;"	s
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^impl Style {$/;"	c
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^impl style::Point for Style {$/;"	c
+Style	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^pub struct Style {$/;"	s
+Symbol	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Symbol$/;"	s
+SyncFailure	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/sync_failure.rs	/^impl<E: Error + Send + 'static> Fail for SyncFailure<E> {}$/;"	c
+SyncFailure	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/sync_failure.rs	/^impl<E: Error + Send + 'static> SyncFailure<E> {$/;"	c
+SyncFailure	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/sync_failure.rs	/^impl<T> Debug for SyncFailure<T>$/;"	c
+SyncFailure	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/sync_failure.rs	/^impl<T> Display for SyncFailure<T>$/;"	c
+SyncFailure	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/sync_failure.rs	/^pub struct SyncFailure<T> {$/;"	s
+T	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/as_fail.rs	/^impl<T> AsFail for T$/;"	c
+T	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^impl<T> NodeClone for T$/;"	c
+T	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^impl<T> PairWise<T> for [T] {$/;"	c
+TEST_PATH	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^    const TEST_PATH: &'static str = "tests\/fixtures\/benton.svg";$/;"	c
+Tag	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^impl<'l> Tag<'l> {$/;"	c
+Tag	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^pub struct Tag<'l>(pub &'l str, pub Type, pub Attributes);$/;"	s
+Tag	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    Tag(&'l str, Type, Attributes),$/;"	e	enum:Event
+Target	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    type Target = [Command];$/;"	T
+Target	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    type Target = [Command];$/;"	t	implementation:Data
+Target	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^    type Target = [Number];$/;"	T
+Target	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^    type Target = [Number];$/;"	t	implementation:Parameters
+Target	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^    type Target = str;$/;"	T
+Target	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^    type Target = str;$/;"	t	implementation:Value
+Text	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Text$/;"	s
+Text	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/text.rs	/^impl Node for Text {$/;"	c
+Text	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/text.rs	/^impl Text {$/;"	c
+Text	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/text.rs	/^impl fmt::Display for Text {$/;"	c
+Text	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/text.rs	/^pub struct Text {$/;"	s
+Text	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    Text(&'l str),$/;"	e	enum:Event
+TextPath	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct TextPath$/;"	s
+TickSteps	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^impl Iterator for TickSteps {$/;"	c
+TickSteps	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^impl TickSteps {$/;"	c
+TickSteps	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^struct TickSteps {$/;"	s
+Title	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Title$/;"	s
+TraitObject	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^struct TraitObject {$/;"	s
+TraitObject	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^struct TraitObject {$/;"	s
+Type	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^pub enum Type {$/;"	g
+Use	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    struct Use$/;"	s
+VTable	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    type VTable;$/;"	T
+VTable	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    type VTable;$/;"	t
+VTable	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    type VTable;$/;"	T
+VTable	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    type VTable;$/;"	t
+Value	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^impl From<Data> for Value {$/;"	c
+Value	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^impl Deref for Value {$/;"	c
+Value	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^impl fmt::Display for Value {$/;"	c
+Value	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^impl<'l> From<&'l str> for Value {$/;"	c
+Value	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^impl<T> From<Vec<T>> for Value$/;"	c
+Value	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^pub struct Value(String);$/;"	s
+Vec	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^impl From<Data> for Vec<Command> {$/;"	c
+Vec	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^impl From<Parameters> for Vec<Number> {$/;"	c
+VerticalLine	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/command.rs	/^    VerticalLine(Position, Parameters),$/;"	e	enum:Command
+View	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^pub trait View {$/;"	i
+View	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^pub trait View {$/;"	t
+XAxisLabel	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^impl XAxisLabel {$/;"	c
+XAxisLabel	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^struct XAxisLabel {$/;"	s
+YEA	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    const YEA: Option<&str> = Some("1");$/;"	c
+__private_get_type_id__	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn __private_get_type_id__(&self) -> TypeId {$/;"	P	interface:Fail
+__private_get_type_id__	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn __private_get_type_id__(&self) -> TypeId {$/;"	f
+_mean	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^fn _mean(s: &[f64]) -> f64 {$/;"	f
+add	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^            pub fn add<T>(mut self, node: T) -> Self$/;"	f
+add	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn add(mut self, repr: &'a CategoricalRepresentation) -> Self {$/;"	P	implementation:CategoricalView
+add	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn add(mut self, repr: &'a CategoricalRepresentation) -> Self {$/;"	f
+add	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn add(mut self, repr: Box<ContinuousRepresentation>) -> Self {$/;"	P	implementation:ContinuousView
+add	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn add(mut self, repr: Box<ContinuousRepresentation>) -> Self {$/;"	f
+add_plot	/home/ploppz/ugent/master/code/crates/plotlib/src/page.rs	/^    pub fn add_plot(mut self, view: &'a View) -> Self {$/;"	P	implementation:Page
+add_plot	/home/ploppz/ugent/master/code/crates/plotlib/src/page.rs	/^    pub fn add_plot(mut self, view: &'a View) -> Self {$/;"	f
+always_enabled_if_failure_is_set_to_yes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    fn always_enabled_if_failure_is_set_to_yes() {$/;"	f
+always_enabled_if_failure_is_set_to_yes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    fn always_enabled_if_failure_is_set_to_yes() {$/;"	f	module:tests
+append	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    fn append<T>(&mut self, node: T)$/;"	P	implementation:Element
+append	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    fn append<T>(&mut self, node: T)$/;"	f
+append	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^            fn append<T>(&mut self, node: T) where T: ::node::Node {$/;"	f
+append	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^    fn append<T>(&mut self, T)$/;"	P	interface:Node
+append	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^    fn append<T>(&mut self, T)$/;"	f
+append	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/text.rs	/^    fn append<T>(&mut self, _: T)$/;"	P	implementation:Text
+append	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/text.rs	/^    fn append<T>(&mut self, _: T)$/;"	f
+as_backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    pub(super) fn as_backtrace(&self) -> Option<&Backtrace> {$/;"	P	implementation:InternalBacktrace
+as_cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/context.rs	/^        fn as_cause(&self) -> Option<&Fail> {$/;"	f
+as_fail	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/as_fail.rs	/^        fn as_fail(&self) -> &Fail {$/;"	f
+as_fail	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/as_fail.rs	/^    fn as_fail(&self) -> &Fail {$/;"	P	implementation:Fail
+as_fail	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/as_fail.rs	/^    fn as_fail(&self) -> &Fail {$/;"	f
+as_fail	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/as_fail.rs	/^    fn as_fail(&self) -> &Fail;$/;"	P	interface:AsFail
+as_fail	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/as_fail.rs	/^    fn as_fail(&self) -> &Fail;$/;"	f
+as_fail	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn as_fail(&self) -> &Fail {$/;"	P	implementation:Error
+as_fail	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn as_fail(&self) -> &Fail {$/;"	f
+as_fail	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^mod as_fail;$/;"	n
+as_ref	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    fn as_ref(&self) -> &Fail {$/;"	P	implementation:Error
+as_ref	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    fn as_ref(&self) -> &Fail {$/;"	f
+assert_approx_eq	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^        macro_rules! assert_approx_eq {$/;"	M	function:tests::test_calculate_ticks
+assert_approx_eq	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^        macro_rules! assert_approx_eq {$/;"	d
+assert_error_is_just_data	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    fn assert_error_is_just_data() {$/;"	f
+assert_error_is_just_data	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    fn assert_error_is_just_data() {$/;"	f	module:test
+assert_error_is_just_data	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    fn assert_error_is_just_data() {$/;"	f
+assert_error_is_just_data	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    fn assert_error_is_just_data() {$/;"	f	module:test
+assert_is_one_word	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    fn assert_is_one_word() {$/;"	f
+assert_is_one_word	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    fn assert_is_one_word() {$/;"	f	module:test
+assert_is_one_word	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    fn assert_is_one_word() {$/;"	f
+assert_is_one_word	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    fn assert_is_one_word() {$/;"	f	module:test
+assert_just_data	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    fn assert_just_data<T: Send + Sync + 'static>() { }$/;"	f
+assert_just_data	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    fn assert_just_data<T: Send + Sync + 'static>() { }$/;"	f	module:test
+assert_just_data	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^        fn assert_just_data<T: Send + Sync + 'static>() { }$/;"	f
+assert_just_data	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^        fn assert_just_data<T: Send + Sync + 'static>() { }$/;"	f	function:test::assert_error_is_just_data
+assign	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    fn assign<T, U>(&mut self, name: T, value: U)$/;"	P	implementation:Element
+assign	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    fn assign<T, U>(&mut self, name: T, value: U)$/;"	f
+assign	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^            fn assign<T, U>(&mut self, name: T, value: U)$/;"	f
+assign	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^    fn assign<T, U>(&mut self, T, U)$/;"	P	interface:Node
+assign	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^    fn assign<T, U>(&mut self, T, U)$/;"	f
+assign	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/text.rs	/^    fn assign<T, U>(&mut self, _: T, _: U)$/;"	P	implementation:Text
+assign	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/text.rs	/^    fn assign<T, U>(&mut self, _: T, _: U)$/;"	f
+attributes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    attributes: Attributes,$/;"	m	struct:Element
+axis	/home/ploppz/ugent/master/code/crates/plotlib/src/lib.rs	/^mod axis;$/;"	n
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    backtrace: Option<MaybeResolved>,$/;"	m	struct:InternalBacktrace
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    backtrace: UnsafeCell<Backtrace>,$/;"	m	struct:MaybeResolved
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/context.rs	/^        fn backtrace(&self) -> &Backtrace {$/;"	f
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/context.rs	/^        fn backtrace(&self) -> Option<&Backtrace> {$/;"	f
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl.rs	/^    backtrace: Backtrace,$/;"	m	struct:Inner
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl.rs	/^    pub(crate) fn backtrace(&self) -> &Backtrace {$/;"	P	implementation:ErrorImpl
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    backtrace: Backtrace,$/;"	m	struct:Inner
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    backtrace: Backtrace,$/;"	m	struct:InnerHeader
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    pub(crate) fn backtrace(&self) -> &Backtrace {$/;"	P	implementation:ErrorImpl
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn backtrace(&self) -> &Backtrace {$/;"	P	implementation:Error
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn backtrace(&self) -> &Backtrace {$/;"	f
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn backtrace(&self) -> Option<&Backtrace> {$/;"	P	implementation:Box
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn backtrace(&self) -> Option<&Backtrace> {$/;"	P	interface:Fail
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn backtrace(&self) -> Option<&Backtrace> {$/;"	f
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^mod backtrace;$/;"	n
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    backtrace: Backtrace,$/;"	m	struct:Inner
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    backtrace: Backtrace,$/;"	m	struct:InnerHeader
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn backtrace(&self) -> &Backtrace {$/;"	P	implementation:Error
+backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn backtrace(&self) -> &Backtrace {$/;"	f
+bail	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/macros.rs	/^macro_rules! bail {$/;"	M
+bail	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/macros.rs	/^macro_rules! bail {$/;"	d
+barchart	/home/ploppz/ugent/master/code/crates/plotlib/src/lib.rs	/^pub mod barchart;$/;"	n
+bin_bounds	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub bin_bounds: Vec<f64>,    \/\/ will have N_bins + 1 entries$/;"	m	struct:Histogram
+bin_counts	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub bin_counts: Vec<f64>,    \/\/ will have N_bins entries$/;"	m	struct:Histogram
+bin_densities	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub bin_densities: Vec<f64>, \/\/ will have N_bins entries$/;"	m	struct:Histogram
+bins_for_cells	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^fn bins_for_cells(bound_cell_offsets: &[i32], face_width: u32) -> Vec<Option<i32>> {$/;"	f
+bound_cell_offsets	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^fn bound_cell_offsets($/;"	f
+box_std	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^mod box_std;$/;"	n
+boxplot	/home/ploppz/ugent/master/code/crates/plotlib/src/lib.rs	/^pub mod boxplot;$/;"	n
+calculate_tick_step_for_range	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^fn calculate_tick_step_for_range(min: f64, max: f64, max_ticks: usize) -> f64 {$/;"	f
+calculate_ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^fn calculate_ticks(min: f64, max: f64, max_ticks: usize) -> Vec<f64> {$/;"	f
+capture	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    fn capture() {$/;"	f
+capture	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    fn capture() {$/;"	f	module:tests
+capture	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn capture<F>(&mut self, block: F) -> Option<&'l str>$/;"	P	implementation:Reader
+capture	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn capture<F>(&mut self, block: F) -> Option<&'l str>$/;"	f
+cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/context.rs	/^        fn cause(&self) -> Option<&Fail> {$/;"	f
+cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn cause(&self) -> &Fail {$/;"	P	implementation:Error
+cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn cause(&self) -> &Fail {$/;"	f
+cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn cause(&self) -> Option<&Fail> {$/;"	P	implementation:Box
+cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn cause(&self) -> Option<&Fail> {$/;"	P	interface:Fail
+cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn cause(&self) -> Option<&Fail> {$/;"	f
+cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn cause(&self) -> &Fail {$/;"	P	implementation:Error
+cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn cause(&self) -> &Fail {$/;"	f
+causes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn causes(&self) -> Causes {$/;"	P	implementation:Error
+causes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn causes(&self) -> Causes {$/;"	f
+causes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn causes(&self) -> Causes$/;"	P	interface:Fail
+causes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn causes(&self) -> Causes$/;"	f
+causes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    pub fn causes(&self) -> Causes {$/;"	P	implementation:Fail
+causes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    pub fn causes(&self) -> Causes {$/;"	f
+causes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn causes(&self) -> Causes {$/;"	P	implementation:Error
+causes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn causes(&self) -> Causes {$/;"	f
+children	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    children: Children,$/;"	m	struct:Element
+clone	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^    fn clone(&self) -> Box<Node> {$/;"	f
+clone	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^    fn clone(&self) -> Box<Node>;$/;"	P	interface:NodeClone
+clone	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^    fn clone(&self) -> Box<Node>;$/;"	f
+clone	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^    fn clone(&self) -> Self {$/;"	P	implementation:Box
+clone	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^    fn clone(&self) -> Self {$/;"	f
+close	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn close(Close)$/;"	f
+colour	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    colour: Option<String>,$/;"	m	struct:Style
+colour	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn colour<T>(&mut self, value: T) -> &mut Self$/;"	P	implementation:Style
+colour	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn colour<T>(&mut self, value: T) -> &mut Self$/;"	f
+colour	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    colour: Option<String>,$/;"	m	struct:Style
+colour	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn colour<T>(&mut self, value: T) -> &mut Self$/;"	P	implementation:Style
+colour	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn colour<T>(&mut self, value: T) -> &mut Self$/;"	f
+colour	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    colour: Option<String>,$/;"	m	struct:Style
+colour	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn colour<T>(&mut self, value: T) -> &mut Self$/;"	P	implementation:Style
+colour	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn colour<T>(&mut self, value: T) -> &mut Self$/;"	f
+colour	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn colour<T>(&mut self, value: T) -> &mut Self$/;"	P	interface:Line
+colour	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn colour<T>(&mut self, value: T) -> &mut Self$/;"	P	interface:Point
+colour	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn colour<T>(&mut self, value: T) -> &mut Self$/;"	f
+column	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/error.rs	/^    column: usize,$/;"	m	struct:Error
+column	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    column: usize,$/;"	m	struct:Reader
+command	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/mod.rs	/^mod command;$/;"	n
+compat	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn compat(self) -> Compat<Error> {$/;"	P	implementation:Error
+compat	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn compat(self) -> Compat<Error> {$/;"	f
+compat	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn compat(self) -> Compat<Self>$/;"	P	interface:Fail
+compat	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn compat(self) -> Compat<Self>$/;"	f
+compat	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^mod compat;$/;"	n
+compat	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/result_ext.rs	/^        fn compat(self) -> Result<T, Compat<Error>> {$/;"	f
+compat	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/result_ext.rs	/^    fn compat(self) -> Result<T, Compat<E>> {$/;"	f
+compat	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/result_ext.rs	/^    fn compat(self) -> Result<T, Compat<E>>;$/;"	P	interface:ResultExt
+compat	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/result_ext.rs	/^    fn compat(self) -> Result<T, Compat<E>>;$/;"	f
+compat	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn compat(self) -> Compat<Error> {$/;"	P	implementation:Error
+compat	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn compat(self) -> Compat<Error> {$/;"	f
+consume_all	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_all(&mut self) -> bool {$/;"	P	implementation:Reader
+consume_all	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_all(&mut self) -> bool {$/;"	f
+consume_any	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_any(&mut self, chars: &str) -> bool {$/;"	P	implementation:Reader
+consume_any	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_any(&mut self, chars: &str) -> bool {$/;"	f
+consume_attribute	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    fn consume_attribute() {$/;"	f
+consume_attribute	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    fn consume_attribute() {$/;"	f	module:tests
+consume_attribute	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_attribute(&mut self) -> bool {$/;"	P	implementation:Reader
+consume_attribute	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_attribute(&mut self) -> bool {$/;"	f
+consume_attribute_value	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_attribute_value(&mut self) -> bool {$/;"	P	implementation:Reader
+consume_attribute_value	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_attribute_value(&mut self) -> bool {$/;"	f
+consume_char	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_char(&mut self, target: char) -> bool {$/;"	P	implementation:Reader
+consume_char	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_char(&mut self, target: char) -> bool {$/;"	f
+consume_digits	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_digits(&mut self) -> bool {$/;"	P	implementation:Reader
+consume_digits	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_digits(&mut self) -> bool {$/;"	f
+consume_equality	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_equality(&mut self) -> bool {$/;"	P	implementation:Reader
+consume_equality	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_equality(&mut self) -> bool {$/;"	f
+consume_if	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_if<F>(&mut self, check: F) -> bool$/;"	P	implementation:Reader
+consume_if	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_if<F>(&mut self, check: F) -> bool$/;"	f
+consume_name	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    fn consume_name() {$/;"	f
+consume_name	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    fn consume_name() {$/;"	f	module:tests
+consume_name	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_name(&mut self) -> bool {$/;"	P	implementation:Reader
+consume_name	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_name(&mut self) -> bool {$/;"	f
+consume_name_char	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_name_char(&mut self) -> bool {$/;"	P	implementation:Reader
+consume_name_char	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_name_char(&mut self) -> bool {$/;"	f
+consume_name_start_char	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_name_start_char(&mut self) -> bool {$/;"	P	implementation:Reader
+consume_name_start_char	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_name_start_char(&mut self) -> bool {$/;"	f
+consume_number	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    fn consume_number() {$/;"	f
+consume_number	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    fn consume_number() {$/;"	f	module:tests
+consume_number	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_number(&mut self) -> bool {$/;"	P	implementation:Reader
+consume_number	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_number(&mut self) -> bool {$/;"	f
+consume_sign	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_sign(&mut self) -> bool {$/;"	P	implementation:Reader
+consume_sign	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_sign(&mut self) -> bool {$/;"	f
+consume_until_any	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_until_any(&mut self, chars: &str) -> bool {$/;"	P	implementation:Reader
+consume_until_any	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_until_any(&mut self, chars: &str) -> bool {$/;"	f
+consume_until_char	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_until_char(&mut self, target: char) -> bool {$/;"	P	implementation:Reader
+consume_until_char	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_until_char(&mut self, target: char) -> bool {$/;"	f
+consume_while	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_while<F>(&mut self, check: F) -> bool$/;"	P	implementation:Reader
+consume_while	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_while<F>(&mut self, check: F) -> bool$/;"	f
+consume_whitespace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    fn consume_whitespace() {$/;"	f
+consume_whitespace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    fn consume_whitespace() {$/;"	f	module:tests
+consume_whitespace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_whitespace(&mut self) -> bool {$/;"	P	implementation:Reader
+consume_whitespace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn consume_whitespace(&mut self) -> bool {$/;"	f
+content	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/text.rs	/^    content: String,$/;"	m	struct:Text
+content	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    #[allow(dead_code)] content: Cow<'l, str>,$/;"	m	struct:Parser
+content	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    content: &'l str,$/;"	m	struct:Reader
+context	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn context<D: Display + Send + Sync + 'static>(self, context: D) -> Context<D> {$/;"	P	implementation:Error
+context	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn context<D: Display + Send + Sync + 'static>(self, context: D) -> Context<D> {$/;"	f
+context	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn context<D>(self, context: D) -> Context<D>$/;"	P	interface:Fail
+context	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn context<D>(self, context: D) -> Context<D>$/;"	f
+context	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^mod context;$/;"	n
+context	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/result_ext.rs	/^        fn context<D>(self, context: D) -> Result<T, Context<D>> where$/;"	f
+context	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/result_ext.rs	/^    fn context<D>(self, context: D) -> Result<T, Context<D>>$/;"	P	interface:ResultExt
+context	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/result_ext.rs	/^    fn context<D>(self, context: D) -> Result<T, Context<D>>$/;"	f
+context	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn context<D: Display + Send + Sync + 'static>(self, context: D) -> Context<D> {$/;"	P	implementation:Error
+context	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn context<D: Display + Send + Sync + 'static>(self, context: D) -> Context<D> {$/;"	f
+create_axes	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn create_axes(&self) -> Result<(axis::CategoricalAxis, axis::ContinuousAxis)> {$/;"	P	implementation:CategoricalView
+create_axes	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn create_axes(&self) -> Result<(axis::CategoricalAxis, axis::ContinuousAxis)> {$/;"	f
+create_axes	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn create_axes(&self) -> Result<(axis::ContinuousAxis, axis::ContinuousAxis)> {$/;"	P	implementation:ContinuousView
+create_axes	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn create_axes(&self) -> Result<(axis::ContinuousAxis, axis::ContinuousAxis)> {$/;"	f
+create_x_axis_labels	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^fn create_x_axis_labels(x_tick_map: &HashMap<i32, f64>) -> Vec<XAxisLabel> {$/;"	f
+cubic_curve_by	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn cubic_curve_by(CubicCurve, Relative)$/;"	f
+cubic_curve_to	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn cubic_curve_to(CubicCurve, Absolute)$/;"	f
+cursor	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    cursor: Peekable<Chars<'l>>,$/;"	m	struct:Reader
+data	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    data: *const FailData,$/;"	m	struct:TraitObject
+data	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    data: *const FailData,$/;"	m	struct:TraitObject
+data	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/mod.rs	/^mod data;$/;"	n
+data	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    data: BoxData<'a>,$/;"	m	struct:BoxPlot
+data	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    pub data: Vec<(f64, f64)>,$/;"	m	struct:Function
+data	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    pub data: Vec<(f64, f64)>,$/;"	m	struct:Line
+data	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    pub data: Vec<(f64, f64)>,$/;"	m	struct:Scatter
+data_into_value	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn data_into_value() {$/;"	f
+data_into_value	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn data_into_value() {$/;"	f	module:tests
+data_parse	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn data_parse() {$/;"	f
+data_parse	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn data_parse() {$/;"	f	module:tests
+default	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/mod.rs	/^        fn default() -> Backtrace {$/;"	f
+default_x_range	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn default_x_range(&self) -> axis::Range {$/;"	P	implementation:ContinuousView
+default_x_range	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn default_x_range(&self) -> axis::Range {$/;"	f
+default_x_ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn default_x_ticks(&self) -> Vec<String> {$/;"	P	implementation:CategoricalView
+default_x_ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn default_x_ticks(&self) -> Vec<String> {$/;"	f
+default_y_range	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn default_y_range(&self) -> axis::Range {$/;"	P	implementation:CategoricalView
+default_y_range	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn default_y_range(&self) -> axis::Range {$/;"	P	implementation:ContinuousView
+default_y_range	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn default_y_range(&self) -> axis::Range {$/;"	f
+density	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub fn density(mut self) -> Self {$/;"	P	implementation:Histogram
+density	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub fn density(mut self) -> Self {$/;"	f
+deref	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn deref(&self) -> &Self::Target {$/;"	P	implementation:Data
+deref	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn deref(&self) -> &Self::Target {$/;"	f
+deref	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^    fn deref(&self) -> &Self::Target {$/;"	P	implementation:Parameters
+deref	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^    fn deref(&self) -> &Self::Target {$/;"	f
+deref	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^    fn deref(&self) -> &Self::Target {$/;"	P	implementation:Value
+deref	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^    fn deref(&self) -> &Self::Target {$/;"	f
+description	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/compat.rs	/^        fn description(&self) -> &'static str {$/;"	f
+description	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/error.rs	/^    fn description(&self) -> &str {$/;"	P	implementation:Error
+description	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/error.rs	/^    fn description(&self) -> &str {$/;"	f
+dimensions	/home/ploppz/ugent/master/code/crates/plotlib/src/page.rs	/^    dimensions: (u32, u32),$/;"	m	struct:Page
+dimensions	/home/ploppz/ugent/master/code/crates/plotlib/src/page.rs	/^    pub fn dimensions(mut self, x: u32, y: u32) -> Self {$/;"	P	implementation:Page
+dimensions	/home/ploppz/ugent/master/code/crates/plotlib/src/page.rs	/^    pub fn dimensions(mut self, x: u32, y: u32) -> Self {$/;"	f
+downcast	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl.rs	/^    pub(crate) fn downcast<T: Fail>(self) -> Result<T, ErrorImpl> {$/;"	P	implementation:ErrorImpl
+downcast	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    pub(crate) fn downcast<T: Fail>(self) -> Result<T, ErrorImpl> {$/;"	P	implementation:ErrorImpl
+downcast	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn downcast<T: Fail>(self) -> Result<T, Error> {$/;"	P	implementation:Error
+downcast	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn downcast<T: Fail>(self) -> Result<T, Error> {$/;"	f
+downcast	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn downcast<T: Fail>(self) -> Result<T, Error> {$/;"	P	implementation:Error
+downcast	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn downcast<T: Fail>(self) -> Result<T, Error> {$/;"	f
+downcast_can_be_used	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    fn downcast_can_be_used() {$/;"	f
+downcast_can_be_used	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    fn downcast_can_be_used() {$/;"	f	module:test
+downcast_mut	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn downcast_mut<T: Fail>(&mut self) -> Option<&mut T> {$/;"	P	implementation:Error
+downcast_mut	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn downcast_mut<T: Fail>(&mut self) -> Option<&mut T> {$/;"	f
+downcast_mut	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    pub fn downcast_mut<T: Fail>(&mut self) -> Option<&mut T> {$/;"	P	implementation:Fail
+downcast_mut	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    pub fn downcast_mut<T: Fail>(&mut self) -> Option<&mut T> {$/;"	f
+downcast_mut	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn downcast_mut<T: Fail>(&mut self) -> Option<&mut T> {$/;"	P	implementation:Error
+downcast_mut	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn downcast_mut<T: Fail>(&mut self) -> Option<&mut T> {$/;"	f
+downcast_ref	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn downcast_ref<T: Fail>(&self) -> Option<&T> {$/;"	P	implementation:Error
+downcast_ref	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn downcast_ref<T: Fail>(&self) -> Option<&T> {$/;"	f
+downcast_ref	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    pub fn downcast_ref<T: Fail>(&self) -> Option<&T> {$/;"	P	implementation:Fail
+downcast_ref	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    pub fn downcast_ref<T: Fail>(&self) -> Option<&T> {$/;"	f
+downcast_ref	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn downcast_ref<T: Fail>(&self) -> Option<&T> {$/;"	P	implementation:Error
+downcast_ref	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn downcast_ref<T: Fail>(&self) -> Option<&T> {$/;"	f
+draw_categorical_x_axis	/home/ploppz/ugent/master/code/crates/plotlib/src/svg_render.rs	/^pub fn draw_categorical_x_axis(a: &axis::CategoricalAxis, face_width: f64) -> node::element::Gro/;"	f
+draw_face_barchart	/home/ploppz/ugent/master/code/crates/plotlib/src/svg_render.rs	/^pub fn draw_face_barchart<L, S>($/;"	f
+draw_face_bars	/home/ploppz/ugent/master/code/crates/plotlib/src/svg_render.rs	/^pub fn draw_face_bars<S>($/;"	f
+draw_face_boxplot	/home/ploppz/ugent/master/code/crates/plotlib/src/svg_render.rs	/^pub fn draw_face_boxplot<L, S>($/;"	f
+draw_face_line	/home/ploppz/ugent/master/code/crates/plotlib/src/svg_render.rs	/^pub fn draw_face_line<S>($/;"	f
+draw_face_points	/home/ploppz/ugent/master/code/crates/plotlib/src/svg_render.rs	/^pub fn draw_face_points<S>($/;"	f
+draw_x_axis	/home/ploppz/ugent/master/code/crates/plotlib/src/svg_render.rs	/^pub fn draw_x_axis(a: &axis::ContinuousAxis, face_width: f64) -> node::element::Group {$/;"	f
+draw_y_axis	/home/ploppz/ugent/master/code/crates/plotlib/src/svg_render.rs	/^pub fn draw_y_axis(a: &axis::ContinuousAxis, face_height: f64) -> node::element::Group {$/;"	f
+drop	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    fn drop(&mut self) {$/;"	P	implementation:Error
+drop	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    fn drop(&mut self) {$/;"	f
+element	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^pub mod element;$/;"	n
+element_display	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    fn element_display() {$/;"	f
+element_display	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    fn element_display() {$/;"	f	module:tests
+element_display_quotes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    fn element_display_quotes() {$/;"	f
+element_display_quotes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    fn element_display_quotes() {$/;"	f	module:tests
+elliptical_arc_by	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn elliptical_arc_by(EllipticalArc, Relative)$/;"	f
+elliptical_arc_to	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn elliptical_arc_to(EllipticalArc, Absolute)$/;"	f
+ensure	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/macros.rs	/^macro_rules! ensure {$/;"	M
+ensure	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/macros.rs	/^macro_rules! ensure {$/;"	d
+err_msg	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error_message.rs	/^pub fn err_msg<D: Display + Debug + Sync + Send + 'static>(msg: D) -> Error {$/;"	f
+error	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^mod error;$/;"	n
+error_impl	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^mod error_impl;$/;"	n
+errors	/home/ploppz/ugent/master/code/crates/plotlib/src/lib.rs	/^mod errors;$/;"	n
+exercise	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^    fn exercise<'l>(mut parser: Parser<'l>) {$/;"	f
+exercise	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^    fn exercise<'l>(mut parser: Parser<'l>) {$/;"	f	module:tests
+fail	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fail: Option<&'f Fail>,$/;"	m	struct:Causes
+failure	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl.rs	/^    pub(crate) fn failure(&self) -> &Fail {$/;"	P	implementation:ErrorImpl
+failure	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    failure: F,$/;"	m	struct:InnerRaw
+failure	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    failure: FailData,$/;"	m	struct:Inner
+failure	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    pub(crate) fn failure(&self) -> &Fail {$/;"	P	implementation:ErrorImpl
+failure	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    failure: F,$/;"	m	struct:InnerRaw
+failure	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    failure: FailData,$/;"	m	struct:Inner
+failure	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    fn failure(&self) -> &Fail {$/;"	P	implementation:Inner
+failure	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    fn failure(&self) -> &Fail {$/;"	f
+failure_mut	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl.rs	/^    pub(crate) fn failure_mut(&mut self) -> &mut Fail {$/;"	P	implementation:ErrorImpl
+failure_mut	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    pub(crate) fn failure_mut(&mut self) -> &mut Fail {$/;"	P	implementation:ErrorImpl
+failure_mut	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    fn failure_mut(&mut self) -> &mut Fail {$/;"	P	implementation:Inner
+failure_mut	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    fn failure_mut(&mut self) -> &mut Fail {$/;"	f
+fill	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    fill: Option<String>,$/;"	m	struct:Style
+fill	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    fn fill<T>(&mut self, value: T) -> &mut Self$/;"	P	implementation:Style
+fill	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    fn fill<T>(&mut self, value: T) -> &mut Self$/;"	f
+fill	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    fill: Option<String>,$/;"	m	struct:Style
+fill	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    fn fill<T>(&mut self, value: T) -> &mut Self$/;"	P	implementation:Style
+fill	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    fn fill<T>(&mut self, value: T) -> &mut Self$/;"	f
+fill	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fill: Option<String>,$/;"	m	struct:Style
+fill	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn fill<T>(&mut self, value: T) -> &mut Self$/;"	P	implementation:Style
+fill	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn fill<T>(&mut self, value: T) -> &mut Self$/;"	f
+fill	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn fill<T>(&mut self, value: T) -> &mut Self$/;"	P	interface:Bar
+fill	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn fill<T>(&mut self, value: T) -> &mut Self$/;"	P	interface:BarChart
+fill	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn fill<T>(&mut self, value: T) -> &mut Self$/;"	P	interface:BoxPlot
+fill	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn fill<T>(&mut self, value: T) -> &mut Self$/;"	f
+find_root_cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn find_root_cause(&self) -> &Fail {$/;"	P	implementation:Error
+find_root_cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn find_root_cause(&self) -> &Fail {$/;"	f
+find_root_cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    pub fn find_root_cause(&self) -> &Fail {$/;"	P	implementation:Fail
+find_root_cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    pub fn find_root_cause(&self) -> &Fail {$/;"	f
+find_root_cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^fn find_root_cause(mut fail: &Fail) -> &Fail {$/;"	f
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {$/;"	P	implementation:InternalBacktrace
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {$/;"	f
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/mod.rs	/^        fn fmt(&self, _: &mut fmt::Formatter) -> fmt::Result {$/;"	f
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/mod.rs	/^        fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {$/;"	f
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/box_std.rs	/^    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {$/;"	P	implementation:BoxStd
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/box_std.rs	/^    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {$/;"	f
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/compat.rs	/^    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {$/;"	P	implementation:Compat
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/compat.rs	/^    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {$/;"	f
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/context.rs	/^        fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {$/;"	f
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {$/;"	P	implementation:Error
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {$/;"	f
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error_message.rs	/^    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {$/;"	P	implementation:ErrorMessage
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error_message.rs	/^    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {$/;"	f
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {$/;"	P	implementation:Error
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {$/;"	f
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/sync_failure.rs	/^    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {$/;"	f
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    fn fmt(&self, formatter: &mut fmt::Formatter) -> fmt::Result {$/;"	P	implementation:Element
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    fn fmt(&self, formatter: &mut fmt::Formatter) -> fmt::Result {$/;"	f
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^            fn fmt(&self, formatter: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {$/;"	f
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/text.rs	/^    fn fmt(&self, formatter: &mut fmt::Formatter) -> fmt::Result {$/;"	P	implementation:Text
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/text.rs	/^    fn fmt(&self, formatter: &mut fmt::Formatter) -> fmt::Result {$/;"	f
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^    fn fmt(&self, formatter: &mut fmt::Formatter) -> fmt::Result {$/;"	P	implementation:Value
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^    fn fmt(&self, formatter: &mut fmt::Formatter) -> fmt::Result {$/;"	f
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/error.rs	/^    fn fmt(&self, formatter: &mut fmt::Formatter) -> fmt::Result {$/;"	P	implementation:Error
+fmt	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/error.rs	/^    fn fmt(&self, formatter: &mut fmt::Formatter) -> fmt::Result {$/;"	f
+follows_general_if_failure_is_not_set	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    fn follows_general_if_failure_is_not_set() {$/;"	f
+follows_general_if_failure_is_not_set	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    fn follows_general_if_failure_is_not_set() {$/;"	f	module:tests
+footprint	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn footprint(&self) -> usize {$/;"	P	implementation:XAxisLabel
+footprint	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn footprint(&self) -> usize {$/;"	f
+format_err	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/macros.rs	/^macro_rules! format_err {$/;"	M
+format_err	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/macros.rs	/^macro_rules! format_err {$/;"	d
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/compat.rs	/^        fn from(error: Error) -> Box<StdError + Send + Sync> {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/compat.rs	/^        fn from(error: Error) -> Box<StdError> {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/context.rs	/^    fn from(display: D) -> Context<D> {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl.rs	/^    fn from(failure: F) -> ErrorImpl {$/;"	P	implementation:ErrorImpl
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl.rs	/^    fn from(failure: F) -> ErrorImpl {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    fn from(failure: F) -> ErrorImpl {$/;"	P	implementation:ErrorImpl
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    fn from(failure: F) -> ErrorImpl {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    fn from(failure: F) -> Error {$/;"	P	implementation:Error
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    fn from(failure: F) -> Error {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    fn from(failure: F) -> Error {$/;"	P	implementation:Error
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    fn from(failure: F) -> Error {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/command.rs	/^            fn from(command: Command) -> Self {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn from(Data(commands): Data) -> Self {$/;"	P	implementation:Vec
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn from(Data(commands): Data) -> Self {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn from(Data(mut inner): Data) -> Self {$/;"	P	implementation:Value
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn from(Data(mut inner): Data) -> Self {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn from(commands: Vec<Command>) -> Self {$/;"	P	implementation:Data
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn from(commands: Vec<Command>) -> Self {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^            fn from(inner: $primitive) -> Self {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^            fn from(inner: ($($t),*)) -> Self {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^    fn from(Parameters(inner): Parameters) -> Self {$/;"	P	implementation:String
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^    fn from(Parameters(inner): Parameters) -> Self {$/;"	P	implementation:Vec
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^    fn from(Parameters(inner): Parameters) -> Self {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^    fn from(inner: Vec<Number>) -> Self {$/;"	P	implementation:Parameters
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^    fn from(inner: Vec<Number>) -> Self {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^            fn from(inner: $primitive) -> Self {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^            fn from(inner: ($($t),*)) -> Self {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^    fn from(Value(inner): Value) -> Self {$/;"	P	implementation:String
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^    fn from(Value(inner): Value) -> Self {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^    fn from(inner: &'l str) -> Value {$/;"	P	implementation:Value
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^    fn from(inner: &'l str) -> Value {$/;"	f
+from	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^    fn from(mut inner: Vec<T>) -> Self {$/;"	f
+from_boxed_compat	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn from_boxed_compat(err: Box<StdError + Sync + Send + 'static>) -> Error {$/;"	P	implementation:Error
+from_boxed_compat	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn from_boxed_compat(err: Box<StdError + Sync + Send + 'static>) -> Error {$/;"	f
+from_slice	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    pub fn from_slice(v: &'a [(f64)]) -> Self {$/;"	P	implementation:BoxPlot
+from_slice	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    pub fn from_slice(v: &'a [(f64)]) -> Self {$/;"	f
+from_slice	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub fn from_slice(v: &[f64], bins: Bins) -> Histogram {$/;"	P	implementation:Histogram
+from_slice	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub fn from_slice(v: &[f64], bins: Bins) -> Histogram {$/;"	f
+from_slice	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    pub fn from_slice(v: &[(f64, f64)]) -> Self {$/;"	P	implementation:Scatter
+from_slice	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    pub fn from_slice(v: &[(f64, f64)]) -> Self {$/;"	f
+from_vec	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    pub fn from_vec(v: Vec<f64>) -> Self {$/;"	P	implementation:BoxPlot
+from_vec	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    pub fn from_vec(v: Vec<f64>) -> Self {$/;"	f
+function	/home/ploppz/ugent/master/code/crates/plotlib/src/lib.rs	/^pub mod function;$/;"	n
+generate_ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^fn generate_ticks(min: f64, max: f64, step_size: f64) -> Vec<f64> {$/;"	f
+get_colour	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn get_colour(&self) -> &Option<String> {$/;"	P	implementation:Style
+get_colour	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn get_colour(&self) -> &Option<String> {$/;"	f
+get_colour	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn get_colour(&self) -> &Option<String> {$/;"	P	implementation:Style
+get_colour	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn get_colour(&self) -> &Option<String> {$/;"	f
+get_colour	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn get_colour(&self) -> &Option<String> {$/;"	P	implementation:Style
+get_colour	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn get_colour(&self) -> &Option<String> {$/;"	f
+get_colour	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn get_colour(&self) -> &Option<String>;$/;"	P	interface:Line
+get_colour	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn get_colour(&self) -> &Option<String>;$/;"	P	interface:Point
+get_colour	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn get_colour(&self) -> &Option<String>;$/;"	f
+get_context	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/context.rs	/^        pub fn get_context(&self) -> &D {$/;"	f
+get_data	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    fn get_data(&'a self) -> &'a [f64] {$/;"	P	implementation:BoxPlot
+get_data	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    fn get_data(&'a self) -> &'a [f64] {$/;"	f
+get_fill	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    fn get_fill(&self) -> &Option<String> {$/;"	P	implementation:Style
+get_fill	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    fn get_fill(&self) -> &Option<String> {$/;"	f
+get_fill	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    fn get_fill(&self) -> &Option<String> {$/;"	P	implementation:Style
+get_fill	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    fn get_fill(&self) -> &Option<String> {$/;"	f
+get_fill	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn get_fill(&self) -> &Option<String> {$/;"	P	implementation:Style
+get_fill	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn get_fill(&self) -> &Option<String> {$/;"	f
+get_fill	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn get_fill(&self) -> &Option<String>;$/;"	P	interface:Bar
+get_fill	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn get_fill(&self) -> &Option<String>;$/;"	P	interface:BarChart
+get_fill	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn get_fill(&self) -> &Option<String>;$/;"	P	interface:BoxPlot
+get_fill	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn get_fill(&self) -> &Option<String>;$/;"	f
+get_label	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn get_label(&self) -> &str {$/;"	P	implementation:CategoricalAxis
+get_label	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn get_label(&self) -> &str {$/;"	P	implementation:ContinuousAxis
+get_label	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn get_label(&self) -> &str {$/;"	f
+get_label	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    pub fn get_label(&self) -> &String {$/;"	P	implementation:BarChart
+get_label	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    pub fn get_label(&self) -> &String {$/;"	f
+get_label	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    pub fn get_label(&self) -> &String {$/;"	P	implementation:BoxPlot
+get_label	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    pub fn get_label(&self) -> &String {$/;"	f
+get_marker	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn get_marker(&self) -> &Option<style::Marker> {$/;"	P	implementation:Style
+get_marker	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn get_marker(&self) -> &Option<style::Marker> {$/;"	f
+get_marker	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn get_marker(&self) -> &Option<Marker>;$/;"	P	interface:Point
+get_marker	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn get_marker(&self) -> &Option<Marker>;$/;"	f
+get_ref	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/compat.rs	/^    pub fn get_ref(&self) -> &E {$/;"	P	implementation:Compat
+get_ref	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/compat.rs	/^    pub fn get_ref(&self) -> &E {$/;"	f
+get_size	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn get_size(&self) -> &Option<f32> {$/;"	P	implementation:Style
+get_size	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn get_size(&self) -> &Option<f32> {$/;"	f
+get_size	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn get_size(&self) -> &Option<f32>;$/;"	P	interface:Point
+get_size	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn get_size(&self) -> &Option<f32>;$/;"	f
+get_style	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    pub fn get_style(&self) -> &Style {$/;"	P	implementation:BarChart
+get_style	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    pub fn get_style(&self) -> &Style {$/;"	f
+get_style	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    pub fn get_style(&self) -> &Style {$/;"	P	implementation:BoxPlot
+get_style	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    pub fn get_style(&self) -> &Style {$/;"	f
+get_style	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    pub fn get_style(&self) -> &Style {$/;"	P	implementation:Function
+get_style	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    pub fn get_style(&self) -> &Style {$/;"	f
+get_style	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub fn get_style(&self) -> &Style {$/;"	P	implementation:Histogram
+get_style	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub fn get_style(&self) -> &Style {$/;"	f
+get_style	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    pub fn get_style(&self) -> &Style {$/;"	P	implementation:Line
+get_style	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    pub fn get_style(&self) -> &Style {$/;"	f
+get_style	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    pub fn get_style(&self) -> &Style {$/;"	P	implementation:Scatter
+get_style	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    pub fn get_style(&self) -> &Style {$/;"	f
+get_value	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    fn get_value(&self) -> f64 {$/;"	P	implementation:BarChart
+get_value	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    fn get_value(&self) -> f64 {$/;"	f
+get_values	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub fn get_values(&self) -> &[f64] {$/;"	P	implementation:Histogram
+get_values	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub fn get_values(&self) -> &[f64] {$/;"	f
+get_width	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn get_width(&self) -> &Option<f32> {$/;"	P	implementation:Style
+get_width	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn get_width(&self) -> &Option<f32> {$/;"	f
+get_width	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn get_width(&self) -> &Option<f32> {$/;"	P	implementation:Style
+get_width	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn get_width(&self) -> &Option<f32> {$/;"	f
+get_width	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn get_width(&self) -> &Option<f32>;$/;"	P	interface:Line
+get_width	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn get_width(&self) -> &Option<f32>;$/;"	f
+h_type	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    h_type: HistogramType,$/;"	m	struct:Histogram
+header	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    header: InnerHeader,$/;"	m	struct:InnerRaw
+header	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    header: InnerHeader,$/;"	m	struct:InnerRaw
+histogram	/home/ploppz/ugent/master/code/crates/plotlib/src/lib.rs	/^pub mod histogram;$/;"	n
+horizontal_line_by	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn horizontal_line_by(HorizontalLine, Relative)$/;"	f
+horizontal_line_to	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn horizontal_line_to(HorizontalLine, Absolute)$/;"	f
+imp	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    imp: ErrorImpl,$/;"	m	struct:Error
+implement	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^macro_rules! implement {$/;"	M
+implement	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^macro_rules! implement {$/;"	d
+implement	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/command.rs	/^macro_rules! implement {$/;"	M
+implement	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/command.rs	/^macro_rules! implement {$/;"	d
+implement	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^macro_rules! implement {$/;"	M
+implement	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^macro_rules! implement {$/;"	d
+implement	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^macro_rules! implement {$/;"	M
+implement	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/parameters.rs	/^macro_rules! implement {$/;"	d
+implement	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^macro_rules! implement {$/;"	M
+implement	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^macro_rules! implement {$/;"	d
+implement	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^macro_rules! implement {$/;"	M
+implement	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^macro_rules! implement {$/;"	d
+initialize	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^                    fn initialize<$($pn: $($pt)*),*>($inner: &mut Element $(, $an: $at)*) $body$/;"	f
+inner	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl.rs	/^    inner: Box<Inner<Fail>>,$/;"	m	struct:ErrorImpl
+inner	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    inner: &'static mut Inner,$/;"	m	struct:ErrorImpl
+inner	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    inner: &'static mut Inner,$/;"	m	struct:Error
+inner	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/sync_failure.rs	/^    inner: Mutex<T>,$/;"	m	struct:SyncFailure
+into_inner	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/compat.rs	/^    pub fn into_inner(self) -> E {$/;"	P	implementation:Compat
+into_inner	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/compat.rs	/^    pub fn into_inner(self) -> E {$/;"	f
+is_backtrace_enabled	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^fn is_backtrace_enabled<F: Fn(&str) -> Option<OsString>>(get_var: F) -> bool {$/;"	f
+is_done	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn is_done(&self) -> bool {$/;"	P	implementation:Reader
+is_done	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn is_done(&self) -> bool {$/;"	f
+is_none	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    pub(super) fn is_none(&self) -> bool {$/;"	P	implementation:InternalBacktrace
+is_valid	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub(crate) fn is_valid(&self) -> bool {$/;"	P	implementation:Range
+iter_causes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn iter_causes(&self) -> Causes {$/;"	P	implementation:Error
+iter_causes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn iter_causes(&self) -> Causes {$/;"	f
+iter_causes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    pub fn iter_causes(&self) -> Causes {$/;"	P	implementation:Fail
+iter_causes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    pub fn iter_causes(&self) -> Causes {$/;"	f
+iter_chain	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn iter_chain(&self) -> Causes {$/;"	P	implementation:Error
+iter_chain	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn iter_chain(&self) -> Causes {$/;"	f
+iter_chain	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    pub fn iter_chain(&self) -> Causes {$/;"	P	implementation:Fail
+iter_chain	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    pub fn iter_chain(&self) -> Causes {$/;"	f
+label	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    label: String,$/;"	m	struct:CategoricalAxis
+label	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    label: String,$/;"	m	struct:ContinuousAxis
+label	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn label<S>(mut self, l: S) -> Self$/;"	P	implementation:CategoricalAxis
+label	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn label<S>(mut self, l: S) -> Self$/;"	P	implementation:ContinuousAxis
+label	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn label<S>(mut self, l: S) -> Self$/;"	f
+label	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    label: String,$/;"	m	struct:BarChart
+label	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    pub fn label<T>(mut self, label: T) -> Self$/;"	P	implementation:BarChart
+label	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    pub fn label<T>(mut self, label: T) -> Self$/;"	f
+label	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    label: String,$/;"	m	struct:BoxPlot
+label	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    pub fn label<T>(mut self, label: T) -> Self$/;"	P	implementation:BoxPlot
+label	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    pub fn label<T>(mut self, label: T) -> Self$/;"	f
+len	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn len(&self) -> usize {$/;"	P	implementation:XAxisLabel
+len	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn len(&self) -> usize {$/;"	f
+line	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/error.rs	/^    line: usize,$/;"	m	struct:Error
+line	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    line: usize,$/;"	m	struct:Reader
+line	/home/ploppz/ugent/master/code/crates/plotlib/src/lib.rs	/^pub mod line;$/;"	n
+line_by	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn line_by(Line, Relative)$/;"	f
+line_to	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn line_to(Line, Absolute)$/;"	f
+lower	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub lower: f64,$/;"	m	struct:Range
+map	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/context.rs	/^        pub fn map<F, T>(self, op: F) -> Context<T>$/;"	f
+marker	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn marker<T>(&mut self, value: T) -> &mut Self$/;"	P	implementation:Style
+marker	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn marker<T>(&mut self, value: T) -> &mut Self$/;"	f
+marker	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    marker: Option<style::Marker>,$/;"	m	struct:Style
+marker	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn marker<T>(&mut self, value: T) -> &mut Self$/;"	P	interface:Point
+marker	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn marker<T>(&mut self, value: T) -> &mut Self$/;"	f
+max	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn max(&self) -> f64 {$/;"	P	implementation:ContinuousAxis
+max	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn max(&self) -> f64 {$/;"	f
+median	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^pub fn median(s: &[f64]) -> f64 {$/;"	f
+message	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/error.rs	/^    message: String,$/;"	m	struct:Error
+methods_seem_to_work	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    fn methods_seem_to_work() {$/;"	f
+methods_seem_to_work	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    fn methods_seem_to_work() {$/;"	f	module:test
+methods_seem_to_work	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    fn methods_seem_to_work() {$/;"	f
+methods_seem_to_work	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    fn methods_seem_to_work() {$/;"	f	module:test
+min	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn min(&self) -> f64 {$/;"	P	implementation:ContinuousAxis
+min	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn min(&self) -> f64 {$/;"	f
+move_by	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn move_by(Move, Relative)$/;"	f
+move_to	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn move_to(Move, Absolute)$/;"	f
+msg	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error_message.rs	/^    msg: D,$/;"	m	struct:ErrorMessage
+name	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/context.rs	/^        fn name(&self) -> Option<&str> {$/;"	f
+name	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn name(&self) -> Option<&str> {$/;"	P	implementation:Error
+name	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn name(&self) -> Option<&str> {$/;"	f
+name	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error_message.rs	/^    fn name(&self) -> Option<&str> {$/;"	P	implementation:ErrorMessage
+name	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error_message.rs	/^    fn name(&self) -> Option<&str> {$/;"	f
+name	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn name(&self) -> Option<&str> {$/;"	P	interface:Fail
+name	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn name(&self) -> Option<&str> {$/;"	f
+name	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    name: String,$/;"	m	struct:Element
+never_enabled_if_failure_is_set_to_no	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    fn never_enabled_if_failure_is_set_to_no() {$/;"	f
+never_enabled_if_failure_is_set_to_no	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    fn never_enabled_if_failure_is_set_to_no() {$/;"	f	module:tests
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    pub(super) fn new() -> InternalBacktrace {$/;"	P	implementation:InternalBacktrace
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/mod.rs	/^        pub fn new() -> Backtrace {$/;"	f
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/context.rs	/^        pub fn new(context: D) -> Context<D> {$/;"	f
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/sync_failure.rs	/^    pub fn new(err: E) -> Self {$/;"	P	implementation:SyncFailure
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/sync_failure.rs	/^    pub fn new(err: E) -> Self {$/;"	f
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^                pub fn new<$($pn: $($pt)*),*>($($an: $at),*) -> Self {$/;"	f
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^            pub fn new() -> Self {$/;"	f
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    pub fn new<T>(name: T) -> Self$/;"	P	implementation:Element
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    pub fn new<T>(name: T) -> Self$/;"	f
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn new(content: &'l str) -> Self {$/;"	P	implementation:Parser
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn new(content: &'l str) -> Self {$/;"	f
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    pub fn new() -> Self {$/;"	P	implementation:Data
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    pub fn new() -> Self {$/;"	f
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn new(content: &'l str) -> Self {$/;"	P	implementation:Parser
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn new(content: &'l str) -> Self {$/;"	f
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/text.rs	/^    pub fn new<T>(content: T) -> Self$/;"	P	implementation:Text
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/text.rs	/^    pub fn new<T>(content: T) -> Self$/;"	f
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/error.rs	/^    pub fn new<T: Into<String>>((line, column): (usize, usize), message: T) -> Self {$/;"	P	implementation:Error
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/error.rs	/^    pub fn new<T: Into<String>>((line, column): (usize, usize), message: T) -> Self {$/;"	f
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    pub fn new<T>(content: T) -> Self$/;"	P	implementation:Parser
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    pub fn new<T>(content: T) -> Self$/;"	f
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn new(content: &'l str) -> Self {$/;"	P	implementation:Reader
+new	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn new(content: &'l str) -> Self {$/;"	f
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn new(lower: f64, upper: f64) -> ContinuousAxis {$/;"	P	implementation:ContinuousAxis
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn new(lower: f64, upper: f64) -> ContinuousAxis {$/;"	f
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn new(lower: f64, upper: f64) -> Range {$/;"	P	implementation:Range
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn new(lower: f64, upper: f64) -> Range {$/;"	f
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn new(ticks: &[String]) -> CategoricalAxis {$/;"	P	implementation:CategoricalAxis
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn new(ticks: &[String]) -> CategoricalAxis {$/;"	f
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    pub fn new() -> Self {$/;"	P	implementation:Style
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    pub fn new() -> Self {$/;"	f
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    pub fn new(v: f64) -> Self {$/;"	P	implementation:BarChart
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    pub fn new(v: f64) -> Self {$/;"	f
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    pub fn new() -> Self {$/;"	P	implementation:Style
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    pub fn new() -> Self {$/;"	f
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    pub fn new() -> Self {$/;"	P	implementation:Style
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    pub fn new() -> Self {$/;"	f
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    pub fn new<F>(f: F, lower: f64, upper: f64) -> Self$/;"	P	implementation:Function
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    pub fn new<F>(f: F, lower: f64, upper: f64) -> Self$/;"	f
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub fn new() -> Self {$/;"	P	implementation:Style
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub fn new() -> Self {$/;"	f
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    pub fn new() -> Self {$/;"	P	implementation:Style
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    pub fn new() -> Self {$/;"	f
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    pub fn new(data: Vec<(f64, f64)>) -> Self {$/;"	P	implementation:Line
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    pub fn new(data: Vec<(f64, f64)>) -> Self {$/;"	f
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    pub fn new() -> Self {$/;"	P	implementation:Style
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    pub fn new() -> Self {$/;"	f
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn new() -> CategoricalView<'a> {$/;"	P	implementation:CategoricalView
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn new() -> CategoricalView<'a> {$/;"	f
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn new() -> ContinuousView {$/;"	P	implementation:ContinuousView
+new	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn new() -> ContinuousView {$/;"	f
+next	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn next(&mut self) -> Option<&'f Fail> {$/;"	P	implementation:Causes
+next	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn next(&mut self) -> Option<&'f Fail> {$/;"	f
+next	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    fn next(&mut self) -> Option<Self::Item> {$/;"	P	implementation:Parser
+next	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    fn next(&mut self) -> Option<Self::Item> {$/;"	f
+next	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    fn next(&mut self) -> Option<char> {$/;"	P	implementation:Reader
+next	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    fn next(&mut self) -> Option<char> {$/;"	f
+next	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    fn next(&mut self) -> Option<f64> {$/;"	P	implementation:TickSteps
+next	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    fn next(&mut self) -> Option<f64> {$/;"	f
+next	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    next: f64,$/;"	m	struct:TickSteps
+next_tag	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    fn next_tag() {$/;"	f
+next_tag	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    fn next_tag() {$/;"	f	module:tests
+next_text	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    fn next_text() {$/;"	f
+next_text	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    fn next_text() {$/;"	f	module:tests
+node	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^pub mod node;$/;"	n
+node	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^macro_rules! node($/;"	M
+node	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^macro_rules! node($/;"	d
+none	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    pub(super) fn none() -> InternalBacktrace {$/;"	P	implementation:InternalBacktrace
+num_bins	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub fn num_bins(&self) -> usize {$/;"	P	implementation:Histogram
+num_bins	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub fn num_bins(&self) -> usize {$/;"	f
+num_views	/home/ploppz/ugent/master/code/crates/plotlib/src/page.rs	/^    num_views: u32,$/;"	m	struct:Page
+number_of_ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^fn number_of_ticks(min: f64, max: f64, step_size: f64) -> usize {$/;"	f
+offset	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    offset: usize,$/;"	m	struct:Reader
+offset	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    offset: i32,$/;"	m	struct:XAxisLabel
+open	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^    fn open() {$/;"	f
+open	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^    fn open() {$/;"	f	module:tests
+open	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^pub fn open<'l, T>(path: T) -> io::Result<Parser<'l>>$/;"	f
+overlay	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    pub fn overlay(&mut self, other: &Self) {$/;"	P	implementation:Style
+overlay	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    pub fn overlay(&mut self, other: &Self) {$/;"	f
+overlay	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    pub fn overlay(&mut self, other: &Self) {$/;"	P	implementation:Style
+overlay	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    pub fn overlay(&mut self, other: &Self) {$/;"	f
+overlay	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    pub fn overlay(&mut self, other: &Self) {$/;"	P	implementation:Style
+overlay	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    pub fn overlay(&mut self, other: &Self) {$/;"	f
+overlay	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub fn overlay(&mut self, other: &Self) {$/;"	P	implementation:Style
+overlay	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub fn overlay(&mut self, other: &Self) {$/;"	f
+overlay	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    pub fn overlay(&mut self, other: &Self) {$/;"	P	implementation:Style
+overlay	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    pub fn overlay(&mut self, other: &Self) {$/;"	f
+overlay	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    pub fn overlay(&mut self, other: &Self) {$/;"	P	implementation:Style
+overlay	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    pub fn overlay(&mut self, other: &Self) {$/;"	f
+overlay	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^pub fn overlay(under: &str, over: &str, x: i32, y: i32) -> String {$/;"	f
+page	/home/ploppz/ugent/master/code/crates/plotlib/src/lib.rs	/^pub mod page;$/;"	n
+pairwise	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^    fn pairwise(&self) -> Zip<Iter<T>, Skip<Iter<T>>> {$/;"	P	implementation:T
+pairwise	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^    fn pairwise(&self) -> Zip<Iter<T>, Skip<Iter<T>>> {$/;"	f
+pairwise	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^    fn pairwise(&self) -> Zip<Iter<T>, Skip<Iter<T>>>;$/;"	P	interface:PairWise
+pairwise	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^    fn pairwise(&self) -> Zip<Iter<T>, Skip<Iter<T>>>;$/;"	f
+parameters	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/mod.rs	/^mod parameters;$/;"	n
+parse	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    pub fn parse(content: &str) -> Result<Self> {$/;"	P	implementation:Data
+parse	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    pub fn parse(content: &str) -> Result<Self> {$/;"	f
+parse	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    pub fn parse(content: &'l str) -> Result<Tag<'l>> {$/;"	P	implementation:Tag
+parse	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    pub fn parse(content: &'l str) -> Result<Tag<'l>> {$/;"	f
+parser	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^pub mod parser;$/;"	n
+parser_process	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn parser_process() {$/;"	f
+parser_process	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn parser_process() {$/;"	f	module:tests
+parser_read_attribute	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn parser_read_attribute() {$/;"	f
+parser_read_attribute	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn parser_read_attribute() {$/;"	f	module:tests
+parser_read_command	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn parser_read_command() {$/;"	f
+parser_read_command	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn parser_read_command() {$/;"	f	module:tests
+parser_read_number	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn parser_read_number() {$/;"	f
+parser_read_number	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn parser_read_number() {$/;"	f	module:tests
+parser_read_parameters	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn parser_read_parameters() {$/;"	f
+parser_read_parameters	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn parser_read_parameters() {$/;"	f	module:tests
+path	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^pub mod path;$/;"	n
+peek	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn peek(&mut self) -> Option<char> {$/;"	P	implementation:Reader
+peek	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn peek(&mut self) -> Option<char> {$/;"	f
+position	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn position(&self) -> (usize, usize) {$/;"	P	implementation:Reader
+position	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^    pub fn position(&self) -> (usize, usize) {$/;"	f
+process	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn process(&mut self) -> Result<Data> {$/;"	P	implementation:Parser
+process	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn process(&mut self) -> Result<Data> {$/;"	f
+process	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn process(&mut self) -> Result<Tag<'l>> {$/;"	P	implementation:Parser
+process	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn process(&mut self) -> Result<Tag<'l>> {$/;"	f
+quadratic_curve_by	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn quadratic_curve_by(QuadraticCurve, Relative)$/;"	f
+quadratic_curve_to	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn quadratic_curve_to(QuadraticCurve, Absolute)$/;"	f
+quartiles	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^pub fn quartiles(s: &[f64]) -> (f64, f64, f64) {$/;"	f
+raise	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^macro_rules! raise($/;"	M
+raise	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^macro_rules! raise($/;"	d
+raise	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^macro_rules! raise($/;"	M
+raise	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^macro_rules! raise($/;"	d
+raise	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^macro_rules! raise($/;"	M
+raise	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^macro_rules! raise($/;"	d
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    range: Range,$/;"	m	struct:ContinuousAxis
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    fn range(&self) -> (f64, f64) {$/;"	P	implementation:BarChart
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    fn range(&self) -> (f64, f64) {$/;"	f
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    fn range(&self) -> (f64, f64) {$/;"	P	implementation:BoxPlot
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    fn range(&self) -> (f64, f64) {$/;"	f
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn range(&self, dim: u32) -> (f64, f64) {$/;"	P	implementation:Function
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn range(&self, dim: u32) -> (f64, f64) {$/;"	f
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn range(&self, dim: u32) -> (f64, f64) {$/;"	P	implementation:Histogram
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn range(&self, dim: u32) -> (f64, f64) {$/;"	f
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn range(&self, dim: u32) -> (f64, f64) {$/;"	P	implementation:Line
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn range(&self, dim: u32) -> (f64, f64) {$/;"	f
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/representation.rs	/^    fn range(&self) -> (f64, f64);$/;"	P	interface:CategoricalRepresentation
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/representation.rs	/^    fn range(&self) -> (f64, f64);$/;"	f
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/representation.rs	/^    fn range(&self, dim: u32) -> (f64, f64);$/;"	P	interface:ContinuousRepresentation
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/representation.rs	/^    fn range(&self, dim: u32) -> (f64, f64);$/;"	f
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn range(&self, dim: u32) -> (f64, f64) {$/;"	P	implementation:Scatter
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn range(&self, dim: u32) -> (f64, f64) {$/;"	f
+range	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^pub fn range(s: &[f64]) -> (f64, f64) {$/;"	f
+read	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^    fn read() {$/;"	f
+read	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^    fn read() {$/;"	f	module:tests
+read	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^pub fn read<'l, T>(source: T) -> io::Result<Parser<'l>>$/;"	f
+read_attribute	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn read_attribute(&mut self) -> Result<Option<(String, String)>> {$/;"	P	implementation:Parser
+read_attribute	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn read_attribute(&mut self) -> Result<Option<(String, String)>> {$/;"	f
+read_attributes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn read_attributes(&mut self) -> Result<Attributes> {$/;"	P	implementation:Parser
+read_attributes	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn read_attributes(&mut self) -> Result<Attributes> {$/;"	f
+read_command	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn read_command(&mut self) -> Result<Option<Command>> {$/;"	P	implementation:Parser
+read_command	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn read_command(&mut self) -> Result<Option<Command>> {$/;"	f
+read_end_tag	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn read_end_tag(&mut self) -> Result<Tag<'l>> {$/;"	P	implementation:Parser
+read_end_tag	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn read_end_tag(&mut self) -> Result<Tag<'l>> {$/;"	f
+read_internal	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^fn read_internal<'l, R>(mut source: R) -> io::Result<Parser<'l>>$/;"	f
+read_name	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn read_name(&mut self) -> Result<&'l str> {$/;"	P	implementation:Parser
+read_name	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn read_name(&mut self) -> Result<&'l str> {$/;"	f
+read_number	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    pub fn read_number(&mut self) -> Result<Option<Number>> {$/;"	P	implementation:Parser
+read_number	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    pub fn read_number(&mut self) -> Result<Option<Number>> {$/;"	f
+read_parameters	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn read_parameters(&mut self) -> Result<Vec<Number>> {$/;"	P	implementation:Parser
+read_parameters	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn read_parameters(&mut self) -> Result<Vec<Number>> {$/;"	f
+read_start_or_empty_tag	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn read_start_or_empty_tag(&mut self) -> Result<Tag<'l>> {$/;"	P	implementation:Parser
+read_start_or_empty_tag	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    fn read_start_or_empty_tag(&mut self) -> Result<Tag<'l>> {$/;"	f
+reader	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    reader: Reader<'l>,$/;"	m	struct:Parser
+reader	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^    reader: Reader<'l>,$/;"	m	struct:Parser
+reader	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^    reader: Reader<'l>,$/;"	m	struct:Parser
+reader	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^mod reader;$/;"	n
+render_face_bars	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^pub fn render_face_bars($/;"	f
+render_face_points	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^pub fn render_face_points<S>($/;"	f
+render_x_axis_strings	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^pub fn render_x_axis_strings(x_axis: &axis::ContinuousAxis, face_width: u32) -> (String, i32) {$/;"	f
+render_y_axis_strings	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^pub fn render_y_axis_strings(y_axis: &axis::ContinuousAxis, face_height: u32) -> (String, i32) {$/;"	f
+representation	/home/ploppz/ugent/master/code/crates/plotlib/src/lib.rs	/^pub mod representation;$/;"	n
+representations	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    representations: Vec<&'a CategoricalRepresentation>,$/;"	m	struct:CategoricalView
+representations	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    representations: Vec<Box<ContinuousRepresentation>>,$/;"	m	struct:ContinuousView
+resolved	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    resolved: Mutex<bool>,$/;"	m	struct:MaybeResolved
+result_ext	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^mod result_ext;$/;"	n
+root_cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn root_cause(&self) -> &Fail {$/;"	P	implementation:Error
+root_cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^    pub fn root_cause(&self) -> &Fail {$/;"	f
+root_cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn root_cause(&self) -> &Fail$/;"	P	interface:Fail
+root_cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    fn root_cause(&self) -> &Fail$/;"	f
+root_cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    pub fn root_cause(&self) -> &Fail {$/;"	P	implementation:Fail
+root_cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^    pub fn root_cause(&self) -> &Fail {$/;"	f
+root_cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn root_cause(&self) -> &Fail {$/;"	P	implementation:Error
+root_cause	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    pub fn root_cause(&self) -> &Fail {$/;"	f
+run	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^        macro_rules! run($/;"	M	function:tests::parser_read_command
+run	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^        macro_rules! run($/;"	d
+save	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^pub fn save<T, U>(path: T, document: &U) -> io::Result<()>$/;"	f
+save	/home/ploppz/ugent/master/code/crates/plotlib/src/page.rs	/^    pub fn save<P>(&self, path: P) -> Result<()>$/;"	P	implementation:Page
+save	/home/ploppz/ugent/master/code/crates/plotlib/src/page.rs	/^    pub fn save<P>(&self, path: P) -> Result<()>$/;"	f
+save	/home/ploppz/ugent/master/code/crates/plotlib/src/save.rs	/^    fn save<P>(&self, path: P) where P: AsRef<Path>;$/;"	P	interface:Save
+save	/home/ploppz/ugent/master/code/crates/plotlib/src/save.rs	/^    fn save<P>(&self, path: P) where P: AsRef<Path>;$/;"	f
+scaled_steps	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    fn scaled_steps(curr: f64) -> Vec<f64> {$/;"	P	implementation:TickSteps
+scaled_steps	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    fn scaled_steps(curr: f64) -> Vec<f64> {$/;"	f
+scatter	/home/ploppz/ugent/master/code/crates/plotlib/src/lib.rs	/^pub mod scatter;$/;"	n
+set	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^            pub fn set<T, U>(mut self, name: T, value: U) -> Self$/;"	f
+single	/home/ploppz/ugent/master/code/crates/plotlib/src/page.rs	/^    pub fn single(view: &'a View) -> Self {$/;"	P	implementation:Page
+single	/home/ploppz/ugent/master/code/crates/plotlib/src/page.rs	/^    pub fn single(view: &'a View) -> Self {$/;"	f
+size	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn size<T>(&mut self, value: T) -> &mut Self$/;"	P	implementation:Style
+size	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn size<T>(&mut self, value: T) -> &mut Self$/;"	f
+size	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    size: Option<f32>,$/;"	m	struct:Style
+size	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn size<T>(&mut self, value: T) -> &mut Self$/;"	P	interface:Point
+size	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn size<T>(&mut self, value: T) -> &mut Self$/;"	f
+smooth_cubic_curve_by	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn smooth_cubic_curve_by(SmoothCubicCurve, Relative)$/;"	f
+smooth_cubic_curve_to	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn smooth_cubic_curve_to(SmoothCubicCurve, Absolute)$/;"	f
+smooth_quadratic_curve_by	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn smooth_quadratic_curve_by(SmoothQuadraticCurve, Relative)$/;"	f
+smooth_quadratic_curve_to	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn smooth_quadratic_curve_to(SmoothQuadraticCurve, Absolute)$/;"	f
+start_at	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    fn start_at(start: f64) -> TickSteps {$/;"	P	implementation:TickSteps
+start_at	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    fn start_at(start: f64) -> TickSteps {$/;"	f
+start_offset	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn start_offset(&self) -> i32 {$/;"	P	implementation:XAxisLabel
+start_offset	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn start_offset(&self) -> i32 {$/;"	f
+str	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^    const TEST_PATH: &'static str = "tests\/fixtures\/benton.svg";$/;"	v	module:tests
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    pub fn style(mut self, style: &Style) -> Self {$/;"	P	implementation:BarChart
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    pub fn style(mut self, style: &Style) -> Self {$/;"	f
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    style: Style,$/;"	m	struct:BarChart
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    pub fn style(mut self, style: &Style) -> Self {$/;"	P	implementation:BoxPlot
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    pub fn style(mut self, style: &Style) -> Self {$/;"	f
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    style: Style,$/;"	m	struct:BoxPlot
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    pub fn style(mut self, style: &Style) -> Self {$/;"	P	implementation:Function
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    pub fn style(mut self, style: &Style) -> Self {$/;"	f
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    style: Style,$/;"	m	struct:Function
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub fn style(mut self, style: &Style) -> Self {$/;"	P	implementation:Histogram
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    pub fn style(mut self, style: &Style) -> Self {$/;"	f
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    style: Style,$/;"	m	struct:Histogram
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/lib.rs	/^pub mod style;$/;"	n
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    pub fn style(mut self, style: &Style) -> Self {$/;"	P	implementation:Line
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    pub fn style(mut self, style: &Style) -> Self {$/;"	f
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    style: Style,$/;"	m	struct:Line
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    pub fn style(mut self, style: &Style) -> Self {$/;"	P	implementation:Scatter
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    pub fn style(mut self, style: &Style) -> Self {$/;"	f
+style	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    style: Style,$/;"	m	struct:Scatter
+style_display	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    fn style_display() {$/;"	f
+style_display	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^    fn style_display() {$/;"	f	module:tests
+svg_render	/home/ploppz/ugent/master/code/crates/plotlib/src/lib.rs	/^mod svg_render;$/;"	n
+tag	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^pub mod tag;$/;"	n
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^mod test {$/;"	m
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^mod test {$/;"	n
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^mod test {$/;"	m
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/mod.rs	/^mod test {$/;"	n
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^mod test {$/;"	m
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^mod test {$/;"	n
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^        macro_rules! test($/;"	M	function:tests::exercise
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^        macro_rules! test($/;"	d
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^        macro_rules! test($/;"	M	function:tests::parser_read_command
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^        macro_rules! test($/;"	M	function:tests::parser_read_number
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^        macro_rules! test($/;"	M	function:tests::parser_read_parameters
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^        macro_rules! test($/;"	d
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^        macro_rules! test($/;"	M	function:tests::parser_process
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^        macro_rules! test($/;"	M	function:tests::parser_read_attribute
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^        macro_rules! test($/;"	d
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^        macro_rules! test($/;"	M	function:tests::next_tag
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^        macro_rules! test($/;"	M	function:tests::next_text
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^        macro_rules! test($/;"	d
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^        macro_rules! test($/;"	M	function:tests::consume_attribute
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^        macro_rules! test($/;"	M	function:tests::consume_name
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^        macro_rules! test($/;"	M	function:tests::consume_number
+test	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^        macro_rules! test($/;"	d
+test_bins_for_cells	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn test_bins_for_cells() {$/;"	f
+test_bins_for_cells	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn test_bins_for_cells() {$/;"	f	module:tests
+test_calculate_tick_step_for_range	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    fn test_calculate_tick_step_for_range() {$/;"	f
+test_calculate_tick_step_for_range	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    fn test_calculate_tick_step_for_range() {$/;"	f	module:tests
+test_calculate_ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    fn test_calculate_ticks() {$/;"	f
+test_calculate_ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    fn test_calculate_ticks() {$/;"	f	module:tests
+test_enabled	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    macro_rules! test_enabled {$/;"	M	module:tests
+test_enabled	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^    macro_rules! test_enabled {$/;"	d
+test_histogram_define_bin_bounds	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn test_histogram_define_bin_bounds() {$/;"	f
+test_histogram_define_bin_bounds	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn test_histogram_define_bin_bounds() {$/;"	f	module:tests
+test_histogram_from_slice	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn test_histogram_from_slice() {$/;"	f
+test_histogram_from_slice	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn test_histogram_from_slice() {$/;"	f	module:tests
+test_map	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/context.rs	/^    fn test_map() {$/;"	f
+test_mean	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^    fn test_mean() {$/;"	f
+test_mean	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^    fn test_mean() {$/;"	f	module:tests
+test_median	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^    fn test_median() {$/;"	f
+test_median	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^    fn test_median() {$/;"	f	module:tests
+test_number_of_ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    fn test_number_of_ticks() {$/;"	f
+test_number_of_ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    fn test_number_of_ticks() {$/;"	f	module:tests
+test_overlay	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn test_overlay() {$/;"	f
+test_overlay	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn test_overlay() {$/;"	f	module:tests
+test_pairwise	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^    fn test_pairwise() {$/;"	f
+test_pairwise	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^    fn test_pairwise() {$/;"	f	module:tests
+test_quartiles	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^    fn test_quartiles() {$/;"	f
+test_quartiles	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^    fn test_quartiles() {$/;"	f	module:tests
+test_render_face_bars	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn test_render_face_bars() {$/;"	f
+test_render_face_bars	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn test_render_face_bars() {$/;"	f	module:tests
+test_render_face_points	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn test_render_face_points() {$/;"	f
+test_render_face_points	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn test_render_face_points() {$/;"	f	module:tests
+test_render_x_axis_strings	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn test_render_x_axis_strings() {$/;"	f
+test_render_x_axis_strings	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn test_render_x_axis_strings() {$/;"	f	module:tests
+test_render_y_axis_strings	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn test_render_y_axis_strings() {$/;"	f
+test_render_y_axis_strings	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn test_render_y_axis_strings() {$/;"	f	module:tests
+test_tick_step_generator	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    fn test_tick_step_generator() {$/;"	f
+test_tick_step_generator	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    fn test_tick_step_generator() {$/;"	f	module:tests
+test_todo	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    fn test_todo() {$/;"	f
+test_todo	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    fn test_todo() {$/;"	f	module:tests
+test_value_to_axis_cell_offset	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn test_value_to_axis_cell_offset() {$/;"	f
+test_value_to_axis_cell_offset	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn test_value_to_axis_cell_offset() {$/;"	f	module:tests
+test_value_to_face_offset	/home/ploppz/ugent/master/code/crates/plotlib/src/svg_render.rs	/^    fn test_value_to_face_offset() {$/;"	f
+test_value_to_face_offset	/home/ploppz/ugent/master/code/crates/plotlib/src/svg_render.rs	/^    fn test_value_to_face_offset() {$/;"	f	module:tests
+test_x_axis_label	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn test_x_axis_label() {$/;"	f
+test_x_axis_label	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    fn test_x_axis_label() {$/;"	f	module:tests
+tests	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^mod tests {$/;"	m
+tests	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/internal.rs	/^mod tests {$/;"	n
+tests	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^mod tests {$/;"	m
+tests	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^mod tests {$/;"	n
+tests	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^mod tests {$/;"	m
+tests	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/mod.rs	/^mod tests {$/;"	n
+tests	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^mod tests {$/;"	m
+tests	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^mod tests {$/;"	n
+tests	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^mod tests {$/;"	m
+tests	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/tag.rs	/^mod tests {$/;"	n
+tests	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^mod tests {$/;"	m
+tests	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^mod tests {$/;"	n
+tests	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^mod tests {$/;"	m
+tests	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/mod.rs	/^mod tests {$/;"	n
+tests	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^mod tests {$/;"	m
+tests	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/parser/reader.rs	/^mod tests {$/;"	n
+tests	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^mod tests {$/;"	m
+tests	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^mod tests {$/;"	n
+tests	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^mod tests {$/;"	m
+tests	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^mod tests {$/;"	n
+tests	/home/ploppz/ugent/master/code/crates/plotlib/src/svg_render.rs	/^mod tests {$/;"	m
+tests	/home/ploppz/ugent/master/code/crates/plotlib/src/svg_render.rs	/^mod tests {$/;"	n
+tests	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^mod tests {$/;"	m
+tests	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^mod tests {$/;"	n
+tests	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^mod tests {$/;"	m
+tests	/home/ploppz/ugent/master/code/crates/plotlib/src/utils.rs	/^mod tests {$/;"	n
+text	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^mod text;$/;"	n
+text	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^    text: String,$/;"	m	struct:XAxisLabel
+text_render	/home/ploppz/ugent/master/code/crates/plotlib/src/lib.rs	/^mod text_render;$/;"	n
+tick_offset_map	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^fn tick_offset_map(axis: &axis::ContinuousAxis, face_width: u32) -> HashMap<i32, f64> {$/;"	f
+ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn ticks(&self) -> &Vec<String> {$/;"	P	implementation:CategoricalAxis
+ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn ticks(&self) -> &Vec<String> {$/;"	f
+ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn ticks(&self) -> &Vec<f64> {$/;"	P	implementation:ContinuousAxis
+ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub fn ticks(&self) -> &Vec<f64> {$/;"	f
+ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    ticks: Vec<String>,$/;"	m	struct:CategoricalAxis
+ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    ticks: Vec<f64>,$/;"	m	struct:ContinuousAxis
+ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    fn ticks(&self) -> Vec<String> {$/;"	P	implementation:BarChart
+ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    fn ticks(&self) -> Vec<String> {$/;"	f
+ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    fn ticks(&self) -> Vec<String> {$/;"	P	implementation:BoxPlot
+ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    fn ticks(&self) -> Vec<String> {$/;"	f
+ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/representation.rs	/^    fn ticks(&self) -> Vec<String>;$/;"	P	interface:CategoricalRepresentation
+ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/representation.rs	/^    fn ticks(&self) -> Vec<String>;$/;"	f
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    fn to_svg($/;"	P	implementation:BarChart
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    fn to_svg($/;"	f
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    fn to_svg($/;"	P	implementation:BoxPlot
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    fn to_svg($/;"	f
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn to_svg($/;"	P	implementation:Function
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn to_svg($/;"	f
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn to_svg($/;"	P	implementation:Histogram
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn to_svg($/;"	f
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn to_svg($/;"	P	implementation:Line
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn to_svg($/;"	f
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/page.rs	/^    pub fn to_svg(&self) -> Result<svg::Document> {$/;"	P	implementation:Page
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/page.rs	/^    pub fn to_svg(&self) -> Result<svg::Document> {$/;"	f
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/render.rs	/^    fn to_svg(&self) -> svg_render::SVG {$/;"	P	implementation:Histogram
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/render.rs	/^    fn to_svg(&self) -> svg_render::SVG {$/;"	P	implementation:Scatter
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/render.rs	/^    fn to_svg(&self) -> svg_render::SVG {$/;"	f
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/render.rs	/^    fn to_svg(&self) -> svg_render::SVG;$/;"	P	interface:Render
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/render.rs	/^    fn to_svg(&self) -> svg_render::SVG;$/;"	f
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/representation.rs	/^    fn to_svg($/;"	P	interface:CategoricalRepresentation
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/representation.rs	/^    fn to_svg($/;"	P	interface:ContinuousRepresentation
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/representation.rs	/^    fn to_svg($/;"	f
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn to_svg($/;"	P	implementation:Scatter
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn to_svg($/;"	f
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn to_svg(&self, face_width: f64, face_height: f64) -> Result<svg::node::element::Group> {$/;"	P	implementation:CategoricalView
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn to_svg(&self, face_width: f64, face_height: f64) -> Result<svg::node::element::Group> {$/;"	P	implementation:ContinuousView
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn to_svg(&self, face_width: f64, face_height: f64) -> Result<svg::node::element::Group> {$/;"	f
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn to_svg(&self, face_width: f64, face_height: f64) -> Result<svg::node::element::Group>;$/;"	P	interface:View
+to_svg	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn to_svg(&self, face_width: f64, face_height: f64) -> Result<svg::node::element::Group>;$/;"	f
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    fn to_text($/;"	P	implementation:BarChart
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    fn to_text($/;"	f
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    fn to_text($/;"	P	implementation:BoxPlot
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/boxplot.rs	/^    fn to_text($/;"	f
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn to_text($/;"	P	implementation:Function
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn to_text($/;"	f
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn to_text($/;"	P	implementation:Histogram
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn to_text($/;"	f
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn to_text($/;"	P	implementation:Line
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn to_text($/;"	f
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/page.rs	/^    pub fn to_text(&self) -> Result<String> {$/;"	P	implementation:Page
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/page.rs	/^    pub fn to_text(&self) -> Result<String> {$/;"	f
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/render.rs	/^    fn to_text(&self) -> text_render::Text {$/;"	P	implementation:Histogram
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/render.rs	/^    fn to_text(&self) -> text_render::Text {$/;"	P	implementation:Scatter
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/render.rs	/^    fn to_text(&self) -> text_render::Text {$/;"	f
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/render.rs	/^    fn to_text(&self) -> text_render::Text;$/;"	P	interface:Render
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/render.rs	/^    fn to_text(&self) -> text_render::Text;$/;"	f
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/representation.rs	/^    fn to_text($/;"	P	interface:CategoricalRepresentation
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/representation.rs	/^    fn to_text($/;"	P	interface:ContinuousRepresentation
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/representation.rs	/^    fn to_text($/;"	f
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn to_text($/;"	P	implementation:Scatter
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn to_text($/;"	f
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn to_text(&self, _face_width: u32, _face_height: u32) -> Result<String> {$/;"	P	implementation:CategoricalView
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn to_text(&self, _face_width: u32, _face_height: u32) -> Result<String> {$/;"	f
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn to_text(&self, face_width: u32, face_height: u32) -> Result<String> {$/;"	P	implementation:ContinuousView
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn to_text(&self, face_width: u32, face_height: u32) -> Result<String> {$/;"	f
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn to_text(&self, face_width: u32, face_height: u32) -> Result<String>;$/;"	P	interface:View
+to_text	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    fn to_text(&self, face_width: u32, face_height: u32) -> Result<String>;$/;"	f
+upper	/home/ploppz/ugent/master/code/crates/plotlib/src/axis.rs	/^    pub upper: f64,$/;"	m	struct:Range
+utils	/home/ploppz/ugent/master/code/crates/plotlib/src/lib.rs	/^mod utils;$/;"	n
+value	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/mod.rs	/^mod value;$/;"	n
+value	/home/ploppz/ugent/master/code/crates/plotlib/src/barchart.rs	/^    value: f64,$/;"	m	struct:BarChart
+value_from_vector	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^    fn value_from_vector() {$/;"	f
+value_from_vector	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/value.rs	/^    fn value_from_vector() {$/;"	f	module:tests
+value_to_axis_cell_offset	/home/ploppz/ugent/master/code/crates/plotlib/src/text_render.rs	/^fn value_to_axis_cell_offset(value: f64, axis: &axis::ContinuousAxis, face_cells: u32) -> i32 {$/;"	f
+value_to_face_offset	/home/ploppz/ugent/master/code/crates/plotlib/src/svg_render.rs	/^fn value_to_face_offset(value: f64, axis: &axis::ContinuousAxis, face_size: f64) -> f64 {$/;"	f
+vertical_line_by	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn vertical_line_by(VerticalLine, Relative)$/;"	f
+vertical_line_to	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/node/element/path/data.rs	/^    fn vertical_line_to(VerticalLine, Absolute)$/;"	f
+view	/home/ploppz/ugent/master/code/crates/plotlib/src/lib.rs	/^pub mod view;$/;"	n
+views	/home/ploppz/ugent/master/code/crates/plotlib/src/page.rs	/^    views: Vec<&'a View>,$/;"	m	struct:Page
+vtable	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    vtable: *const VTable,$/;"	m	struct:Inner
+vtable	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    vtable: *const VTable,$/;"	m	struct:InnerHeader
+vtable	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/error/error_impl_small.rs	/^    vtable: *const VTable,$/;"	m	struct:TraitObject
+vtable	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    vtable: *const VTable,$/;"	m	struct:Inner
+vtable	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    vtable: *const VTable,$/;"	m	struct:InnerHeader
+vtable	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/small_error.rs	/^    vtable: *const VTable,$/;"	m	struct:TraitObject
+width	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn width<T>(&mut self, value: T) -> &mut Self$/;"	P	implementation:Style
+width	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn width<T>(&mut self, value: T) -> &mut Self$/;"	f
+width	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    width: Option<f32>,$/;"	m	struct:Style
+width	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn width<T>(&mut self, value: T) -> &mut Self$/;"	P	implementation:Style
+width	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn width<T>(&mut self, value: T) -> &mut Self$/;"	f
+width	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    width: Option<f32>,$/;"	m	struct:Style
+width	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn width<T>(&mut self, value: T) -> &mut Self$/;"	P	interface:Line
+width	/home/ploppz/ugent/master/code/crates/plotlib/src/style.rs	/^    fn width<T>(&mut self, value: T) -> &mut Self$/;"	f
+with_backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/mod.rs	/^macro_rules! with_backtrace { ($($i:item)*) => ($(#[cfg(all(feature = "backtrace", feature = "st/;"	M
+with_backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/mod.rs	/^macro_rules! with_backtrace { ($($i:item)*) => ($(#[cfg(all(feature = "backtrace", feature = "st/;"	d
+with_context	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/result_ext.rs	/^        fn with_context<F, D>(self, f: F) -> Result<T, Context<D>> where$/;"	f
+with_context	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/result_ext.rs	/^    fn with_context<F, D>(self, f: F) -> Result<T, Context<D>>$/;"	P	interface:ResultExt
+with_context	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/result_ext.rs	/^    fn with_context<F, D>(self, f: F) -> Result<T, Context<D>>$/;"	f
+with_std	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^macro_rules! with_std { ($($i:item)*) => ($(#[cfg(feature = "std")]$i)*) }$/;"	M
+with_std	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^macro_rules! with_std { ($($i:item)*) => ($(#[cfg(feature = "std")]$i)*) }$/;"	d
+without_backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/mod.rs	/^macro_rules! without_backtrace { ($($i:item)*) => ($(#[cfg(not(all(feature = "backtrace", featur/;"	M
+without_backtrace	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/backtrace/mod.rs	/^macro_rules! without_backtrace { ($($i:item)*) => ($(#[cfg(not(all(feature = "backtrace", featur/;"	d
+without_std	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^macro_rules! without_std { ($($i:item)*) => ($(#[cfg(not(feature = "std"))]$i)*) }$/;"	M
+without_std	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/failure-0.1.5/src/lib.rs	/^macro_rules! without_std { ($($i:item)*) => ($(#[cfg(not(feature = "std"))]$i)*) }$/;"	d
+write	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^pub fn write<T, U>(target: T, document: &U) -> io::Result<()>$/;"	f
+write_internal	/home/ploppz/.cargo/registry/src/github.com-1ecc6299db9ec823/svg-0.5.12/src/lib.rs	/^fn write_internal<T, U>(mut target: T, document: &U) -> io::Result<()>$/;"	f
+x_label	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn x_label<T>(mut self, value: T) -> Self$/;"	P	implementation:CategoricalView
+x_label	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn x_label<T>(mut self, value: T) -> Self$/;"	P	implementation:ContinuousView
+x_label	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn x_label<T>(mut self, value: T) -> Self$/;"	f
+x_label	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    x_label: Option<String>,$/;"	m	struct:CategoricalView
+x_label	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    x_label: Option<String>,$/;"	m	struct:ContinuousView
+x_range	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn x_range(&self) -> (f64, f64) {$/;"	P	implementation:Function
+x_range	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn x_range(&self) -> (f64, f64) {$/;"	f
+x_range	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn x_range(&self) -> (f64, f64) {$/;"	P	implementation:Histogram
+x_range	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn x_range(&self) -> (f64, f64) {$/;"	f
+x_range	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn x_range(&self) -> (f64, f64) {$/;"	P	implementation:Line
+x_range	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn x_range(&self) -> (f64, f64) {$/;"	f
+x_range	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn x_range(&self) -> (f64, f64) {$/;"	P	implementation:Scatter
+x_range	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn x_range(&self) -> (f64, f64) {$/;"	f
+x_range	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn x_range(mut self, min: f64, max: f64) -> Self {$/;"	P	implementation:ContinuousView
+x_range	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn x_range(mut self, min: f64, max: f64) -> Self {$/;"	f
+x_range	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    x_range: Option<Vec<String>>,$/;"	m	struct:CategoricalView
+x_range	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    x_range: Option<axis::Range>,$/;"	m	struct:ContinuousView
+x_ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn x_ticks(mut self, ticks: &[String]) -> Self {$/;"	P	implementation:CategoricalView
+x_ticks	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn x_ticks(mut self, ticks: &[String]) -> Self {$/;"	f
+y_label	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn y_label<T>(mut self, value: T) -> Self$/;"	P	implementation:CategoricalView
+y_label	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn y_label<T>(mut self, value: T) -> Self$/;"	P	implementation:ContinuousView
+y_label	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn y_label<T>(mut self, value: T) -> Self$/;"	f
+y_label	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    y_label: Option<String>,$/;"	m	struct:CategoricalView
+y_label	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    y_label: Option<String>,$/;"	m	struct:ContinuousView
+y_range	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn y_range(&self) -> (f64, f64) {$/;"	P	implementation:Function
+y_range	/home/ploppz/ugent/master/code/crates/plotlib/src/function.rs	/^    fn y_range(&self) -> (f64, f64) {$/;"	f
+y_range	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn y_range(&self) -> (f64, f64) {$/;"	P	implementation:Histogram
+y_range	/home/ploppz/ugent/master/code/crates/plotlib/src/histogram.rs	/^    fn y_range(&self) -> (f64, f64) {$/;"	f
+y_range	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn y_range(&self) -> (f64, f64) {$/;"	P	implementation:Line
+y_range	/home/ploppz/ugent/master/code/crates/plotlib/src/line.rs	/^    fn y_range(&self) -> (f64, f64) {$/;"	f
+y_range	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn y_range(&self) -> (f64, f64) {$/;"	P	implementation:Scatter
+y_range	/home/ploppz/ugent/master/code/crates/plotlib/src/scatter.rs	/^    fn y_range(&self) -> (f64, f64) {$/;"	f
+y_range	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn y_range(mut self, min: f64, max: f64) -> Self {$/;"	P	implementation:CategoricalView
+y_range	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn y_range(mut self, min: f64, max: f64) -> Self {$/;"	P	implementation:ContinuousView
+y_range	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    pub fn y_range(mut self, min: f64, max: f64) -> Self {$/;"	f
+y_range	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    y_range: Option<axis::Range>,$/;"	m	struct:CategoricalView
+y_range	/home/ploppz/ugent/master/code/crates/plotlib/src/view.rs	/^    y_range: Option<axis::Range>,$/;"	m	struct:ContinuousView

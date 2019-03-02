@@ -5,7 +5,7 @@ Plot arbitrary functions
 # Examples
 
 ```
-# use plotlib::function::Function;
+# use plotlib::repr::Function;
 # use plotlib::view::ContinuousView;
 // y=x^2 between 0 and 10
 let f = Function::new(|x| x*x, 0., 10.);
@@ -100,7 +100,8 @@ impl ContinuousRepr for Function {
     }
 
     fn legend_svg(&self) -> Option<svg::node::element::Group> {
-        unimplemented!()
+        // TODO implement
+        None
     }
 
     fn to_text(

@@ -166,7 +166,8 @@ impl ContinuousRepr for Histogram {
     }
 
     fn legend_svg(&self) -> Option<svg::node::element::Group> {
-        unimplemented!()
+        // TODO implement
+        None
     }
 
     fn to_text(
