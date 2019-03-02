@@ -160,6 +160,14 @@ impl<'a> View for ContinuousView<'a> {
 
         let (x_axis, y_axis) = self.create_axes()?;
 
+        if let Some(grid) = &self.grid {
+            view_group.append(svg_render::draw_grid(
+                GridType::Both(grid),
+                face_width,
+                face_height,
+            ));
+        }
+
         // Then, based on those ranges, draw each repr as an SVG
         for repr in &self.representations {
             let repr_group = repr.to_svg(&x_axis, &y_axis, face_width, face_height);
@@ -169,14 +177,6 @@ impl<'a> View for ContinuousView<'a> {
         // Add in the axes
         view_group.append(svg_render::draw_x_axis(&x_axis, face_width));
         view_group.append(svg_render::draw_y_axis(&y_axis, face_height));
-
-        if let Some(grid) = &self.grid {
-            view_group.append(svg_render::draw_grid(
-                GridType::Both(grid),
-                face_width,
-                face_height,
-            ));
-        }
 
         Ok(view_group)
     }
@@ -364,6 +364,14 @@ impl<'a> View for CategoricalView<'a> {
 
         let (x_axis, y_axis) = self.create_axes()?;
 
+        if let Some(grid) = &self.grid {
+            view_group.append(svg_render::draw_grid(
+                GridType::HorizontalOnly(grid),
+                face_width,
+                face_height,
+            ));
+        }
+
         // Then, based on those ranges, draw each repr as an SVG
         for repr in &self.representations {
             let repr_group = repr.to_svg(&x_axis, &y_axis, face_width, face_height);
@@ -373,14 +381,6 @@ impl<'a> View for CategoricalView<'a> {
         // Add in the axes
         view_group.append(svg_render::draw_categorical_x_axis(&x_axis, face_width));
         view_group.append(svg_render::draw_y_axis(&y_axis, face_height));
-
-        if let Some(grid) = &self.grid {
-            view_group.append(svg_render::draw_grid(
-                GridType::HorizontalOnly(grid),
-                face_width,
-                face_height,
-            ));
-        }
 
         Ok(view_group)
     }
