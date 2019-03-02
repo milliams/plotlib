@@ -25,14 +25,21 @@ pub struct Page<'a> {
 
 impl<'a> Page<'a> {
     /**
+    Creates an empty page container for plots to be added to
+    */
+    pub fn empty() -> Self {
+        Page {
+            views: Vec::new(),
+            num_views: 0,
+            dimensions: (600, 400),
+        }
+    }
+
+    /**
     Creates a plot containing a single view
     */
     pub fn single(view: &'a View) -> Self {
-        Page {
-            views: vec![view],
-            num_views: 1,
-            dimensions: (600, 400),
-        }
+        Page::empty().add_plot(view)
     }
 
     /// Set the dimensions of the plot.

@@ -4,6 +4,7 @@ use svg::node;
 use svg::Node;
 
 use crate::axis;
+use crate::grid::GridType;
 use crate::histogram;
 use crate::style;
 use crate::utils;
@@ -14,14 +15,34 @@ fn value_to_face_offset(value: f64, axis: &axis::ContinuousAxis, face_size: f64)
     (face_size * (value - axis.min())) / range
 }
 
+fn vertical_line<S>(xpos: f64, ymin: f64, ymax: f64, color: S) -> node::element::Line
+where
+    S: AsRef<str>,
+{
+    node::element::Line::new()
+        .set("x1", xpos)
+        .set("x2", xpos)
+        .set("y1", ymin)
+        .set("y2", ymax)
+        .set("stroke", color.as_ref())
+        .set("stroke-width", 1)
+}
+
+fn horizontal_line<S>(ypos: f64, xmin: f64, xmax: f64, color: S) -> node::element::Line
+where
+    S: AsRef<str>,
+{
+    node::element::Line::new()
+        .set("x1", xmin)
+        .set("x2", xmax)
+        .set("y1", ypos)
+        .set("y2", ypos)
+        .set("stroke", color.as_ref())
+        .set("stroke-width", 1)
+}
+
 pub fn draw_x_axis(a: &axis::ContinuousAxis, face_width: f64) -> node::element::Group {
-    let axis_line = node::element::Line::new()
-        .set("x1", 0)
-        .set("y1", 0)
-        .set("x2", face_width)
-        .set("y2", 0)
-        .set("stroke", "black")
-        .set("stroke-width", 1);
+    let axis_line = horizontal_line(0.0, 0.0, face_width, "black");
 
     let mut ticks = node::element::Group::new();
     let mut labels = node::element::Group::new();
@@ -61,13 +82,7 @@ pub fn draw_x_axis(a: &axis::ContinuousAxis, face_width: f64) -> node::element::
 }
 
 pub fn draw_y_axis(a: &axis::ContinuousAxis, face_height: f64) -> node::element::Group {
-    let axis_line = node::element::Line::new()
-        .set("x1", 0)
-        .set("y1", 0)
-        .set("x2", 0)
-        .set("y2", -face_height)
-        .set("stroke", "black")
-        .set("stroke-0", 1);
+    let axis_line = vertical_line(0.0, 0.0, -face_height, "black");
 
     let mut ticks = node::element::Group::new();
     let mut labels = node::element::Group::new();
@@ -101,7 +116,8 @@ pub fn draw_y_axis(a: &axis::ContinuousAxis, face_height: f64) -> node::element:
         .set(
             "transform",
             format!("rotate(-90 {} {})", -30, -(face_height / 2.)),
-        ).add(node::Text::new(a.get_label()));
+        )
+        .add(node::Text::new(a.get_label()));
 
     node::element::Group::new()
         .add(ticks)
@@ -214,7 +230,8 @@ where
                         .set(
                             "stroke",
                             style.get_colour().clone().unwrap_or_else(|| "".into()),
-                        ).set("stroke-width", 2)
+                        )
+                        .set("stroke-width", 2)
                         .set("d", path),
                 );
             }
@@ -253,7 +270,8 @@ where
                     .get_fill()
                     .clone()
                     .unwrap_or_else(|| "burlywood".into()),
-            ).set("stroke", "black");
+            )
+            .set("stroke", "black");
         group.append(rect);
     }
 
@@ -298,7 +316,8 @@ where
             .set(
                 "stroke",
                 style.get_colour().clone().unwrap_or_else(|| "".into()),
-            ).set("stroke-width", style.get_width().clone().unwrap_or(2.))
+            )
+            .set("stroke-width", style.get_width().clone().unwrap_or(2.))
             .set("d", path),
     );
 
@@ -344,7 +363,8 @@ where
                     .get_fill()
                     .clone()
                     .unwrap_or_else(|| "burlywood".into()),
-            ).set("stroke", "black"),
+            )
+            .set("stroke", "black"),
     );
 
     let mid_line = -value_to_face_offset(median, y_axis, face_height);
@@ -421,10 +441,52 @@ where
                     .get_fill()
                     .clone()
                     .unwrap_or_else(|| "burlywood".into()),
-            ).set("stroke", "black"),
+            )
+            .set("stroke", "black"),
     );
 
     group
+}
+
+pub(crate) fn draw_grid(grid: GridType, face_width: f64, face_height: f64) -> node::element::Group {
+    match grid {
+        GridType::HorizontalOnly(grid) => {
+            let (ymin, ymax) = (0f64, face_height);
+            let y_step = (ymax - ymin) / f64::from(grid.ny);
+            let mut lines = node::element::Group::new();
+
+            for iy in 0..=grid.ny {
+                let y = f64::from(iy) * y_step + ymin;
+                let line = horizontal_line(-y, 0.0, face_width, grid.color.as_str());
+                lines = lines.add(line);
+            }
+
+            lines
+        }
+        GridType::Both(grid) => {
+            let (xmin, xmax) = (0f64, face_width);
+            let (ymin, ymax) = (0f64, face_height);
+
+            let x_step = (xmax - xmin) / f64::from(grid.nx);
+            let y_step = (ymax - ymin) / f64::from(grid.ny);
+
+            let mut lines = node::element::Group::new();
+
+            for iy in 0..=grid.ny {
+                let y = f64::from(iy) * y_step + ymin;
+                let line = horizontal_line(-y, 0.0, face_width, grid.color.as_str());
+                lines = lines.add(line);
+            }
+
+            for ix in 0..=grid.nx {
+                let x = f64::from(ix) * x_step + xmin;
+                let line = vertical_line(x, 0.0, -face_height, grid.color.as_str());
+                lines = lines.add(line);
+            }
+
+            lines
+        }
+    }
 }
 
 #[cfg(test)]
