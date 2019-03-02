@@ -4,7 +4,7 @@ use svg::node;
 use svg::Node;
 
 use crate::axis;
-use crate::grid::Grid;
+use crate::grid::GridType;
 use crate::histogram;
 use crate::style;
 use crate::utils;
@@ -448,28 +448,45 @@ where
     group
 }
 
-pub(crate) fn draw_grid(grid: &Grid, face_width: f64, face_height: f64) -> node::element::Group {
-    let (xmin, xmax) = (0f64, face_width);
-    let (ymin, ymax) = (0f64, face_height);
+pub(crate) fn draw_grid(grid: GridType, face_width: f64, face_height: f64) -> node::element::Group {
+    match grid {
+        GridType::HorizontalOnly(grid) => {
+            let (ymin, ymax) = (0f64, face_height);
+            let y_step = (ymax - ymin) / f64::from(grid.ny);
+            let mut lines = node::element::Group::new();
 
-    let x_step = (xmax - xmin) / f64::from(grid.nx);
-    let y_step = (ymax - ymin) / f64::from(grid.ny);
+            for iy in 0..=grid.ny {
+                let y = f64::from(iy) * y_step + ymin;
+                let line = horizontal_line(-y, 0.0, face_width, grid.color.as_str());
+                lines = lines.add(line);
+            }
 
-    let mut lines = node::element::Group::new();
+            lines
+        }
+        GridType::Both(grid) => {
+            let (xmin, xmax) = (0f64, face_width);
+            let (ymin, ymax) = (0f64, face_height);
 
-    for iy in 0..=grid.ny {
-        let y = f64::from(iy) * y_step + ymin;
-        let line = horizontal_line(-y, 0.0, face_width, grid.color.as_str());
-        lines = lines.add(line);
+            let x_step = (xmax - xmin) / f64::from(grid.nx);
+            let y_step = (ymax - ymin) / f64::from(grid.ny);
+
+            let mut lines = node::element::Group::new();
+
+            for iy in 0..=grid.ny {
+                let y = f64::from(iy) * y_step + ymin;
+                let line = horizontal_line(-y, 0.0, face_width, grid.color.as_str());
+                lines = lines.add(line);
+            }
+
+            for ix in 0..=grid.nx {
+                let x = f64::from(ix) * x_step + xmin;
+                let line = vertical_line(x, 0.0, -face_height, grid.color.as_str());
+                lines = lines.add(line);
+            }
+
+            lines
+        }
     }
-
-    for ix in 0..=grid.nx {
-        let x = f64::from(ix) * x_step + xmin;
-        let line = vertical_line(x, 0.0, -face_height, grid.color.as_str());
-        lines = lines.add(line);
-    }
-
-    lines
 }
 
 #[cfg(test)]

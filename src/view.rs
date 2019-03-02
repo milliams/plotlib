@@ -14,7 +14,7 @@ use svg::Node;
 
 use crate::axis;
 use crate::errors::Result;
-use crate::grid::Grid;
+use crate::grid::{Grid, GridType};
 use crate::representation::{CategoricalRepresentation, ContinuousRepresentation};
 use crate::svg_render;
 use crate::text_render;
@@ -171,7 +171,11 @@ impl<'a> View for ContinuousView<'a> {
         view_group.append(svg_render::draw_y_axis(&y_axis, face_height));
 
         if let Some(grid) = &self.grid {
-            view_group.append(svg_render::draw_grid(grid, face_width, face_height));
+            view_group.append(svg_render::draw_grid(
+                GridType::Both(grid),
+                face_width,
+                face_height,
+            ));
         }
 
         Ok(view_group)
@@ -369,6 +373,15 @@ impl<'a> View for CategoricalView<'a> {
         // Add in the axes
         view_group.append(svg_render::draw_categorical_x_axis(&x_axis, face_width));
         view_group.append(svg_render::draw_y_axis(&y_axis, face_height));
+
+        if let Some(grid) = &self.grid {
+            view_group.append(svg_render::draw_grid(
+                GridType::HorizontalOnly(grid),
+                face_width,
+                face_height,
+            ));
+        }
+
         Ok(view_group)
     }
 

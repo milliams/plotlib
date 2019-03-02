@@ -1,3 +1,8 @@
+pub(crate) enum GridType<'a> {
+    HorizontalOnly(&'a Grid),
+    Both(&'a Grid),
+}
+
 pub struct Grid {
     pub nx: u32,
     pub ny: u32,
