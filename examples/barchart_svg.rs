@@ -1,6 +1,6 @@
 fn main() {
-    let b1 = plotlib::barchart::BarChart::new(5.3).label("1");
-    let b2 = plotlib::barchart::BarChart::new(2.6)
+    let b1 = plotlib::repr::BarChart::new(5.3).label("1");
+    let b2 = plotlib::repr::BarChart::new(2.6)
         .label("2")
         .style(plotlib::style::BoxStyle::new().fill("darkolivegreen"));
     let v = plotlib::view::CategoricalView::new()

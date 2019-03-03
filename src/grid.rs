@@ -18,7 +18,7 @@
 //! # use plotlib::style::LineStyle;
 //! # use plotlib::view::View;
 //!
-//! # let l1 = plotlib::line::Line::new(&[(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)])
+//! # let l1 = plotlib::repr::Line::new(&[(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)])
 //! #    .style(LineStyle::new().colour("burlywood"));
 //! // let l1 = Line::new() ...
 //! let mut v = ContinuousView::new().add(&l1);

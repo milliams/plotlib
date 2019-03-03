@@ -5,7 +5,7 @@ Box plot
 # Examples
 
 ```
-# use plotlib::boxplot::BoxPlot;
+# use plotlib::repr::BoxPlot;
 # use plotlib::view::CategoricalView;
 let b1 = BoxPlot::from_slice(&[0., 2., 3., 4.]);
 let b2 = BoxPlot::from_vec(vec![0., 2., 3., 4.]);
@@ -18,7 +18,7 @@ use std::f64;
 use svg;
 
 use crate::axis;
-use crate::representation::CategoricalRepresentation;
+use crate::repr::CategoricalRepresentation;
 use crate::style::BoxStyle;
 use crate::svg_render;
 use crate::utils;

@@ -5,12 +5,12 @@ A module for Histograms
 # Examples
 
 ```
-# use plotlib::histogram::Histogram;
+# use plotlib::repr::Histogram;
 // Create some dummy data
 let data = vec![0.3, 0.5, 6.4, 5.3, 3.6, 3.6, 3.5, 7.5, 4.0];
 
 // and create a histogram out of it
-let h = Histogram::from_slice(&data, plotlib::histogram::Bins::Count(30));
+let h = Histogram::from_slice(&data, plotlib::repr::HistogramBins::Count(30));
 ```
 
 TODO:
@@ -25,7 +25,7 @@ use std;
 use svg;
 
 use crate::axis;
-use crate::representation::ContinuousRepresentation;
+use crate::repr::ContinuousRepresentation;
 use crate::style::BoxStyle;
 use crate::svg_render;
 use crate::text_render;
@@ -39,7 +39,7 @@ enum HistogramType {
 }
 
 #[derive(Debug)]
-pub enum Bins {
+pub enum HistogramBins {
     Count(usize),
     Bounds(Vec<f64>),
 }
@@ -57,7 +57,7 @@ pub struct Histogram {
 }
 
 impl Histogram {
-    pub fn from_slice(v: &[f64], bins: Bins) -> Histogram {
+    pub fn from_slice(v: &[f64], bins: HistogramBins) -> Histogram {
         let mut max = v.iter().fold(-1. / 0., |a, &b| f64::max(a, b));
         let mut min = v.iter().fold(1. / 0., |a, &b| f64::min(a, b));
 
@@ -67,7 +67,7 @@ impl Histogram {
         }
 
         let (num_bins, bounds) = match bins {
-            Bins::Count(num_bins) => {
+            HistogramBins::Count(num_bins) => {
                 let range = max - min;
                 let mut bounds: Vec<f64> = (0..num_bins)
                     .map(|n| (n as f64 / num_bins as f64) * range + min)
@@ -75,7 +75,7 @@ impl Histogram {
                 bounds.push(max);
                 (num_bins, bounds)
             }
-            Bins::Bounds(bounds) => (bounds.len(), bounds),
+            HistogramBins::Bounds(bounds) => (bounds.len(), bounds),
         };
 
         let mut bins = vec![0; num_bins];
@@ -184,19 +184,19 @@ mod tests {
     #[test]
     fn test_histogram_from_slice() {
         assert_eq!(
-            Histogram::from_slice(&[], Bins::Count(3)).get_values(),
+            Histogram::from_slice(&[], HistogramBins::Count(3)).get_values(),
             [0., 0., 0.]
         );
         assert_eq!(
-            Histogram::from_slice(&[0.], Bins::Count(3)).get_values(),
+            Histogram::from_slice(&[0.], HistogramBins::Count(3)).get_values(),
             [0., 1., 0.]
         );
         assert_eq!(
-            Histogram::from_slice(&[0., 3.], Bins::Count(3)).get_values(),
+            Histogram::from_slice(&[0., 3.], HistogramBins::Count(3)).get_values(),
             [1., 0., 1.]
         );
         assert_eq!(
-            Histogram::from_slice(&[0., 1., 2., 3.], Bins::Count(3)).get_values(),
+            Histogram::from_slice(&[0., 1., 2., 3.], HistogramBins::Count(3)).get_values(),
             [2., 1., 1.]
         );
     }
@@ -204,11 +204,11 @@ mod tests {
     #[test]
     fn test_histogram_define_bin_bounds() {
         assert_eq!(
-            Histogram::from_slice(&[0., 1.], Bins::Count(3)).bin_bounds,
+            Histogram::from_slice(&[0., 1.], HistogramBins::Count(3)).bin_bounds,
             [0., 1. / 3., 2. / 3., 1.]
         );
         assert_eq!(
-            Histogram::from_slice(&[], Bins::Bounds([0., 1., 1.5, 2., 5.6].to_vec())).bin_bounds,
+            Histogram::from_slice(&[], HistogramBins::Bounds([0., 1., 1.5, 2., 5.6].to_vec())).bin_bounds,
             [0., 1., 1.5, 2., 5.6]
         );
     }

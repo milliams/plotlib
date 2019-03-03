@@ -5,7 +5,7 @@ Plot line charts
 # Examples
 
 ```
-# use plotlib::line::Line;
+# use plotlib::repr::Line;
 # use plotlib::view::ContinuousView;
 // y=x^2 between 0 and 10
 let l = Line::new(&[(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)]);
@@ -18,7 +18,7 @@ use std::f64;
 use svg;
 
 use crate::axis;
-use crate::representation::ContinuousRepresentation;
+use crate::repr::ContinuousRepresentation;
 use crate::style::LineStyle;
 use crate::svg_render;
 

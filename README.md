@@ -22,9 +22,8 @@ The API is still very much in flux and is subject to change.
 For example, code like:
 
 ```rust
-use plotlib::scatter::Scatter;
-use plotlib::scatter;
-use plotlib::style::{Marker, Point};
+use plotlib::repr;
+use plotlib::style;
 use plotlib::view::View;
 use plotlib::page::Page;
 
@@ -34,14 +33,14 @@ fn main() {
 
     // We create our scatter plot from the data
     let s1 = Scatter::from_slice(&data1)
-        .style(scatter::Style::new()
-            .marker(Marker::Square) // setting the marker to be a square
+        .style(style::PointStyle::new()
+            .marker(style::PointMarker::Square) // setting the marker to be a square
             .colour("#DD3355")); // and a custom colour
 
     // We can plot multiple data sets in the same view
     let data2 = [(-1.4, 2.5), (7.2, -0.3)];
     let s2 = Scatter::from_slice(&data2)
-        .style(scatter::Style::new() // uses the default marker
+        .style(style::PointStyle::new() // uses the default marker
             .colour("#35C788")); // and a different colour
 
     // The 'view' describes what set of data is drawn

@@ -14,6 +14,19 @@ These points may then be layered with other SVG elements from other representati
 
 use crate::axis;
 
+mod line;
+mod function;
+mod barchart;
+mod boxplot;
+mod histogram;
+mod scatter;
+pub use line::*;
+pub use function::*;
+pub use barchart::*;
+pub use boxplot::*;
+pub use histogram::*;
+pub use scatter::*;
+
 /**
 A representation of data that is continuous in two dimensions.
 */

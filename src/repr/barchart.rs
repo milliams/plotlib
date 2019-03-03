@@ -5,7 +5,7 @@ Bar chart
 # Examples
 
 ```
-# use plotlib::barchart::BarChart;
+# use plotlib::repr::BarChart;
 # use plotlib::view::CategoricalView;
 let b1 = BarChart::new(5.2).label("b1");
 let b2 = BarChart::new(1.6).label("b2");
@@ -18,7 +18,7 @@ use std::f64;
 use svg;
 
 use crate::axis;
-use crate::representation::CategoricalRepresentation;
+use crate::repr::CategoricalRepresentation;
 use crate::style::BoxStyle;
 use crate::svg_render;
 

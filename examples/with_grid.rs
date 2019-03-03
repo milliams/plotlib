@@ -12,7 +12,7 @@ fn render_line_chart<S>(filename: S)
 where
     S: AsRef<str>,
 {
-    let l1 = plotlib::line::Line::new(&[(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)])
+    let l1 = plotlib::repr::Line::new(&[(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)])
         .style(plotlib::style::LineStyle::new().colour("burlywood"));
     let mut v = plotlib::view::ContinuousView::new().add(&l1);
     v.add_grid(Grid::new(3, 8));
@@ -25,8 +25,8 @@ fn render_barchart<S>(filename: S)
 where
     S: AsRef<str>,
 {
-    let b1 = plotlib::barchart::BarChart::new(5.3).label("1");
-    let b2 = plotlib::barchart::BarChart::new(2.6)
+    let b1 = plotlib::repr::BarChart::new(5.3).label("1");
+    let b2 = plotlib::repr::BarChart::new(2.6)
         .label("2")
         .style(plotlib::style::BoxStyle::new().fill("darkolivegreen"));
     let mut v = plotlib::view::CategoricalView::new()

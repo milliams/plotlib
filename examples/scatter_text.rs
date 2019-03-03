@@ -8,8 +8,8 @@ fn main() {
         (6.4, 4.3),
         (8.5, 3.7),
     ];
-    let s1 = plotlib::scatter::Scatter::from_slice(&data);
-    let s2 = plotlib::scatter::Scatter::from_slice(&[(-1.4, 2.5), (7.2, -0.3)])
+    let s1 = plotlib::repr::Scatter::from_slice(&data);
+    let s2 = plotlib::repr::Scatter::from_slice(&[(-1.4, 2.5), (7.2, -0.3)])
         .style(plotlib::style::PointStyle::new().marker(plotlib::style::PointMarker::Square));
     let v = plotlib::view::ContinuousView::new()
         .add(&s1)

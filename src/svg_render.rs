@@ -5,7 +5,7 @@ use svg::Node;
 
 use crate::axis;
 use crate::grid::GridType;
-use crate::histogram;
+use crate::repr;
 use crate::style;
 use crate::utils;
 use crate::utils::PairWise;
@@ -240,7 +240,7 @@ pub fn draw_face_points(
 }
 
 pub fn draw_face_bars(
-    h: &histogram::Histogram,
+    h: &repr::Histogram,
     x_axis: &axis::ContinuousAxis,
     y_axis: &axis::ContinuousAxis,
     face_width: f64,

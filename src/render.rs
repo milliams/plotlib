@@ -1,5 +1,5 @@
 use crate::scatter;
-use crate::histogram;
+use crate::repr;
 use crate::text_render;
 use crate::svg_render;
 
@@ -18,7 +18,7 @@ impl Render for scatter::Scatter {
     }
 }
 
-impl Render for histogram::Histogram {
+impl Render for repr::Histogram {
     fn to_text(&self) -> text_render::Text {
         text_render::Text {data: text_render::draw_histogram(self)}
     }

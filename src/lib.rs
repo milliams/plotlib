@@ -8,11 +8,11 @@ plotlib is a data plotting and rendering library.
 
 There are five different types of plot currently supported:
 
-1. Box plot (`plotlib::boxplot::Box`)
-1. Function (`plotlib::function::Function`)
-1. Histogram (`plotlib::histogram::Histogram`)
-1. Line chart (`plotlib::line::Line`)
-1. Scatter plot (`plotlib::scatter::Scatter`)
+1. Box plot (`plotlib::repr::Box`)
+1. Function (`plotlib::repr::Function`)
+1. Histogram (`plotlib::repr::Histogram`)
+1. Line chart (`plotlib::repr::Line`)
+1. Scatter plot (`plotlib::repr::Scatter`)
 
 ## Technical
 
@@ -76,19 +76,13 @@ in this case, interpreting the bins and colours to create SVG elements.
 */
 
 pub mod page;
-pub mod representation;
 pub mod view;
+pub mod grid;
+pub mod style;
+pub mod repr;
 
 mod axis;
-pub mod barchart;
-pub mod boxplot;
 mod errors;
-pub mod function;
-pub mod grid;
-pub mod histogram;
-pub mod line;
-pub mod scatter;
-pub mod style;
 mod svg_render;
 mod text_render;
 mod utils;
