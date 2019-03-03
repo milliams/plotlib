@@ -1,4 +1,3 @@
-use plotlib::style::Point;
 
 fn main() {
     let data = [
@@ -11,7 +10,7 @@ fn main() {
     ];
     let s1 = plotlib::scatter::Scatter::from_slice(&data);
     let s2 = plotlib::scatter::Scatter::from_slice(&[(-1.4, 2.5), (7.2, -0.3)])
-        .style(plotlib::scatter::Style::new().marker(plotlib::style::Marker::Square));
+        .style(plotlib::style::PointStyle::new().marker(plotlib::style::PointMarker::Square));
     let v = plotlib::view::ContinuousView::new()
         .add(&s1)
         .add(&s2)

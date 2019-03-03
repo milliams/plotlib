@@ -26,41 +26,11 @@ use svg;
 
 use crate::axis;
 use crate::representation::ContinuousRepresentation;
-use crate::style;
+use crate::style::BoxStyle;
 use crate::svg_render;
 use crate::text_render;
 use crate::utils::PairWise;
 
-#[derive(Debug, Default)]
-pub struct Style {
-    fill: Option<String>,
-}
-
-impl Style {
-    pub fn new() -> Self {
-        Style { fill: None }
-    }
-
-    pub fn overlay(&mut self, other: &Self) {
-        if let Some(ref v) = other.fill {
-            self.fill = Some(v.clone())
-        }
-    }
-}
-
-impl style::Bar for Style {
-    fn fill<T>(&mut self, value: T) -> &mut Self
-    where
-        T: Into<String>,
-    {
-        self.fill = Some(value.into());
-        self
-    }
-
-    fn get_fill(&self) -> &Option<String> {
-        &self.fill
-    }
-}
 
 #[derive(Debug)]
 enum HistogramType {
@@ -82,7 +52,7 @@ pub struct Histogram {
     pub bin_bounds: Vec<f64>,    // will have N_bins + 1 entries
     pub bin_counts: Vec<f64>,    // will have N_bins entries
     pub bin_densities: Vec<f64>, // will have N_bins entries
-    style: Style,
+    style: BoxStyle,
     h_type: HistogramType,
 }
 
@@ -128,7 +98,7 @@ impl Histogram {
             bin_bounds: bounds,
             bin_counts: bins.iter().map(|&x| f64::from(x)).collect(),
             bin_densities: density_per_bin,
-            style: Style::new(),
+            style: BoxStyle::new(),
             h_type: HistogramType::Count,
         }
     }
@@ -152,7 +122,7 @@ impl Histogram {
         (0., max)
     }
 
-    pub fn style(mut self, style: &Style) -> Self {
+    pub fn style(mut self, style: &BoxStyle) -> Self {
         self.style.overlay(style);
         self
     }
@@ -165,7 +135,7 @@ impl Histogram {
         self
     }
 
-    pub fn get_style(&self) -> &Style {
+    pub fn get_style(&self) -> &BoxStyle {
         &self.style
     }
 

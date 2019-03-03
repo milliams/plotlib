@@ -1,4 +1,4 @@
-use plotlib::style::Point;
+use plotlib::style::PointStyle;
 
 fn main() {
     let data = [
@@ -10,13 +10,13 @@ fn main() {
         (8.5, 3.7),
     ];
     let s1 = plotlib::scatter::Scatter::from_slice(&data).style(
-        plotlib::scatter::Style::new()
-            .marker(plotlib::style::Marker::Square)
+        plotlib::style::PointStyle::new()
+            .marker(plotlib::style::PointMarker::Square)
             .colour("burlywood")
             .size(2.),
     );
     let s2 = plotlib::scatter::Scatter::from_slice(&[(-1.4, 2.5), (7.2, -0.3)])
-        .style(plotlib::scatter::Style::new().colour("darkseagreen"));
+        .style(PointStyle::new().colour("darkseagreen"));
     let v = plotlib::view::ContinuousView::new()
         .add(&s1)
         .add(&s2)
@@ -35,7 +35,7 @@ fn main() {
         .data(data)
         .y_errors(errors)
         .colour(Colour::Red)
-        .marker(Marker::Circle);
+        .marker(PointMarker::Circle);
 
     // Create a histogram representation
     let h = Histogram::new()
