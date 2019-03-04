@@ -15,11 +15,11 @@
 //! ```rust
 //! # use plotlib::view::ContinuousView;
 //! use plotlib::grid::Grid;
-//! # use plotlib::style::Line;
+//! # use plotlib::style::LineStyle;
 //! # use plotlib::view::View;
 //!
 //! # let l1 = plotlib::line::Line::new(&[(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)])
-//! #    .style(plotlib::line::Style::new().colour("burlywood"));
+//! #    .style(LineStyle::new().colour("burlywood"));
 //! // let l1 = Line::new() ...
 //! let mut v = ContinuousView::new().add(&l1);
 //!

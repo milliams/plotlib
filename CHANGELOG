@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+### Changed
+- Remove style traits and replace all style structs with 3 common ones in `style`
 
 ## 0.4.0 - 2019-03-02
 ### Added

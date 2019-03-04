@@ -1,7 +1,6 @@
 use plotlib::page::Page;
-use plotlib::scatter;
 use plotlib::scatter::Scatter;
-use plotlib::style::{Marker, Point};
+use plotlib::style::{PointMarker, PointStyle};
 use plotlib::view::ContinuousView;
 
 #[test]
@@ -11,8 +10,8 @@ fn test_data_with_one_length() {
 
     // We create our scatter plot from the data
     let s1 = Scatter::from_slice(&data1).style(
-        scatter::Style::new()
-            .marker(Marker::Square) // setting the marker to be a square
+        PointStyle::new()
+            .marker(PointMarker::Square) // setting the marker to be a square
             .colour("#DD3355"),
     ); // and a custom colour
 
@@ -37,8 +36,8 @@ fn test_data_with_no_length() {
 
     // We create our scatter plot from the data
     let s1 = Scatter::from_slice(&data1).style(
-        scatter::Style::new()
-            .marker(Marker::Square) // setting the marker to be a square
+        PointStyle::new()
+            .marker(PointMarker::Square) // setting the marker to be a square
             .colour("#DD3355"),
     ); // and a custom colour
 
@@ -64,8 +63,8 @@ fn test_data_with_one_length_and_autoscaling_axes_limits() {
 
     // We create our scatter plot from the data
     let s1 = Scatter::from_slice(&data1).style(
-        scatter::Style::new()
-            .marker(Marker::Square) // setting the marker to be a square
+        PointStyle::new()
+            .marker(PointMarker::Square) // setting the marker to be a square
             .colour("#DD3355"),
     ); // and a custom colour
 
