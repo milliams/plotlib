@@ -1,17 +1,24 @@
-use plotlib::style::BoxPlot;
+use plotlib::boxplot::BoxPlot;
+use plotlib::boxplot::Style;
+use plotlib::page::Page;
+// XXX only supports rust 1.31, however we cannot import the BarChart trait and BarChart struct at
+// the same time
+use plotlib::style::BoxPlot as _;
+use plotlib::view::CategoricalView;
 
 fn main() {
-    let b1 = plotlib::boxplot::BoxPlot::from_slice(&[1.0, 4.0, 2.0, 3.5, 6.4, 2.5, 7.5, 1.8, 9.6])
-        .label("1");
-    let b2 = plotlib::boxplot::BoxPlot::from_slice(&[3.0, 4.3, 2.0, 3.5, 6.9, 4.5, 7.5, 1.8, 10.6])
+    let b1 = BoxPlot::from_slice(&[1.0, 4.0, 2.0, 3.5, 6.4, 2.5, 7.5, 1.8, 9.6]).label("1");
+    let b2 = BoxPlot::from_slice(&[3.0, 4.3, 2.0, 3.5, 6.9, 4.5, 7.5, 1.8, 10.6])
         .label("2")
-        .style(plotlib::boxplot::Style::new().fill("darkolivegreen"));
-    let v = plotlib::view::CategoricalView::new()
+        .style(Style::new().fill("darkolivegreen"));
+
+    let v = CategoricalView::new()
         .add(&b1)
         .add(&b2)
         .x_label("Experiment")
         .y_label("y");
-    plotlib::page::Page::single(&v)
+
+    Page::single(&v)
         .dimensions(400, 300)
         .save("boxplot.svg")
         .expect("saving svg");
