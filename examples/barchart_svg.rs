@@ -1,15 +1,13 @@
-use plotlib::barchart::{BarChart, Style};
+use plotlib::barchart::BarChart;
 use plotlib::page::Page;
-// XXX only supports rust 1.31, however we cannot import the BarChart trait and BarChart struct at
-// the same time
-use plotlib::style::BarChart as _;
+use plotlib::style::BoxStyle;
 use plotlib::view::CategoricalView;
 
 fn main() {
     let b1 = BarChart::new(5.3).label("1");
     let b2 = BarChart::new(2.6)
         .label("2")
-        .style(Style::new().fill("darkolivegreen"));
+        .style(BoxStyle::new().fill("darkolivegreen"));
 
     let v = CategoricalView::new()
         .add(&b1)

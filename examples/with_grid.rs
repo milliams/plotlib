@@ -1,13 +1,8 @@
 use plotlib::barchart::BarChart;
-use plotlib::barchart::Style as BarChartStyle;
 use plotlib::grid::Grid;
 use plotlib::line::Line;
-use plotlib::line::Style as LineStyle;
 use plotlib::page::Page;
-// XXX only supports rust 1.31, however we cannot import the BarChart trait and BarChart struct at
-// the same time
-use plotlib::style::BarChart as _;
-use plotlib::style::Line as _;
+use plotlib::style::{BoxStyle, LineStyle};
 use plotlib::view::{CategoricalView, ContinuousView, View};
 
 fn main() {
@@ -35,7 +30,7 @@ where
     let b1 = BarChart::new(5.3).label("1");
     let b2 = BarChart::new(2.6)
         .label("2")
-        .style(BarChartStyle::new().fill("darkolivegreen"));
+        .style(BoxStyle::new().fill("darkolivegreen"));
     let mut v = CategoricalView::new()
         .add(&b1)
         .add(&b2)

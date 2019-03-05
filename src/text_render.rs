@@ -343,16 +343,14 @@ pub fn render_face_bars(
 /// the x ands y-axes
 /// and the face height and width,
 /// create the strings to be drawn as the face
-pub fn render_face_points<S>(
+pub fn render_face_points(
     s: &[(f64, f64)],
     x_axis: &axis::ContinuousAxis,
     y_axis: &axis::ContinuousAxis,
     face_width: u32,
     face_height: u32,
-    style: &S,
+    style: &style::PointStyle,
 ) -> String
-where
-    S: style::Point,
 {
     let points: Vec<_> = s
         .iter()
@@ -363,10 +361,10 @@ where
             )
         }).collect();
 
-    let marker = match style.get_marker().clone().unwrap_or(style::Marker::Circle) {
-        style::Marker::Circle => '●',
-        style::Marker::Square => '■',
-        style::Marker::Cross => '×',
+    let marker = match style.get_marker().clone().unwrap_or(style::PointMarker::Circle) {
+        style::PointMarker::Circle => '●',
+        style::PointMarker::Square => '■',
+        style::PointMarker::Cross => '×',
     };
 
     let mut face_strings: Vec<String> = vec![];
@@ -619,6 +617,7 @@ mod tests {
     #[test]
     fn test_render_face_points() {
         use crate::scatter;
+        use crate::style::PointStyle;
         let data = vec![
             (-3.0, 2.3),
             (-1.6, 5.3),
@@ -630,7 +629,7 @@ mod tests {
         let s = scatter::Scatter::from_slice(&data);
         let x_axis = axis::ContinuousAxis::new(-3.575, 9.075);
         let y_axis = axis::ContinuousAxis::new(-1.735, 5.635);
-        let style = scatter::Style::new();
+        let style = PointStyle::new();
         let strings = render_face_points(&s.data, &x_axis, &y_axis, 20, 10, &style);
         assert_eq!(strings.lines().count(), 10);
         assert!(strings.lines().all(|s| s.chars().count() == 20));

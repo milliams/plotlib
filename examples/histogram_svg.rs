@@ -1,12 +1,12 @@
-use plotlib::histogram::{Histogram, Style};
+use plotlib::histogram::Histogram;
 use plotlib::page::Page;
-use plotlib::style::Bar;
+use plotlib::style::BoxStyle;
 use plotlib::view::ContinuousView;
 
 fn main() {
     let data = [0.3, 0.5, 6.4, 5.3, 3.6, 3.6, 3.5, 7.5, 4.0];
     let h = Histogram::from_slice(&data, plotlib::histogram::Bins::Count(10))
-        .style(Style::new().fill("burlywood"));
+        .style(BoxStyle::new().fill("burlywood"));
 
     let v = ContinuousView::new().add(&h);
 

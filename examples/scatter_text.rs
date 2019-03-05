@@ -1,6 +1,6 @@
 use plotlib::page::Page;
-use plotlib::scatter::{Scatter, Style};
-use plotlib::style::{Marker, Point};
+use plotlib::scatter::Scatter;
+use plotlib::style::{PointMarker, PointStyle};
 use plotlib::view::ContinuousView;
 
 fn main() {
@@ -14,8 +14,8 @@ fn main() {
     ];
 
     let s1 = Scatter::from_slice(&data);
-    let s2 =
-        Scatter::from_slice(&[(-1.4, 2.5), (7.2, -0.3)]).style(Style::new().marker(Marker::Square));
+    let s2 = Scatter::from_slice(&[(-1.4, 2.5), (7.2, -0.3)])
+        .style(PointStyle::new().marker(PointMarker::Square));
 
     let v = ContinuousView::new()
         .add(&s1)
