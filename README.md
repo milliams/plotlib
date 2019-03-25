@@ -25,7 +25,7 @@ For example, code like:
 use plotlib::scatter::Scatter;
 use plotlib::scatter;
 use plotlib::style::{Marker, Point};
-use plotlib::view::View;
+use plotlib::view::ContinuousView;
 use plotlib::page::Page;
 
 fn main() {
@@ -45,7 +45,7 @@ fn main() {
             .colour("#35C788")); // and a different colour
 
     // The 'view' describes what set of data is drawn
-    let v = View::new()
+    let v = ContinuousView::new()
         .add(&s1)
         .add(&s2)
         .x_range(-5., 10.)
@@ -54,7 +54,7 @@ fn main() {
         .y_label("The response of something");
 
     // A page with a single view is then saved to an SVG file
-    Page::single(&v).save("scatter.svg");
+    Page::single(&v).save("scatter.svg").unwrap();
 }
 ```
 
