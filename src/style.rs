@@ -175,3 +175,25 @@ impl BoxStyle {
         &self.fill
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_linestyle_simple() {
+        let s = LineStyle::new();
+        assert_eq!(*s.get_colour(), None);
+        assert_eq!(*s.get_width(), None);
+        assert_eq!(*s.get_linejoin(), None);
+    }
+
+    #[test]
+    fn test_linestyle_plain_overlay() {
+        let mut p = LineStyle::new();
+        p.overlay(LineStyle::new().colour("red").linejoin("bevel").width(1.));
+        assert_eq!(*p.get_colour(), Some("red".into()));
+        assert_eq!(*p.get_width(), Some(1.));
+        assert_eq!(*p.get_linejoin(), Some("bevel".into()));
+    }
+}
