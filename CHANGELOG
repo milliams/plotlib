@@ -4,6 +4,7 @@
 ### Changed
 - Remove style traits and replace all style structs with 3 common ones in `style`
 - Group all representations under a `repr` module.
+- Add `linejoin` option to line style.
 
 ## 0.4.0 - 2019-03-02
 ### Added
