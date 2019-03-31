@@ -21,6 +21,7 @@ use crate::axis;
 use crate::repr::ContinuousRepresentation;
 use crate::style::LineStyle;
 use crate::svg_render;
+use crate::text_render;
 
 pub struct Line {
     pub data: Vec<(f64, f64)>,
@@ -93,11 +94,18 @@ impl ContinuousRepresentation for Line {
 
     fn to_text(
         &self,
-        _x_axis: &axis::ContinuousAxis,
-        _y_axis: &axis::ContinuousAxis,
-        _face_width: u32,
-        _face_height: u32,
+        x_axis: &axis::ContinuousAxis,
+        y_axis: &axis::ContinuousAxis,
+        face_width: u32,
+        face_height: u32,
     ) -> String {
-        "".into()
+        text_render::render_face_line(
+            &self.data,
+            x_axis,
+            y_axis,
+            face_width,
+            face_height,
+            &self.style,
+        )
     }
 }

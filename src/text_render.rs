@@ -383,6 +383,47 @@ pub fn render_face_points(
     face_strings.join("\n")
 }
 
+/// Given a line plot,
+/// the x ands y-axes
+/// and the face height and width,
+/// create the strings to be drawn as the face
+pub fn render_face_line(
+    s: &[(f64, f64)],
+    x_axis: &axis::ContinuousAxis,
+    y_axis: &axis::ContinuousAxis,
+    face_width: u32,
+    face_height: u32,
+    style: &style::LineStyle,
+) -> String
+{
+    unimplemented!();
+    let points: Vec<_> = s
+        .iter()
+        .map(|&(x, y)| {
+            (
+                value_to_axis_cell_offset(x, x_axis, face_width),
+                value_to_axis_cell_offset(y, y_axis, face_height),
+            )
+        }).collect();
+
+    let marker = '●';
+
+    let mut face_strings: Vec<String> = vec![];
+    for line in 1..face_height + 1 {
+        let mut line_string = String::new();
+        for column in 1..face_width as usize + 1 {
+            line_string.push(if points.contains(&(column as i32, line as i32)) {
+                marker
+            } else {
+                ' '
+            });
+        }
+        face_strings.push(line_string);
+    }
+    let face_strings: Vec<String> = face_strings.iter().rev().cloned().collect();
+    face_strings.join("\n")
+}
+
 /// Given two 'rectangular' strings, overlay the second on the first offset by `x` and `y`
 pub fn overlay(under: &str, over: &str, x: i32, y: i32) -> String {
     let split_under: Vec<_> = under.split('\n').collect();
