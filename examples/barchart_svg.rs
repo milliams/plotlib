@@ -1,13 +1,18 @@
+use plotlib::repr::BarChart;
+use plotlib::page::Page;
+use plotlib::style::BoxStyle;
+use plotlib::view::CategoricalView;
+
 fn main() {
-    let b1 = plotlib::repr::BarChart::new(5.3).label("1");
-    let b2 = plotlib::repr::BarChart::new(2.6)
+    let b1 = BarChart::new(5.3).label("1");
+    let b2 = BarChart::new(2.6)
         .label("2")
-        .style(plotlib::style::BoxStyle::new().fill("darkolivegreen"));
-    let v = plotlib::view::CategoricalView::new()
+        .style(BoxStyle::new().fill("darkolivegreen"));
+
+    let v = CategoricalView::new()
         .add(&b1)
         .add(&b2)
         .x_label("Experiment");
-    plotlib::page::Page::single(&v)
-        .save("barchart.svg")
-        .expect("saving svg");
+
+    Page::single(&v).save("barchart.svg").expect("saving svg");
 }
