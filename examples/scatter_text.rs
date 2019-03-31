@@ -24,5 +24,5 @@ fn main() {
         .x_label("Some varying variable")
         .y_label("The response of something");
 
-    println!("{}", Page::single(&v).to_text().unwrap());
+    println!("{}", Page::single(&v).dimensions(80, 30).to_text().unwrap());
 }
