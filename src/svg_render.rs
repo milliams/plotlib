@@ -312,7 +312,10 @@ pub fn draw_face_line(
                 style.get_colour().clone().unwrap_or_else(|| "".into()),
             )
             .set("stroke-width", style.get_width().clone().unwrap_or(2.))
-            .set("stroke-linejoin", style.get_linejoin().clone().unwrap_or("round".into()))
+            .set("stroke-linejoin", match style.get_linejoin().clone().unwrap_or(style::LineJoin::Round) {
+                style::LineJoin::Miter => "miter",
+                style::LineJoin::Round => "round",
+            })
             .set("d", path),
     );
 

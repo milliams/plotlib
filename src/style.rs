@@ -6,11 +6,20 @@
 //! can be overlaid with another one to set many at once.
 //! Settings will be cloned in and out of it.
 
+/**
+The style that line corners should use
+*/
+#[derive(Debug, Clone)]
+pub enum LineJoin {
+    Miter,
+    Round,
+}
+
 #[derive(Debug, Default)]
 pub struct LineStyle {
     colour: Option<String>,
     width: Option<f32>,
-    linejoin: Option<String>,
+    linejoin: Option<LineJoin>,
 }
 impl LineStyle {
     pub fn new() -> Self {
@@ -60,13 +69,13 @@ impl LineStyle {
 
     pub fn linejoin<T>(&mut self, value: T) -> &mut Self
     where
-        T: Into<String>,
+        T: Into<LineJoin>,
     {
         self.linejoin = Some(value.into());
         self
     }
 
-    pub fn get_linejoin(&self) -> &Option<String> {
+    pub fn get_linejoin(&self) -> &Option<LineJoin> {
         &self.linejoin
     }
 }
@@ -185,15 +194,21 @@ mod tests {
         let s = LineStyle::new();
         assert_eq!(*s.get_colour(), None);
         assert_eq!(*s.get_width(), None);
-        assert_eq!(*s.get_linejoin(), None);
+        assert!(match s.get_linejoin() {
+            None => true,
+            _ => false,
+        });
     }
 
     #[test]
     fn test_linestyle_plain_overlay() {
         let mut p = LineStyle::new();
-        p.overlay(LineStyle::new().colour("red").linejoin("bevel").width(1.));
+        p.overlay(LineStyle::new().colour("red").linejoin(LineJoin::Miter).width(1.));
         assert_eq!(*p.get_colour(), Some("red".into()));
         assert_eq!(*p.get_width(), Some(1.));
-        assert_eq!(*p.get_linejoin(), Some("bevel".into()));
+        assert!(match p.get_linejoin() {
+            Some(LineJoin::Miter) => true,
+            _ => false,
+        });
     }
 }
