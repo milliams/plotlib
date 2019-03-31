@@ -1,4 +1,4 @@
-use plotlib::boxplot::BoxPlot;
+use plotlib::repr::BoxPlot;
 use plotlib::page::Page;
 use plotlib::style::BoxStyle;
 use plotlib::view::CategoricalView;

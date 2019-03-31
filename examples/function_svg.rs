@@ -1,4 +1,4 @@
-use plotlib::function::Function;
+use plotlib::repr::Function;
 use plotlib::page::Page;
 use plotlib::style::LineStyle;
 use plotlib::view::ContinuousView;

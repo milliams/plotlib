@@ -1,4 +1,4 @@
-use plotlib::line::Line;
+use plotlib::repr::Line;
 use plotlib::page::Page;
 use plotlib::style::LineStyle;
 use plotlib::view::ContinuousView;

@@ -1,4 +1,4 @@
-use plotlib::barchart::BarChart;
+use plotlib::repr::BarChart;
 use plotlib::page::Page;
 use plotlib::style::BoxStyle;
 use plotlib::view::CategoricalView;

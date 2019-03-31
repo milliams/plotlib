@@ -1,6 +1,5 @@
-use plotlib::barchart::BarChart;
+use plotlib::repr::{BarChart, Line};
 use plotlib::grid::Grid;
-use plotlib::line::Line;
 use plotlib::page::Page;
 use plotlib::style::{BoxStyle, LineStyle};
 use plotlib::view::{CategoricalView, ContinuousView, View};

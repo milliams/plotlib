@@ -15,7 +15,7 @@ use svg::Node;
 use crate::axis;
 use crate::errors::Result;
 use crate::grid::{Grid, GridType};
-use crate::representation::{CategoricalRepresentation, ContinuousRepresentation};
+use crate::repr::{CategoricalRepresentation, ContinuousRepresentation};
 use crate::svg_render;
 use crate::text_render;
 

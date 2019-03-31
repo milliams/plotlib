@@ -1,15 +1,15 @@
 /*!
 
-Box plot
+Bar chart
 
 # Examples
 
 ```
-# use plotlib::boxplot::BoxPlot;
+# use plotlib::repr::BarChart;
 # use plotlib::view::CategoricalView;
-let b1 = BoxPlot::from_slice(&[0., 2., 3., 4.]);
-let b2 = BoxPlot::from_vec(vec![0., 2., 3., 4.]);
-let v = CategoricalView::new().add(&b1);
+let b1 = BarChart::new(5.2).label("b1");
+let b2 = BarChart::new(1.6).label("b2");
+let v = CategoricalView::new().add(&b1).add(&b2);
 ```
 */
 
@@ -18,34 +18,20 @@ use std::f64;
 use svg;
 
 use crate::axis;
-use crate::representation::CategoricalRepresentation;
+use crate::repr::CategoricalRepresentation;
 use crate::style::BoxStyle;
 use crate::svg_render;
-use crate::utils;
 
-enum BoxData<'a> {
-    Owned(Vec<f64>),
-    Ref(&'a [f64]),
-}
-
-pub struct BoxPlot<'a> {
-    data: BoxData<'a>,
+pub struct BarChart {
+    value: f64,
     label: String,
     style: BoxStyle,
 }
 
-impl<'a> BoxPlot<'a> {
-    pub fn from_slice(v: &'a [(f64)]) -> Self {
-        BoxPlot {
-            data: BoxData::Ref(v),
-            style: BoxStyle::new(),
-            label: String::new(),
-        }
-    }
-
-    pub fn from_vec(v: Vec<f64>) -> Self {
-        BoxPlot {
-            data: BoxData::Owned(v),
+impl BarChart {
+    pub fn new(v: f64) -> Self {
+        BarChart {
+            value: v,
             style: BoxStyle::new(),
             label: String::new(),
         }
@@ -72,25 +58,15 @@ impl<'a> BoxPlot<'a> {
         &self.label
     }
 
-    fn get_data(&'a self) -> &'a [f64] {
-        match self.data {
-            BoxData::Owned(ref v) => v,
-            BoxData::Ref(v) => v,
-        }
-    }
-
-    fn range(&self) -> (f64, f64) {
-        match self.data {
-            BoxData::Owned(ref v) => utils::range(v),
-            BoxData::Ref(v) => utils::range(v),
-        }
+    fn get_value(&self) -> f64 {
+        self.value
     }
 }
 
-impl<'a> CategoricalRepresentation for BoxPlot<'a> {
+impl CategoricalRepresentation for BarChart {
     /// The maximum range. Used for auto-scaling axis
     fn range(&self) -> (f64, f64) {
-        self.range()
+        (0.0, self.value)
     }
 
     /// The ticks that this representation covers. Used to collect all ticks for display
@@ -105,8 +81,8 @@ impl<'a> CategoricalRepresentation for BoxPlot<'a> {
         face_width: f64,
         face_height: f64,
     ) -> svg::node::element::Group {
-        svg_render::draw_face_boxplot(
-            self.get_data(),
+        svg_render::draw_face_barchart(
+            self.get_value(),
             &self.label,
             x_axis,
             y_axis,
