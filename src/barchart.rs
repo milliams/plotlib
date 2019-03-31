@@ -43,7 +43,6 @@ impl BarChart {
     }
 
     pub fn get_style(&self) -> &BoxStyle {
-
         &self.style
     }
 
