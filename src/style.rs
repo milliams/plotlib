@@ -10,12 +10,14 @@
 pub struct LineStyle {
     colour: Option<String>,
     width: Option<f32>,
+    linejoin: Option<String>,
 }
 impl LineStyle {
     pub fn new() -> Self {
         LineStyle {
             colour: None,
             width: None,
+            linejoin: None,
         }
     }
 
@@ -26,6 +28,10 @@ impl LineStyle {
 
         if let Some(ref v) = other.width {
             self.width = Some(*v)
+        }
+
+        if let Some(ref v) = other.linejoin {
+            self.linejoin = Some(v.clone())
         }
     }
     pub fn colour<T>(&mut self, value: T) -> &mut Self
@@ -50,6 +56,18 @@ impl LineStyle {
 
     pub fn get_width(&self) -> &Option<f32> {
         &self.width
+    }
+
+    pub fn linejoin<T>(&mut self, value: T) -> &mut Self
+    where
+        T: Into<String>,
+    {
+        self.linejoin = Some(value.into());
+        self
+    }
+
+    pub fn get_linejoin(&self) -> &Option<String> {
+        &self.linejoin
     }
 }
 

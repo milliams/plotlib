@@ -312,6 +312,7 @@ pub fn draw_face_line(
                 style.get_colour().clone().unwrap_or_else(|| "".into()),
             )
             .set("stroke-width", style.get_width().clone().unwrap_or(2.))
+            .set("stroke-linejoin", style.get_linejoin().clone().unwrap_or("round".into()))
             .set("d", path),
     );
 
