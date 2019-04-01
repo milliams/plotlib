@@ -6,16 +6,27 @@
 //! can be overlaid with another one to set many at once.
 //! Settings will be cloned in and out of it.
 
+/**
+The style that line corners should use
+*/
+#[derive(Debug, Clone)]
+pub enum LineJoin {
+    Miter,
+    Round,
+}
+
 #[derive(Debug, Default)]
 pub struct LineStyle {
     colour: Option<String>,
     width: Option<f32>,
+    linejoin: Option<LineJoin>,
 }
 impl LineStyle {
     pub fn new() -> Self {
         LineStyle {
             colour: None,
             width: None,
+            linejoin: None,
         }
     }
 
@@ -26,6 +37,10 @@ impl LineStyle {
 
         if let Some(ref v) = other.width {
             self.width = Some(*v)
+        }
+
+        if let Some(ref v) = other.linejoin {
+            self.linejoin = Some(v.clone())
         }
     }
     pub fn colour<T>(&mut self, value: T) -> &mut Self
@@ -50,6 +65,18 @@ impl LineStyle {
 
     pub fn get_width(&self) -> &Option<f32> {
         &self.width
+    }
+
+    pub fn linejoin<T>(&mut self, value: T) -> &mut Self
+    where
+        T: Into<LineJoin>,
+    {
+        self.linejoin = Some(value.into());
+        self
+    }
+
+    pub fn get_linejoin(&self) -> &Option<LineJoin> {
+        &self.linejoin
     }
 }
 
@@ -155,5 +182,33 @@ impl BoxStyle {
 
     pub fn get_fill(&self) -> &Option<String> {
         &self.fill
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_linestyle_simple() {
+        let s = LineStyle::new();
+        assert_eq!(*s.get_colour(), None);
+        assert_eq!(*s.get_width(), None);
+        assert!(match s.get_linejoin() {
+            None => true,
+            _ => false,
+        });
+    }
+
+    #[test]
+    fn test_linestyle_plain_overlay() {
+        let mut p = LineStyle::new();
+        p.overlay(LineStyle::new().colour("red").linejoin(LineJoin::Miter).width(1.));
+        assert_eq!(*p.get_colour(), Some("red".into()));
+        assert_eq!(*p.get_width(), Some(1.));
+        assert!(match p.get_linejoin() {
+            Some(LineJoin::Miter) => true,
+            _ => false,
+        });
     }
 }
