@@ -361,7 +361,7 @@ pub fn render_face_points(
             )
         }).collect();
 
-    let marker = match style.get_marker().clone().unwrap_or(style::PointMarker::Circle) {
+    let marker = match style.get_marker() {
         style::PointMarker::Circle => '●',
         style::PointMarker::Square => '■',
         style::PointMarker::Cross => '×',
@@ -626,11 +626,11 @@ mod tests {
             (6.4, 4.3),
             (8.5, 3.7),
         ];
-        let s = repr::Scatter::from_slice(&data);
         let x_axis = axis::ContinuousAxis::new(-3.575, 9.075, 6);
         let y_axis = axis::ContinuousAxis::new(-1.735, 5.635, 6);
         let style = PointStyle::new();
-        let strings = render_face_points(&s.data, &x_axis, &y_axis, 20, 10, &style);
+        //TODO NEXT
+        let strings = render_face_points(&data, &x_axis, &y_axis, 20, 10, &style);
         assert_eq!(strings.lines().count(), 10);
         assert!(strings.lines().all(|s| s.chars().count() == 20));
 

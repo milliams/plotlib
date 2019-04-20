@@ -9,6 +9,7 @@
 - Group all representations under a `repr` module.
 - Add `linejoin` option to line style.
 - More Box and less & in the interface
+- Replace Line, Scatter and Function with Plot
 
 ## 0.4.0 - 2019-03-02
 ### Added

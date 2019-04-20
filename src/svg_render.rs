@@ -188,8 +188,8 @@ pub fn draw_face_points(
     for &(x, y) in s {
         let x_pos = value_to_face_offset(x, x_axis, face_width);
         let y_pos = -value_to_face_offset(y, y_axis, face_height);
-        let radius = f64::from(style.get_size().clone().unwrap_or(5.));
-        match style.get_marker().clone().unwrap_or(style::PointMarker::Circle) {
+        let radius = f64::from(style.get_size());
+        match style.get_marker() {
             style::PointMarker::Circle => {
                 group.append(
                     node::element::Circle::new()
@@ -198,7 +198,7 @@ pub fn draw_face_points(
                         .set("r", radius)
                         .set(
                             "fill",
-                            style.get_colour().clone().unwrap_or_else(|| "".into()),
+                            style.get_colour(),
                         ),
                 );
             }
@@ -211,7 +211,7 @@ pub fn draw_face_points(
                         .set("height", 2. * radius)
                         .set(
                             "fill",
-                            style.get_colour().clone().unwrap_or_else(|| "".into()),
+                            style.get_colour(),
                         ),
                 );
             }
@@ -227,7 +227,7 @@ pub fn draw_face_points(
                         .set("fill", "none")
                         .set(
                             "stroke",
-                            style.get_colour().clone().unwrap_or_else(|| "".into()),
+                            style.get_colour(),
                         )
                         .set("stroke-width", 2)
                         .set("d", path),
@@ -264,8 +264,6 @@ pub fn draw_face_bars(
                 "fill",
                 style
                     .get_fill()
-                    .clone()
-                    .unwrap_or_else(|| "burlywood".into()),
             )
             .set("stroke", "black");
         group.append(rect);
@@ -307,12 +305,9 @@ pub fn draw_face_line(
     group.append(
         node::element::Path::new()
             .set("fill", "none")
-            .set(
-                "stroke",
-                style.get_colour().clone().unwrap_or_else(|| "".into()),
-            )
-            .set("stroke-width", style.get_width().clone().unwrap_or(2.))
-            .set("stroke-linejoin", match style.get_linejoin().clone().unwrap_or(style::LineJoin::Round) {
+            .set("stroke", style.get_colour())
+            .set("stroke-width", style.get_width())
+            .set("stroke-linejoin", match style.get_linejoin() {
                 style::LineJoin::Miter => "miter",
                 style::LineJoin::Round => "round",
             })
@@ -354,13 +349,7 @@ where
             .set("y", box_start)
             .set("width", box_width)
             .set("height", box_end - box_start)
-            .set(
-                "fill",
-                style
-                    .get_fill()
-                    .clone()
-                    .unwrap_or_else(|| "burlywood".into()),
-            )
+            .set("fill", style.get_fill())
             .set("stroke", "black"),
     );
 
@@ -431,13 +420,7 @@ where
             .set("y", box_start)
             .set("width", box_width)
             .set("height", box_end - box_start)
-            .set(
-                "fill",
-                style
-                    .get_fill()
-                    .clone()
-                    .unwrap_or_else(|| "burlywood".into()),
-            )
+            .set("fill", style .get_fill())
             .set("stroke", "black"),
     );
 
