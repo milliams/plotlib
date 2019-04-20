@@ -13,9 +13,9 @@ fn render_line_chart<S>(filename: S)
 where
     S: AsRef<str>,
 {
-    let l1 = Line::new(&[(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)])
+    let l1 = Line::new(vec![(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)])
         .style(LineStyle::new().colour("burlywood"));
-    let mut v = ContinuousView::new().add(&l1);
+    let mut v = ContinuousView::new().add(l1);
     v.add_grid(Grid::new(3, 8));
     Page::single(&v)
         .save(filename.as_ref())
@@ -31,8 +31,8 @@ where
         .label("2")
         .style(BoxStyle::new().fill("darkolivegreen"));
     let mut v = CategoricalView::new()
-        .add(&b1)
-        .add(&b2)
+        .add(b1)
+        .add(b2)
         .x_label("Experiment");
     v.add_grid(Grid::new(3, 8));
     Page::single(&v)

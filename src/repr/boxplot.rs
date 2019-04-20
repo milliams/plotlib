@@ -9,7 +9,7 @@ Box plot
 # use plotlib::view::CategoricalView;
 let b1 = BoxPlot::from_slice(&[0., 2., 3., 4.]);
 let b2 = BoxPlot::from_vec(vec![0., 2., 3., 4.]);
-let v = CategoricalView::new().add(&b1);
+let v = CategoricalView::new().add(b1);
 ```
 */
 

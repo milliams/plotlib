@@ -8,8 +8,8 @@ Plot line charts
 # use plotlib::repr::Line;
 # use plotlib::view::ContinuousView;
 // y=x^2 between 0 and 10
-let l = Line::new(&[(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)]);
-let v = ContinuousView::new().add(&l);
+let l = Line::new(vec![(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)]);
+let v = ContinuousView::new().add(l);
 ```
 */
 
@@ -25,18 +25,24 @@ use crate::svg_render;
 pub struct Line {
     pub data: Vec<(f64, f64)>,
     style: LineStyle,
+    legend: Option<String>,
 }
 
 impl Line {
-    pub fn new(v: &[(f64, f64)]) -> Self {
+    pub fn new(data: Vec<(f64, f64)>) -> Self {
         Line {
-            data: v.into(),
+            data,
             style: LineStyle::new(),
+            legend: None,
         }
     }
 
     pub fn style(mut self, style: &LineStyle) -> Self {
         self.style.overlay(style);
+        self
+    }
+    pub fn legend(mut self, legend: String) -> Self {
+        self.legend = Some(legend);
         self
     }
 
@@ -89,6 +95,36 @@ impl ContinuousRepresentation for Line {
             face_height,
             &self.style,
         )
+    }
+    fn legend_svg(&self) -> Option<svg::node::element::Group> {
+        self.legend.as_ref().map(|legend| {
+            let legend = legend.clone();
+            use svg::{node, Node};
+
+            let mut group = node::element::Group::new();
+            const FONT_SIZE: f32 = 12.0;
+
+            // Draw legend text
+            let legend_text = node::element::Text::new()
+                .set("x", 0)
+                .set("y", 0)
+                .set("text-anchor", "start")
+                .set("font-size", FONT_SIZE)
+                .add(node::Text::new(legend));
+            group.append(legend_text);
+
+            // Draw sample line
+            let mut line = node::element::Line::new()
+                .set("x1", -10)
+                .set("y1", -FONT_SIZE/2. +2.)
+                .set("x2", -3)
+                .set("y2", -FONT_SIZE/2. +2.)
+                .set("stroke-width", self.style.get_width().unwrap_or(2.))
+                .set("stroke", self.style.get_colour().clone().unwrap_or_else(|| "".into()));
+            group.append(line);
+
+            group
+        })
     }
 
     fn to_text(

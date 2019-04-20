@@ -8,7 +8,7 @@ fn main() {
     let h = Histogram::from_slice(&data, HistogramBins::Count(10))
         .style(BoxStyle::new().fill("burlywood"));
 
-    let v = ContinuousView::new().add(&h);
+    let v = ContinuousView::new().add(h);
 
     Page::single(&v).save("histogram.svg").expect("saving svg");
 }

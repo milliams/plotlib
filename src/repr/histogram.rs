@@ -165,6 +165,10 @@ impl ContinuousRepresentation for Histogram {
     ) -> svg::node::element::Group {
         svg_render::draw_face_bars(self, x_axis, y_axis, face_width, face_height, &self.style)
     }
+    fn legend_svg(&self) -> Option<svg::node::element::Group> {
+        // TODO implement
+        None
+    }
 
     fn to_text(
         &self,

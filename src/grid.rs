@@ -18,10 +18,10 @@
 //! # use plotlib::style::LineStyle;
 //! # use plotlib::view::View;
 //!
-//! # let l1 = plotlib::repr::Line::new(&[(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)])
+//! # let l1 = plotlib::repr::Line::new(vec![(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)])
 //! #    .style(LineStyle::new().colour("burlywood"));
 //! // let l1 = Line::new() ...
-//! let mut v = ContinuousView::new().add(&l1);
+//! let mut v = ContinuousView::new().add(l1);
 //!
 //! // 3 vertical lines and 8 horizontal lines
 //! v.add_grid(Grid::new(3, 8));

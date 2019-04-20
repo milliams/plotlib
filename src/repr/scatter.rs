@@ -84,6 +84,10 @@ impl ContinuousRepresentation for Scatter {
             &self.style,
         )
     }
+    fn legend_svg(&self) -> Option<svg::node::element::Group> {
+        // TODO implement
+        None
+    }
 
     fn to_text(
         &self,
