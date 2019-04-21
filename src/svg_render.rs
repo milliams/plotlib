@@ -108,14 +108,15 @@ pub fn draw_y_axis(a: &axis::ContinuousAxis, face_height: f64) -> node::element:
         labels.append(tick_label);
     }
 
+    const X_OFFSET: i32 = - 50;
     let label = node::element::Text::new()
-        .set("x", -30)
+        .set("x", X_OFFSET)
         .set("y", -(face_height / 2.))
         .set("text-anchor", "middle")
         .set("font-size", 12)
         .set(
             "transform",
-            format!("rotate(-90 {} {})", -30, -(face_height / 2.)),
+            format!("rotate(-90 {} {})", X_OFFSET, -(face_height / 2.)),
         )
         .add(node::Text::new(a.get_label()));
 

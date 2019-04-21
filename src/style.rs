@@ -49,7 +49,7 @@ impl LineStyle {
         self
     }
     pub fn get_colour(&self) -> String {
-        self.colour.clone().unwrap_or_else(|| "".into())
+        self.colour.clone().unwrap_or_else(|| "black".into())
     }
 
     pub fn width<T>(mut self, value: T) -> Self
