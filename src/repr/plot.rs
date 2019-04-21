@@ -1,17 +1,14 @@
-/*!
+//! Plot line charts
 
-Plot line charts
+//! # Examples
 
-# Examples
-
-```
-# use plotlib::repr::Plot;
-# use plotlib::view::ContinuousView;
-// y=x^2 between 0 and 10
-let l = Plot::new(vec![(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)]);
-let v = ContinuousView::new().add(l);
-```
-*/
+//! ```
+//! # use plotlib::repr::Plot;
+//! # use plotlib::view::ContinuousView;
+//! // y=x^2 between 0 and 10
+//! let l = Plot::new(vec![(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)]);
+//! let v = ContinuousView::new().add(l);
+//! ```
 
 use std::f64;
 
