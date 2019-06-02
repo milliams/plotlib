@@ -17,8 +17,8 @@ fn main() {
         .style(PointStyle::new().marker(PointMarker::Square));
 
     let v = ContinuousView::new()
-        .add(&s1)
-        .add(&s2)
+        .add(s1)
+        .add(s2)
         .x_range(-5., 10.)
         .y_range(-2., 6.)
         .x_label("Some varying variable")

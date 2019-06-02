@@ -9,7 +9,7 @@ Plot arbitrary functions
 # use plotlib::view::ContinuousView;
 // y=x^2 between 0 and 10
 let f = Function::new(|x| x*x, 0., 10.);
-let v = ContinuousView::new().add(&f);
+let v = ContinuousView::new().add(f);
 ```
 */
 
@@ -97,6 +97,11 @@ impl ContinuousRepresentation for Function {
             face_height,
             &self.style,
         )
+    }
+
+    fn legend_svg(&self) -> Option<svg::node::element::Group> {
+        // TODO implement
+        None
     }
 
     fn to_text(
