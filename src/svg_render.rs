@@ -87,6 +87,8 @@ pub fn draw_y_axis(a: &axis::ContinuousAxis, face_height: f64) -> node::element:
     let mut ticks = node::element::Group::new();
     let mut labels = node::element::Group::new();
 
+    let y_tick_font_size = 12;
+
     for &tick in a.ticks().iter() {
         let tick_pos = value_to_face_offset(tick, a, face_height);
         let tick_mark = node::element::Line::new()
@@ -103,19 +105,21 @@ pub fn draw_y_axis(a: &axis::ContinuousAxis, face_height: f64) -> node::element:
             .set("y", -tick_pos)
             .set("text-anchor", "end")
             .set("dominant-baseline", "middle")
-            .set("font-size", 12)
+            .set("font-size", y_tick_font_size)
             .add(node::Text::new(tick.to_string()));
         labels.append(tick_label);
     }
 
+    let y_label_offset = -(face_height / 2.);
+    let y_label_font_size = 12;
     let label = node::element::Text::new()
         .set("x", -30)
-        .set("y", -(face_height / 2.))
+        .set("y", y_label_offset - f64::from(y_label_font_size))
         .set("text-anchor", "middle")
-        .set("font-size", 12)
+        .set("font-size", y_label_font_size)
         .set(
             "transform",
-            format!("rotate(-90 {} {})", -30, -(face_height / 2.)),
+            format!("rotate(-90 {} {})", -30, y_label_offset),
         )
         .add(node::Text::new(a.get_label()));
 
