@@ -29,7 +29,7 @@ pub trait View {
 /// Standard 1-dimensional view with a continuous x-axis
 #[derive(Default)]
 pub struct ContinuousView {
-    representations: Vec<Box<ContinuousRepresentation>>,
+    representations: Vec<Box<dyn ContinuousRepresentation>>,
     x_range: Option<axis::Range>,
     y_range: Option<axis::Range>,
     x_max_ticks: usize,
@@ -146,8 +146,10 @@ impl ContinuousView {
         let x_label: String = self.x_label.clone().unwrap_or_else(|| "".to_string());
         let y_label: String = self.y_label.clone().unwrap_or_else(|| "".to_string());
 
-        let x_axis = axis::ContinuousAxis::new(x_range.lower, x_range.upper, self.x_max_ticks).label(x_label);
-        let y_axis = axis::ContinuousAxis::new(y_range.lower, y_range.upper, self.y_max_ticks).label(y_label);
+        let x_axis = axis::ContinuousAxis::new(x_range.lower, x_range.upper, self.x_max_ticks)
+            .label(x_label);
+        let y_axis = axis::ContinuousAxis::new(y_range.lower, y_range.upper, self.y_max_ticks)
+            .label(y_label);
 
         Ok((x_axis, y_axis))
     }
@@ -177,11 +179,10 @@ impl View for ContinuousView {
             view_group.append(repr_group);
 
             if let Some(legend_group) = repr.legend_svg() {
-                view_group.append(
-                    legend_group.set(
-                        "transform",
-                        format!("translate({}, {})", legend_x, legend_y),
-                    ));
+                view_group.append(legend_group.set(
+                    "transform",
+                    format!("translate({}, {})", legend_x, legend_y),
+                ));
                 legend_y += 18.;
             }
         }
@@ -251,7 +252,7 @@ impl View for ContinuousView {
 /// A view with categorical entries along the x-axis and continuous values along the y-axis
 #[derive(Default)]
 pub struct CategoricalView {
-    representations: Vec<Box<CategoricalRepresentation>>,
+    representations: Vec<Box<dyn CategoricalRepresentation>>,
     x_range: Option<Vec<String>>,
     y_range: Option<axis::Range>,
     x_label: Option<String>,

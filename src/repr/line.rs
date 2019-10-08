@@ -114,13 +114,16 @@ impl ContinuousRepresentation for Line {
             group.append(legend_text);
 
             // Draw sample line
-            let mut line = node::element::Line::new()
+            let line = node::element::Line::new()
                 .set("x1", -10)
-                .set("y1", -FONT_SIZE/2. +2.)
+                .set("y1", -FONT_SIZE / 2. + 2.)
                 .set("x2", -3)
-                .set("y2", -FONT_SIZE/2. +2.)
+                .set("y2", -FONT_SIZE / 2. + 2.)
                 .set("stroke-width", self.style.get_width().unwrap_or(2.))
-                .set("stroke", self.style.get_colour().clone().unwrap_or_else(|| "".into()));
+                .set(
+                    "stroke",
+                    self.style.get_colour().clone().unwrap_or_else(|| "".into()),
+                );
             group.append(line);
 
             group
