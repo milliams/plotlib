@@ -390,5 +390,7 @@ mod tests {
 
         // test rounding
         assert_eq!(calculate_ticks(1.0, 1.5, 6), [1.0, 1.1, 1.2, 1.3, 1.4, 1.5]);
+        assert_eq!(calculate_ticks(0.0, 1.0, 6), [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]);
+        assert_eq!(calculate_ticks(0.0, 0.3, 4), [0.0, 0.1, 0.2, 0.3]);
     }
 }
