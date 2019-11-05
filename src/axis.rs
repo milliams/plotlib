@@ -146,7 +146,7 @@ impl Iterator for TickSteps {
 }
 
 fn round(x: f64) -> f64 {
-    (x * 100.0).round() / 100.0
+    (x * 1000000000000000.0).round() / 1000000000000000.0
 }
 
 fn generate_ticks(min: f64, max: f64, step_size: f64) -> Vec<f64> {
