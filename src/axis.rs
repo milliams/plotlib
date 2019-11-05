@@ -145,6 +145,10 @@ impl Iterator for TickSteps {
     }
 }
 
+fn round(x: f64) -> f64 {
+    (x * 100.0).round() / 100.0
+}
+
 fn generate_ticks(min: f64, max: f64, step_size: f64) -> Vec<f64> {
     let mut ticks: Vec<f64> = vec![];
     if min <= 0.0 {
@@ -152,7 +156,7 @@ fn generate_ticks(min: f64, max: f64, step_size: f64) -> Vec<f64> {
             // standard spanning axis
             ticks.extend(
                 (1..)
-                    .map(|n| -1.0 * f64::from(n) * step_size)
+                    .map(|n| round(-1.0 * f64::from(n) * step_size))
                     .take_while(|&v| v >= min)
                     .collect::<Vec<f64>>()
                     .iter()
@@ -161,14 +165,14 @@ fn generate_ticks(min: f64, max: f64, step_size: f64) -> Vec<f64> {
             ticks.push(0.0);
             ticks.extend(
                 (1..)
-                    .map(|n| f64::from(n) * step_size)
+                    .map(|n| round(f64::from(n) * step_size))
                     .take_while(|&v| v <= max),
             );
         } else {
             // entirely negative axis
             ticks.extend(
                 (1..)
-                    .map(|n| -1.0 * f64::from(n) * step_size)
+                    .map(|n| round(-1.0 * f64::from(n) * step_size))
                     .skip_while(|&v| v > max)
                     .take_while(|&v| v >= min)
                     .collect::<Vec<f64>>()
@@ -180,7 +184,7 @@ fn generate_ticks(min: f64, max: f64, step_size: f64) -> Vec<f64> {
         // entirely positive axis
         ticks.extend(
             (1..)
-                .map(|n| f64::from(n) * step_size)
+                .map(|n| round(f64::from(n) * step_size))
                 .skip_while(|&v| v < min)
                 .take_while(|&v| v <= max),
         );
@@ -383,15 +387,8 @@ mod tests {
         );
 
         assert_eq!(calculate_ticks(-10.0, -3.0, 6), [-10.0, -8.0, -6.0, -4.0]);
-    }
 
-    #[test]
-    #[should_panic(expected = "assertion failed")]
-    fn test_todo() {
-        // This should work but there is currently a bug in how the rounding is performed.
-        // generate_ticks() does `(3 as f64) * step_size` which when step_size is 0.1 gives
-        // 0.30000000000000004 rather than 1.3
-        // Maybe we just want to fix this at display in which case this test can be removed.
+        // test rounding
         assert_eq!(calculate_ticks(1.0, 1.5, 6), [1.0, 1.1, 1.2, 1.3, 1.4, 1.5]);
     }
 }
