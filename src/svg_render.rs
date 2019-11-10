@@ -258,7 +258,7 @@ pub fn draw_face_bars(
         let l_pos = value_to_face_offset(l, x_axis, face_width);
         let u_pos = value_to_face_offset(u, x_axis, face_width);
         let width = u_pos - l_pos;
-        let count_scaled = value_to_face_offset(f64::from(count), y_axis, face_height);
+        let count_scaled = value_to_face_offset(count, y_axis, face_height);
         let rect = node::element::Rectangle::new()
             .set("x", l_pos)
             .set("y", -count_scaled)

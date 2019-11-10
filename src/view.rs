@@ -23,7 +23,7 @@ pub trait View {
     fn to_svg(&self, face_width: f64, face_height: f64) -> Result<svg::node::element::Group>;
     fn to_text(&self, face_width: u32, face_height: u32) -> Result<String>;
     fn add_grid(&mut self, grid: Grid);
-    fn grid<'a>(&'a self) -> &'a Option<Grid>;
+    fn grid(&self) -> &Option<Grid>;
 }
 
 /// Standard 1-dimensional view with a continuous x-axis

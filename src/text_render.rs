@@ -147,14 +147,14 @@ pub fn render_y_axis_strings(y_axis: &axis::ContinuousAxis, face_height: u32) ->
     let y_axis_label: Vec<_> = y_axis_label.chars().rev().collect();
 
     // Generate a list of strings to label the y-axis
-    let y_label_strings: Vec<_> = (0..face_height + 1)
+    let y_label_strings: Vec<_> = (0..=face_height)
         .map(|line| match y_tick_map.get(&(line as i32)) {
             Some(v) => v.to_string(),
             None => "".to_string(),
         }).collect();
 
     // Generate a list of strings to tick the y-axis
-    let y_tick_strings: Vec<_> = (0..face_height + 1)
+    let y_tick_strings: Vec<_> = (0..=face_height)
         .map(|line| match y_tick_map.get(&(line as i32)) {
             Some(_) => "-".to_string(),
             None => " ".to_string(),
@@ -197,7 +197,7 @@ pub fn render_x_axis_strings(x_axis: &axis::ContinuousAxis, face_width: u32) -> 
     let x_tick_map = tick_offset_map(x_axis, face_width as u32);
 
     // Create a string which will be printed to give the x-axis tick marks
-    let x_axis_tick_string: String = (0..face_width + 1)
+    let x_axis_tick_string: String = (0..=face_width)
         .map(|cell| match x_tick_map.get(&(cell as i32)) {
             Some(_) => '|',
             None => ' ',
@@ -291,9 +291,9 @@ pub fn render_face_bars(
 
     let mut face_strings: Vec<String> = vec![];
 
-    for line in 1..face_height + 1 {
+    for line in 1..=face_height  {
         let mut line_string = String::new();
-        for column in 1..face_width as usize + 1 {
+        for column in 1..=face_width as usize {
             // maybe use a HashSet for faster `contains()`?
             line_string.push(if bound_cells.contains(&(column as i32)) {
                 // The value of the column _below_ this one
@@ -368,9 +368,9 @@ pub fn render_face_points(
     };
 
     let mut face_strings: Vec<String> = vec![];
-    for line in 1..face_height + 1 {
+    for line in 1..=face_height {
         let mut line_string = String::new();
-        for column in 1..face_width as usize + 1 {
+        for column in 1..=face_width as usize {
             line_string.push(if points.contains(&(column as i32, line as i32)) {
                 marker
             } else {
