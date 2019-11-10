@@ -145,6 +145,10 @@ impl Iterator for TickSteps {
     }
 }
 
+/**
+This function exists to fix subtle floating point numbers like 0.30000000000000004
+In the longer-term is should be moved to something in the presentation layer
+*/
 fn round(x: f64) -> f64 {
     (x * 1000000000000000.0).round() / 1000000000000000.0
 }
