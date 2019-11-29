@@ -14,17 +14,17 @@ These points may then be layered with other SVG elements from other representati
 
 use crate::axis;
 
-mod line;
-mod function;
 mod barchart;
 mod boxplot;
+mod function;
 mod histogram;
+mod line;
 mod scatter;
-pub use line::*;
-pub use function::*;
 pub use barchart::*;
 pub use boxplot::*;
+pub use function::*;
 pub use histogram::*;
+pub use line::*;
 pub use scatter::*;
 
 /**
@@ -38,6 +38,8 @@ pub trait ContinuousRepresentation {
         &self,
         x_axis: &axis::ContinuousAxis,
         y_axis: &axis::ContinuousAxis,
+        x: f64,
+        y: f64,
         face_width: f64,
         face_height: f64,
     ) -> svg::node::element::Group;
@@ -68,6 +70,8 @@ pub trait CategoricalRepresentation {
         &self,
         x_axis: &axis::CategoricalAxis,
         y_axis: &axis::ContinuousAxis,
+        y: f64,
+        x: f64,
         face_width: f64,
         face_height: f64,
     ) -> svg::node::element::Group;

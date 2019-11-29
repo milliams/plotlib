@@ -72,6 +72,8 @@ impl ContinuousRepresentation for Scatter {
         &self,
         x_axis: &axis::ContinuousAxis,
         y_axis: &axis::ContinuousAxis,
+        x: f64,
+        y: f64,
         face_width: f64,
         face_height: f64,
     ) -> svg::node::element::Group {
@@ -79,6 +81,8 @@ impl ContinuousRepresentation for Scatter {
             &self.data,
             x_axis,
             y_axis,
+            x,
+            y,
             face_width,
             face_height,
             &self.style,

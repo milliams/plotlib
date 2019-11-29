@@ -31,7 +31,6 @@ use crate::svg_render;
 use crate::text_render;
 use crate::utils::PairWise;
 
-
 #[derive(Debug)]
 enum HistogramType {
     Count,
@@ -160,10 +159,21 @@ impl ContinuousRepresentation for Histogram {
         &self,
         x_axis: &axis::ContinuousAxis,
         y_axis: &axis::ContinuousAxis,
+        x: f64,
+        y: f64,
         face_width: f64,
         face_height: f64,
     ) -> svg::node::element::Group {
-        svg_render::draw_face_bars(self, x_axis, y_axis, face_width, face_height, &self.style)
+        svg_render::draw_face_bars(
+            self,
+            x_axis,
+            y_axis,
+            x,
+            y,
+            face_width,
+            face_height,
+            &self.style,
+        )
     }
     fn legend_svg(&self) -> Option<svg::node::element::Group> {
         // TODO implement
@@ -212,7 +222,8 @@ mod tests {
             [0., 1. / 3., 2. / 3., 1.]
         );
         assert_eq!(
-            Histogram::from_slice(&[], HistogramBins::Bounds([0., 1., 1.5, 2., 5.6].to_vec())).bin_bounds,
+            Histogram::from_slice(&[], HistogramBins::Bounds([0., 1., 1.5, 2., 5.6].to_vec()))
+                .bin_bounds,
             [0., 1., 1.5, 2., 5.6]
         );
     }

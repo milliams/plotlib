@@ -2,6 +2,8 @@
 
 ## Unreleased
 ### Added
+- Styling for continuous views
+- Multi view pages
 - Legends for line plots
 
 ### Changed

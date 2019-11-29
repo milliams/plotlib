@@ -84,6 +84,8 @@ impl ContinuousRepresentation for Line {
         &self,
         x_axis: &axis::ContinuousAxis,
         y_axis: &axis::ContinuousAxis,
+        x: f64,
+        y: f64,
         face_width: f64,
         face_height: f64,
     ) -> svg::node::element::Group {
@@ -91,6 +93,8 @@ impl ContinuousRepresentation for Line {
             &self.data,
             x_axis,
             y_axis,
+            x,
+            y,
             face_width,
             face_height,
             &self.style,
@@ -106,18 +110,18 @@ impl ContinuousRepresentation for Line {
 
             // Draw legend text
             let legend_text = node::element::Text::new()
-                .set("x", 0)
+                .set("x", -13)
                 .set("y", 0)
-                .set("text-anchor", "start")
+                .set("text-anchor", "end")
                 .set("font-size", FONT_SIZE)
                 .add(node::Text::new(legend));
             group.append(legend_text);
 
             // Draw sample line
             let line = node::element::Line::new()
-                .set("x1", -10)
+                .set("x1", -0)
                 .set("y1", -FONT_SIZE / 2. + 2.)
-                .set("x2", -3)
+                .set("x2", -10)
                 .set("y2", -FONT_SIZE / 2. + 2.)
                 .set("stroke-width", self.style.get_width().unwrap_or(2.))
                 .set(

@@ -78,6 +78,8 @@ impl CategoricalRepresentation for BarChart {
         &self,
         x_axis: &axis::CategoricalAxis,
         y_axis: &axis::ContinuousAxis,
+        y: f64,
+        x: f64,
         face_width: f64,
         face_height: f64,
     ) -> svg::node::element::Group {
@@ -86,6 +88,8 @@ impl CategoricalRepresentation for BarChart {
             &self.label,
             x_axis,
             y_axis,
+            y,
+            x,
             face_width,
             face_height,
             &self.style,
