@@ -75,8 +75,8 @@ pub fn draw_x_axis(
 ) -> node::element::Group {
     let (axis_line, size, skew) = match line_style {
         ContinuousViewAxisLineStyle::Arrow => (
-            horizontal_line(y, x, face_width - 3.5, "black", true),
-            face_width - x - 3.5,
+            horizontal_line(y, x, face_width, "black", true),
+            face_width - x,
             x,
         ),
         ContinuousViewAxisLineStyle::Line => (
@@ -171,9 +171,7 @@ pub fn draw_y_axis(
     tick_style: (ContinuousViewTickStyle, f32, u32),
 ) -> node::element::Group {
     let (axis_line, size, skew) = match line_style {
-        ContinuousViewAxisLineStyle::Arrow => {
-            (vertical_line(x, y, 7.0, "black", true), y - 7.0, 7.0)
-        }
+        ContinuousViewAxisLineStyle::Arrow => (vertical_line(x, y, 0., "black", true), y, 0.0),
         ContinuousViewAxisLineStyle::Line => (vertical_line(x, 0.0, y, "black", false), y, 0.0),
     };
 
@@ -484,6 +482,58 @@ pub fn draw_face_line(
             )
             .set("d", path),
     );
+
+    group
+}
+
+pub fn draw_face_vector(
+    s: ((f64, f64), (f64, f64)),
+    x_axis: &axis::ContinuousAxis,
+    y_axis: &axis::ContinuousAxis,
+    skew_x: f64,
+    skew_y: f64,
+    face_width: f64,
+    _face_height: f64,
+    style: &style::LineStyle,
+) -> node::element::Group {
+    let mut group = node::element::Group::new();
+
+    let (first_x_skew, second_x_skew, first_y_skew, second_y_skew) =
+        if (s.0).0 < (s.1).0 && (s.0).1 < (s.1).1 {
+            (skew_x, skew_x - 10., skew_y, skew_y + 3.5)
+        } else if (s.0).0 > (s.1).0 && (s.0).1 > (s.1).1 {
+            (skew_x, skew_x + 5., skew_y, skew_y - 7.)
+        } else if (s.0).0 < (s.1).0 && (s.0).1 > (s.1).1 {
+            (skew_x, skew_x - 10., skew_y, skew_y - 3.5)
+        } else {
+            (skew_x, skew_x + 5., skew_y, skew_y + 7.)
+        };
+
+    let node = node::element::Line::new()
+        .set(
+            "x1",
+            value_to_face_offset((s.0).0, x_axis, face_width) + first_x_skew,
+        )
+        .set(
+            "x2",
+            value_to_face_offset((s.1).0, x_axis, face_width) + second_x_skew,
+        )
+        .set(
+            "y1",
+            -value_to_face_offset((s.0).1, y_axis, skew_y) + first_y_skew,
+        )
+        .set(
+            "y2",
+            -value_to_face_offset((s.1).1, y_axis, skew_y) + second_y_skew,
+        )
+        .set(
+            "stroke",
+            style.get_colour().clone().unwrap_or_else(|| "".into()),
+        )
+        .set("stroke-width", style.get_width().unwrap_or(1.))
+        .set("marker-end", "url(#arrowhead)");
+
+    group.append(node);
 
     group
 }

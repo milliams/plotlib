@@ -5,6 +5,8 @@
 - Styling for continuous views
 - Multi view pages
 - Legends for line plots
+- Vectors (experimental)(svg only)
+- Fixed axis bad alignment
 
 ### Changed
 - Remove style traits and replace all style structs with 3 common ones in `style`
