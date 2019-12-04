@@ -7,7 +7,7 @@ Plot arbitrary vectors
 ```
 # use plotlib::repr::Vector;
 # use plotlib::view::ContinuousView;
-let f = Vector::new(&((0.,0.),(1.,1.)));
+let f = Vector::new(((0.,0.),(1.,1.)));
 let v = ContinuousView::new().add(f);
 ```
 */
