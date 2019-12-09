@@ -3,7 +3,7 @@
 ## Unreleased
 ### Added
 - Legends for line plots
-- Fixed `use` directive for scatterplots in the readme
+- Fixed `use` directive for scatterplots in the readme and in the example
 
 ### Changed
 - Remove style traits and replace all style structs with 3 common ones in `style`
