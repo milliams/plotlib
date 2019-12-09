@@ -24,7 +24,7 @@ For example, code like:
 
 ```rust
 use plotlib::page::Page;
-use plotlib::repr::Scatter;
+use plotlib::scatter::Scatter;
 use plotlib::view::ContinuousView;
 use plotlib::style::{PointMarker, PointStyle};
 
