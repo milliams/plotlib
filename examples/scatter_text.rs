@@ -1,5 +1,5 @@
 use plotlib::page::Page;
-use plotlib::repr::Scatter;
+use plotlib::scatter::Scatter;
 use plotlib::style::{PointMarker, PointStyle};
 use plotlib::view::ContinuousView;
 
