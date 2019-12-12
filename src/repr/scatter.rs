@@ -13,7 +13,7 @@ use crate::text_render;
 #[derive(Debug)]
 pub struct Scatter {
     pub data: Vec<(f64, f64)>,
-    style: PointStyle,
+    pub style: PointStyle,
 }
 
 impl Scatter {
@@ -26,6 +26,13 @@ impl Scatter {
         Scatter {
             data,
             style: PointStyle::new(),
+        }
+    }
+
+    pub fn from_vec(v: Vec<(f64,f64)>) -> Self {
+        Scatter {
+            data: v,
+            style: PointStyle::new()
         }
     }
 
