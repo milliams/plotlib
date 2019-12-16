@@ -29,14 +29,14 @@ pub trait View {
 /// Standard 1-dimensional view with a continuous x-axis
 #[derive(Default)]
 pub struct ContinuousView {
-    representations: Vec<Box<dyn ContinuousRepresentation>>,
-    x_range: Option<axis::Range>,
-    y_range: Option<axis::Range>,
-    x_max_ticks: usize,
-    y_max_ticks: usize,
-    x_label: Option<String>,
-    y_label: Option<String>,
-    grid: Option<Grid>,
+    pub representations: Vec<Box<dyn ContinuousRepresentation>>,
+    pub x_range: Option<axis::Range>,
+    pub y_range: Option<axis::Range>,
+    pub x_max_ticks: usize,
+    pub y_max_ticks: usize,
+    pub x_label: Option<String>,
+    pub y_label: Option<String>,
+    pub grid: Option<Grid>,
 }
 
 impl ContinuousView {

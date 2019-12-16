@@ -10,7 +10,7 @@ use crate::text_render;
 
 /// The scatter *representation*.
 /// It knows its data as well how to style itself
-#[derive(Debug)]
+#[derive(Debug,Clone)]
 pub struct Scatter {
     pub data: Vec<(f64, f64)>,
     pub style: PointStyle,

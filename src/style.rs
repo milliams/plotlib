@@ -91,7 +91,7 @@ pub enum PointMarker {
 }
 
 
-#[derive(Debug, Default)]
+#[derive(Debug, Default,Clone)]
 pub struct PointStyle {
     marker: Option<PointMarker>,
     colour: Option<String>,
