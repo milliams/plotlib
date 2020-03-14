@@ -110,7 +110,7 @@ pub fn draw_y_axis(a: &axis::ContinuousAxis, face_height: f64) -> node::element:
         labels.append(tick_label);
     }
 
-    const X_OFFSET: i32 = - 50;
+    const X_OFFSET: i32 = -30;
     let y_label_offset = -(face_height / 2.);
     let y_label_font_size = 12;
     let label = node::element::Text::new()
