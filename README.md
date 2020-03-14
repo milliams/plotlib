@@ -24,13 +24,13 @@ For example, code like:
 
 ```rust
 use plotlib::page::Page;
-use plotlib::repr::Scatter;
+use plotlib::repr::Plot;
 use plotlib::view::ContinuousView;
 use plotlib::style::{PointMarker, PointStyle};
 
 fn main() {
     // Scatter plots expect a list of pairs
-    let data1 = [
+    let data1 = vec![
         (-3.0, 2.3),
         (-1.6, 5.3),
         (0.3, 0.7),
@@ -40,15 +40,15 @@ fn main() {
     ];
 
     // We create our scatter plot from the data
-    let s1: Scatter = Scatter::from_slice(&data1).style(
+    let s1: Plot = Plot::new(data1).point_style(
         PointStyle::new()
             .marker(PointMarker::Square) // setting the marker to be a square
             .colour("#DD3355"),
     ); // and a custom colour
 
     // We can plot multiple data sets in the same view
-    let data2 = [(-1.4, 2.5), (7.2, -0.3)];
-    let s2: Scatter = Scatter::from_slice(&data2).style(
+    let data2 = vec![(-1.4, 2.5), (7.2, -0.3)];
+    let s2: Plot = Plot::new(data2).point_style(
         PointStyle::new() // uses the default marker
             .colour("#35C788"),
     ); // and a different colour
