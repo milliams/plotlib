@@ -6,20 +6,18 @@
 //! can be overlaid with another one to set many at once.
 //! Settings will be cloned in and out of it.
 
-/**
-The style that line corners should use
-*/
-#[derive(Debug, Clone)]
+/// The style that line corners should use
+#[derive(Debug, Clone, Copy)]
 pub enum LineJoin {
     Miter,
     Round,
 }
 
-#[derive(Debug, Default)]
+#[derive(Debug, Default, Clone)]
 pub struct LineStyle {
-    colour: Option<String>,
-    width: Option<f32>,
-    linejoin: Option<LineJoin>,
+    pub colour: Option<String>,
+    pub width: Option<f32>,
+    pub linejoin: Option<LineJoin>,
 }
 impl LineStyle {
     pub fn new() -> Self {
@@ -43,47 +41,42 @@ impl LineStyle {
             self.linejoin = Some(v.clone())
         }
     }
-    pub fn colour<T>(&mut self, value: T) -> &mut Self
+    pub fn colour<T>(mut self, value: T) -> Self
     where
         T: Into<String>,
     {
         self.colour = Some(value.into());
         self
     }
-
-    pub fn get_colour(&self) -> &Option<String> {
-        &self.colour
+    pub fn get_colour(&self) -> String {
+        self.colour.clone().unwrap_or_else(|| "black".into())
     }
 
-    pub fn width<T>(&mut self, value: T) -> &mut Self
+    pub fn width<T>(mut self, value: T) -> Self
     where
         T: Into<f32>,
     {
         self.width = Some(value.into());
         self
     }
-
-    pub fn get_width(&self) -> &Option<f32> {
-        &self.width
+    pub fn get_width(&self) -> f32 {
+        self.width.unwrap_or_else(|| 2.0)
     }
 
-    pub fn linejoin<T>(&mut self, value: T) -> &mut Self
+    pub fn linejoin<T>(mut self, value: T) -> Self
     where
         T: Into<LineJoin>,
     {
         self.linejoin = Some(value.into());
         self
     }
-
-    pub fn get_linejoin(&self) -> &Option<LineJoin> {
-        &self.linejoin
+    pub fn get_linejoin(&self) -> LineJoin {
+        self.linejoin.unwrap_or_else(|| LineJoin::Round)
     }
 }
 
-/**
-The marker that should be used for the points of the scatter plot
-*/
-#[derive(Debug, Clone)]
+/// The marker that should be used for the points of the scatter plot
+#[derive(Debug, Clone, Copy)]
 pub enum PointMarker {
     Circle,
     Square,
@@ -91,7 +84,7 @@ pub enum PointMarker {
 }
 
 
-#[derive(Debug, Default)]
+#[derive(Debug, Default, Clone)]
 pub struct PointStyle {
     marker: Option<PointMarker>,
     colour: Option<String>,
@@ -119,40 +112,37 @@ impl PointStyle {
             self.size = Some(v)
         }
     }
-    pub fn marker<T>(&mut self, value: T) -> &mut Self
+    pub fn marker<T>(mut self, value: T) -> Self
     where
         T: Into<PointMarker>,
     {
         self.marker = Some(value.into());
         self
     }
-
-    pub fn get_marker(&self) -> &Option<PointMarker> {
-        &self.marker
+    pub fn get_marker(&self) -> PointMarker {
+        self.marker.unwrap_or(PointMarker::Circle)
     }
 
-    pub fn colour<T>(&mut self, value: T) -> &mut Self
+    pub fn colour<T>(mut self, value: T) -> Self
     where
         T: Into<String>,
     {
         self.colour = Some(value.into());
         self
     }
-
-    pub fn get_colour(&self) -> &Option<String> {
-        &self.colour
+    pub fn get_colour(&self) -> String {
+        self.colour.clone().unwrap_or_else(|| "".into())
     }
 
-    pub fn size<T>(&mut self, value: T) -> &mut Self
+    pub fn size<T>(mut self, value: T) -> Self
     where
         T: Into<f32>,
     {
         self.size = Some(value.into());
         self
     }
-
-    pub fn get_size(&self) -> &Option<f32> {
-        &self.size
+    pub fn get_size(&self) -> f32 {
+        self.size.unwrap_or(5.0)
     }
 }
 
@@ -172,17 +162,17 @@ impl BoxStyle {
         }
     }
 
-    pub fn fill<T>(&mut self, value: T) -> &mut Self
+    pub fn fill<T>(mut self, value: T) -> Self
     where
         T: Into<String>,
     {
         self.fill = Some(value.into());
         self
     }
-
-    pub fn get_fill(&self) -> &Option<String> {
-        &self.fill
+    pub fn get_fill(&self) -> String {
+        self.fill.clone().unwrap_or_else(|| "".into())
     }
+
 }
 
 #[cfg(test)]
@@ -190,25 +180,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_linestyle_simple() {
-        let s = LineStyle::new();
-        assert_eq!(*s.get_colour(), None);
-        assert_eq!(*s.get_width(), None);
-        assert!(match s.get_linejoin() {
-            None => true,
-            _ => false,
-        });
-    }
-
-    #[test]
     fn test_linestyle_plain_overlay() {
         let mut p = LineStyle::new();
-        p.overlay(LineStyle::new().colour("red").linejoin(LineJoin::Miter).width(1.));
-        assert_eq!(*p.get_colour(), Some("red".into()));
-        assert_eq!(*p.get_width(), Some(1.));
-        assert!(match p.get_linejoin() {
-            Some(LineJoin::Miter) => true,
-            _ => false,
-        });
+        p.overlay(&LineStyle::new().colour("red").linejoin(LineJoin::Miter).width(1.));
+        assert_eq!(p.get_colour(), "red".to_string());
+        assert_eq!(p.get_width(), 1.);
+        if let LineJoin::Miter = p.get_linejoin() {
+        } else {
+            panic!()
+        }
     }
 }

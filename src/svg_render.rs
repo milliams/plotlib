@@ -110,16 +110,17 @@ pub fn draw_y_axis(a: &axis::ContinuousAxis, face_height: f64) -> node::element:
         labels.append(tick_label);
     }
 
+    const X_OFFSET: i32 = - 50;
     let y_label_offset = -(face_height / 2.);
     let y_label_font_size = 12;
     let label = node::element::Text::new()
-        .set("x", -30)
+        .set("x", X_OFFSET)
         .set("y", y_label_offset - f64::from(y_label_font_size))
         .set("text-anchor", "middle")
         .set("font-size", y_label_font_size)
         .set(
             "transform",
-            format!("rotate(-90 {} {})", -30, y_label_offset),
+            format!("rotate(-90 {} {})", X_OFFSET, y_label_offset),
         )
         .add(node::Text::new(a.get_label()));
 
@@ -192,8 +193,8 @@ pub fn draw_face_points(
     for &(x, y) in s {
         let x_pos = value_to_face_offset(x, x_axis, face_width);
         let y_pos = -value_to_face_offset(y, y_axis, face_height);
-        let radius = f64::from(style.get_size().clone().unwrap_or(5.));
-        match style.get_marker().clone().unwrap_or(style::PointMarker::Circle) {
+        let radius = f64::from(style.get_size());
+        match style.get_marker() {
             style::PointMarker::Circle => {
                 group.append(
                     node::element::Circle::new()
@@ -202,7 +203,7 @@ pub fn draw_face_points(
                         .set("r", radius)
                         .set(
                             "fill",
-                            style.get_colour().clone().unwrap_or_else(|| "".into()),
+                            style.get_colour(),
                         ),
                 );
             }
@@ -215,7 +216,7 @@ pub fn draw_face_points(
                         .set("height", 2. * radius)
                         .set(
                             "fill",
-                            style.get_colour().clone().unwrap_or_else(|| "".into()),
+                            style.get_colour(),
                         ),
                 );
             }
@@ -231,7 +232,7 @@ pub fn draw_face_points(
                         .set("fill", "none")
                         .set(
                             "stroke",
-                            style.get_colour().clone().unwrap_or_else(|| "".into()),
+                            style.get_colour(),
                         )
                         .set("stroke-width", 2)
                         .set("d", path),
@@ -268,8 +269,6 @@ pub fn draw_face_bars(
                 "fill",
                 style
                     .get_fill()
-                    .clone()
-                    .unwrap_or_else(|| "burlywood".into()),
             )
             .set("stroke", "black");
         group.append(rect);
@@ -311,12 +310,9 @@ pub fn draw_face_line(
     group.append(
         node::element::Path::new()
             .set("fill", "none")
-            .set(
-                "stroke",
-                style.get_colour().clone().unwrap_or_else(|| "".into()),
-            )
-            .set("stroke-width", style.get_width().clone().unwrap_or(2.))
-            .set("stroke-linejoin", match style.get_linejoin().clone().unwrap_or(style::LineJoin::Round) {
+            .set("stroke", style.get_colour())
+            .set("stroke-width", style.get_width())
+            .set("stroke-linejoin", match style.get_linejoin() {
                 style::LineJoin::Miter => "miter",
                 style::LineJoin::Round => "round",
             })
@@ -358,13 +354,7 @@ where
             .set("y", box_start)
             .set("width", box_width)
             .set("height", box_end - box_start)
-            .set(
-                "fill",
-                style
-                    .get_fill()
-                    .clone()
-                    .unwrap_or_else(|| "burlywood".into()),
-            )
+            .set("fill", style.get_fill())
             .set("stroke", "black"),
     );
 
@@ -435,13 +425,7 @@ where
             .set("y", box_start)
             .set("width", box_width)
             .set("height", box_end - box_start)
-            .set(
-                "fill",
-                style
-                    .get_fill()
-                    .clone()
-                    .unwrap_or_else(|| "burlywood".into()),
-            )
+            .set("fill", style .get_fill())
             .set("stroke", "black"),
     );
 

@@ -1,4 +1,4 @@
-use plotlib::repr::{BarChart, Line};
+use plotlib::repr::{BarChart, Plot};
 use plotlib::grid::Grid;
 use plotlib::page::Page;
 use plotlib::style::{BoxStyle, LineStyle};
@@ -13,8 +13,8 @@ fn render_line_chart<S>(filename: S)
 where
     S: AsRef<str>,
 {
-    let l1 = Line::new(vec![(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)])
-        .style(LineStyle::new().colour("burlywood"));
+    let l1 = Plot::new(vec![(0., 1.), (2., 1.5), (3., 1.2), (4., 1.1)])
+        .line_style(LineStyle::new().colour("burlywood"));
     let mut v = ContinuousView::new().add(l1);
     v.add_grid(Grid::new(3, 8));
     Page::single(&v)
@@ -29,7 +29,7 @@ where
     let b1 = BarChart::new(5.3).label("1");
     let b2 = BarChart::new(2.6)
         .label("2")
-        .style(BoxStyle::new().fill("darkolivegreen"));
+        .style(&BoxStyle::new().fill("darkolivegreen"));
     let mut v = CategoricalView::new()
         .add(b1)
         .add(b2)
