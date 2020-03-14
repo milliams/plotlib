@@ -1,5 +1,5 @@
 use std::collections::btree_map::BTreeMap;
-use plotlib::style::BarChart;
+use plotlib::style::BoxStyle;
 
 fn main() {
     let mut data = Vec::new();
@@ -16,11 +16,11 @@ fn main() {
     for (ch, count) in &count {
         println!("{:?}: {}", ch, count);
         let count = *count as f64;
-        data.push(plotlib::barchart::BarChart::new(count).label(ch.to_string()));
+        data.push(plotlib::repr::BarChart::new(count).label(ch.to_string()));
     }
      // Add data to the view
     let v = data
-        .iter()
+        .into_iter()
         .fold(plotlib::view::CategoricalView::new(), |view, datum| {
             view.add(datum)
         });
