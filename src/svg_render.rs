@@ -110,17 +110,19 @@ pub fn draw_y_axis(a: &axis::ContinuousAxis, face_height: f64) -> node::element:
         labels.append(tick_label);
     }
 
-    const X_OFFSET: i32 = -30;
+    let max_tick_length = a.ticks().iter().map(|&t| t.to_string().len()).max().expect("Could not calculate max tick length");
+
+    let x_offset = -(y_tick_font_size*max_tick_length as i32);
     let y_label_offset = -(face_height / 2.);
     let y_label_font_size = 12;
     let label = node::element::Text::new()
-        .set("x", X_OFFSET)
+        .set("x", x_offset)
         .set("y", y_label_offset - f64::from(y_label_font_size))
         .set("text-anchor", "middle")
         .set("font-size", y_label_font_size)
         .set(
             "transform",
-            format!("rotate(-90 {} {})", X_OFFSET, y_label_offset),
+            format!("rotate(-90 {} {})", x_offset, y_label_offset),
         )
         .add(node::Text::new(a.get_label()));
 

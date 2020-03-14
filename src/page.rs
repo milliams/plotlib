@@ -62,7 +62,7 @@ impl<'a> Page<'a> {
         let (width, height) = self.dimensions;
         let mut document = Document::new().set("viewBox", (0, 0, width, height));
 
-        let x_margin = 90; // should actually depend on y-axis label font size
+        let x_margin = 120; // should actually depend on y-axis label font size
         let y_margin = 60;
         let x_offset = 0.6 * f64::from(x_margin);
         let y_offset = 0.6 * f64::from(y_margin);
