@@ -109,9 +109,7 @@ impl TickSteps {
     fn start_at(start: f64) -> TickSteps {
         let start_options = TickSteps::scaled_steps(start);
         let overflow = start_options[0] * 10.0;
-        let curr = start_options
-            .iter()
-            .find(|&step| step >= &start);
+        let curr = start_options.iter().find(|&step| step >= &start);
 
         TickSteps {
             next: *curr.unwrap_or(&overflow),
@@ -135,10 +133,7 @@ impl Iterator for TickSteps {
         let curr = self.next; // cache the value we're currently on
         let curr_steps = TickSteps::scaled_steps(self.next);
         let overflow = curr_steps[0] * 10.0;
-        self.next = *curr_steps
-            .iter()
-            .find(|&s| s > &curr)
-            .unwrap_or(&overflow);
+        self.next = *curr_steps.iter().find(|&s| s > &curr).unwrap_or(&overflow);
         Some(curr)
     }
 }

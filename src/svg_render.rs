@@ -110,9 +110,14 @@ pub fn draw_y_axis(a: &axis::ContinuousAxis, face_height: f64) -> node::element:
         labels.append(tick_label);
     }
 
-    let max_tick_length = a.ticks().iter().map(|&t| t.to_string().len()).max().expect("Could not calculate max tick length");
+    let max_tick_length = a
+        .ticks()
+        .iter()
+        .map(|&t| t.to_string().len())
+        .max()
+        .expect("Could not calculate max tick length");
 
-    let x_offset = -(y_tick_font_size*max_tick_length as i32);
+    let x_offset = -(y_tick_font_size * max_tick_length as i32);
     let y_label_offset = -(face_height / 2.);
     let y_label_font_size = 12;
     let label = node::element::Text::new()
@@ -188,8 +193,7 @@ pub fn draw_face_points(
     face_width: f64,
     face_height: f64,
     style: &style::PointStyle,
-) -> node::element::Group
-{
+) -> node::element::Group {
     let mut group = node::element::Group::new();
 
     for &(x, y) in s {
@@ -203,10 +207,7 @@ pub fn draw_face_points(
                         .set("cx", x_pos)
                         .set("cy", y_pos)
                         .set("r", radius)
-                        .set(
-                            "fill",
-                            style.get_colour(),
-                        ),
+                        .set("fill", style.get_colour()),
                 );
             }
             style::PointMarker::Square => {
@@ -216,10 +217,7 @@ pub fn draw_face_points(
                         .set("y", y_pos - radius)
                         .set("width", 2. * radius)
                         .set("height", 2. * radius)
-                        .set(
-                            "fill",
-                            style.get_colour(),
-                        ),
+                        .set("fill", style.get_colour()),
                 );
             }
             style::PointMarker::Cross => {
@@ -232,10 +230,7 @@ pub fn draw_face_points(
                 group.append(
                     node::element::Path::new()
                         .set("fill", "none")
-                        .set(
-                            "stroke",
-                            style.get_colour(),
-                        )
+                        .set("stroke", style.get_colour())
                         .set("stroke-width", 2)
                         .set("d", path),
                 );
@@ -253,8 +248,7 @@ pub fn draw_face_bars(
     face_width: f64,
     face_height: f64,
     style: &style::BoxStyle,
-) -> node::element::Group
-{
+) -> node::element::Group {
     let mut group = node::element::Group::new();
 
     for ((&l, &u), &count) in h.bin_bounds.pairwise().zip(h.get_values()) {
@@ -267,11 +261,7 @@ pub fn draw_face_bars(
             .set("y", -count_scaled)
             .set("width", width)
             .set("height", count_scaled)
-            .set(
-                "fill",
-                style
-                    .get_fill()
-            )
+            .set("fill", style.get_fill())
             .set("stroke", "black");
         group.append(rect);
     }
@@ -286,8 +276,7 @@ pub fn draw_face_line(
     face_width: f64,
     face_height: f64,
     style: &style::LineStyle,
-) -> node::element::Group
-{
+) -> node::element::Group {
     let mut group = node::element::Group::new();
 
     let mut d: Vec<node::element::path::Command> = vec![];
@@ -314,10 +303,13 @@ pub fn draw_face_line(
             .set("fill", "none")
             .set("stroke", style.get_colour())
             .set("stroke-width", style.get_width())
-            .set("stroke-linejoin", match style.get_linejoin() {
-                style::LineJoin::Miter => "miter",
-                style::LineJoin::Round => "round",
-            })
+            .set(
+                "stroke-linejoin",
+                match style.get_linejoin() {
+                    style::LineJoin::Miter => "miter",
+                    style::LineJoin::Round => "round",
+                },
+            )
             .set("d", path),
     );
 
@@ -427,7 +419,7 @@ where
             .set("y", box_start)
             .set("width", box_width)
             .set("height", box_end - box_start)
-            .set("fill", style .get_fill())
+            .set("fill", style.get_fill())
             .set("stroke", "black"),
     );
 

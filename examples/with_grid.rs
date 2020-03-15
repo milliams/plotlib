@@ -1,6 +1,6 @@
-use plotlib::repr::{BarChart, Plot};
 use plotlib::grid::Grid;
 use plotlib::page::Page;
+use plotlib::repr::{BarChart, Plot};
 use plotlib::style::{BoxStyle, LineStyle};
 use plotlib::view::{CategoricalView, ContinuousView, View};
 
@@ -30,10 +30,7 @@ where
     let b2 = BarChart::new(2.6)
         .label("2")
         .style(&BoxStyle::new().fill("darkolivegreen"));
-    let mut v = CategoricalView::new()
-        .add(b1)
-        .add(b2)
-        .x_label("Experiment");
+    let mut v = CategoricalView::new().add(b1).add(b2).x_label("Experiment");
     v.add_grid(Grid::new(3, 8));
     Page::single(&v)
         .save(filename.as_ref())

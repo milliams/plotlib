@@ -75,11 +75,11 @@ in this case, interpreting the bins and colours to create SVG elements.
 
 */
 
-pub mod page;
-pub mod view;
 pub mod grid;
-pub mod style;
+pub mod page;
 pub mod repr;
+pub mod style;
+pub mod view;
 
 mod axis;
 mod errors;

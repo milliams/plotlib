@@ -1,5 +1,5 @@
-use plotlib::repr::BarChart;
 use plotlib::page::Page;
+use plotlib::repr::BarChart;
 use plotlib::style::BoxStyle;
 use plotlib::view::CategoricalView;
 
@@ -9,10 +9,7 @@ fn main() {
         .label("2")
         .style(&BoxStyle::new().fill("darkolivegreen"));
 
-    let v = CategoricalView::new()
-        .add(b1)
-        .add(b2)
-        .x_label("Experiment");
+    let v = CategoricalView::new().add(b1).add(b2).x_label("Experiment");
 
     Page::single(&v).save("barchart.svg").expect("saving svg");
 }

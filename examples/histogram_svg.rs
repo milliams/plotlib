@@ -1,5 +1,5 @@
-use plotlib::repr::{Histogram, HistogramBins};
 use plotlib::page::Page;
+use plotlib::repr::{Histogram, HistogramBins};
 use plotlib::style::BoxStyle;
 use plotlib::view::ContinuousView;
 

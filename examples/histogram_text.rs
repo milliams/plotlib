@@ -1,5 +1,5 @@
-use plotlib::repr::{HistogramBins, Histogram};
 use plotlib::page::Page;
+use plotlib::repr::{Histogram, HistogramBins};
 use plotlib::view::ContinuousView;
 
 fn main() {

@@ -1,7 +1,7 @@
 use plotlib::page::Page;
 use plotlib::repr::Plot;
-use plotlib::view::ContinuousView;
 use plotlib::style::{PointMarker, PointStyle};
+use plotlib::view::ContinuousView;
 
 fn main() {
     // Scatter plots expect a list of pairs

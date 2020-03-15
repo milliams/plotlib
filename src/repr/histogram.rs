@@ -31,7 +31,6 @@ use crate::svg_render;
 use crate::text_render;
 use crate::utils::PairWise;
 
-
 #[derive(Debug)]
 enum HistogramType {
     Count,
@@ -212,7 +211,8 @@ mod tests {
             [0., 1. / 3., 2. / 3., 1.]
         );
         assert_eq!(
-            Histogram::from_slice(&[], HistogramBins::Bounds([0., 1., 1.5, 2., 5.6].to_vec())).bin_bounds,
+            Histogram::from_slice(&[], HistogramBins::Bounds([0., 1., 1.5, 2., 5.6].to_vec()))
+                .bin_bounds,
             [0., 1., 1.5, 2., 5.6]
         );
     }

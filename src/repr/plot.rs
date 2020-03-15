@@ -78,7 +78,6 @@ impl Plot {
         self
     }
 
-
     fn x_range(&self) -> (f64, f64) {
         let mut min = f64::INFINITY;
         let mut max = f64::NEG_INFINITY;
@@ -118,26 +117,24 @@ impl ContinuousRepresentation for Plot {
     ) -> svg::node::element::Group {
         let mut group = node::element::Group::new();
         if let Some(ref line_style) = self.line_style {
-            group.append(
-                svg_render::draw_face_line(
-                    &self.data,
-                    x_axis,
-                    y_axis,
-                    face_width,
-                    face_height,
-                    line_style,
-                ))
+            group.append(svg_render::draw_face_line(
+                &self.data,
+                x_axis,
+                y_axis,
+                face_width,
+                face_height,
+                line_style,
+            ))
         }
         if let Some(ref point_style) = self.point_style {
-            group.append(
-                svg_render::draw_face_points(
-                    &self.data,
-                    x_axis,
-                    y_axis,
-                    face_width,
-                    face_height,
-                    point_style,
-                ))
+            group.append(svg_render::draw_face_points(
+                &self.data,
+                x_axis,
+                y_axis,
+                face_width,
+                face_height,
+                point_style,
+            ))
         }
         group
     }
@@ -162,9 +159,9 @@ impl ContinuousRepresentation for Plot {
             if let Some(ref style) = self.line_style {
                 let line = node::element::Line::new()
                     .set("x1", -10)
-                    .set("y1", -FONT_SIZE/2. +2.)
+                    .set("y1", -FONT_SIZE / 2. + 2.)
                     .set("x2", -3)
-                    .set("y2", -FONT_SIZE/2. +2.)
+                    .set("y2", -FONT_SIZE / 2. + 2.)
                     .set("stroke-width", style.get_width())
                     .set("stroke", style.get_colour());
                 group.append(line);

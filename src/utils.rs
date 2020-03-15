@@ -53,7 +53,10 @@ pub fn range(s: &[f64]) -> (f64, f64) {
 /// Floor or ceiling the min or max to zero to avoid them both having the same value
 pub fn pad_range_to_zero(min: f64, max: f64) -> (f64, f64) {
     if (min - max).abs() < std::f64::EPSILON {
-        (if min > 0. {0.} else {min}, if max < 0. {0.} else {max})
+        (
+            if min > 0. { 0. } else { min },
+            if max < 0. { 0. } else { max },
+        )
     } else {
         (min, max)
     }
