@@ -17,6 +17,7 @@ jobs:
         with:
           toolchain: ${{ matrix.rust }}
           override: true
+          profile: minimal
       - name: Build
         uses: actions-rs/cargo@v1
         with:
@@ -35,6 +36,8 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+          override: true
+          profile: minimal
       - name: Run cargo-tarpaulin
         uses: actions-rs/tarpaulin@v0.1
       - name: Upload to codecov.io
@@ -70,6 +73,8 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+          override: true
+          profile: minimal
       - name: Publish
         uses: actions-rs/cargo@v1
         with:
