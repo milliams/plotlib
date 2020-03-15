@@ -111,8 +111,7 @@ impl TickSteps {
         let overflow = start_options[0] * 10.0;
         let curr = start_options
             .iter()
-            .skip_while(|&step| step < &start)
-            .next();
+            .find(|&step| step >= &start);
 
         TickSteps {
             next: *curr.unwrap_or(&overflow),
@@ -138,8 +137,7 @@ impl Iterator for TickSteps {
         let overflow = curr_steps[0] * 10.0;
         self.next = *curr_steps
             .iter()
-            .skip_while(|&s| s <= &curr)
-            .next()
+            .find(|&s| s > &curr)
             .unwrap_or(&overflow);
         Some(curr)
     }
@@ -148,7 +146,7 @@ impl Iterator for TickSteps {
 fn generate_ticks(min: f64, max: f64, step_size: f64) -> Vec<f64> {
     // "fix" just makes sure there are no floating-point errors
     fn fix(x: f64) -> f64 {
-        const PRECISION: f64 = 100000_f64;
+        const PRECISION: f64 = 100_000_f64;
         (x * PRECISION).round() / PRECISION
     }
 
@@ -203,8 +201,7 @@ fn calculate_tick_step_for_range(min: f64, max: f64, max_ticks: usize) -> f64 {
     let min_tick_step = range / max_ticks as f64;
     // Get the first entry which is our smallest possible tick step size
     let smallest_valid_step = TickSteps::start_at(min_tick_step)
-        .skip_while(|&s| number_of_ticks(min, max, s) > max_ticks)
-        .next()
+        .find(|&s| number_of_ticks(min, max, s) <= max_ticks)
         .expect("ERROR: We've somehow run out of tick step options!");
     // Count how many ticks that relates to
     let actual_num_ticks = number_of_ticks(min, max, smallest_valid_step);

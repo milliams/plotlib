@@ -29,7 +29,7 @@ fn tick_offset_map(axis: &axis::ContinuousAxis, face_width: u32) -> HashMap<i32,
 /// Given a histogram object,
 /// the total scale of the axis
 /// and the number of face cells to work with,
-/// create a mapping of cell offset to bin bound
+/// return which cells will contain a bin bound
 fn bound_cell_offsets(
     hist: &repr::Histogram,
     x_axis: &axis::ContinuousAxis,
@@ -60,24 +60,24 @@ fn bins_for_cells(bound_cell_offsets: &[i32], face_width: u32) -> Vec<Option<i32
     }
     cell_bins.push(None); // end with an appended positive null
 
-    if *bins_cell_offset < 0 {
+    if *bins_cell_offset <= 0 {
         cell_bins = cell_bins
             .iter()
             .skip(bins_cell_offset.wrapping_abs() as usize)
             .cloned()
             .collect();
-    } else if *bins_cell_offset > 0 {
+    } else {
         let mut new_bins = vec![None; (*bins_cell_offset) as usize];
         new_bins.extend(cell_bins.iter());
         cell_bins = new_bins;
     }
 
-    if cell_bins.len() < face_width as usize + 2 {
+    if cell_bins.len() <= face_width as usize + 2 {
         let deficit = face_width as usize + 2 - cell_bins.len();
         let mut new_bins = cell_bins;
         new_bins.extend(vec![None; deficit].iter());
         cell_bins = new_bins;
-    } else if cell_bins.len() > face_width as usize + 2 {
+    } else {
         let new_bins = cell_bins;
         cell_bins = new_bins
             .iter()
@@ -429,7 +429,7 @@ pub fn overlay(under: &str, over: &str, x: i32, y: i32) -> String {
         let new_lines: Vec<String> = (0..lines_deficit)
             .map(|_| (0..over_width).map(|_| ' ').collect::<String>())
             .collect();
-        let mut temp = split_over.clone();
+        let mut temp = split_over;
         for new_line in new_lines {
             temp.push(new_line);
         }
@@ -616,7 +616,6 @@ mod tests {
 
     #[test]
     fn test_render_face_points() {
-        use crate::repr;
         use crate::style::PointStyle;
         let data = vec![
             (-3.0, 2.3),

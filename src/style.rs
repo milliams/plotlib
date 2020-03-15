@@ -38,7 +38,7 @@ impl LineStyle {
         }
 
         if let Some(ref v) = other.linejoin {
-            self.linejoin = Some(v.clone())
+            self.linejoin = Some(*v)
         }
     }
     pub fn colour<T>(mut self, value: T) -> Self
@@ -101,7 +101,7 @@ impl PointStyle {
 
     pub fn overlay(&mut self, other: &Self) {
         if let Some(ref v) = other.marker {
-            self.marker = Some(v.clone())
+            self.marker = Some(*v)
         }
 
         if let Some(ref v) = other.colour {

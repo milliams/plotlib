@@ -35,7 +35,7 @@ pub struct BoxPlot<'a> {
 }
 
 impl<'a> BoxPlot<'a> {
-    pub fn from_slice(v: &'a [(f64)]) -> Self {
+    pub fn from_slice(v: &'a [f64]) -> Self {
         BoxPlot {
             data: BoxData::Ref(v),
             style: BoxStyle::new(),
