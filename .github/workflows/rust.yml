@@ -11,6 +11,20 @@ jobs:
         run: cargo build --all-targets --verbose
       - name: Run tests
         run: cargo test --verbose
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install stable toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - name: Run cargo-tarpaulin
+        uses: actions-rs/tarpaulin@v0.1
+      - name: Upload to codecov.io
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
   release:
     runs-on: ubuntu-latest
     needs: build
