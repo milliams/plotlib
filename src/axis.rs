@@ -173,9 +173,8 @@ fn generate_ticks(min: f64, max: f64, step_size: f64) -> Vec<f64> {
         } else {
             // entirely negative axis
             ticks.extend(
-                (1..)
-                    .map(|n| -1.0 * fix(f64::from(n) * step_size))
-                    .skip_while(|&v| v > max)
+                (0..)
+                    .map(|n| -1.0 * fix((f64::from(n) * step_size) - max))
                     .take_while(|&v| v >= min)
                     .collect::<Vec<f64>>()
                     .iter()
@@ -185,9 +184,8 @@ fn generate_ticks(min: f64, max: f64, step_size: f64) -> Vec<f64> {
     } else {
         // entirely positive axis
         ticks.extend(
-            (1..)
-                .map(|n| fix(f64::from(n) * step_size))
-                .skip_while(|&v| v < min)
+            (0..)
+                .map(|n| fix((f64::from(n) * step_size) + min))
                 .take_while(|&v| v <= max),
         );
     }
@@ -254,7 +252,7 @@ mod tests {
         assert_eq!(number_of_ticks(-7.93, 15.58, 5.0), 5);
         assert_eq!(number_of_ticks(0.0, 15.0, 4.0), 4);
         assert_eq!(number_of_ticks(0.0, 15.0, 5.0), 4);
-        assert_eq!(number_of_ticks(5.0, 21.0, 4.0), 4);
+        assert_eq!(number_of_ticks(5.0, 21.0, 4.0), 5);
         assert_eq!(number_of_ticks(5.0, 21.0, 5.0), 4);
         assert_eq!(number_of_ticks(-8.0, 15.58, 4.0), 6);
         assert_eq!(number_of_ticks(-8.0, 15.58, 5.0), 5);
@@ -388,7 +386,7 @@ mod tests {
             [0.0, 1000.0, 2000.0, 3000.0]
         );
 
-        assert_eq!(calculate_ticks(-10.0, -3.0, 6), [-10.0, -8.0, -6.0, -4.0]);
+        assert_eq!(calculate_ticks(-11.0, -4.0, 6), [-10.0, -8.0, -6.0, -4.0]);
 
         // test rounding
         assert_eq!(calculate_ticks(1.0, 1.5, 6), [1.0, 1.1, 1.2, 1.3, 1.4, 1.5]);
