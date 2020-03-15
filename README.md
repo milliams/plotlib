@@ -1,6 +1,7 @@
 # plotlib
 
 [![Build Status](https://travis-ci.org/milliams/plotlib.svg?branch=master)](https://travis-ci.org/milliams/plotlib)
+[![codecov](https://codecov.io/gh/milliams/plotlib/branch/master/graph/badge.svg)](https://codecov.io/gh/milliams/plotlib)
 [![Crates.io](https://img.shields.io/crates/v/plotlib.svg)](https://crates.io/crates/plotlib)
 ![MIT](https://img.shields.io/crates/l/plotlib.svg)
 [![Documentation](https://docs.rs/plotlib/badge.svg)](https://docs.rs/plotlib)
