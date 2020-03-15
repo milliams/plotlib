@@ -145,14 +145,6 @@ impl Iterator for TickSteps {
     }
 }
 
-/**
-This function exists to fix subtle floating point numbers like 0.30000000000000004
-In the longer-term is should be moved to something in the presentation layer
-*/
-fn round(x: f64) -> f64 {
-    (x * 1000000000000000.0).round() / 1000000000000000.0
-}
-
 fn generate_ticks(min: f64, max: f64, step_size: f64) -> Vec<f64> {
     // "fix" just makes sure there are no floating-point errors
     fn fix(x: f64) -> f64 {
