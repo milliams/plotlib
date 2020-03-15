@@ -56,7 +56,6 @@ fn test_data_with_no_length() {
 }
 
 #[test]
-#[should_panic(expected = "Invalid x_range")]
 fn test_data_with_one_length_and_autoscaling_axes_limits() {
     // Scatter plots expect a list of pairs
     let data1 = vec![(-3.0, 2.3)];
