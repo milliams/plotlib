@@ -49,6 +49,17 @@ pub fn range(s: &[f64]) -> (f64, f64) {
     (min, max)
 }
 
+/**
+Floor or ceiling the min or max to zero to avoid them both having the same value
+*/
+pub fn pad_range_to_zero(min: f64, max: f64) -> (f64, f64) {
+    if (min - max).abs() < std::f64::EPSILON {
+        (if min > 0. {0.} else {min}, if max < 0. {0.} else {max})
+    } else {
+        (min, max)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -96,5 +107,12 @@ mod tests {
         assert_eq!(quartiles(&[1., 2.]), (1., 1.5, 2.));
         assert_eq!(quartiles(&[1., 2., 4.]), (1., 2., 4.));
         assert_eq!(quartiles(&[1., 2., 3., 4.]), (1.5, 2.5, 3.5));
+    }
+
+    #[test]
+    fn test_pad_range_to_zero() {
+        assert_eq!(pad_range_to_zero(2.0, 2.0), (0.0, 2.0));
+        assert_eq!(pad_range_to_zero(-2.0, 2.0), (-2.0, 2.0));
+        assert_eq!(pad_range_to_zero(-2.0, -2.0), (-2.0, 0.0));
     }
 }

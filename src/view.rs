@@ -18,6 +18,7 @@ use crate::grid::{Grid, GridType};
 use crate::repr::{CategoricalRepresentation, ContinuousRepresentation};
 use crate::svg_render;
 use crate::text_render;
+use crate::utils;
 
 pub trait View {
     fn to_svg(&self, face_width: f64, face_height: f64) -> Result<svg::node::element::Group>;
@@ -108,6 +109,7 @@ impl ContinuousView {
             x_min = x_min.min(this_x_min);
             x_max = x_max.max(this_x_max);
         }
+        let (x_min, x_max) = utils::pad_range_to_zero(x_min, x_max);
         axis::Range::new(x_min, x_max)
     }
 
@@ -119,6 +121,7 @@ impl ContinuousView {
             y_min = y_min.min(this_y_min);
             y_max = y_max.max(this_y_max);
         }
+        let (y_min, y_max) = utils::pad_range_to_zero(y_min, y_max);
         axis::Range::new(y_min, y_max)
     }
 
