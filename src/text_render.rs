@@ -488,41 +488,41 @@ mod tests {
         };
 
         assert_eq!(
-            run_bins_for_cells(&vec![-4, -1, 4, 7, 10]),
+            run_bins_for_cells(&[-4, -1, 4, 7, 10]),
             [1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, n]
         );
         assert_eq!(
-            run_bins_for_cells(&vec![0, 2, 4, 8, 10]),
+            run_bins_for_cells(&[0, 2, 4, 8, 10]),
             [n, 0, 0, 1, 1, 2, 2, 2, 2, 3, 3, n]
         );
         assert_eq!(
-            run_bins_for_cells(&vec![3, 5, 7, 9, 10]),
+            run_bins_for_cells(&[3, 5, 7, 9, 10]),
             [n, n, n, n, 0, 0, 1, 1, 2, 2, 3, n]
         );
         assert_eq!(
-            run_bins_for_cells(&vec![0, 2, 4, 6, 8]),
+            run_bins_for_cells(&[0, 2, 4, 6, 8]),
             [n, 0, 0, 1, 1, 2, 2, 3, 3, n, n, n]
         );
         assert_eq!(
-            run_bins_for_cells(&vec![0, 3, 6, 9, 12]),
+            run_bins_for_cells(&[0, 3, 6, 9, 12]),
             [n, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3]
         );
 
         assert_eq!(
-            run_bins_for_cells(&vec![-5, -4, -3, -1, 0]),
+            run_bins_for_cells(&[-5, -4, -3, -1, 0]),
             [3, n, n, n, n, n, n, n, n, n, n, n]
         );
         assert_eq!(
-            run_bins_for_cells(&vec![10, 12, 14, 16, 18]),
+            run_bins_for_cells(&[10, 12, 14, 16, 18]),
             [n, n, n, n, n, n, n, n, n, n, n, 0]
         );
 
         assert_eq!(
-            run_bins_for_cells(&vec![15, 16, 17, 18, 19]),
+            run_bins_for_cells(&[15, 16, 17, 18, 19]),
             [n, n, n, n, n, n, n, n, n, n, n, n]
         );
         assert_eq!(
-            run_bins_for_cells(&vec![-19, -18, -17, -16, -1]),
+            run_bins_for_cells(&[-19, -18, -17, -16, -1]),
             [n, n, n, n, n, n, n, n, n, n, n, n]
         );
     }
@@ -542,7 +542,7 @@ mod tests {
             offset: 2,
         };
         assert_eq!(l.len(), 1);
-        assert!(l.footprint() % 2 != 0);
+        assert_ne!(l.footprint() % 2, 0);
         assert_eq!(l.start_offset(), 2);
 
         let l = XAxisLabel {
@@ -550,7 +550,7 @@ mod tests {
             offset: 2,
         };
         assert_eq!(l.len(), 2);
-        assert!(l.footprint() % 2 != 0);
+        assert_ne!(l.footprint() % 2, 0);
         assert_eq!(l.start_offset(), 1);
 
         let l = XAxisLabel {
@@ -558,7 +558,7 @@ mod tests {
             offset: 2,
         };
         assert_eq!(l.len(), 3);
-        assert!(l.footprint() % 2 != 0);
+        assert_ne!(l.footprint() % 2, 0);
         assert_eq!(l.start_offset(), 1);
 
         let l = XAxisLabel {
@@ -566,7 +566,7 @@ mod tests {
             offset: 1,
         };
         assert_eq!(l.len(), 4);
-        assert!(l.footprint() % 2 != 0);
+        assert_ne!(l.footprint() % 2, 0);
         assert_eq!(l.start_offset(), -1);
     }
 

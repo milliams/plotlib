@@ -1,4 +1,3 @@
-use plotlib::style::BoxStyle;
 use std::collections::btree_map::BTreeMap;
 
 fn main() {
