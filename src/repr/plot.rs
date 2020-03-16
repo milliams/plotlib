@@ -20,6 +20,7 @@ use crate::axis;
 use crate::repr::ContinuousRepresentation;
 use crate::style::*;
 use crate::svg_render;
+use crate::text_render;
 
 /// Representation of any plot with points in the XY plane, visualized as points and/or with lines
 /// in-between.
@@ -173,11 +174,34 @@ impl ContinuousRepresentation for Plot {
 
     fn to_text(
         &self,
-        _x_axis: &axis::ContinuousAxis,
-        _y_axis: &axis::ContinuousAxis,
-        _face_width: u32,
-        _face_height: u32,
+        x_axis: &axis::ContinuousAxis,
+        y_axis: &axis::ContinuousAxis,
+        face_width: u32,
+        face_height: u32,
     ) -> String {
-        "".into()
+        let face_lines = if let Some(line_style) = &self.line_style {
+            unimplemented!("Text rendering does not yet support line plots")
+        } else {
+            (0..face_height)
+                .map(|_| " ".repeat(face_width as usize))
+                .collect::<Vec<String>>()
+                .join("\n")
+        };
+        let face_points = if let Some(point_style) = &self.point_style {
+            text_render::render_face_points(
+                &self.data,
+                x_axis,
+                y_axis,
+                face_width,
+                face_height,
+                &point_style,
+            )
+        } else {
+            (0..face_height)
+                .map(|_| " ".repeat(face_width as usize))
+                .collect::<Vec<String>>()
+                .join("\n")
+        };
+        text_render::overlay(&face_lines, &face_points, 0, 0)
     }
 }

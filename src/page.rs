@@ -85,7 +85,7 @@ impl<'a> Page<'a> {
     */
     pub fn to_text(&self) -> Result<String> {
         let (width, height) = self.dimensions;
-        // TODO compose multiple views into a plot
+        // TODO compose multiple views into a page
         let view = self.views[0];
         view.to_text(width, height)
     }

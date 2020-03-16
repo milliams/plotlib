@@ -12,7 +12,7 @@ fn main() {
         (6.4, 4.3),
         (8.5, 3.7),
     ];
-    let s1 = Plot::new(data);
+    let s1 = Plot::new(data).point_style(PointStyle::new().marker(PointMarker::Circle));
     let s2 = Plot::new(vec![(-1.4, 2.5), (7.2, -0.3)])
         .point_style(PointStyle::new().marker(PointMarker::Square));
 
