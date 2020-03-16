@@ -472,6 +472,13 @@ pub fn overlay(under: &str, over: &str, x: i32, y: i32) -> String {
     out.join("\n")
 }
 
+pub fn empty_face(width: u32, height: u32) -> String {
+    (0..height)
+        .map(|_| " ".repeat(width as usize))
+        .collect::<Vec<String>>()
+        .join("\n")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -689,5 +696,14 @@ mod tests {
         let b = "    \n  # \n #  \n    ";
         let r = "o#\n#o";
         assert_eq!(overlay(a, b, -1, -1), r);
+    }
+
+    #[test]
+    fn test_empty_face() {
+        assert_eq!(empty_face(0, 0), "");
+        assert_eq!(empty_face(1, 1), " ");
+        assert_eq!(empty_face(2, 2), "  \n  ");
+        assert_eq!(empty_face(2, 3), "  \n  \n  ");
+        assert_eq!(empty_face(4, 2), "    \n    ");
     }
 }

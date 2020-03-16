@@ -182,10 +182,7 @@ impl ContinuousRepresentation for Plot {
         let face_lines = if let Some(line_style) = &self.line_style {
             unimplemented!("Text rendering does not yet support line plots")
         } else {
-            (0..face_height)
-                .map(|_| " ".repeat(face_width as usize))
-                .collect::<Vec<String>>()
-                .join("\n")
+            text_render::empty_face(face_width, face_height)
         };
         let face_points = if let Some(point_style) = &self.point_style {
             text_render::render_face_points(
@@ -197,10 +194,7 @@ impl ContinuousRepresentation for Plot {
                 &point_style,
             )
         } else {
-            (0..face_height)
-                .map(|_| " ".repeat(face_width as usize))
-                .collect::<Vec<String>>()
-                .join("\n")
+            text_render::empty_face(face_width, face_height)
         };
         text_render::overlay(&face_lines, &face_points, 0, 0)
     }
