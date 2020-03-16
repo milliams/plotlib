@@ -9,10 +9,8 @@ plotlib is a data plotting and rendering library.
 There are five different types of plot currently supported:
 
 1. Box plot (`plotlib::repr::Box`)
-1. Function (`plotlib::repr::Function`)
 1. Histogram (`plotlib::repr::Histogram`)
-1. Line chart (`plotlib::repr::Line`)
-1. Scatter plot (`plotlib::repr::Scatter`)
+1. Line and scatter plot (`plotlib::repr::Plot`)
 
 ## Technical
 
