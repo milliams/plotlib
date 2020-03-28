@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+
+## 0.5.1 - 2020-03-28
 ### Fixed
 - Set default axis bounds for case where all values are equal (Issue #36)
 - Optimise tick generation to jump straight to range (Issue #42)
