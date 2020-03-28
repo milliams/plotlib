@@ -21,6 +21,7 @@ git commit -m "Update version numbers for ${version}"
 
 echo -e "\\n# Pushing to Git\\n"
 git tag "${version}"
+git push origin
 git push origin --tags
 
 echo -e "\\n# Success ✓"
