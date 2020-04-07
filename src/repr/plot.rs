@@ -21,6 +21,7 @@ use crate::repr::ContinuousRepresentation;
 use crate::style::*;
 use crate::svg_render;
 use crate::text_render;
+use crate::svg_render::draw_marker;
 
 /// Representation of any plot with points in the XY plane, visualized as points and/or with lines
 /// in-between.
@@ -159,13 +160,18 @@ impl ContinuousRepresentation for Plot {
 
             if let Some(ref style) = self.line_style {
                 let line = node::element::Line::new()
-                    .set("x1", -10)
+                    .set("x1", -23)
                     .set("y1", -FONT_SIZE / 2. + 2.)
                     .set("x2", -3)
                     .set("y2", -FONT_SIZE / 2. + 2.)
                     .set("stroke-width", style.get_width())
                     .set("stroke", style.get_colour());
                 group.append(line);
+            }
+
+            if let Some(ref style) = self.point_style {
+                let mark = draw_marker(-13., (-FONT_SIZE / 2. + 2.) as f64, style);
+                group.append(mark);
             }
 
             group

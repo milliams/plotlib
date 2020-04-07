@@ -199,45 +199,52 @@ pub fn draw_face_points(
     for &(x, y) in s {
         let x_pos = value_to_face_offset(x, x_axis, face_width);
         let y_pos = -value_to_face_offset(y, y_axis, face_height);
-        let radius = f64::from(style.get_size());
-        match style.get_marker() {
-            style::PointMarker::Circle => {
-                group.append(
-                    node::element::Circle::new()
-                        .set("cx", x_pos)
-                        .set("cy", y_pos)
-                        .set("r", radius)
-                        .set("fill", style.get_colour()),
-                );
-            }
-            style::PointMarker::Square => {
-                group.append(
-                    node::element::Rectangle::new()
-                        .set("x", x_pos - radius)
-                        .set("y", y_pos - radius)
-                        .set("width", 2. * radius)
-                        .set("height", 2. * radius)
-                        .set("fill", style.get_colour()),
-                );
-            }
-            style::PointMarker::Cross => {
-                let path = node::element::path::Data::new()
-                    .move_to((x_pos - radius, y_pos - radius))
-                    .line_by((radius * 2., radius * 2.))
-                    .move_by((-radius * 2., 0))
-                    .line_by((radius * 2., -radius * 2.))
-                    .close();
-                group.append(
-                    node::element::Path::new()
-                        .set("fill", "none")
-                        .set("stroke", style.get_colour())
-                        .set("stroke-width", 2)
-                        .set("d", path),
-                );
-            }
-        };
+        let mark = draw_marker(x_pos, y_pos, style);
+        group.append(mark);
     }
 
+    group
+}
+
+pub fn draw_marker(x_pos: f64, y_pos: f64, style: &style::PointStyle) -> node::element::Group  {
+    let radius = f64::from(style.get_size());
+    let mut group = node::element::Group::new();
+    match style.get_marker() {
+        style::PointMarker::Circle => {
+            group.append(
+                node::element::Circle::new()
+                    .set("cx", x_pos)
+                    .set("cy", y_pos)
+                    .set("r", radius)
+                    .set("fill", style.get_colour()),
+            );
+        }
+        style::PointMarker::Square => {
+            group.append(
+                node::element::Rectangle::new()
+                    .set("x", x_pos - radius)
+                    .set("y", y_pos - radius)
+                    .set("width", 2. * radius)
+                    .set("height", 2. * radius)
+                    .set("fill", style.get_colour()),
+            );
+        }
+        style::PointMarker::Cross => {
+            let path = node::element::path::Data::new()
+                .move_to((x_pos - radius, y_pos - radius))
+                .line_by((radius * 2., radius * 2.))
+                .move_by((-radius * 2., 0))
+                .line_by((radius * 2., -radius * 2.))
+                .close();
+            group.append(
+                node::element::Path::new()
+                    .set("fill", "none")
+                    .set("stroke", style.get_colour())
+                    .set("stroke-width", 2)
+                    .set("d", path),
+            );
+        }
+    };
     group
 }
 
