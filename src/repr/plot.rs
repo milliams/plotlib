@@ -147,7 +147,7 @@ impl ContinuousRepresentation for Plot {
             let legend = legend.clone();
 
             let mut group = node::element::Group::new();
-            const FONT_SIZE: f32 = 12.0;
+            const FONT_SIZE: f32 = 9.0;
 
             // Draw legend text
             let legend_text = node::element::Text::new()
