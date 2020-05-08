@@ -371,6 +371,11 @@ pub fn render_face_points(
         style::PointMarker::Circle => '●',
         style::PointMarker::Square => '■',
         style::PointMarker::Cross => '×',
+        style::PointMarker::Plus => '+',
+        style::PointMarker::Star => '*',
+        style::PointMarker::Triangle => '▲',
+        style::PointMarker::TriangleDown => '▼',
+        style::PointMarker::Diamond => '♦',
     };
 
     let mut face_strings: Vec<String> = vec![];

@@ -167,7 +167,7 @@ impl View for ContinuousView {
 
         let (x_axis, y_axis) = self.create_axes()?;
 
-        let (legend_x, mut legend_y) = (face_width - 100., -face_height);
+        let (legend_x, mut legend_y) = (face_width - 100., -23.);
         if let Some(grid) = &self.grid {
             view_group.append(svg_render::draw_grid(
                 GridType::Both(grid),
@@ -186,7 +186,7 @@ impl View for ContinuousView {
                     "transform",
                     format!("translate({}, {})", legend_x, legend_y),
                 ));
-                legend_y += 18.;
+                legend_y -= 18.;
             }
         }
 

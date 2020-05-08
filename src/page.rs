@@ -100,10 +100,19 @@ impl<'a> Page<'a> {
     where
         P: AsRef<Path>,
     {
-        match path.as_ref().extension().and_then(OsStr::to_str) {
-            Some("svg") => svg::save(path, &self.to_svg()?)
-                .context("saving svg")
-                .map_err(From::from),
+        let path = path.as_ref();
+        match path.extension().and_then(OsStr::to_str) {
+            Some("svg") => {
+                if let Some(parent) = path.parent() {
+                    if !parent.exists() {
+                        std::fs::create_dir_all(parent)?;
+                    }
+                }
+
+                svg::save(&path, &self.to_svg()?)
+                    .context("saving svg")
+                    .map_err(From::from)
+            },
             _ => Ok(()),
         }
     }
