@@ -164,19 +164,25 @@ pub fn draw_categorical_x_axis(a: &axis::CategoricalAxis, face_width: f64) -> no
         ticks.append(tick_mark);
 
         let tick_label = node::element::Text::new()
-            .set("x", tick_pos)
-            .set("y", 20)
             .set("text-anchor", "middle")
-            .set("font-size", 12)
+            .set("x", 0)
+            .set("y", 0)
+            .set("font-size", 9)
+            .set("transform", "rotate(10)")
             .add(node::Text::new(tick.to_owned()));
-        labels.append(tick_label);
+
+        let tick_g = node::element::Group::new()
+            .set("transform", format!("translate({}, {})", tick_pos, 20))
+            .add(tick_label);
+
+        labels.append(tick_g);
     }
 
     let label = node::element::Text::new()
         .set("x", face_width / 2.)
         .set("y", 30)
         .set("text-anchor", "middle")
-        .set("font-size", 12)
+        .set("font-size", 9)
         .add(node::Text::new(a.get_label()));
 
     node::element::Group::new()
