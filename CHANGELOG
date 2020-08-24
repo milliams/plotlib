@@ -7,6 +7,7 @@
 - Set default axis bounds for case where all values are equal (Issue #36)
 - Optimise tick generation to jump straight to range (Issue #42)
 - Fix text rendering of scatter plots
+- Replace failure dependency with thiserror (Issue #63).
 
 ## 0.5.0 - 2020-03-14
 ### Added
