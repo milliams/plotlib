@@ -6,10 +6,10 @@ In essence, a view is a collection of representations along with some metadata d
 extent to plot and information about the axes. It knows how to render itself.
 */
 
+use crate::errors;
 use std;
 use std::f64;
 
-use failure::format_err;
 use svg::Node;
 
 use crate::axis;
@@ -129,21 +129,21 @@ impl ContinuousView {
         let default_x_range = self.default_x_range();
         let x_range = self.x_range.as_ref().unwrap_or(&default_x_range);
         if !x_range.is_valid() {
-            return Err(format_err!(
-                "Invalid x_range: {} >= {}. Please specify the x_range manually.",
-                x_range.lower,
-                x_range.upper
-            ));
+            return Err(errors::Error::InvalidRange {
+                name: String::from("x"),
+                lower: x_range.lower,
+                upper: x_range.upper,
+            });
         }
 
         let default_y_range = self.default_y_range();
         let y_range = self.y_range.as_ref().unwrap_or(&default_y_range);
         if !y_range.is_valid() {
-            return Err(format_err!(
-                "Invalid y_range: {} >= {}. Please specify the y_range manually.",
-                y_range.lower,
-                y_range.upper
-            ));
+            return Err(errors::Error::InvalidRange {
+                name: String::from("y"),
+                lower: x_range.lower,
+                upper: x_range.upper,
+            });
         }
 
         let x_label: String = self.x_label.clone().unwrap_or_else(|| "".to_string());
@@ -358,7 +358,11 @@ impl CategoricalView {
         let y_range = self.y_range.as_ref().unwrap_or(&default_y_range);
 
         if !y_range.is_valid() {
-            return Err(format_err!("invalid y_range: {:?}", y_range));
+            return Err(errors::Error::InvalidRange {
+                name: String::from("y"),
+                lower: y_range.lower,
+                upper: y_range.upper,
+            });
         }
 
         let default_x_label = "".to_string();
