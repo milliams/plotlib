@@ -14,5 +14,5 @@ keywords = ["plotting", "plot", "graph", "chart", "histogram"]
 travis-ci = { repository = "milliams/plotlib" }
 
 [dependencies]
-svg = "0.7.1"
+svg = "0.8.0"
 thiserror = "1.0.20"
