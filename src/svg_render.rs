@@ -162,19 +162,25 @@ pub fn draw_categorical_x_axis(a: &axis::CategoricalAxis, face_width: f64) -> no
         ticks.append(tick_mark);
 
         let tick_label = node::element::Text::new()
-            .set("x", tick_pos)
-            .set("y", 20)
             .set("text-anchor", "middle")
-            .set("font-size", 12)
+            .set("x", 0)
+            .set("y", 0)
+            .set("font-size", 9)
+            .set("transform", "rotate(10)")
             .add(node::Text::new(tick.to_owned()));
-        labels.append(tick_label);
+
+        let tick_g = node::element::Group::new()
+            .set("transform", format!("translate({}, {})", tick_pos, 20))
+            .add(tick_label);
+
+        labels.append(tick_g);
     }
 
     let label = node::element::Text::new()
         .set("x", face_width / 2.)
         .set("y", 30)
         .set("text-anchor", "middle")
-        .set("font-size", 12)
+        .set("font-size", 9)
         .add(node::Text::new(a.get_label()));
 
     node::element::Group::new()
@@ -197,45 +203,165 @@ pub fn draw_face_points(
     for &(x, y) in s {
         let x_pos = value_to_face_offset(x, x_axis, face_width);
         let y_pos = -value_to_face_offset(y, y_axis, face_height);
-        let radius = f64::from(style.get_size());
-        match style.get_marker() {
-            style::PointMarker::Circle => {
-                group.append(
-                    node::element::Circle::new()
-                        .set("cx", x_pos)
-                        .set("cy", y_pos)
-                        .set("r", radius)
-                        .set("fill", style.get_colour()),
-                );
-            }
-            style::PointMarker::Square => {
-                group.append(
-                    node::element::Rectangle::new()
-                        .set("x", x_pos - radius)
-                        .set("y", y_pos - radius)
-                        .set("width", 2. * radius)
-                        .set("height", 2. * radius)
-                        .set("fill", style.get_colour()),
-                );
-            }
-            style::PointMarker::Cross => {
-                let path = node::element::path::Data::new()
-                    .move_to((x_pos - radius, y_pos - radius))
-                    .line_by((radius * 2., radius * 2.))
-                    .move_by((-radius * 2., 0))
-                    .line_by((radius * 2., -radius * 2.))
-                    .close();
-                group.append(
-                    node::element::Path::new()
-                        .set("fill", "none")
-                        .set("stroke", style.get_colour())
-                        .set("stroke-width", 2)
-                        .set("d", path),
-                );
-            }
-        };
+        let mark = draw_marker(x_pos, y_pos, style);
+        group.append(mark);
     }
 
+    group
+}
+
+pub fn draw_marker(x_pos: f64, y_pos: f64, style: &style::PointStyle) -> node::element::Group  {
+    let radius = f64::from(style.get_size());
+    let mut group = node::element::Group::new();
+    match style.get_marker() {
+        style::PointMarker::Circle => {
+            group.append(
+                node::element::Circle::new()
+                    .set("cx", x_pos)
+                    .set("cy", y_pos)
+                    .set("r", radius)
+                    .set("fill", style.get_colour()),
+            );
+        }
+        style::PointMarker::Square => {
+            group.append(
+                node::element::Rectangle::new()
+                    .set("x", x_pos - radius)
+                    .set("y", y_pos - radius)
+                    .set("width", 2. * radius)
+                    .set("height", 2. * radius)
+                    .set("fill", style.get_colour()),
+            );
+        }
+        style::PointMarker::Cross => {
+            let data = node::element::path::Data::new()
+                .move_to((-radius, -radius))
+                .line_to(( radius,  radius))
+                .move_to((-radius,  radius))
+                .line_to(( radius, -radius))
+                .close();
+
+            let path = node::element::Path::new()
+                .set("fill", "none")
+                .set("stroke", style.get_colour())
+                .set("stroke-width", 1)
+                .set("d", data);
+
+            let mut translation = node::element::Group::new()
+                .set("transform", format!("translate({},{})", x_pos, y_pos));
+            translation.append(path);
+
+            let mut wrap = node::element::Group::new();
+            wrap.append(translation);
+
+            group.append(wrap);
+        }
+        style::PointMarker::Plus => {
+            let data = node::element::path::Data::new()
+                .move_to((-radius, 0))
+                .horizontal_line_to(radius)
+                .move_to((0, - radius))
+                .vertical_line_to(radius)
+                .close();
+
+            let path = node::element::Path::new()
+                .set("fill", "none")
+                .set("stroke", style.get_colour())
+                .set("stroke-width", 1)
+                .set("d", data);
+
+            let mut translation = node::element::Group::new()
+                .set("transform", format!("translate({},{})", x_pos, y_pos));
+            translation.append(path);
+
+            let mut wrap = node::element::Group::new();
+            wrap.append(translation);
+
+            group.append(wrap);
+        }
+        style::PointMarker::Star => {
+            let data = node::element::path::Data::new()
+                .move_to((-radius, 0))
+                .horizontal_line_to(radius)
+                .move_to((0, - radius))
+                .vertical_line_to(radius)
+                .move_to((-radius, -radius))
+                .line_to(( radius,  radius))
+                .move_to((-radius,  radius))
+                .line_to(( radius, -radius))
+                .close();
+
+            let path = node::element::Path::new()
+                .set("fill", "none")
+                .set("stroke", style.get_colour())
+                .set("stroke-width", 1)
+                .set("d", data);
+
+            let mut translation = node::element::Group::new()
+                .set("transform", format!("translate({},{})", x_pos, y_pos));
+            translation.append(path);
+
+            let mut wrap = node::element::Group::new();
+            wrap.append(translation);
+
+            group.append(wrap);
+        }
+        style::PointMarker::Triangle => {
+            let left = (-radius, 0.);
+            let right= ( radius, 0.);
+            let top  = (     0.,  -2.*radius);
+
+            let points = format!("{},{} {},{} {},{}",
+                                 left.0 ,left.1,
+                                 right.0,right.1,
+                                 top.0, top.1);
+
+            let polygon= node::element::Polygon::new()
+                .set("points", points)
+                .set("fill", style.get_colour())
+                .set("transform", format!("translate({},{})", x_pos, y_pos +radius));
+
+            let mut translation = node::element::Group::new();
+            translation.append(polygon);
+
+            group.append(translation);
+        },
+        style::PointMarker::TriangleDown => {
+            let left = (-radius, 0.);
+            let right= ( radius, 0.);
+            let top  = (     0.,  2.*radius);
+
+            let points = format!("{},{} {},{} {},{}",
+                                 left.0 ,left.1,
+                                 right.0,right.1,
+                                 top.0, top.1);
+
+            let polygon= node::element::Polygon::new()
+                .set("points", points)
+                .set("fill", style.get_colour())
+                .set("transform", format!("translate({},{})", x_pos, y_pos -radius));
+
+            let mut translation = node::element::Group::new();
+            translation.append(polygon);
+
+            group.append(translation);
+        },
+        style::PointMarker::Diamond => {
+            let r = radius;
+            let points = format!("{},{} {},{} {},{} {},{}", -r,0, 0,r, r,0, 0,-r);
+            let polygon= node::element::Polygon::new()
+                .set("x", x_pos - radius)
+                .set("y", y_pos - radius)
+                .set("points", points)
+                .set("fill", style.get_colour())
+                .set("transform", format!("translate({},{})", x_pos, y_pos));
+
+            let mut translation = node::element::Group::new();
+            translation.append(polygon);
+
+            group.append(translation);
+        },
+    };
     group
 }
 

@@ -60,7 +60,7 @@ impl LineStyle {
         self
     }
     pub fn get_width(&self) -> f32 {
-        self.width.unwrap_or(2.0)
+        self.width.unwrap_or(1.0)
     }
 
     pub fn linejoin<T>(mut self, value: T) -> Self
@@ -81,6 +81,11 @@ pub enum PointMarker {
     Circle,
     Square,
     Cross,
+    Plus,
+    Star,
+    Triangle,
+    TriangleDown,
+    Diamond
 }
 
 #[derive(Debug, Default, Clone)]
@@ -141,7 +146,7 @@ impl PointStyle {
         self
     }
     pub fn get_size(&self) -> f32 {
-        self.size.unwrap_or(5.0)
+        self.size.unwrap_or(3.0)
     }
 }
 
