@@ -2,6 +2,7 @@
 The `page` module provides structures for laying out and rendering multiple views.
 */
 
+use crate::errors;
 use std::ffi::OsStr;
 use std::path::Path;
 
@@ -11,8 +12,6 @@ use svg::Node;
 
 use crate::errors::Result;
 use crate::view::View;
-
-use failure::ResultExt;
 
 /**
 A single page page laying out the views in a grid
@@ -95,7 +94,6 @@ impl<'a> Page<'a> {
 
     The type of file will be based on the file extension.
     */
-
     pub fn save<P>(&self, path: P) -> Result<()>
     where
         P: AsRef<Path>,
@@ -109,9 +107,10 @@ impl<'a> Page<'a> {
                     }
                 }
 
-                svg::save(&path, &self.to_svg()?)
-                    .context("saving svg")
-                    .map_err(From::from)
+                match svg::save(&path, &self.to_svg()?) {
+                    Ok(ok) => Ok(ok),
+                    Err(error) => Err(errors::Error::FailedToSave(error))
+                }
             },
             _ => Ok(()),
         }

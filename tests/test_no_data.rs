@@ -25,7 +25,7 @@ fn test_data_with_one_length() {
 
     // A page with a single view is then saved to an SVG file
     Page::single(&v)
-        .save("/tmp/scatter_one_length.svg")
+        .save("target/scatter_one_length.svg")
         .unwrap();
 }
 
@@ -51,7 +51,7 @@ fn test_data_with_no_length() {
 
     // A page with a single view is then saved to an SVG file
     Page::single(&v)
-        .save("/tmp/scatter_zero_length.svg")
+        .save("target/scatter_zero_length.svg")
         .unwrap();
 }
 
@@ -75,6 +75,6 @@ fn test_data_with_one_length_and_autoscaling_axes_limits() {
 
     // // A page with a single view is then saved to an SVG file
     Page::single(&v)
-        .save("/tmp/scatter_one_length.svg")
+        .save("target/scatter_one_length.svg")
         .unwrap();
 }

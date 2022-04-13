@@ -1,6 +1,5 @@
 //! A module for plotting graphs
 
-use std;
 use std::collections::HashMap;
 
 use crate::axis;

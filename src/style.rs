@@ -60,7 +60,7 @@ impl LineStyle {
         self
     }
     pub fn get_width(&self) -> f32 {
-        self.width.unwrap_or_else(|| 1.0)
+        self.width.unwrap_or(1.0)
     }
 
     pub fn linejoin<T>(mut self, value: T) -> Self
@@ -71,7 +71,7 @@ impl LineStyle {
         self
     }
     pub fn get_linejoin(&self) -> LineJoin {
-        self.linejoin.unwrap_or_else(|| LineJoin::Round)
+        self.linejoin.unwrap_or(LineJoin::Round)
     }
 }
 
