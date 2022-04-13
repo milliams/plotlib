@@ -10,9 +10,6 @@ repository = "https://github.com/milliams/plotlib"
 categories = ["visualization", "science"]
 keywords = ["plotting", "plot", "graph", "chart", "histogram"]
 
-[badges]
-travis-ci = { repository = "milliams/plotlib" }
-
 [dependencies]
 svg = "0.10.0"
 thiserror = "1.0.30"
