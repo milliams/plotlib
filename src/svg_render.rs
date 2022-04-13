@@ -1,5 +1,3 @@
-use std;
-
 use svg::node;
 use svg::Node;
 

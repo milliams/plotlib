@@ -191,7 +191,7 @@ impl ContinuousRepresentation for Plot {
                 y_axis,
                 face_width,
                 face_height,
-                &point_style,
+                point_style,
             )
         } else {
             text_render::empty_face(face_width, face_height)

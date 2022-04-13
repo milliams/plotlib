@@ -1,5 +1,3 @@
-use thiserror;
-
 #[derive(thiserror::Error, Debug)]
 pub enum Error {
     #[error("Cannot save page to svg!")]
