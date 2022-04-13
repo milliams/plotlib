@@ -2,11 +2,13 @@
 pub enum Error {
     #[error("Cannot save page to svg!")]
     FailedToSave(#[from] std::io::Error),
-    #[error("Invalid {name:?} range: {lower} <= {upper}. Please specify the {name:?} range manually.")]
+    #[error(
+        "Invalid {name:?} range: {lower} <= {upper}. Please specify the {name:?} range manually."
+    )]
     InvalidRange {
         name: String,
         lower: f64,
-        upper: f64
+        upper: f64,
     },
 }
 
