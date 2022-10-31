@@ -11,5 +11,5 @@ categories = ["visualization", "science"]
 keywords = ["plotting", "plot", "graph", "chart", "histogram"]
 
 [dependencies]
-svg = "0.10.0"
+svg = "0.12.1"
 thiserror = "1.0.30"
